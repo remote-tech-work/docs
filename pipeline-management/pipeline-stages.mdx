@@ -1,0 +1,554 @@
+---
+title: 'Pipeline Aşamalarını Özelleştirme'
+description: 'Pipeline aşamalarını ihtiyaçlarınıza göre düzenleyin ve özelleştirin'
+---
+
+## Genel Bakış
+
+Pipeline aşamaları, iş sürecinizin adımlarını temsil eder. Platform, varsayılan aşamalarla gelir ancak ihtiyaçlarınıza göre bu aşamaları özelleştirebilirsiniz.
+
+## Aşama Türleri
+
+### Sabit Aşamalar (Fixed Stages)
+
+Sabit aşamalar, pipeline'ın temel yapı taşlarıdır:
+
+<CardGroup cols={2}>
+  <Card title="Silinemez" icon="lock">
+    Bu aşamalar sistemin temel işleyişi için gereklidir
+  </Card>
+  <Card title="Konum Sabit" icon="location-dot">
+    Her zaman belirli sırada kalırlar
+  </Card>
+  <Card title="İsim Sabit" icon="tag">
+    İsimleri ve anahtar kelimeleri sabittir
+  </Card>
+  <Card title="Ekleme İzni" icon="plus">
+    Aralarına yeni aşamalar eklenebilir
+  </Card>
+</CardGroup>
+
+<Tabs>
+  <Tab title="Satış Pipeline">
+    **Satış Pipeline Sabit Aşamaları:**
+    - **Lead**: Pipeline'ın başlangıç noktası
+    - **Qualified**: Niteliklendirilmiş fırsatlar için önemli
+    - **Won**: Başarılı satışların raporlanması için gerekli
+    - **Lost**: Kaybedilen fırsatların analizi için gerekli
+  </Tab>
+
+  <Tab title="Servis Pipeline">
+    **Servis Pipeline Sabit Aşamaları:**
+    - **New**: Yeni taleplerin başlangıç noktası
+    - **In Progress**: Aktif çalışma durumu
+    - **Resolved**: Çözüm metrikleri için gerekli
+    - **Closed**: Kapatılma analizi için gerekli
+  </Tab>
+</Tabs>
+
+### Özelleştirilebilir Aşamalar
+
+Sabit olmayan aşamalar tamamen size aittir:
+
+<CardGroup cols={2}>
+  <Card title="Düzenlenebilir" icon="pen">
+    İsim, renk, açıklama değiştirilebilir
+  </Card>
+  <Card title="Silinebilir" icon="trash">
+    İçinde ticket yoksa silinebilir
+  </Card>
+  <Card title="Yeni Eklenebilir" icon="plus-circle">
+    İhtiyacınıza göre yeni aşamalar eklenebilir
+  </Card>
+  <Card title="Sıralanabilir" icon="arrows-up-down">
+    Sabit aşamalar arasında sıralama yapılabilir
+  </Card>
+</CardGroup>
+
+## Aşamaları Görüntüleme
+
+### Pipeline Aşamaları Sayfasına Erişim
+
+<Steps>
+  <Step title="Pipeline sayfası">
+    Sol menüden **"Pipeline'lar"** sayfasına gidin
+  </Step>
+  <Step title="Pipeline seçin">
+    Bir pipeline seçin (Satış veya Servis)
+  </Step>
+  <Step title="Aşamaları Düzenle">
+    Sağ üst köşede bulunan **"Aşamaları Düzenle"** butonuna tıklayın
+  </Step>
+</Steps>
+
+<Frame>
+  <img src="/images/placeholder-edit-stages.png" alt="Aşamaları düzenleme sayfası" />
+</Frame>
+
+### Aşama Listesi
+
+Açılan sayfada görüntülenen bilgiler:
+
+<AccordionGroup>
+  <Accordion title="Aşama Sırası">
+    Soldan sağa doğru aşamaların sıralanışı
+  </Accordion>
+
+  <Accordion title="Aşama İsmi">
+    Her aşamanın adı
+  </Accordion>
+
+  <Accordion title="Aşama Rengi">
+    Görsel ayırt etme için renk kodu
+  </Accordion>
+
+  <Accordion title="Aşama Açıklaması">
+    Aşamanın ne amaçla kullanıldığını açıklayan metin
+  </Accordion>
+
+  <Accordion title="Sabit/Özelleştirilebilir İkonu">
+    Aşamanın türünü gösteren işaret
+  </Accordion>
+
+  <Accordion title="Ticket Sayısı">
+    O aşamada kaç ticket olduğu
+  </Accordion>
+
+  <Accordion title="Müşteri Sayısı">
+    O aşamada kaç farklı müşteri olduğu
+  </Accordion>
+</AccordionGroup>
+
+## Yeni Aşama Ekleme
+
+### Adım 1: Eklenecek Konumu Belirleyin
+
+Yeni aşamalar, **sabit aşamalar arasına** eklenebilir.
+
+<Warning>
+**Satış Pipeline'da:**
+- Lead ile Qualified arasına ❌ (Lead sonrasına eklenemez)
+- Qualified ile Won arasına ✅
+- Won ile Lost arasına ❌ (Won sonrasına eklenemez)
+
+**Servis Pipeline'da:**
+- New ile In Progress arasına ❌ (New sonrasına eklenemez)
+- In Progress ile Resolved arasına ✅
+- Resolved ile Closed arasına ❌ (Resolved sonrasına eklenemez)
+</Warning>
+
+<Note>
+Yalnızca "Can Insert After" (Sonrasına Eklenebilir) işareti olan aşamaların sonrasına yeni aşama ekleyebilirsiniz.
+</Note>
+
+### Adım 2: Yeni Aşama Oluştur
+
+<Steps>
+  <Step title="Düzenleme sayfası">
+    **"Aşamaları Düzenle"** sayfasını açın
+  </Step>
+  <Step title="Artı butonuna tıklayın">
+    Eklemek istediğiniz aşamanın **"+"** butonuna tıklayın
+  </Step>
+  <Step title="Form açılır">
+    Yeni aşama formu açılacaktır
+  </Step>
+</Steps>
+
+### Adım 3: Aşama Bilgilerini Girin
+
+#### Aşama İsmi *(Zorunlu)*
+
+Aşamanın görünen ismini girin. Kısa ve açıklayıcı olmalıdır.
+
+**Örnek İsimler:**
+
+<Tabs>
+  <Tab title="Satış Pipeline">
+    - "Demo Planlandı"
+    - "Sözleşme Onayı"
+    - "Teslimat"
+  </Tab>
+
+  <Tab title="Servis Pipeline">
+    - "Araştırma"
+    - "Test Ediliyor"
+    - "Müşteri Teyidi"
+  </Tab>
+</Tabs>
+
+#### Aşama Rengi *(Zorunlu)*
+
+Aşamayı görsel olarak ayırt etmek için bir renk seçin. Hex kod formatında (#RRGGBB) girilmelidir.
+
+**Renk Önerileri:**
+
+<CardGroup cols={2}>
+  <Card title="Mavi (#3B82F6)" icon="circle" color="#3B82F6">
+    Nötr, profesyonel
+  </Card>
+  <Card title="Yeşil (#10B981)" icon="circle" color="#10B981">
+    İlerleme, pozitif durum
+  </Card>
+  <Card title="Sarı (#F59E0B)" icon="circle" color="#F59E0B">
+    Dikkat gerektiren, bekleme
+  </Card>
+  <Card title="Turuncu (#F97316)" icon="circle" color="#F97316">
+    Öncelikli, acele
+  </Card>
+  <Card title="Kırmızı (#EF4444)" icon="circle" color="#EF4444">
+    Kritik, sorunlu
+  </Card>
+</CardGroup>
+
+#### Aşama Açıklaması *(İsteğe Bağlı)*
+
+Aşamanın ne zaman kullanılacağını açıklayan bir metin girin.
+
+**Örnek Açıklamalar:**
+```
+"Demo görüşmesi planlanmış ancak henüz yapılmamış fırsatlar"
+"Teknik ekip tarafından inceleme yapılması gereken destek talepleri"
+```
+
+### Adım 4: Aşamayı Kaydedin
+
+<Steps>
+  <Step title="Formu doldurun">
+    Tüm gerekli bilgileri girin
+  </Step>
+  <Step title="Aşama Ekle">
+    **"Aşama Ekle"** butonuna tıklayın
+  </Step>
+  <Step title="Otomatik kayıt">
+    Yeni aşama, pipeline'ınıza eklenir ve değişiklikler otomatik olarak kaydedilir
+  </Step>
+</Steps>
+
+### Ardışık Aşama Ekleme
+
+Birden fazla aşamayı **art arda** eklemek istiyorsanız:
+
+<Steps>
+  <Step title="İlk aşamayı ekleyin">
+    İlk aşamayı yukarıdaki adımlarla ekleyin
+  </Step>
+  <Step title="İkinci aşamayı ekleyin">
+    İkinci aşamayı eklerken, ilk eklediğiniz aşamanın sonrasına ekleyebilirsiniz
+  </Step>
+  <Step title="Devam edin">
+    Bu şekilde istediğiniz kadar aşamayı sırayla ekleyebilirsiniz
+  </Step>
+</Steps>
+
+**Örnek Senaryo:**
+```
+Qualified → [Yeni: "Demo Yapıldı"] → [Yeni: "Teklif Hazırlandı"] → [Yeni: "Sözleşme"] → Won
+```
+
+## Mevcut Aşamaları Düzenleme
+
+### Özelleştirilebilir Aşamaları Düzenlemek
+
+<Steps>
+  <Step title="Düzenleme sayfası">
+    **"Aşamaları Düzenle"** sayfasını açın
+  </Step>
+  <Step title="Düzenle butonu">
+    Düzenlemek istediğiniz aşamanın **"✏️ Düzenle"** butonuna tıklayın
+  </Step>
+  <Step title="Bilgileri değiştirin">
+    Aşağıdaki bilgileri değiştirebilirsiniz:
+    - **İsim**: Aşamanın görünen adı
+    - **Renk**: Aşamanın renk kodu
+    - **Açıklama**: Aşamanın kullanım amacı
+  </Step>
+  <Step title="Kaydet">
+    **"Kaydet"** butonuna tıklayın
+  </Step>
+</Steps>
+
+<Note>
+Sabit aşamaların düzenleme butonu görünmez çünkü bunlar düzenlenemez.
+</Note>
+
+## Aşama Silme
+
+### Silme Koşulları
+
+Bir aşamayı silebilmeniz için şu koşulların **tümü** sağlanmalıdır:
+
+<CardGroup cols={3}>
+  <Card title="Özelleştirilebilir" icon="unlock">
+    Aşama **özelleştirilebilir** olmalı (sabit aşama olmamalı)
+  </Card>
+  <Card title="Ticket Yok" icon="file-excel">
+    Aşamada **hiç ticket bulunmamalı**
+  </Card>
+  <Card title="Müşteri Yok" icon="user-slash">
+    Aşamada **hiç müşteri bulunmamalı**
+  </Card>
+</CardGroup>
+
+### Silme Adımları
+
+<Steps>
+  <Step title="Düzenleme sayfası">
+    **"Aşamaları Düzenle"** sayfasını açın
+  </Step>
+  <Step title="Sil butonu">
+    Silmek istediğiniz aşamanın **"🗑️ Sil"** butonuna tıklayın
+  </Step>
+  <Step title="Onay">
+    Onay dialogunda **"Evet, Sil"** butonuna tıklayın
+  </Step>
+  <Step title="Kalıcı silme">
+    Aşama kalıcı olarak silinecektir
+  </Step>
+</Steps>
+
+### Ticket İçeren Aşamayı Silme
+
+Eğer aşamada ticket varsa, doğrudan silemezsiniz. İki seçeneğiniz var:
+
+<Tabs>
+  <Tab title="Ticket'ları Taşı">
+    **Seçenek 1: Ticket'ları Başka Aşamaya Taşıyın**
+    1. O aşamadaki tüm ticket'ları görüntüleyin
+    2. Ticket'ları tek tek veya toplu olarak başka bir aşamaya taşıyın
+    3. Aşama boşaldıktan sonra silin
+  </Tab>
+
+  <Tab title="Ticket'ları Sil">
+    **Seçenek 2: Ticket'ları Silin**
+    1. O aşamadaki ticket'ların silinmesine karar verin (dikkatli olun!)
+    2. Ticket'ları tek tek silin
+    3. Aşama boşaldıktan sonra silin
+  </Tab>
+</Tabs>
+
+<Warning>
+Ticket silme işlemi geri alınamaz!
+</Warning>
+
+## Aşama Sıralaması
+
+### Sabit Sıralama Kuralları
+
+<Info>
+Pipeline aşamalarının sıralaması için önemli kurallar:
+
+1. **Sabit aşamaların sırası değiştirilemez**
+   - Lead her zaman Satış Pipeline'ın başında kalır
+   - Won ve Lost her zaman Satış Pipeline'ın sonunda kalır
+   - New her zaman Servis Pipeline'ın başında kalır
+   - Resolved ve Closed her zaman Servis Pipeline'ın sonunda kalır
+
+2. **Özelleştirilebilir aşamalar sadece sabit aşamalar arasında sıralanabilir**
+   - Qualified ile Won arasındaki özel aşamaların sırasını değiştirebilirsiniz
+</Info>
+
+### Manuel Sıralama (Sürükle-Bırak)
+
+Özelleştirilebilir aşamaların sırasını değiştirmek için:
+
+<Steps>
+  <Step title="Düzenleme sayfası">
+    **"Aşamaları Düzenle"** sayfasını açın
+  </Step>
+  <Step title="Aşamayı sürükleyin">
+    Aşama kartını fareyle tıklayın ve basılı tutun
+  </Step>
+  <Step title="İstediğiniz konuma taşıyın">
+    İstediğiniz konuma sürükleyin
+  </Step>
+  <Step title="Bırakın">
+    Bıraktığınızda sıralama otomatik olarak kaydedilir
+  </Step>
+</Steps>
+
+<Note>
+Yalnızca sabit aşamalar arasındaki alanda sıralama yapabilirsiniz.
+</Note>
+
+## Pratik Örnekler
+
+### Örnek 1: Satış Pipeline Özelleştirmesi
+
+**Senaryo**: SaaS ürünü satan bir şirketsiniz ve demo sürecinizi takip etmek istiyorsunuz.
+
+**Çözüm**:
+```
+Lead → Qualified → [YENİ: Demo Planlandı] → [YENİ: Demo Yapıldı] →
+[YENİ: Teklif Gönderildi] → Proposal → Negotiation → Won / Lost
+```
+
+**Eklenen Aşamalar:**
+
+<CardGroup cols={3}>
+  <Card title="Demo Planlandı" icon="calendar">
+    Mavi renk - Demo randevusu alınmış fırsatlar
+  </Card>
+  <Card title="Demo Yapıldı" icon="check">
+    Yeşil renk - Demo tamamlanmış, teklif bekleyen fırsatlar
+  </Card>
+  <Card title="Teklif Gönderildi" icon="paper-plane">
+    Turuncu renk - Teklifin müşteriye gönderildiği fırsatlar
+  </Card>
+</CardGroup>
+
+### Örnek 2: Servis Pipeline Özelleştirmesi
+
+**Senaryo**: Teknik destek sunan bir şirketsiniz ve sorunların teknik ekip tarafından incelenmesini takip etmek istiyorsunuz.
+
+**Çözüm**:
+```
+New → [YENİ: Teknik İnceleme] → In Progress → [YENİ: Test Ediliyor] →
+Waiting → Resolved → Closed
+```
+
+**Eklenen Aşamalar:**
+
+<CardGroup cols={2}>
+  <Card title="Teknik İnceleme" icon="magnifying-glass">
+    Sarı renk - Teknik ekip tarafından analiz ediliyor
+  </Card>
+  <Card title="Test Ediliyor" icon="flask">
+    Turuncu renk - Çözüm test ediliyor, müşteri onayı bekleniyor
+  </Card>
+</CardGroup>
+
+## Aşama Metrikleri
+
+Her aşama için otomatik olarak hesaplanan metrikler:
+
+<AccordionGroup>
+  <Accordion title="Ticket Sayısı">
+    O aşamada bulunan aktif ticket sayısı. Silinmiş veya kapalı ticket'lar dahil değildir.
+  </Accordion>
+
+  <Accordion title="Müşteri Sayısı">
+    O aşamada en az bir ticket'ı olan benzersiz müşteri sayısı. Bir müşterinin birden fazla ticket'ı olsa bile bir kez sayılır.
+  </Accordion>
+
+  <Accordion title="Ortalama Süre">
+    Ticket'ların o aşamada ortalama ne kadar kaldığı (gün cinsinden). Bu metrik, süreç verimliliğini ölçmek için kullanılır.
+  </Accordion>
+</AccordionGroup>
+
+## En İyi Uygulamalar
+
+### Aşama Tasarımında
+
+<Tip>
+**Aşama Sayısını Dengeli Tutun**: Çok fazla aşama karmaşaya neden olur (5-8 aşama idealdir)
+
+**Net İsimler Kullanın**: Herkesin anlayacağı, açık isimler seçin
+
+**Renkleri Anlamlı Kullanın**: Aşamaların ilerleyişini renk tonlarıyla yansıtın
+
+**Açıklamalar Ekleyin**: Her aşamanın ne zaman kullanılacağını net bir şekilde belirtin
+</Tip>
+
+### Aşama Yönetiminde
+
+<CardGroup cols={2}>
+  <Card title="Düzenli Gözden Geçirin" icon="calendar-check">
+    Aşamaların hala kullanışlı olup olmadığını kontrol edin
+  </Card>
+  <Card title="Kullanılmayanları Temizleyin" icon="broom">
+    Hiç kullanılmayan aşamaları silin veya birleştirin
+  </Card>
+  <Card title="Takım İle Tartışın" icon="users">
+    Aşama değişikliklerini takımla birlikte belirleyin
+  </Card>
+  <Card title="Dokümante Edin" icon="file-lines">
+    Her aşamanın kurallarını ve kullanım amaçlarını yazılı hale getirin
+  </Card>
+</CardGroup>
+
+## Sorun Giderme
+
+<AccordionGroup>
+  <Accordion title="Aşama ekleyemiyorum">
+    **Olası Nedenler:**
+    - Sabit bir aşamanın sonrasına eklemeye çalışıyorsunuz
+    - "Can Insert After" işareti olmayan bir aşamanın sonrasına ekliyorsunuz
+
+    **Çözüm:**
+    - Yalnızca izin verilen konumlara aşama ekleyebilirsiniz
+    - Satış Pipeline'da Qualified ile Won arasına ekleme yapın
+    - Servis Pipeline'da In Progress ile Resolved arasına ekleme yapın
+  </Accordion>
+
+  <Accordion title="Aşamayı silemiyorum">
+    **Olası Nedenler:**
+    - Aşamada ticket var
+    - Aşama sabit olarak işaretlenmiş
+
+    **Çözüm:**
+    - O aşamadaki tüm ticket'ları başka aşamaya taşıyın veya silin
+    - Sabit aşamalar silinemez, sadece özelleştirilebilir aşamaları silebilirsiniz
+  </Accordion>
+
+  <Accordion title="Aşama sıralaması değişmiyor">
+    **Olası Nedenler:**
+    - Sabit bir aşamayı taşımaya çalışıyorsunuz
+    - Sabit aşamaların dışına taşımaya çalışıyorsunuz
+
+    **Çözüm:**
+    - Sadece özelleştirilebilir aşamaları sıralayabilirsiniz
+    - Özelleştirilebilir aşamalar sadece sabit aşamalar arasında kalabilir
+  </Accordion>
+
+  <Accordion title="Renk değişikliği uygulanmıyor">
+    **Olası Nedenler:**
+    - Geçersiz renk kodu girdiniz
+    - Tarayıcı cache'i
+
+    **Çözüm:**
+    - Hex kod formatında renk girin: #RRGGBB (örn: #3B82F6)
+    - Tarayıcı cache'ini temizleyin veya sayfayı yenileyin (Ctrl+F5)
+  </Accordion>
+</AccordionGroup>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Sabit aşamaları neden silemiyorum?">
+    Sabit aşamalar, raporlama ve analiz için kritik öneme sahiptir. Örneğin, Won ve Lost aşamaları olmadan satış başarı oranını hesaplayamazsınız.
+  </Accordion>
+
+  <Accordion title="Pipeline'ın tamamını sıfırlayabilir miyim?">
+    Hayır, ancak özelleştirilebilir tüm aşamaları silebilir ve yeniden başlayabilirsiniz. Sabit aşamalar her zaman kalacaktır.
+  </Accordion>
+
+  <Accordion title="Bir aşamayı gizleyebilir miyim?">
+    Hayır, ancak içinde ticket yoksa silebilirsiniz. Aşamaları gizleme özelliği şu anda mevcut değildir.
+  </Accordion>
+
+  <Accordion title="Aşama rengini sonradan değiştirebilir miyim?">
+    Evet, istediğiniz zaman aşama rengini değiştirebilirsiniz. Mevcut ticket'lar yeni rengi hemen yansıtacaktır.
+  </Accordion>
+
+  <Accordion title="Kaç tane özel aşama ekleyebilirim?">
+    Teknik bir sınır yoktur, ancak kullanılabilirlik için 3-5 özel aşama eklemeniz önerilir.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Pipeline Giriş" icon="diagram-project" href="/pipeline-management/introduction">
+    Pipeline yönetimi temelleri
+  </Card>
+  <Card title="Ticket Oluşturma" icon="plus" href="/pipeline-management/ticket-creation">
+    Ticket oluşturma ve yönetimi
+  </Card>
+  <Card title="Ticket Detayları" icon="file-lines" href="/pipeline-management/ticket-details">
+    Detaylı ticket yönetimi
+  </Card>
+  <Card title="Müşteri Yönetimi" icon="users" href="/customer-management/add-customer">
+    Müşteri ekleme ve yönetimi
+  </Card>
+</CardGroup>

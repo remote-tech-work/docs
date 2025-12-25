@@ -1,0 +1,635 @@
+---
+title: 'Ticket Detayları ve İleri Düzey Kullanım'
+description: 'Ticket detaylarını yönetin, notlar ekleyin ve arama geçmişini izleyin'
+---
+
+## Genel Bakış
+
+Ticket detay sayfası, bir ticket hakkındaki tüm bilgilere erişebileceğiniz ve yönetebileceğiniz merkezi bir yerdir. Bu makale, ticket detay sayfasının tüm özelliklerini, notlar eklemeyi, arama geçmişini görüntülemeyi ve gelişmiş ticket yönetim tekniklerini açıklar.
+
+## Ticket Detay Sayfasına Erişim
+
+Bir ticket'ın detay sayfasına şu yollardan erişebilirsiniz:
+
+<CardGroup cols={2}>
+  <Card title="Pipeline Görünümü" icon="diagram-project">
+    Bir ticket kartına tıklayın
+  </Card>
+  <Card title="Arama Sonuçları" icon="magnifying-glass">
+    Arama sonucunda çıkan ticket'a tıklayın
+  </Card>
+  <Card title="Müşteri Sayfası" icon="user">
+    Müşteri detayındaki ticket listesinden tıklayın
+  </Card>
+  <Card title="Doğrudan URL" icon="link">
+    `/pipelines/[pipelineId]/tickets/[ticketId]` URL'sine gidin
+  </Card>
+</CardGroup>
+
+## Ticket Detay Sayfası Bölümleri
+
+### 1. Başlık Bölümü
+
+Sayfanın üst kısmında şunlar bulunur:
+
+<Info>
+- **Ticket Konusu**: Büyük puntoda görüntülenen başlık
+- **Ticket ID**: Benzersiz kimlik numarası
+- **Oluşturulma Tarihi**: Ticket'ın ne zaman oluşturulduğu
+</Info>
+
+**Eylem Butonları:**
+
+<Tabs>
+  <Tab title="Yenile">
+    🔄 **Yenile**: Sayfayı günceller
+  </Tab>
+  <Tab title="Düzenle">
+    ✏️ **Düzenle**: Ticket bilgilerini düzenler
+  </Tab>
+  <Tab title="Sil">
+    🗑️ **Sil**: Ticket'ı kalıcı olarak siler
+  </Tab>
+</Tabs>
+
+<Frame>
+  <img src="/images/placeholder-ticket-details.png" alt="Ticket detay sayfası" />
+</Frame>
+
+### 2. Özet Bilgiler (Sol Panel)
+
+Sol tarafta ticket'ın genel bilgileri yer alır:
+
+#### Müşteri Bilgileri
+
+<AccordionGroup>
+  <Accordion title="İsim">
+    Müşterinin tam adı
+  </Accordion>
+
+  <Accordion title="E-posta">
+    Müşterinin e-posta adresi (tıklanabilir mailto: linki)
+  </Accordion>
+
+  <Accordion title="Telefon">
+    Müşterinin telefon numarası (tıklanabilir tel: linki)
+  </Accordion>
+
+  <Accordion title="Firma">
+    Müşterinin şirket adı (varsa)
+  </Accordion>
+</AccordionGroup>
+
+#### Pipeline Bilgileri
+
+<Info>
+- **Pipeline**: Hangi pipeline'a ait (Satış/Servis)
+- **Mevcut Aşama**: Ticket'ın bulunduğu aşama
+  - Aşama adı
+  - Renk göstergesi
+  - Aşamada geçirilen gün sayısı
+</Info>
+
+#### Kategori ve Durum
+
+<CardGroup cols={2}>
+  <Card title="Kategori" icon="tags">
+    Ticket'ın kategorisi ve alt kategorisi
+  </Card>
+  <Card title="Öncelik" icon="flag">
+    1 (En Yüksek) - 4 (En Düşük) renk kodlu gösterge
+  </Card>
+  <Card title="Durum" icon="circle-dot">
+    Açık, Devam Ediyor, Beklemede, Çözüldü, Kapatıldı
+  </Card>
+  <Card title="Atama" icon="user-check">
+    Atanmış kişi veya AI Agent
+  </Card>
+</CardGroup>
+
+#### Metrikler
+
+<Tabs>
+  <Tab title="Arama">
+    **Toplam Arama Sayısı**: Bu ticket için yapılan arama sayısı
+  </Tab>
+  <Tab title="Notlar">
+    **Not Sayısı**: Ticket'a eklenmiş not sayısı
+  </Tab>
+  <Tab title="Son Arama">
+    **Son Arama**: En son aramanın üzerinden geçen gün sayısı
+  </Tab>
+</Tabs>
+
+### 3. Detay Bölümü (Sağ Panel)
+
+Sağ tarafta sekmeli bir arayüz bulunur:
+
+#### 📋 Genel Bakış Sekmesi
+
+<AccordionGroup>
+  <Accordion title="Ticket Açıklaması">
+    Detaylı açıklama metni
+  </Accordion>
+
+  <Accordion title="Oluşturma Bilgileri">
+    - Oluşturan kişi (Agent/User)
+    - Oluşturulma tarihi ve saati
+    - Kaynak (User/System)
+  </Accordion>
+
+  <Accordion title="Son Güncelleme Bilgileri">
+    - Güncelleyen kişi
+    - Güncelleme tarihi ve saati
+    - Güncelleme kaynağı
+  </Accordion>
+</AccordionGroup>
+
+#### 📞 Aramalar Sekmesi
+
+Ticket ile ilişkili tüm aramaların listesi:
+
+**Her arama için gösterilenler:**
+
+<CardGroup cols={2}>
+  <Card title="Tarih ve Saat" icon="calendar-clock">
+    Arama tarihi ve saati
+  </Card>
+  <Card title="Süre" icon="stopwatch">
+    Arama süresi (dakika:saniye formatında)
+  </Card>
+  <Card title="Durum" icon="circle-check">
+    ✅ Tamamlandı ❌ Başarısız 📵 Yanıtsız 🔇 Meşgul
+  </Card>
+  <Card title="Bitiş Nedeni" icon="info">
+    Aramanın nasıl sonlandığı
+  </Card>
+  <Card title="AI Analiz" icon="brain">
+    AI analiz özeti
+  </Card>
+  <Card title="Kampanya" icon="bullhorn">
+    Kampanya bilgisi (varsa)
+  </Card>
+</CardGroup>
+
+**Arama Detaylarını Görüntüleme:**
+- Bir aramaya tıklayarak detaylı analizi görüntüleyebilirsiniz
+- Arama kaydını dinleyebilirsiniz (varsa)
+- Transkript'i okuyabilirsiniz
+
+#### 📝 Notlar Sekmesi
+
+Ticket hakkında eklenen tüm notlar:
+
+**Not Listesi Özellikleri:**
+
+<Info>
+- Ters kronolojik sıralama (en yeni üstte)
+- Her not için:
+  - Not içeriği
+  - Oluşturan kişi ve rolü
+  - Oluşturulma tarihi ve saati
+  - Son güncelleme tarihi (düzenlenmişse)
+  - Düzenle ve Sil butonları
+</Info>
+
+**Yeni Not Ekleme:**
+
+<Steps>
+  <Step title="Not Ekle">
+    **"+ Yeni Not"** butonuna tıklayın
+  </Step>
+  <Step title="İçerik yazın">
+    Not içeriğini yazın (zengin metin editörü)
+  </Step>
+  <Step title="Kaydet">
+    **"Not Ekle"** ile kaydedin
+  </Step>
+</Steps>
+
+## Ticket Düzenleme
+
+### Düzenleme Modalını Açma
+
+<Steps>
+  <Step title="Düzenle butonu">
+    Ticket detay sayfasında **"Düzenle"** butonuna tıklayın
+  </Step>
+  <Step title="Modal açılır">
+    Düzenleme modalı açılır
+  </Step>
+</Steps>
+
+### Düzenlenebilir Alanlar
+
+<Tabs>
+  <Tab title="Konu">
+    **1. Konu (Subject)**
+    - Ticket'ın başlığını değiştirebilirsiniz
+    - Zorunlu alan
+    - Maksimum 255 karakter
+  </Tab>
+
+  <Tab title="Açıklama">
+    **2. Açıklama (Description)**
+    - Ticket'ın detaylı açıklamasını değiştirebilirsiniz
+    - İsteğe bağlı alan
+    - Zengin metin formatı destekler
+  </Tab>
+
+  <Tab title="Pipeline">
+    **3. Pipeline ve Aşama**
+    - **Pipeline**: Ticket'ı farklı bir pipeline'a taşıyabilirsiniz
+    - **Aşama**: Ticket'ın bulunduğu aşamayı değiştirebilirsiniz
+    - Pipeline değiştirildiğinde, yeni pipeline'ın aşamalarından birini seçmelisiniz
+  </Tab>
+
+  <Tab title="Kategori">
+    **4. Kategori ve Alt Kategori**
+    - Ticket'ın kategorisini değiştirebilirsiniz
+    - Alt kategori, seçilen kategoriye bağlı olarak güncellenir
+    - Her ikisi de isteğe bağlıdır, ancak ikisi de seçilmeli veya hiçbiri seçilmemeli
+  </Tab>
+
+  <Tab title="Öncelik">
+    **5. Öncelik (Priority)**
+    - 1 (En Yüksek) - 4 (En Düşük) arasında seçim yapın
+    - Renk kodlu gösterge ile önizleme
+  </Tab>
+
+  <Tab title="Durum">
+    **6. Durum (State)**
+    - **Open**: Yeni veya işlem görmemiş
+    - **In Progress**: Aktif olarak üzerinde çalışılıyor
+    - **On Hold**: Geçici olarak bekletilmiş
+    - **Resolved**: Çözüme kavuşturulmuş
+    - **Closed**: Tamamlanmış ve kapatılmış
+  </Tab>
+
+  <Tab title="Atama">
+    **7. Atanmış Kişi (Assigned To)**
+    - AI Agent veya kullanıcı seçimi yapabilirsiniz
+    - Atamayı kaldırmak için seçimi silin
+  </Tab>
+</Tabs>
+
+### Değişiklikleri Kaydetme
+
+<Steps>
+  <Step title="Değişiklikler">
+    Tüm istediğiniz değişiklikleri yapın
+  </Step>
+  <Step title="Kaydet">
+    **"Değişiklikleri Kaydet"** butonuna tıklayın
+  </Step>
+  <Step title="Başarılı">
+    Başarılı mesajı göreceksiniz
+  </Step>
+  <Step title="Yenileme">
+    Sayfa otomatik olarak yenilenecektir
+  </Step>
+</Steps>
+
+<Warning>
+**Önemli**: Müşteri bilgileri ticket düzenleme ile değiştirilemez. Müşteri bilgilerini güncellemek için Müşteri Yönetimi sayfasına gidin.
+</Warning>
+
+## Not Yönetimi
+
+### Not Ekleme Detayları
+
+#### Not Yazma İpuçları
+
+<Tabs>
+  <Tab title="İyi Örnekler">
+    **İyi Not Örnekleri:**
+    ```
+    "Müşteri ile görüşme yapıldı. Demo için 15 Aralık 14:00 randevusu alındı.
+    Demo yapılacak kişi: Ahmet Yılmaz (CTO).
+    Demo konuları: API entegrasyonu ve kullanıcı yönetimi."
+    ```
+
+    ```
+    "Giriş sorunu, kullanıcının şifre sıfırlama ile çözüldü.
+    Şifre sıfırlama linki e-posta ile gönderildi.
+    Müşteri başarıyla giriş yapabildiğini onayladı."
+    ```
+  </Tab>
+
+  <Tab title="Kötü Örnekler">
+    **Kötü Not Örnekleri:**
+    ```
+    "Aradım." // Çok kısa, bilgi vermiyor
+    "Her şey tamam." // Belirsiz, detay yok
+    "Müşteri bilmiyorum ne diyor." // Anlaşılmaz
+    ```
+  </Tab>
+</Tabs>
+
+#### Not Formatı
+
+Notlar için şu formatlama kurallarını kullanabilirsiniz:
+
+<AccordionGroup>
+  <Accordion title="Kalın ve İtalik">
+    - **Kalın Yazı**: `**metin**`
+    - *İtalik Yazı*: `*metin*`
+  </Accordion>
+
+  <Accordion title="Listeler">
+    ```
+    - Madde 1
+    - Madde 2
+    - Madde 3
+    ```
+  </Accordion>
+
+  <Accordion title="Numaralı Listeler">
+    ```
+    1. İlk adım
+    2. İkinci adım
+    3. Üçüncü adım
+    ```
+  </Accordion>
+</AccordionGroup>
+
+### Not Düzenleme
+
+Mevcut bir notu düzenlemek için:
+
+<Steps>
+  <Step title="Notu bulun">
+    Notlar sekmesinde düzenlemek istediğiniz nota gidin
+  </Step>
+  <Step title="Düzenle butonu">
+    Not kartının sağ üstündeki **"✏️"** butonuna tıklayın
+  </Step>
+  <Step title="İçeriği değiştirin">
+    Not içeriğini değiştirin
+  </Step>
+  <Step title="Kaydet">
+    **"Kaydet"** butonuna tıklayın
+  </Step>
+</Steps>
+
+**Düzenleme Kuralları:**
+- Sadece kendi eklediğiniz notları düzenleyebilirsiniz (yönetici hariç)
+- Düzenleme geçmişi kaydedilir (son düzenleyen ve tarih görünür)
+- Orijinal oluşturma bilgileri korunur
+
+### Not Silme
+
+<Warning>
+**Uyarı**: Not silme işlemi geri alınamaz!
+</Warning>
+
+Bir notu silmek için:
+
+<Steps>
+  <Step title="Notu bulun">
+    Notlar sekmesinde silmek istediğiniz nota gidin
+  </Step>
+  <Step title="Sil butonu">
+    Not kartının sağ üstündeki **"🗑️"** butonuna tıklayın
+  </Step>
+  <Step title="Onay">
+    Onay dialogunda **"Evet, Sil"** butonuna tıklayın
+  </Step>
+</Steps>
+
+**Silme Kuralları:**
+- Sadece kendi eklediğiniz notları silebilirsiniz (yönetici hariç)
+- Silinen notlar kalıcı olarak kaldırılır
+- Silme işlemi aktivite geçmişinde kaydedilir
+
+## Arama Geçmişi
+
+### Arama Listesi
+
+Aramalar sekmesinde görüntülenen bilgiler:
+
+#### Arama Kartı İçeriği
+
+<CardGroup cols={2}>
+  <Card title="Tarih ve Saat" icon="calendar">
+    Aramanın yapıldığı zaman
+  </Card>
+  <Card title="Süre" icon="clock">
+    Konuşma süresi (MM:SS formatında)
+  </Card>
+  <Card title="Durum" icon="circle-check">
+    🟢 Tamamlandı 🔴 Başarısız 🟡 Yanıtsız 🟠 Meşgul
+  </Card>
+  <Card title="Bitiş Nedeni" icon="info-circle">
+    Aramanın nasıl sonlandığı (varsa)
+  </Card>
+  <Card title="Kampanya" icon="bullhorn">
+    Eğer kampanya çağrısı ise kampanya adı
+  </Card>
+</CardGroup>
+
+### Arama Detaylarını Görüntüleme
+
+Bir arama kartına tıkladığınızda detay modalı açılır:
+
+<Tabs>
+  <Tab title="Genel Bilgiler">
+    **1. Genel Bilgiler**
+    - Arama ID
+    - Başlangıç ve bitiş zamanı
+    - Toplam süre
+    - Durum ve bitiş nedeni
+    - Kaynak (inbound/outbound)
+    - Tip (web/phone)
+  </Tab>
+
+  <Tab title="AI Analizi">
+    **2. AI Analizi** (varsa)
+    - **Başarı Durumu**: Aramanın hedefe ulaşıp ulaşmadığı
+    - **Özet**: AI tarafından oluşturulan konuşma özeti
+    - **Başarı Değerlendirmesi**: Neden başarılı veya başarısız olduğu
+  </Tab>
+
+  <Tab title="Transkript">
+    **3. Transkript** (varsa)
+    - Konuşmanın tam metni
+    - Konuşmacı etiketleri (Agent/Customer)
+    - Zaman damgaları
+  </Tab>
+
+  <Tab title="Ses Kaydı">
+    **4. Ses Kaydı** (varsa)
+    - Ses dosyasını dinleme kontrolü
+    - İndirme butonu
+  </Tab>
+</Tabs>
+
+## Ticket Durumu Yönetimi
+
+### Durum Döngüsü (State Lifecycle)
+
+Ticket durumları genellikle şu akışı takip eder:
+
+```
+Open → In Progress → On Hold → Resolved → Closed
+       ↓                ↓
+   (geri döndürme)  (geri döndürme)
+```
+
+### Durum Değiştirme Kuralları
+
+<AccordionGroup>
+  <Accordion title="Open (Açık)">
+    - **Ne zaman kullanılır**: Yeni oluşturulmuş veya henüz ele alınmamış ticket'lar
+    - **Sonraki durum**: In Progress
+    - **AI Agent etkisi**: Agent atandığında otomatik olarak In Progress'e geçebilir
+  </Accordion>
+
+  <Accordion title="In Progress (Devam Ediyor)">
+    - **Ne zaman kullanılır**: Aktif olarak üzerinde çalışılan ticket'lar
+    - **Sonraki durum**: On Hold, Resolved
+    - **AI Agent etkisi**: Agent arama yaptığında bu duruma geçebilir
+  </Accordion>
+
+  <Accordion title="On Hold (Beklemede)">
+    - **Ne zaman kullanılır**: Geçici olarak duraklatılmış, dış faktör bekleniyor
+    - **Örnekler**: Müşteri yanıtı bekleniyor, üçüncü taraf onayı bekleniyor
+    - **Sonraki durum**: In Progress, Resolved
+  </Accordion>
+
+  <Accordion title="Resolved (Çözüldü)">
+    - **Ne zaman kullanılır**: Sorun çözüldü, müşteri onayı bekleniyor
+    - **Sonraki durum**: Closed, In Progress (sorun devam ederse)
+    - **AI Agent etkisi**: Agent "sorun çözüldü" raporu verdiğinde bu duruma geçebilir
+  </Accordion>
+
+  <Accordion title="Closed (Kapatıldı)">
+    - **Ne zaman kullanılır**: Ticket tamamlandı, artık işlem görmeyecek
+    - **Sonraki durum**: Genellikle yok, ancak yeniden açılabilir (In Progress)
+    - **Raporlama**: Kapatılan ticket'lar metrik hesaplamalarında kullanılır
+  </Accordion>
+</AccordionGroup>
+
+### Hızlı Durum Değiştirme
+
+<Tip>
+Ticket detay sayfasında, sol panelde bulunan durum göstergesine tıklayarak hızlı durum menüsünü açabilirsiniz:
+
+1. Durum göstergesine tıklayın
+2. Açılan menüden yeni durumu seçin
+3. Değişiklik otomatik olarak kaydedilir
+</Tip>
+
+## En İyi Uygulamalar
+
+### Ticket Detaylarını Yönetirken
+
+<CardGroup cols={2}>
+  <Card title="Düzenli Not Tutun" icon="note-sticky">
+    Her müşteri etkileşiminden sonra not ekleyin
+  </Card>
+  <Card title="Durumu Güncel Tutun" icon="circle-dot">
+    Ticket durumunu gerçek duruma göre ayarlayın
+  </Card>
+  <Card title="Aramaları İnceleyin" icon="magnifying-glass">
+    AI analiz özetlerini okuyun ve önemli noktalara dikkat edin
+  </Card>
+  <Card title="Öncelik Ayarlayın" icon="flag">
+    Aciliyete göre öncelik belirleyin
+  </Card>
+  <Card title="Atama Yapın" icon="user-check">
+    Her ticket bir kişiye/agent'a atanmalı
+  </Card>
+</CardGroup>
+
+### Notlar İçin
+
+<Tip>
+**Net ve Öz Yazın**: Kısa ve anlaşılır notlar alın
+
+**Aksiyonları Belirtin**: "Ne yapıldı" ve "ne yapılacak" bilgisi ekleyin
+
+**Tarih ve Saat Ekleyin**: Randevu veya önemli tarihler için net bilgi verin
+
+**Formatlamadan Yararlanın**: Okunabilirlik için başlık ve listeler kullanın
+</Tip>
+
+## Sorun Giderme
+
+<AccordionGroup>
+  <Accordion title="Not ekleyemiyorum">
+    **Olası Nedenler:**
+    - Not içeriği boş
+    - İnternet bağlantısı kopmuş
+    - Yetkiniz yok
+
+    **Çözüm:**
+    - Not alanına metin yazdığınızdan emin olun
+    - İnternet bağlantınızı kontrol edin
+    - Yöneticinizle iletişime geçin
+  </Accordion>
+
+  <Accordion title="Arama detayları görünmüyor">
+    **Olası Nedenler:**
+    - Arama henüz işlenmemiş
+    - AI analizi tamamlanmamış
+    - Ses kaydı yüklenmemiş
+
+    **Çözüm:**
+    - Birkaç dakika bekleyin ve sayfayı yenileyin
+    - Arama tamamlanmışsa, analiz 1-2 dakika içinde hazır olur
+  </Accordion>
+
+  <Accordion title="Ticket düzenleyemiyorum">
+    **Olası Nedenler:**
+    - Yetkiniz yok
+    - Ticket başkasına atanmış
+    - Ticket kapatılmış
+
+    **Çözüm:**
+    - Yöneticinizle görüşün
+    - Ticket sahibinden düzenleme yapmasını isteyin
+    - Kapatılmış ticket'ları yeniden açın
+  </Accordion>
+</AccordionGroup>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Ticket'a eklenen notlar şifrelenir mi?">
+    Evet, tüm notlar AES-256 şifreleme ile güvenli bir şekilde saklanır.
+  </Accordion>
+
+  <Accordion title="Kaç tane not ekleyebilirim?">
+    Not sayısı konusunda bir sınır yoktur.
+  </Accordion>
+
+  <Accordion title="Diğer kullanıcıların notlarını düzenleyebilir miyim?">
+    Hayır, sadece kendi notlarınızı düzenleyebilirsiniz. Yöneticiler tüm notları düzenleyebilir.
+  </Accordion>
+
+  <Accordion title="Arama kaydını indirebilir miyim?">
+    Evet, arama detayları sayfasında "İndir" butonunu kullanarak ses dosyasını indirebilirsiniz.
+  </Accordion>
+
+  <Accordion title="Ticket geçmişi ne kadar süre saklanır?">
+    Ticket geçmişi süresiz olarak saklanır ve silinmez.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Pipeline Giriş" icon="diagram-project" href="/pipeline-management/introduction">
+    Pipeline yönetimi temelleri
+  </Card>
+  <Card title="Ticket Oluşturma" icon="plus" href="/pipeline-management/ticket-creation">
+    Ticket oluşturma ve yönetimi
+  </Card>
+  <Card title="Pipeline Aşamaları" icon="list" href="/pipeline-management/pipeline-stages">
+    Aşamaları özelleştirme
+  </Card>
+  <Card title="Görüşme Kayıtları" icon="phone" href="/call-monitoring/call-recordings">
+    Çağrı kayıtları ve detayları
+  </Card>
+</CardGroup>

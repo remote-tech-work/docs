@@ -1,0 +1,546 @@
+---
+title: 'Ticket Oluşturma ve Yönetimi'
+description: 'Pipeline sisteminde ticket oluşturun, düzenleyin ve yönetin'
+---
+
+## Genel Bakış
+
+Ticket'lar, pipeline yönetim sisteminin temel yapı taşlarıdır. Her ticket, bir müşteri ile ilgili bir satış fırsatını veya destek talebini temsil eder. Bu makale, ticket'ların nasıl oluşturulacağını, yönetileceğini ve güncelleneceğini açıklar.
+
+## Yeni Ticket Oluşturma
+
+### Adım 1: Ticket Oluşturma Modalını Açın
+
+<Steps>
+  <Step title="Pipeline sayfasına gidin">
+    Sol menüden **"Pipeline'lar"** sayfasına gidin
+  </Step>
+  <Step title="Pipeline seçin">
+    Bir pipeline'ı seçin (Satış veya Servis)
+  </Step>
+  <Step title="Yeni Ticket butonu">
+    Sağ üst köşede bulunan **"+ Yeni Ticket"** butonuna tıklayın
+  </Step>
+</Steps>
+
+<Frame>
+  <img src="/images/placeholder-new-ticket.png" alt="Yeni ticket oluşturma" />
+</Frame>
+
+### Adım 2: Müşteri Bilgilerini Girin
+
+Ticket oluştururken iki seçeneğiniz vardır:
+
+<Tabs>
+  <Tab title="Mevcut Müşteri">
+    **Seçenek 1: Mevcut Müşteriyi Seçin**
+    - "Müşteri Seç" alanını kullanarak sistemdeki mevcut bir müşteriyi seçin
+    - Müşteri adını veya telefon numarasını yazarak arama yapabilirsiniz
+  </Tab>
+
+  <Tab title="Yeni Müşteri">
+    **Seçenek 2: Yeni Müşteri Bilgileri Girin**
+    - **Ad** *(Zorunlu)*: Müşterinin adı
+    - **Soyad** *(Zorunlu)*: Müşterinin soyadı
+    - **E-posta** *(Zorunlu)*: Müşterinin e-posta adresi
+    - **Telefon** *(Zorunlu)*: Müşterinin telefon numarası (E.164 formatında, örn: +905551234567)
+  </Tab>
+</Tabs>
+
+<Note>
+Eğer girdiğiniz müşteri bilgileri (e-posta veya telefon) sistemde zaten mevcutsa, sistem otomatik olarak mevcut müşteriyi kullanır veya bilgileri günceller.
+</Note>
+
+### Adım 3: Ticket Detaylarını Doldurun
+
+#### Konu (Subject) *(Zorunlu)*
+
+Ticket'ın başlığını giriniz. Bu, ticket'ı tanımlayan kısa bir açıklama olmalıdır.
+
+**Örnekler:**
+
+<CardGroup cols={2}>
+  <Card title="Satış Pipeline" icon="handshake">
+    "Kurumsal SaaS Paketi İlgisi", "Ürün Demo Talebi"
+  </Card>
+  <Card title="Servis Pipeline" icon="headset">
+    "Giriş Yapamıyorum", "Fatura Problemi"
+  </Card>
+</CardGroup>
+
+#### Açıklama (Description) *(İsteğe Bağlı)*
+
+Ticket hakkında detaylı bilgi girebileceğiniz alan. Müşterinin sorunu veya isteği hakkında ek bilgiler ekleyin.
+
+#### Pipeline ve Aşama
+
+<AccordionGroup>
+  <Accordion title="Pipeline">
+    Ticket'ın hangi pipeline'a ait olacağını seçin (Satış veya Servis)
+  </Accordion>
+
+  <Accordion title="Pipeline Aşaması (Zorunlu)">
+    Ticket'ın başlangıç aşamasını seçin:
+    - Satış Pipeline için genellikle "Lead" ile başlanır
+    - Servis Pipeline için genellikle "New" ile başlanır
+  </Accordion>
+</AccordionGroup>
+
+#### Kategori ve Alt Kategori *(İsteğe Bağlı)*
+
+Ticket'ı sınıflandırmak için kategori ve alt kategori seçin. Bu, raporlama ve filtreleme için kullanılır.
+
+#### Öncelik (Priority) *(Zorunlu)*
+
+Ticket'ın önem derecesini belirleyin:
+
+| Öncelik | Açıklama |
+|---------|----------|
+| **1 - En Yüksek (Urgent)** | Acil müdahale gerektiren durumlar |
+| **2 - Yüksek (High)** | Yüksek öncelikli, hızlı yanıt gerektiren durumlar |
+| **3 - Normal (Medium)** | Standart öncelik |
+| **4 - Düşük (Low)** | Düşük öncelikli, bekleyebilecek durumlar |
+
+#### Atanmış Kişi (Assigned To) *(İsteğe Bağlı)*
+
+Ticket'tan sorumlu olacak kişiyi seçin:
+- **AI Agent**: Platform'daki AI agent'lardan birini seçin
+- **Kullanıcı**: Organizasyonunuzdaki bir kullanıcıyı seçin
+
+<Tip>
+**AI Agent Atama**: Bir AI Agent atadığınızda, agent müşteriyi otomatik olarak arayabilir ve ticket bilgilerini güncelleyebilir.
+</Tip>
+
+### Adım 4: Ticket'ı Kaydedin
+
+<Steps>
+  <Step title="Form kontrolü">
+    Tüm zorunlu alanları doldurduktan sonra
+  </Step>
+  <Step title="Oluştur">
+    **"Ticket Oluştur"** butonuna tıklayın
+  </Step>
+  <Step title="Başarılı">
+    Ticket başarıyla oluşturuldu mesajını göreceksiniz
+  </Step>
+  <Step title="Pipeline'da görünür">
+    Yeni ticket, seçtiğiniz pipeline aşamasında görünecektir
+  </Step>
+</Steps>
+
+## Ticket'ları Görüntüleme
+
+### Pipeline Görünümü
+
+Pipeline sayfasında, ticket'lar aşamalara göre organize edilmiş kartlar halinde görüntülenir:
+
+<Steps>
+  <Step title="Sütun görünümü">
+    Her aşama bir sütun olarak gösterilir
+  </Step>
+  <Step title="Ticket listesi">
+    Her sütunda o aşamadaki ticket'lar listelenir
+  </Step>
+</Steps>
+
+**Ticket kartında görüntülenen bilgiler:**
+
+<CardGroup cols={2}>
+  <Card title="Müşteri" icon="user">
+    Müşteri adı
+  </Card>
+  <Card title="Konu" icon="heading">
+    Ticket konusu
+  </Card>
+  <Card title="Öncelik" icon="flag">
+    Öncelik seviyesi (renk kodu ile)
+  </Card>
+  <Card title="Süre" icon="clock">
+    Aşamada geçirilen gün sayısı
+  </Card>
+  <Card title="Son Arama" icon="phone">
+    Son arama tarihinden bu yana geçen gün
+  </Card>
+  <Card title="Arama Sayısı" icon="list">
+    Toplam arama sayısı
+  </Card>
+</CardGroup>
+
+<Frame>
+  <img src="/images/placeholder-pipeline-board.png" alt="Pipeline board görünümü" />
+</Frame>
+
+### Ticket Detay Sayfası
+
+Bir ticket'a tıkladığınızda, detay sayfası açılır. Bu sayfada görebilirsiniz:
+
+<AccordionGroup>
+  <Accordion title="Ticket Bilgileri">
+    Konu, açıklama, öncelik, durum
+  </Accordion>
+
+  <Accordion title="Müşteri Bilgileri">
+    Ad, e-posta, telefon, firma
+  </Accordion>
+
+  <Accordion title="Pipeline Bilgileri">
+    Hangi pipeline ve aşamada olduğu
+  </Accordion>
+
+  <Accordion title="Atama Bilgileri">
+    Kime atandığı
+  </Accordion>
+
+  <Accordion title="Kategori Bilgileri">
+    Kategori ve alt kategori
+  </Accordion>
+
+  <Accordion title="Arama Geçmişi">
+    Ticket ile ilişkili tüm aramalar
+  </Accordion>
+
+  <Accordion title="Notlar">
+    Ticket hakkında eklenen tüm notlar
+  </Accordion>
+
+  <Accordion title="Aktivite Geçmişi">
+    Ticket üzerinde yapılan değişiklikler
+  </Accordion>
+</AccordionGroup>
+
+## Ticket'ları Düzenleme
+
+### Pipeline Aşamasını Değiştirme
+
+#### Yöntem 1: Sürükle-Bırak
+
+<Steps>
+  <Step title="Ticket'ı seçin">
+    Ticket kartını fareyle tıklayın ve basılı tutun
+  </Step>
+  <Step title="Sürükleyin">
+    İstediğiniz aşamaya sürükleyin
+  </Step>
+  <Step title="Bırakın">
+    Bıraktığınızda ticket otomatik olarak yeni aşamaya taşınır
+  </Step>
+</Steps>
+
+#### Yöntem 2: Detay Sayfasından
+
+<Steps>
+  <Step title="Detay sayfasını açın">
+    Ticket detay sayfasını açın
+  </Step>
+  <Step title="Pipeline Aşaması">
+    **"Pipeline Aşaması"** alanını bulun
+  </Step>
+  <Step title="Yeni aşama">
+    Yeni aşamayı seçin
+  </Step>
+  <Step title="Otomatik kayıt">
+    Değişiklik otomatik olarak kaydedilir
+  </Step>
+</Steps>
+
+### Ticket Bilgilerini Güncelleme
+
+Ticket detay sayfasından **"Düzenle"** butonuna tıklayarak şu bilgileri güncelleyebilirsiniz:
+
+<CardGroup cols={2}>
+  <Card title="Konu ve Açıklama" icon="pen">
+    Ticket başlığı ve detayları
+  </Card>
+  <Card title="Öncelik" icon="flag">
+    Öncelik seviyesi
+  </Card>
+  <Card title="Pipeline ve Aşama" icon="diagram-project">
+    Pipeline ve aşama seçimi
+  </Card>
+  <Card title="Atama" icon="user-check">
+    Atanmış kişi
+  </Card>
+  <Card title="Kategori" icon="tags">
+    Kategori ve alt kategori
+  </Card>
+  <Card title="Durum" icon="circle-dot">
+    Ticket durumu
+  </Card>
+</CardGroup>
+
+<Warning>
+**Önemli**: Müşteri bilgileri ticket üzerinden düzenlenemez. Müşteri bilgilerini güncellemek için Müşteri Yönetimi sayfasına gidin.
+</Warning>
+
+### Ticket Durumunu Değiştirme
+
+Ticket'ın durumunu şu değerlerden biri olarak ayarlayabilirsiniz:
+
+| Durum | Açıklama |
+|-------|----------|
+| **Open (Açık)** | Yeni oluşturulmuş veya henüz işlem görmemiş |
+| **In Progress (Devam Ediyor)** | Üzerinde aktif olarak çalışılıyor |
+| **On Hold (Beklemede)** | Geçici olarak bekletilmiş |
+| **Resolved (Çözüldü)** | Çözüme kavuşturulmuş |
+| **Closed (Kapatıldı)** | Tamamlanmış ve kapatılmış |
+
+## Ticket'a Not Ekleme
+
+### Not Ekleme Adımları
+
+<Steps>
+  <Step title="Detay sayfası">
+    Ticket detay sayfasını açın
+  </Step>
+  <Step title="Notlar sekmesi">
+    **"Notlar"** sekmesine gidin
+  </Step>
+  <Step title="Yeni not">
+    **"+ Yeni Not"** butonuna tıklayın
+  </Step>
+  <Step title="İçerik yazın">
+    Not içeriğini yazın
+  </Step>
+  <Step title="Kaydet">
+    **"Not Ekle"** butonuna tıklayın
+  </Step>
+</Steps>
+
+### Not Özellikleri
+
+<Info>
+- Her not, oluşturan kişinin adı ve tarih/saat bilgisi ile kaydedilir
+- Notlar düzenlenebilir ve silinebilir
+- Notlar zamana göre sıralanır (en yeni en üstte)
+- Notlar şifrelenerek saklanır
+</Info>
+
+### Not Kullanım Örnekleri
+
+<Tabs>
+  <Tab title="Satış Pipeline">
+    **İyi Not Örneği:**
+    ```
+    "Müşteri ile görüşme yapıldı. Demo için 15 Aralık 14:00 randevusu alındı.
+    Demo yapılacak kişi: Ahmet Yılmaz (CTO).
+    Demo konuları: API entegrasyonu ve kullanıcı yönetimi."
+    ```
+  </Tab>
+
+  <Tab title="Servis Pipeline">
+    **İyi Not Örneği:**
+    ```
+    "Giriş sorunu, kullanıcının şifre sıfırlama ile çözüldü.
+    Şifre sıfırlama linki e-posta ile gönderildi.
+    Müşteri başarıyla giriş yapabildiğini onayladı."
+    ```
+  </Tab>
+</Tabs>
+
+<Warning>
+**Kötü Not Örnekleri:**
+- "Aradım." // Çok kısa, bilgi vermiyor
+- "Her şey tamam." // Belirsiz, detay yok
+- "Müşteri bilmiyorum ne diyor." // Anlaşılmaz
+</Warning>
+
+## Ticket ve Arama İlişkilendirme
+
+### Otomatik İlişkilendirme
+
+<Info>
+- AI Agent bir müşteriyi aradığında, arama otomatik olarak müşterinin ticket'ı ile ilişkilendirilir
+- Kampanya çağrıları da benzer şekilde otomatik ilişkilendirilir
+</Info>
+
+### Manuel İlişkilendirme
+
+Ticket detay sayfasından **"Arama Ekle"** butonunu kullanarak manuel olarak bir aramayı ticket ile ilişkilendirebilirsiniz.
+
+### Arama Geçmişini Görüntüleme
+
+Ticket detay sayfasında **"Aramalar"** sekmesinde görebilirsiniz:
+
+<CardGroup cols={2}>
+  <Card title="Tarih ve Saat" icon="calendar">
+    Arama tarihi ve saati
+  </Card>
+  <Card title="Süre" icon="stopwatch">
+    Arama süresi
+  </Card>
+  <Card title="Durum" icon="circle-check">
+    Arama durumu (başarılı, başarısız, yanıtsız)
+  </Card>
+  <Card title="AI Analiz" icon="brain">
+    AI analiz özeti
+  </Card>
+</CardGroup>
+
+## Toplu Ticket İşlemleri
+
+### Filtreleme
+
+Pipeline görünümünde ticket'ları şu kriterlere göre filtreleyebilirsiniz:
+
+<Tabs>
+  <Tab title="Aşama">
+    Pipeline aşamasına göre filtrele
+  </Tab>
+  <Tab title="Öncelik">
+    Öncelik seviyesine göre filtrele
+  </Tab>
+  <Tab title="Durum">
+    Ticket durumuna göre filtrele
+  </Tab>
+  <Tab title="Atama">
+    Atanmış kişiye göre filtrele
+  </Tab>
+  <Tab title="Kategori">
+    Kategoriye göre filtrele
+  </Tab>
+</Tabs>
+
+### Arama
+
+Üst kısımdaki arama çubuğunu kullanarak:
+- Müşteri adına göre
+- Ticket konusuna göre
+- Telefon numarasına göre arama yapabilirsiniz.
+
+### Sıralama
+
+Ticket'ları şu kriterlere göre sıralayabilirsiniz:
+- Oluşturulma tarihi
+- Son güncelleme tarihi
+- Öncelik
+- Aşamada geçirilen süre
+
+## Ticket Silme
+
+<Warning>
+**Dikkat**: Ticket silme işlemi geri alınamaz!
+</Warning>
+
+Bir ticket'ı silmek için:
+
+<Steps>
+  <Step title="Detay sayfası">
+    Ticket detay sayfasını açın
+  </Step>
+  <Step title="Sil butonu">
+    Sağ üst köşede bulunan **"Sil"** butonuna tıklayın
+  </Step>
+  <Step title="Onay">
+    Onay dialogunda **"Evet, Sil"** butonuna tıklayın
+  </Step>
+</Steps>
+
+**Silinen ticket'lar:**
+- Pipeline'dan kaldırılır
+- Arama geçmişi korunur
+- Müşteri kaydı korunur (sadece ticket ilişkisi silinir)
+
+## En İyi Uygulamalar
+
+### Ticket Oluştururken
+
+<CardGroup cols={2}>
+  <Card title="Açık Konu" icon="heading">
+    Ticket'ın içeriğini tek cümle ile özetleyin
+  </Card>
+  <Card title="Doğru Aşama" icon="diagram-project">
+    Müşterinin bulunduğu noktaya uygun aşamada ticket oluşturun
+  </Card>
+  <Card title="Doğru Öncelik" icon="flag">
+    Gerçek aciliyete göre öncelik verin
+  </Card>
+  <Card title="Kategori Kullanın" icon="tags">
+    Raporlama için ticket'ları doğru kategorilere yerleştirin
+  </Card>
+</CardGroup>
+
+### Ticket Yönetirken
+
+<Tip>
+- Düzenli notlar alın: Müşteri ile her etkileşimde not ekleyin
+- Aşamaları güncel tutun: Ticket'ların aşamalarını sürekli güncelleyin
+- Atamaları kontrol edin: Doğru kişi/agent'a atandığından emin olun
+- Durumları takip edin: Ticket durumunu aktif olarak yönetin
+</Tip>
+
+## Sorun Giderme
+
+<AccordionGroup>
+  <Accordion title="Ticket oluşturamıyorum">
+    **Olası Nedenler:**
+    - Zorunlu alanlar doldurulmamış
+    - Telefon numarası geçersiz formatta
+    - E-posta adresi geçersiz
+
+    **Çözüm:**
+    - Tüm zorunlu alanların (*) dolu olduğundan emin olun
+    - Telefon numarasını E.164 formatında girin: +905551234567
+    - Geçerli bir e-posta adresi kullanın
+  </Accordion>
+
+  <Accordion title="Ticket aşamaya taşımıyor">
+    **Olası Nedenler:**
+    - Tarayıcı bağlantısı kopmuş
+    - Pipeline farklı türde (Satış → Servis taşınamaz)
+
+    **Çözüm:**
+    - Sayfayı yenileyin ve tekrar deneyin
+    - Doğru pipeline'ın aşamalarına taşıdığınızdan emin olun
+  </Accordion>
+
+  <Accordion title="Ticket notu eklenmiyor">
+    **Olası Nedenler:**
+    - Not içeriği boş
+    - İnternet bağlantısı kopmuş
+
+    **Çözüm:**
+    - Not alanına metin yazdığınızdan emin olun
+    - İnternet bağlantınızı kontrol edin
+  </Accordion>
+</AccordionGroup>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Bir ticket'ı farklı pipeline'a taşıyabilir miyim?">
+    Evet, ticket detay sayfasından pipeline'ı değiştirerek farklı bir pipeline'a taşıyabilirsiniz. Ancak yeni pipeline'a uygun bir aşama seçmeniz gerekir.
+  </Accordion>
+
+  <Accordion title="AI Agent atadığım ticket otomatik olarak aranır mı?">
+    Hayır, AI Agent ataması sadece sorumluluk atamasıdır. Otomatik aramalar için bir kampanya oluşturmanız gerekir.
+  </Accordion>
+
+  <Accordion title="Ticket önceliği sonradan değiştirilebilir mi?">
+    Evet, ticket detay sayfasından istediğiniz zaman önceliği değiştirebilirsiniz.
+  </Accordion>
+
+  <Accordion title="Silinen ticket'lar geri getirilebilir mi?">
+    Hayır, silinen ticket'lar kalıcı olarak silinir ve geri getirilemez.
+  </Accordion>
+
+  <Accordion title="Bir ticket'ta kaç tane not olabilir?">
+    Not sayısı konusunda bir sınır yoktur. İhtiyacınız kadar not ekleyebilirsiniz.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Pipeline Giriş" icon="diagram-project" href="/pipeline-management/introduction">
+    Pipeline yönetimi temelleri
+  </Card>
+  <Card title="Pipeline Aşamaları" icon="list" href="/pipeline-management/pipeline-stages">
+    Aşamaları özelleştirme
+  </Card>
+  <Card title="Ticket Detayları" icon="file-lines" href="/pipeline-management/ticket-details">
+    Detaylı ticket yönetimi
+  </Card>
+  <Card title="Müşteri Ekleme" icon="user-plus" href="/customer-management/add-customer">
+    Müşteri yönetimi
+  </Card>
+</CardGroup>
