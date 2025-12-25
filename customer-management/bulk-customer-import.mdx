@@ -1,0 +1,566 @@
+---
+title: "Toplu Müşteri Ekleme"
+description: "Excel veya CSV dosyası ile yüzlerce veya binlerce müşteriyi tek seferde sisteme aktarın"
+---
+
+## Genel Bakış
+
+Toplu müşteri ekleme özelliği ile yüzlerce veya binlerce müşteriyi tek seferde sisteme aktarabilirsiniz. Excel veya CSV dosyası ile müşteri verilerinizi hızlıca import edebilirsiniz.
+
+## Kullanım Senaryoları
+
+<CardGroup cols={3}>
+  <Card title="Yeni Sisteme Geçiş" icon="right-left">
+    - Eski CRM'den veri taşıma
+    - Manuel kayıtları dijitalleştirme
+    - Farklı sistemlerden birleştirme
+  </Card>
+  <Card title="Kampanya Öncesi" icon="bullhorn">
+    - Hedef kitle listesi ekleme
+    - Toplu arama listesi hazırlama
+    - Segment bazlı müşteri ekleme
+  </Card>
+  <Card title="Düzenli Güncellemeler" icon="calendar-days">
+    - Aylık yeni müşteri listeleri
+    - Partner sistemlerden veri alma
+    - Düzenli data sync
+  </Card>
+</CardGroup>
+
+## Desteklenen Dosya Formatları
+
+### Excel (.xlsx, .xls)
+- En yaygın kullanılan format
+- Formül desteği
+- Çoklu sayfa (ilk sayfa kullanılır)
+- **Maksimum:** 10,000 satır
+
+### CSV (.csv)
+- Hafif dosya boyutu
+- Hızlı işlem
+- Evrensel uyumluluk
+- **Maksimum:** 50,000 satır
+
+### Dosya Boyutu Limiti
+- **Maksimum:** 10 MB
+- **Önerilen:** 2-3 MB
+
+## Adım Adım Toplu Ekleme
+
+<Steps>
+  <Step title="Template İndirme">
+    1. **CRM** > **Müşteriler** sayfasına gidin
+    2. **Toplu Ekle** butonuna tıklayın
+    3. **Template İndir** seçeneğini seçin
+    4. Excel veya CSV formatını seçin
+    5. Dosya bilgisayarınıza indirilir
+
+    **Template İçeriği:**
+    ```
+    firstName | lastName | phone | email | company | tags | customFields
+    ```
+
+    **Zorunlu Alanlar:**
+    - `firstName` veya `lastName` (en az biri)
+    - `phone` veya `email` (en az biri)
+
+    **Opsiyonel Alanlar:**
+    - `company`
+    - `tags` (virgülle ayrılmış)
+    - `customFields` (JSON formatında)
+  </Step>
+
+  <Step title="Dosyayı Doldurma">
+    Excel'de template'i açın ve müşteri bilgilerini doldurun:
+
+    | firstName | lastName | phone | email | company | tags | customFields |
+    |-----------|----------|-------|-------|---------|------|--------------|
+    | Ahmet | Yılmaz | 5551234567 | ahmet@example.com | ABC Ltd | VIP,Aktif | {"city": "İstanbul"} |
+    | Ayşe | Demir | 5559876543 | ayse@example.com | XYZ AŞ | Yeni | {"city": "Ankara"} |
+  </Step>
+
+  <Step title="Veri Doğrulama">
+    Verilerinizi yüklemeden önce format kontrolü yapın:
+
+    **Telefon Numarası:**
+    - ✅ 10 haneli: `5551234567`
+    - ✅ 11 haneli (0 ile): `05551234567`
+    - ✅ Uluslararası: `+905551234567`
+    - ❌ Tire/boşluk: `555-123-4567`
+    - ❌ Parantez: `(555) 123 4567`
+
+    **E-posta:**
+    - ✅ Geçerli format: `user@domain.com`
+    - ❌ Geçersiz: `user@domain`
+
+    **Tags:**
+    - Virgülle ayrılmış: `VIP,Aktif,Müşteri`
+    - Boşluk olabilir: `Yeni Müşteri,Potansiyel`
+
+    **Custom Fields:**
+    - JSON formatı: `{"key": "value"}`
+    - Örnek: `{"city": "İstanbul", "age": 30}`
+  </Step>
+
+  <Step title="Dosyayı Yükleme">
+    1. **Toplu Ekle** > **Dosya Yükle** seçeneğini tıklayın
+    2. Hazırladığınız dosyayı seçin
+    3. **Upload** butonuna tıklayın
+    4. Doğrulama işlemi başlar
+  </Step>
+
+  <Step title="Önizleme ve Kontrol">
+    **Önizleme Ekranı:**
+    - İlk 10 satır gösterilir
+    - Hata varsa kırmızı ile işaretlenir
+    - Uyarılar sarı ile gösterilir
+
+    **Kontroller:**
+    - Telefon numarası formatı
+    - E-posta formatı
+    - Zorunlu alan kontrolü
+    - Duplicate (tekrar) kontrolü
+
+    **Örnek Hatalar:**
+    - ❌ "Satır 5: Telefon numarası geçersiz"
+    - ❌ "Satır 12: E-posta formatı yanlış"
+    - ⚠️ "Satır 8: Müşteri zaten mevcut"
+  </Step>
+
+  <Step title="Hata Düzeltme">
+    Hata tespit edildiğinde 3 seçeneğiniz var:
+
+    **1. Hatalı Satırları Atla:**
+    - Hatalı satırlar eklenmez
+    - Diğerleri eklenir
+
+    **2. Dosyayı Düzelt ve Tekrar Yükle:**
+    - İndirme > Düzeltme > Tekrar upload
+
+    **3. İptal:**
+    - Hiçbir şey eklenmez
+  </Step>
+
+  <Step title="Import Başlatma">
+    **Hatasız veya atla seçeneği ile:**
+    1. **Import Başlat** butonuna tıklayın
+    2. Batch job oluşturulur
+    3. İşlem arka planda başlar
+
+    **İşlem Süresi:**
+    - 100 kayıt: ~10 saniye
+    - 1,000 kayıt: ~1-2 dakika
+    - 10,000 kayıt: ~10-15 dakika
+  </Step>
+
+  <Step title="İlerleme Takibi">
+    **Batch Jobs sayfasında takip edin:**
+    1. Ayarlar > **Batch Jobs** sayfasına gidin
+    2. İlgili job'ı bulun
+    3. İlerleme yüzdesini görün
+
+    **Durumlar:**
+    - 🟡 Pending (Bekliyor)
+    - 🔵 Processing (İşleniyor)
+    - 🟢 Completed (Tamamlandı)
+    - 🔴 Failed (Başarısız)
+
+    **Progress Bar:**
+    ```
+    Processing: 450/1000 (45%)
+    ```
+  </Step>
+
+  <Step title="Sonuç ve Rapor">
+    **İşlem Tamamlandı Özeti:**
+    - ✅ Başarılı: 950
+    - ❌ Hatalı: 30
+    - ⚠️ Duplicate: 20
+    - **Toplam:** 1,000
+
+    **Rapor İndirme:**
+    1. **Download Report** butonuna tıklayın
+    2. Excel dosyası indirilir
+    3. Hatalı satırlar ve sebepleri listelenir
+
+    **Hata Raporu Örneği:**
+
+    | Satır | firstName | phone | Hata Sebebi |
+    |-------|-----------|-------|-------------|
+    | 5 | Ahmet | 555123 | Telefon numarası geçersiz |
+    | 12 | Ayşe | invalid@email | E-posta formatı yanlış |
+    | 25 | Mehmet | 5551234567 | Müşteri zaten mevcut |
+  </Step>
+</Steps>
+
+<Frame>
+  <img src="/images/customer-bulk-import-preview.png" alt="Toplu müşteri import önizleme ekranı" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Toplu import önizleme ve doğrulama ekranı
+</Note>
+
+## Gelişmiş Özellikler
+
+### Duplicate Handling (Tekrar Kontrolü)
+
+**Kontrol Kriterleri:**
+- Telefon numarası eşleşmesi
+- E-posta eşleşmesi
+- İsim + soyisim eşleşmesi
+
+<Tabs>
+  <Tab title="Skip (Atla)">
+    - Duplicate kayıtları ekleme
+    - Mevcut kayıt korunur
+  </Tab>
+  <Tab title="Update (Güncelle)">
+    - Mevcut kaydı güncelle
+    - Yeni bilgilerle override et
+  </Tab>
+  <Tab title="Create Duplicate (Tekrar Oluştur)">
+    - Yine de ekle
+    - Duplicate izin ver
+  </Tab>
+</Tabs>
+
+**Ayarlama:**
+1. Upload ekranında
+2. **Duplicate Handling:** Seçeneğini seçin
+3. Import başlat
+
+### Tag Management (Etiket Yönetimi)
+
+**Toplu Tag Ekleme:**
+
+Dosyada:
+```
+tags: VIP,Aktif,Müşteri
+```
+
+**Import sırasında:**
+- Etiketler otomatik oluşturulur
+- Müşteriye atanır
+- Mevcut etiketlere eklenir
+
+**Toplu Tag Değiştirme:**
+- Tüm import edilen müşterilere aynı tag
+- Upload ekranında: **Add Tag to All**
+
+### Custom Fields (Özel Alanlar)
+
+**JSON Format:**
+```json
+{
+  "city": "İstanbul",
+  "age": 30,
+  "source": "Website",
+  "industry": "Technology"
+}
+```
+
+**Dosyada:**
+```
+customFields: {"city": "İstanbul", "age": 30}
+```
+
+**Otomatik Şema:**
+- İlk import'ta alan tipleri belirlenir
+- Sonraki import'larda tip kontrolü yapılır
+
+### Validation Rules (Doğrulama Kuralları)
+
+**Varsayılan Kurallar:**
+- Telefon: 10 veya 11 hane
+- E-posta: RFC 5322 standardı
+- İsim: En az 2 karakter
+
+<Info>
+  **Özel Kurallar:** Gelecek sürümlerde regex pattern tanımlama, custom validation fonksiyonu ve iş mantığı kuralları eklenecektir.
+</Info>
+
+## Hata Yönetimi
+
+### Yaygın Hatalar ve Çözümler
+
+<AccordionGroup>
+  <Accordion title='Hata: "Invalid phone format"'>
+    **Sebep:** Telefon numarası formatı yanlış
+
+    **Çözüm:**
+    - Sadece rakam kullanın: `5551234567`
+    - Tire, boşluk, parantez kaldırın
+    - 10 veya 11 hane olmalı
+  </Accordion>
+
+  <Accordion title='Hata: "Email already exists"'>
+    **Sebep:** E-posta zaten kayıtlı
+
+    **Çözüm:**
+    - Duplicate handling: "Update" seçin
+    - Veya kayıttan çıkarın
+  </Accordion>
+
+  <Accordion title='Hata: "Required field missing"'>
+    **Sebep:** Zorunlu alan boş
+
+    **Çözüm:**
+    - firstName/lastName doldur (en az biri)
+    - phone/email doldur (en az biri)
+  </Accordion>
+
+  <Accordion title='Hata: "File too large"'>
+    **Sebep:** Dosya 10 MB'den büyük
+
+    **Çözüm:**
+    - Dosyayı böl (örn: 2x5MB)
+    - Gereksiz kolonları sil
+    - CSV formatı kullan (daha hafif)
+  </Accordion>
+
+  <Accordion title='Hata: "Invalid JSON in customFields"'>
+    **Sebep:** JSON formatı yanlış
+
+    **Çözüm:**
+    - JSON validator kullan
+    - Çift tırnak kullan: `{"key": "value"}`
+    - Virgül/parantez kontrol et
+  </Accordion>
+</AccordionGroup>
+
+### Batch Job Hataları
+
+<AccordionGroup>
+  <Accordion title="Status: Failed">
+    **Nedenler:**
+    - Sunucu hatası
+    - Zaman aşımı
+    - Beklenmeyen hata
+
+    **Çözüm:**
+    1. Hata logunu inceleyin
+    2. Dosyayı tekrar yükleyin
+    3. Destek ekibine bildirin
+  </Accordion>
+
+  <Accordion title="Status: Partially Completed">
+    **Neden:** Bazı kayıtlar hatalı
+
+    **Çözüm:**
+    1. Raporu indirin
+    2. Hatalı kayıtları düzeltin
+    3. Sadece hatalıları tekrar import edin
+  </Accordion>
+</AccordionGroup>
+
+## İpuçları ve En İyi Uygulamalar
+
+### Dosya Hazırlama
+
+<Tip>
+  - ✅ Template kullanın (formatı garanti eder)
+  - ✅ İlk satıra header yazın
+  - ✅ Tüm verileri temizleyin (boşluk, özel karakter)
+  - ✅ Telefon numaralarını formatlayın
+  - ✅ E-postaları küçük harfe çevirin
+  - ❌ Formül kullanmayın (değerler görünmez)
+  - ❌ Birleştirilmiş hücre kullanmayın
+</Tip>
+
+### Veri Temizliği
+
+**Telefon:**
+```excel
+Excel Formül: =SUBSTITUTE(SUBSTITUTE(A1," ",""),"-","")
+```
+Boşluk ve tireleri siler.
+
+**E-posta:**
+```excel
+Excel Formül: =LOWER(TRIM(A1))
+```
+Küçük harfe çevirir ve boşlukları siler.
+
+### Performans
+
+<Tip>
+  - ✅ 1,000-5,000 kayıt ideal batch size
+  - ✅ 10,000+ kayıt için dosyayı bölün
+  - ✅ CSV kullanın (daha hızlı)
+  - ❌ Tek seferde 50,000+ eklemeyin
+</Tip>
+
+### Test Etme
+
+1. İlk 10-20 satırla test edin
+2. Sonuçları kontrol edin
+3. Sorun yoksa tümünü yükleyin
+
+### Backup
+
+<Warning>
+  Import öncesi mevcut müşteri listesini export edin. Hata durumunda geri yükleyebilirsiniz.
+</Warning>
+
+## Batch Job Yönetimi
+
+### Job Listesi
+
+**Görüntüleme:**
+1. Ayarlar > **Batch Jobs** sayfasına gidin
+2. Tüm import işlemlerini görün
+
+**Filtreleme:**
+- Duruma göre (Completed, Failed, etc.)
+- Tarihe göre
+- Türe göre (Import, Export)
+
+### Job Detayları
+
+**Bilgiler:**
+- Başlatma zamanı
+- Bitiş zamanı
+- İşlenen kayıt sayısı
+- Başarı/hata sayısı
+- İşlem süresi
+
+**İşlemler:**
+- Rapor indirme
+- Tekrar deneme (failed için)
+- Silme (completed için)
+
+### Otomatik Temizlik
+
+**Completed jobs:**
+- 30 gün sonra otomatik silinir
+- Raporlar kalır
+
+**Failed jobs:**
+- Manuel silme gerekir
+- Debugging için saklanır
+
+## Çoklu Kullanıcı Senaryosu
+
+### Aynı Anda Import
+
+**İzin verilen:**
+- Birden fazla kullanıcı import yapabilir
+- Ayrı batch job'lar oluşturulur
+- Paralel işlem
+
+**Conflict:**
+- Duplicate handling devreye girer
+- İlk gelen kazanır (timestamp bazlı)
+
+### Yetki Kontrolü
+
+**Admin:**
+- ✅ Toplu import yapabilir
+- ✅ Tüm batch job'ları görebilir
+- ✅ Job iptal edebilir
+
+**User:**
+- ❌ Toplu import yapamaz
+- ❌ Batch job'ları göremez
+
+## Gelişmiş Senaryolar
+
+### Scheduled Import (Gelecekte)
+
+<Info>
+  **Özellik:** Otomatik düzenli import
+
+  **Kullanım:**
+  - Her gün saat 02:00'de FTP'den çek
+  - S3 bucket'tan otomatik import
+  - Platform API ile düzenli sync
+</Info>
+
+### API ile Import
+
+**Endpoint:** `/api/customers/bulk-import`
+
+**Kullanım:**
+```bash
+POST /api/customers/bulk-import
+Content-Type: multipart/form-data
+
+file: customers.csv
+duplicateHandling: update
+```
+
+**Response:**
+```json
+{
+  "jobId": "job_123abc",
+  "status": "pending",
+  "estimatedTime": "2 minutes"
+}
+```
+
+### Webhook Integration
+
+**Özellik:** Import tamamlandığında webhook tetikle
+
+**Ayarlama:**
+1. Ayarlar > Webhooks sayfasına gidin
+2. Event: `batch.import.completed` seçin
+3. URL girin
+
+**Payload:**
+```json
+{
+  "event": "batch.import.completed",
+  "jobId": "job_123",
+  "totalRecords": 1000,
+  "successful": 980,
+  "failed": 20
+}
+```
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Maksimum kaç müşteri ekleyebilirim?">
+    Tek seferde 50,000 (CSV formatında). Daha fazlası için dosyayı bölün.
+  </Accordion>
+
+  <Accordion title="Import sırasında hata olursa ne olur?">
+    Hatalı satırlar atlanır, diğerleri eklenir. Rapor indirerek hataları görebilirsiniz.
+  </Accordion>
+
+  <Accordion title="Duplicate müşteri ekleyebilir miyim?">
+    Evet, duplicate handling "Create Duplicate" seçeneği ile.
+  </Accordion>
+
+  <Accordion title="Import edilen müşterileri geri alabilir miyim?">
+    Toplu silme özelliği ile silebilirsiniz. Önce export edin (backup).
+  </Accordion>
+
+  <Accordion title="Import sırasında tag ekleyebilir miyim?">
+    Evet, dosyada tags kolonunda veya upload sırasında "Add Tag to All" ile.
+  </Accordion>
+
+  <Accordion title="Custom field ekleme zorunlu mu?">
+    Hayır, opsiyoneldir. İhtiyacınız varsa kullanın.
+  </Accordion>
+
+  <Accordion title="Import ücretli mi?">
+    Hayır, ek ücret yok.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Müşteri Ekleme" icon="user-plus" href="/customer-management/add-customer">
+    Tek tek müşteri ekleme ve detay bilgiler
+  </Card>
+  <Card title="Müşteri Arama ve Filtreleme" icon="filter" href="/customer-management/search-filtering">
+    Müşteri arama, filtreleme ve segmentasyon
+  </Card>
+  <Card title="Kampanya Oluşturma" icon="bullhorn" href="/campaigns/campaign-creation">
+    Toplu arama kampanyaları oluşturma
+  </Card>
+</CardGroup>

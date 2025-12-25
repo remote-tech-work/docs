@@ -1,0 +1,547 @@
+---
+title: "Hata Kodları Referansı"
+description: "Tüm platform hata kodları, anlamları ve çözüm yöntemleri"
+---
+
+## Genel Bakış
+
+Bu dokümante tüm platform hata kodlarını, anlamlarını ve çözüm yöntemlerini içerir. Hata kodlarını hızlıca arayıp ne anlama geldiğini ve nasıl çözeceğinizi öğrenebilirsiniz.
+
+## HTTP Durum Kodları
+
+### 2xx - Başarılı
+
+| Kod | Anlam | Açıklama |
+|-----|-------|----------|
+| 200 | OK | İstek başarılı |
+| 201 | Created | Kayıt oluşturuldu |
+| 204 | No Content | İstek başarılı, içerik yok |
+
+### 4xx - İstemci Hataları
+
+<AccordionGroup>
+  <Accordion title="400 Bad Request">
+    **Anlam:** İstek formatı hatalı veya eksik bilgi var.
+
+    **Yaygın Nedenler:**
+    - Zorunlu alan eksik
+    - Veri format hatası
+    - Geçersiz değer
+
+    **Örnek Hatalar:**
+    ```
+    "Agent name is required"
+    "Invalid phone number format"
+    "Campaign start date must be in future"
+    ```
+
+    **Çözüm:**
+    1. Hata mesajını okuyun
+    2. Belirtilen alanı düzeltin
+    3. Tekrar deneyin
+  </Accordion>
+
+  <Accordion title="401 Unauthorized">
+    **Anlam:** Kimlik doğrulama başarısız.
+
+    **Yaygın Nedenler:**
+    - Oturum süresi dolmuş
+    - Token geçersiz
+    - Giriş yapılmamış
+
+    **Çözüm:**
+    1. Çıkış yapın
+    2. Tekrar giriş yapın
+    3. Tarayıcı cache temizleyin
+  </Accordion>
+
+  <Accordion title="403 Forbidden">
+    **Anlam:** İşlem için yetkiniz yok.
+
+    **Yaygın Nedenler:**
+    - RBAC - User rolüyle admin işlemi yapılıyor
+    - Organizasyona ait olmayan kaynaklara erişim
+    - Devre dışı bırakılmış özellik
+
+    **Çözüm:**
+    1. Kullanıcı rolünüzü kontrol edin (Admin/User)
+    2. Organizasyon admin'inden yetki isteyin
+    3. Doğru organizasyonda olduğunuzdan emin olun
+  </Accordion>
+
+  <Accordion title="404 Not Found">
+    **Anlam:** İstenen kaynak bulunamadı.
+
+    **Yaygın Nedenler:**
+    - Kayıt silinmiş
+    - Yanlış ID kullanılmış
+    - URL hatalı
+
+    **Çözüm:**
+    1. ID'yi kontrol edin
+    2. Kaydın var olduğundan emin olun
+    3. Sayfayı yenileyin
+  </Accordion>
+
+  <Accordion title="409 Conflict">
+    **Anlam:** İşlem bir çakışmaya neden oluyor.
+
+    **Yaygın Nedenler:**
+    - Aynı isimde kayıt zaten var
+    - Duplicate entry
+    - Conflicting state
+
+    **Örnek:**
+    ```
+    "Agent with name 'Customer Service' already exists"
+    "Phone number is already assigned"
+    ```
+
+    **Çözüm:**
+    1. Benzersiz bir isim kullanın
+    2. Mevcut kaydı güncelleyin
+    3. Çakışan kaydı silin
+  </Accordion>
+
+  <Accordion title="422 Unprocessable Entity">
+    **Anlam:** İstek anlaşıldı ama işlenemedi.
+
+    **Yaygın Nedenler:**
+    - Validasyon hatası
+    - İş kuralı ihlali
+    - Bağımlılık sorunu
+
+    **Örnek:**
+    ```
+    "Cannot delete agent: active campaigns exist"
+    "Minimum credit purchase is 100"
+    ```
+
+    **Çözüm:**
+    1. Hata mesajını dikkatlice okuyun
+    2. Bağımlılıkları çözün
+    3. Validasyon kurallarına uyun
+  </Accordion>
+
+  <Accordion title="429 Too Many Requests">
+    **Anlam:** Çok fazla istek gönderildi (rate limiting).
+
+    **Yaygın Nedenler:**
+    - API quota aşıldı
+    - API servis plan limiti
+    - Spam koruması
+
+    **Çözüm:**
+    1. 1 dakika bekleyin
+    2. İstek hızınızı azaltın
+    3. Plan upgrade yapın
+  </Accordion>
+</AccordionGroup>
+
+### 5xx - Sunucu Hataları
+
+<AccordionGroup>
+  <Accordion title="500 Internal Server Error">
+    **Anlam:** Sunucu tarafında beklenmeyen hata oluştu.
+
+    **Ne Yapmalı:**
+    1. Sayfayı yenileyin
+    2. 5 dakika bekleyip tekrar deneyin
+    3. Problem devam ediyorsa destek ekibine bildirin
+  </Accordion>
+
+  <Accordion title="502 Bad Gateway">
+    **Anlam:** Gateway hatası, upstream servis cevap vermiyor.
+
+    **Yaygın Nedenler:**
+    - AI servisi down
+    - Backend yeniden başlatılıyor
+    - Network sorunu
+
+    **Çözüm:**
+    1. 2-3 dakika bekleyin
+    2. Servis status sayfalarını kontrol edin
+    3. Tekrar deneyin
+  </Accordion>
+
+  <Accordion title="503 Service Unavailable">
+    **Anlam:** Servis geçici olarak kullanılamıyor.
+
+    **Yaygın Nedenler:**
+    - Maintenance mode
+    - Overload
+    - Deployment
+
+    **Çözüm:**
+    1. Status sayfasını kontrol edin
+    2. 10-15 dakika bekleyin
+    3. Alternatif zaman diliminde deneyin
+  </Accordion>
+
+  <Accordion title="504 Gateway Timeout">
+    **Anlam:** İstek zaman aşımına uğradı.
+
+    **Yaygın Nedenler:**
+    - Yavaş backend işlem
+    - Database query timeout
+    - External API timeout
+
+    **Çözüm:**
+    1. İşlemi küçük parçalara bölün
+    2. Daha az veri ile deneyin
+    3. İşlemi tekrarlayın
+  </Accordion>
+</AccordionGroup>
+
+## Platform-Specific Hata Kodları
+
+### Çağrı Hataları
+
+<AccordionGroup>
+  <Accordion title="CALL_001: Insufficient Credits">
+    **Anlam:** Çağrı başlatmak için yeterli kredi yok.
+
+    **Çözüm:**
+    1. Kredi satın alın
+    2. Kampanyayı yeniden başlatın
+  </Accordion>
+
+  <Accordion title="CALL_002: Invalid Phone Number">
+    **Anlam:** Telefon numarası geçersiz.
+
+    **Çözüm:**
+    1. E.164 format kullanın: +905551234567
+    2. Numarayı doğrulayın
+  </Accordion>
+
+  <Accordion title="CALL_003: Agent Not Found">
+    **Anlam:** Belirtilen agent bulunamadı.
+
+    **Çözüm:**
+    1. Agent ID'yi kontrol edin
+    2. Agent silinmemiş mi bakın
+    3. Doğru organizasyonda mısınız?
+  </Accordion>
+
+  <Accordion title="CALL_004: Concurrency Limit Reached">
+    **Anlam:** Eş zamanlı çağrı limitine ulaşıldı.
+
+    **Çözüm:**
+    1. Aktif çağrıların bitmesini bekleyin
+    2. Concurrency limit'i artırın (Ayarlar)
+    3. Plan upgrade yapın
+  </Accordion>
+
+  <Accordion title="CALL_005: DNC List Block">
+    **Anlam:** Numara Do Not Call listesinde.
+
+    **Çözüm:**
+    1. DNC listesinden kaldırın
+    2. Müşteri izni aldıysanız listeden çıkarın
+  </Accordion>
+
+  <Accordion title="CALL_006: Queue Full">
+    **Anlam:** Çağrı kuyruğu dolu.
+
+    **Çözüm:**
+    1. Kampanyayı duraklatın
+    2. Kuyruktaki çağrıların işlenmesini bekleyin
+    3. Tekrar başlatın
+  </Accordion>
+</AccordionGroup>
+
+### Agent Hataları
+
+<AccordionGroup>
+  <Accordion title="AGENT_001: Invalid Configuration">
+    **Anlam:** Agent konfigürasyonu hatalı.
+
+    **Çözüm:**
+    1. Tüm zorunlu alanları doldurun
+    2. Sistem talimatını kontrol edin
+    3. İlk mesaj modunu ayarlayın
+  </Accordion>
+
+  <Accordion title="AGENT_002: API Service Error">
+    **Anlam:** AI servisinde agent oluşturulamadı.
+
+    **Çözüm:**
+    1. Platform API anahtarını kontrol edin
+    2. AI servis durumunu kontrol edin
+    3. Tekrar deneyin
+  </Accordion>
+
+  <Accordion title="AGENT_003: Knowledge Base Limit">
+    **Anlam:** Maksimum bilgi bankası sayısına ulaşıldı.
+
+    **Çözüm:**
+    1. Eski/kullanılmayan bilgi bankalarını silin
+    2. Plan upgrade yapın
+  </Accordion>
+</AccordionGroup>
+
+### API Key Hataları
+
+<AccordionGroup>
+  <Accordion title="API_001: Invalid API Key">
+    **Anlam:** API anahtarı geçersiz.
+
+    **Çözüm:**
+    1. Yeni API anahtarı alın
+    2. Platform'da güncelleyin
+    3. Test bağlantısı yapın
+  </Accordion>
+
+  <Accordion title="API_002: API Key Expired">
+    **Anlam:** API anahtarı süresi dolmuş.
+
+    **Çözüm:**
+    1. Servis sağlayıcısı kontrol panelinden yeni anahtar oluşturun
+    2. Platform'da güncelleyin
+  </Accordion>
+
+  <Accordion title="API_003: API Quota Exceeded">
+    **Anlam:** API kullanım kotası aşıldı.
+
+    **Çözüm:**
+    1. API servis planınızı yükseltin
+    2. Kullanımı azaltın
+    3. Billing cycle yenilenmesini bekleyin
+  </Accordion>
+</AccordionGroup>
+
+### Billing Hataları
+
+<AccordionGroup>
+  <Accordion title="BILLING_001: Payment Failed">
+    **Anlam:** Ödeme başarısız oldu.
+
+    **Çözüm:**
+    1. Kart bilgilerini kontrol edin
+    2. Kart limitini kontrol edin
+    3. Farklı kart deneyin
+  </Accordion>
+
+  <Accordion title="BILLING_002: Invalid Payment Method">
+    **Anlam:** Ödeme yöntemi geçersiz.
+
+    **Çözüm:**
+    1. Stripe'a kayıtlı kart kullanın
+    2. Test modda test kartı kullanın
+    3. Kartı yeniden ekleyin
+  </Accordion>
+
+  <Accordion title="BILLING_003: Subscription Inactive">
+    **Anlam:** Abonelik aktif değil.
+
+    **Çözüm:**
+    1. Aboneliği yeniden başlatın
+    2. Ödeme yapın
+    3. Plan seçin
+  </Accordion>
+</AccordionGroup>
+
+### File Upload Hataları
+
+<AccordionGroup>
+  <Accordion title="FILE_001: File Too Large">
+    **Anlam:** Dosya boyutu çok büyük.
+
+    **Limit:** 10 MB
+
+    **Çözüm:**
+    1. Dosyayı küçültün
+    2. Compress yapın
+    3. Birden fazla dosyaya bölün
+  </Accordion>
+
+  <Accordion title="FILE_002: Invalid File Type">
+    **Anlam:** Dosya tipi desteklenmiyor.
+
+    **Desteklenen:** PDF, TXT, DOC, DOCX
+
+    **Çözüm:**
+    1. Desteklenen formata çevirin
+    2. Farklı dosya kullanın
+  </Accordion>
+
+  <Accordion title="FILE_003: Upload Failed">
+    **Anlam:** Dosya yüklenemedi.
+
+    **Çözüm:**
+    1. İnternet bağlantınızı kontrol edin
+    2. Tekrar deneyin
+    3. Farklı tarayıcı kullanın
+  </Accordion>
+</AccordionGroup>
+
+### Campaign Hataları
+
+<AccordionGroup>
+  <Accordion title="CAMPAIGN_001: No Customers">
+    **Anlam:** Kampanyada müşteri yok.
+
+    **Çözüm:**
+    1. Call list'e müşteri ekleyin
+    2. CSV import yapın
+    3. Manuel müşteri ekleyin
+  </Accordion>
+
+  <Accordion title="CAMPAIGN_002: Invalid Schedule">
+    **Anlam:** Kampanya zamanlaması geçersiz.
+
+    **Çözüm:**
+    1. Başlangıç tarihi gelecekte olmalı
+    2. Bitiş tarihi başlangıçtan sonra olmalı
+    3. Geçerli saat aralığı seçin
+  </Accordion>
+
+  <Accordion title="CAMPAIGN_003: Agent Not Assigned">
+    **Anlam:** Kampanyaya agent atanmamış.
+
+    **Çözüm:**
+    1. Agent seçin
+    2. Agent'ın aktif olduğundan emin olun
+  </Accordion>
+</AccordionGroup>
+
+## Hata Çözüm Akış Şeması
+
+```
+Hata Aldım
+    ↓
+HTTP Kodu Nedir?
+    ↓
+├─ 4xx → Kullanıcı Hatası
+│   ├─ 401 → Tekrar giriş yap
+│   ├─ 403 → Yetki kontrolü
+│   ├─ 404 → Kayıt kontrolü
+│   └─ 422 → Validasyon kontrolü
+│
+├─ 5xx → Sunucu Hatası
+│   ├─ 500 → Bekle ve tekrar dene
+│   ├─ 502 → Servis status kontrol
+│   └─ 503 → Maintenance olabilir
+│
+└─ Platform Kodu (CALL_001, vb.)
+    └─ Bu dokümanda ara
+```
+
+## Hata Loglarını Okuma
+
+### Tarayıcı Console
+
+**Nasıl Açılır:**
+- Chrome/Edge: F12 veya Ctrl+Shift+I
+- Firefox: F12
+- Safari: Cmd+Option+I
+
+**Ne Aranır:**
+- Kırmızı hatalar (errors)
+- Network tab > Failed requests
+- Status code ve response
+
+**Örnek:**
+```
+POST /api/v1/calls
+Status: 422
+Response: {"error": "CALL_002", "message": "Invalid phone number"}
+```
+
+### Backend Logs (Admin)
+
+Sadece admin kullanıcılar backend logs'a erişebilir:
+
+<Steps>
+  <Step title="Orchestrator Loglarına Gidin">
+    Orchestrator > Call Logs
+  </Step>
+  <Step title="Reconciler Loglarını Kontrol Edin">
+    Reconciler > Logs
+  </Step>
+  <Step title="Hata Filtresi Uygulayın">
+    Hata filtresi uygulayın
+  </Step>
+  <Step title="Timestamp ve Error Message Görüntüleyin">
+    Timestamp ve error message görün
+  </Step>
+</Steps>
+
+## İpuçları
+
+### Hata Aldığınızda
+
+<Steps>
+  <Step title="Hata Kodunu Not Edin">
+    Screenshot alın
+  </Step>
+  <Step title="Hata Mesajını Okuyun">
+    Ne diyor?
+  </Step>
+  <Step title="Bu Dokümana Bakın">
+    Kod anlamı nedir?
+  </Step>
+  <Step title="Çözümü Uygulayın">
+    Adım adım ilerleyin
+  </Step>
+  <Step title="Çözülmezse Destek">
+    Detaylı bilgi verin
+  </Step>
+</Steps>
+
+### Destek Bildirimi
+
+Hata raporu oluştururken:
+
+**Gerekli Bilgiler:**
+- Hata kodu (CALL_001, vb.)
+- Tam hata mesajı
+- Ne yapmaya çalışıyordunuz?
+- Tekrar edebilir misiniz?
+- Screenshot
+- Tarayıcı console çıktısı
+
+<Frame>
+  <img src="/images/troubleshooting-error-console.png" alt="Tarayıcı console hatası örneği" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Tarayıcı console'da hata mesajı görünümü
+</Note>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="500 hatası sürekli alıyorum, ne yapmalıyım?">
+    Sunucu tarafında bir sorun var. 10-15 dakika bekleyip tekrar deneyin. Problem devam ediyorsa destek ekibine bildirin.
+  </Accordion>
+
+  <Accordion title="403 hatası alıyorum ama admin'im">
+    Oturumunuz güncel olmayabilir. Çıkış yapıp tekrar giriş yapın.
+  </Accordion>
+
+  <Accordion title='"Invalid phone number" hatası alıyorum ama numara doğru'>
+    E.164 formatında olmalı: +[ülke kodu][numara]. Örnek: +905551234567
+  </Accordion>
+
+  <Accordion title="Hata kodu bulamıyorum, ne yapmalıyım?">
+    Bu dokümanda yoksa yeni bir hata olabilir. Destek ekibine bildirin.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Genel Sorunlar" icon="triangle-exclamation" href="/troubleshooting/general-issues">
+    Yaygın platform kullanım sorunları
+  </Card>
+  <Card title="API Bağlantı Sorunları" icon="plug" href="/troubleshooting/api-connection-issues">
+    API ve servis bağlantı problemleri
+  </Card>
+  <Card title="Çağrı Hataları" icon="phone-slash" href="/troubleshooting/call-errors">
+    Çağrı başlatma ve yönetim hataları
+  </Card>
+  <Card title="API Anahtarı Kurulumu" icon="key" href="/getting-started/api-key-setup">
+    Platform API anahtarı yapılandırması
+  </Card>
+</CardGroup>

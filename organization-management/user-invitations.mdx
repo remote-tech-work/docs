@@ -1,0 +1,303 @@
+---
+title: "Kullanıcı Davetleri ve Rol Yönetimi"
+description: "Organizasyonunuza kullanıcı ekleyin, rolleri yönetin ve yetkileri kontrol edin"
+---
+
+## Genel Bakış
+
+Organizasyonunuza birden fazla kullanıcı ekleyebilir, her kullanıcıya rol atayabilir ve yetkileri yönetebilirsiniz.
+
+## Kullanıcı Rolleri
+
+### Admin
+
+**Yetkiler:**
+- ✅ Tüm özellikler
+- ✅ Agent oluşturma/silme
+- ✅ Kampanya yönetimi
+- ✅ Kullanıcı davet etme
+- ✅ API key yönetimi
+- ✅ Billing işlemleri
+- ✅ Organizasyon ayarları
+
+### User
+
+**Yetkiler:**
+- ✅ Dashboard görüntüleme
+- ✅ Çağrı kayıtlarını görüntüleme
+- ✅ Müşteri ekleme/düzenleme
+- ✅ Raporları görüntüleme
+- ❌ Agent oluşturma
+- ❌ Kampanya oluşturma
+- ❌ Kullanıcı yönetimi
+- ❌ Billing
+
+<Info>
+  Admin rolü organizasyonun tüm kontrolünü sağlar. User rolü ise operasyonel işlemlerle sınırlıdır.
+</Info>
+
+## Kullanıcı Davet Etme
+
+<Steps>
+  <Step title="Kullanıcılar Sayfasına Gidin">
+    **Ayarlar** > **Kullanıcılar** sayfasına gidin
+  </Step>
+
+  <Step title="Davet Formunu Doldurun">
+    1. **Kullanıcı Davet Et** butonuna tıklayın
+    2. **E-posta** adresi girin
+    3. **Rol** seçin (Admin/User)
+  </Step>
+
+  <Step title="Daveti Gönderin">
+    **Davet Gönder** butonuna tıklayın
+  </Step>
+</Steps>
+
+<Frame>
+  <img src="/images/organization-user-invite.png" alt="Kullanıcı davet etme formu" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Kullanıcı davet etme arayüzü
+</Note>
+
+### Davet E-postası
+
+Kullanıcı e-posta alır:
+- Platform linki
+- Organizasyon adı
+- Rolü
+- Davet eden kişi
+- **Kabul Et** butonu
+
+**Geçerlilik:** 7 gün
+
+## Davet Yönetimi
+
+### Bekleyen Davetler
+
+**Görüntüleme:** Kullanıcılar sayfasında **Bekleyen Davetler** sekmesi
+
+**Bilgiler:**
+- E-posta
+- Rol
+- Gönderim tarihi
+- Son geçerlilik
+
+**İşlemler:**
+
+<Tabs>
+  <Tab title="Yeniden Gönder">
+    Davet e-postasını tekrar gönderin
+  </Tab>
+
+  <Tab title="İptal">
+    Daveti iptal edin
+  </Tab>
+</Tabs>
+
+### Davet Kabul Etme
+
+**Kullanıcı tarafı:**
+
+<Steps>
+  <Step title="E-postayı Açın">
+    E-postadaki linke tıklayın
+  </Step>
+
+  <Step title="Platform'a Giriş Yapın">
+    1. Platform'a yönlendirilir
+    2. Hesap varsa giriş yapar
+    3. Hesap yoksa oluşturur
+  </Step>
+
+  <Step title="Organizasyona Katılın">
+    Otomatik olarak organizasyona eklenir
+  </Step>
+</Steps>
+
+## Kullanıcı Listesi
+
+### Aktif Kullanıcılar
+
+**Bilgiler:**
+- Ad Soyad
+- E-posta
+- Rol
+- Son giriş tarihi
+- Durum (Aktif/Pasif)
+
+**Sıralama ve Filtreleme:**
+- Role göre filtrele
+- Alfabetik sırala
+- Son giriş tarihine göre
+
+<Frame>
+  <img src="/images/organization-user-list.png" alt="Kullanıcı listesi" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Aktif kullanıcılar listesi
+</Note>
+
+## Kullanıcı Düzenleme
+
+### Rol Değiştirme
+
+<Steps>
+  <Step title="Kullanıcı Menüsünü Açın">
+    Kullanıcının yanındaki **...** menüsü
+  </Step>
+
+  <Step title="Rol Değiştirin">
+    1. **Rolü Değiştir** seçeneğini tıklayın
+    2. Yeni rol seçin (Admin ↔ User)
+    3. **Kaydet**
+  </Step>
+</Steps>
+
+<Warning>
+  **Not:** Kendinizin rolünü değiştiremezsiniz.
+</Warning>
+
+### Kullanıcı Silme
+
+<Steps>
+  <Step title="Silme İşlemini Başlatın">
+    **...** menüsü > **Sil**
+  </Step>
+
+  <Step title="Onaylayın">
+    Silme işlemini onaylayın
+  </Step>
+</Steps>
+
+**Dikkat:**
+- Silinen kullanıcının verileri silinmez
+- Sadece organizasyondan çıkarılır
+- Tekrar davet edilebilir
+- Kullanıcı anında erişimini kaybeder
+
+## Kullanıcı Devre Dışı Bırakma
+
+### Geçici Askıya Alma
+
+<Info>
+  **Özellik:** Gelecek sürümlerde eklenecek
+</Info>
+
+**Kullanım:** Kullanıcıyı silmeden geçici olarak erişimi kaldırma.
+
+## Çoklu Admin
+
+### Birden Fazla Admin
+
+- ✅ Organizasyonda birden fazla Admin olabilir
+- Her Admin eşit yetkilere sahiptir
+- Birbirlerinin rolünü değiştirebilir
+- Organizasyonu silebilir (dikkatli!)
+
+### En İyi Uygulamalar
+
+<Tip>
+  - Minimum 2 Admin olsun (yedeklilik)
+  - Güvenilir kişilere verin
+  - Kullanıcı sayısı arttıkça Admin sayısını artırın
+</Tip>
+
+## Aktivite Logu
+
+### Kullanıcı Aktiviteleri (Gelecekte)
+
+**Gösterilecek:**
+- Giriş/çıkış zamanları
+- Yapılan değişiklikler
+- Oluşturulan kayıtlar
+- Silinen veriler
+
+## Güvenlik
+
+### 2FA (İki Faktörlü Kimlik Doğrulama)
+
+**Zorunlu Hale Getirme:**
+
+<Steps>
+  <Step title="Güvenlik Ayarlarına Gidin">
+    Ayarlar > Güvenlik
+  </Step>
+
+  <Step title="2FA'yı Zorunlu Yapın">
+    **Tüm kullanıcılar için 2FA zorunlu** seçeneğini işaretleyin
+  </Step>
+</Steps>
+
+**Etki:**
+- Tüm kullanıcılar 2FA açmak zorunda
+- Açmayan kullanıcılar giriş yapamaz
+
+### Oturum Yönetimi
+
+**Otomatik Çıkış:**
+- 8 saat inaktivite sonrası
+- Değiştirilemez
+
+**Cihaz Yönetimi:**
+- Kullanıcılar kendi cihazlarını yönetir
+- Admin başkasının oturumunu kapatamaz
+
+## Kullanıcı Limitleri
+
+Plan'ınıza göre kullanıcı sayısı limiti:
+
+| Plan | Kullanıcı Sayısı |
+|------|------------------|
+| Free | 2 kullanıcı |
+| Starter | 5 kullanıcı |
+| Professional | 20 kullanıcı |
+| Enterprise | Sınırsız |
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Kaç kullanıcı ekleyebilirim?">
+    Plan'ınıza göre:
+    - Free: 2 kullanıcı
+    - Starter: 5 kullanıcı
+    - Professional: 20 kullanıcı
+    - Enterprise: Sınırsız
+  </Accordion>
+
+  <Accordion title="Davet kabul etmezse ne olur?">
+    7 gün sonra davet otomatik iptal olur. Tekrar davet gönderebilirsiniz.
+  </Accordion>
+
+  <Accordion title="Eski bir kullanıcıyı tekrar ekleyebilir miyim?">
+    Evet, silindikten sonra bile tekrar davet edebilirsiniz.
+  </Accordion>
+
+  <Accordion title="User rolündeki biri agent oluşturabilir mi?">
+    Hayır, sadece Admin rolü agent oluşturabilir.
+  </Accordion>
+
+  <Accordion title="Rolü değiştirince ne olur?">
+    Hemen yeni yetkilere sahip olur. Oturumu yenilemesine gerek yok.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Organizasyon Oluşturma" icon="building" href="/organization-management/create-organization">
+    Yeni organizasyon oluşturma
+  </Card>
+  <Card title="Organizasyon Ayarları" icon="gear" href="/organization-management/organization-settings">
+    Organizasyon konfigürasyonlarını yönetin
+  </Card>
+  <Card title="API Anahtarı Yönetimi" icon="key" href="/organization-management/api-key-management">
+    API bağlantılarını yönetin
+  </Card>
+  <Card title="Çoklu Organizasyon" icon="building" href="/organization-management/multi-organization">
+    Birden fazla organizasyon yönetimi
+  </Card>
+</CardGroup>

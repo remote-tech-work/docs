@@ -253,6 +253,137 @@ Agent detay sayfasında:
 3. Bilgi bankası atamasını kaldırın
 4. Ardından bilgi bankasını silin
 
+## Kategori ve Alt Kategori Yönetimi
+
+### Kategori Oluşturma
+
+Bilgi bankası dosyalarınızı organize etmek için kategori ve alt kategoriler kullanabilirsiniz:
+
+**Kategori Ekleme:**
+<Steps>
+  <Step title="Ayarlara Gidin">
+    Ayarlar > **Organizasyon Ayarları**
+  </Step>
+  <Step title="Kategoriler Bölümü">
+    **Kategoriler** bölümünde **Yeni Kategori** butonu
+  </Step>
+  <Step title="Kategori Adı">
+    Kategori adı girin ve **Oluştur**
+  </Step>
+</Steps>
+
+**Alt Kategori Ekleme:**
+1. Ana kategorinin yanındaki **+** ikonu
+2. Alt kategori adı girin
+3. **Oluştur**
+
+**Örnek Hiyerarşi:**
+```
+Ürün Bilgileri
+  ├─ Elektronik
+  │   ├─ Telefonlar
+  │   └─ Bilgisayarlar
+  └─ Giyim
+      ├─ Kadın
+      └─ Erkek
+```
+
+### Dosyaya Kategori Atama
+
+**Dosya Yükleme Sırasında:**
+1. Dosya seçimi sonrası
+2. **Kategori** dropdown
+3. Uygun kategori/alt kategori seçin
+4. **Yükle**
+
+**Mevcut Dosya için:**
+1. Dosyalar sekmesi
+2. Dosya satırında **Düzenle**
+3. Kategori değiştir
+4. **Kaydet**
+
+## Dosya Limitleri ve Depolama
+
+### Dosya Boyutu Limitleri
+
+**Maksimum Dosya Boyutu:**
+- Tek dosya: 50 MB
+- Toplam depolama: Plan'ınıza göre değişir
+
+**Plan Limitleri:**
+- Free: 500 MB
+- Starter: 5 GB
+- Professional: 50 GB
+- Enterprise: Sınırsız
+
+### Desteklenen Formatlar ve Özellikler
+
+<Tabs>
+  <Tab title="PDF (.pdf)">
+    - ✅ Metin tabanlı PDF'ler
+    - ✅ OCR ile taranmış PDF'ler
+    - ⚠️ Şifreli PDF'ler desteklenmez
+  </Tab>
+
+  <Tab title="Word (.docx, .doc)">
+    - ✅ Tüm formatlar
+    - ✅ Görseller (açıklama metni okunur)
+    - ✅ Tablolar
+  </Tab>
+
+  <Tab title="Metin (.txt)">
+    - ✅ UTF-8 encoding
+    - ✅ Sınırsız satır
+  </Tab>
+
+  <Tab title="Markdown (.md)">
+    - ✅ Tüm Markdown syntax
+    - ✅ Kod blokları
+  </Tab>
+
+  <Tab title="Excel (.xlsx, .xls)">
+    - ✅ İlk sayfa okunur
+    - ✅ Tablolar metne dönüştürülür
+    - ⚠️ Formüller değerlendirilmez
+  </Tab>
+</Tabs>
+
+### AWS S3 Depolama
+
+Dosyalarınız güvenli AWS S3 depolama alanında saklanır:
+
+**Güvenlik:**
+- 🔒 Şifrelenmiş depolama (AES-256)
+- 🔒 Organizasyon bazlı izolasyon
+- 🔒 Otomatik backup
+
+**Performans:**
+- Hızlı erişim (CDN entegrasyonu)
+- Yüksek disponibilite (%99.9)
+- Otomatik ölçeklendirme
+
+### Toplu Dosya Yükleme
+
+**Çoklu Seçim:**
+1. Dosya seçim dialogunda
+2. Ctrl/Cmd tuşuna basılı tutun
+3. Birden fazla dosya seçin
+4. **Aç**
+
+**Sürükle-Bırak:**
+- Birden fazla dosyayı seçin
+- Sürükleme alanına bırakın
+- Tümü bir seferde yüklenir
+
+**Batch Upload Limiti:**
+- Maksimum 50 dosya tek seferde
+- Toplam maksimum 500 MB
+
+**İlerleme Takibi:**
+- Her dosya için yükleme yüzdesi
+- Başarılı/başarısız sayısı
+- Hata mesajları
+
 ## Bilgi Bankası En İyi Uygulamalar
 
 ### Dosya Organizasyonu

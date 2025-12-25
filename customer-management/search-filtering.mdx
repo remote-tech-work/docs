@@ -1,0 +1,627 @@
+---
+title: "Müşteri Arama ve Filtreleme"
+description: "Binlerce müşteri arasından ihtiyacınız olanları hızlıca bulun, segmentasyon yapın ve özel listeler oluşturun"
+---
+
+## Genel Bakış
+
+Müşteri arama ve filtreleme özellikleri ile binlerce müşteri arasından ihtiyacınız olanları hızlıca bulabilir, segmentasyon yapabilir ve özel listeler oluşturabilirsiniz.
+
+## Hızlı Arama
+
+### Global Arama
+
+**Konum:** Müşteriler sayfası üst kısım - Arama çubuğu
+
+**Kullanım:**
+1. Arama kutusuna yazın
+2. Enter veya büyüteç ikonuna tıklayın
+3. Sonuçlar anında gösterilir
+
+**Aranılan Alanlar:**
+- İsim (firstName)
+- Soyisim (lastName)
+- Telefon numarası
+- E-posta adresi
+- Şirket adı
+- Notlar
+
+**Örnekler:**
+- `Ahmet` → İsmi Ahmet olanlar
+- `5551234567` → Bu telefon numarasına sahip
+- `@gmail.com` → Gmail kullananlar
+- `ABC Ltd` → Bu şirkettekiler
+
+### Arama Özellikleri
+
+**Kısmi Eşleşme:**
+- `ahm` → Ahmet, Mahmut
+- `555` → 555 ile başlayan telefonlar
+
+**Büyük-Küçük Harf Duyarsız:**
+- `ahmet` = `AHMET` = `Ahmet`
+
+**Gerçek Zamanlı:**
+- Yazarken sonuçlar güncellenir
+- Debounce: 300ms
+
+<Frame>
+  <img src="/images/customer-global-search.png" alt="Müşteri global arama çubuğu" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Global arama çubuğu ve sonuçlar
+</Note>
+
+## Gelişmiş Filtreleme
+
+### Filtre Paneli
+
+**Erişim:**
+1. Müşteriler sayfasına gidin
+2. **Filtreler** butonu (sağ üst)
+3. Filtre paneli açılır
+
+### Filtre Kategorileri
+
+<Tabs>
+  <Tab title="Temel Bilgiler">
+    **İsim Filtreleri:**
+    - İsim içerir
+    - Soyisim içerir
+    - Tam isim eşleşmesi
+
+    **İletişim Filtreleri:**
+    - E-posta içerir
+    - E-posta domain (@example.com)
+    - Telefon numarası içerir
+    - Telefon kodu (555)
+
+    **Şirket Filtresi:**
+    - Şirket adı içerir
+    - Şirket adı boş/dolu
+  </Tab>
+
+  <Tab title="Tarih Filtreleri">
+    **Oluşturma Tarihi:**
+    - Son 7 gün
+    - Son 30 gün
+    - Son 90 gün
+    - Özel tarih aralığı
+    - Belirli bir tarih
+
+    **Güncelleme Tarihi:**
+    - Bugün güncellenenler
+    - Bu hafta güncellenenler
+    - Hiç güncellenmeyenler
+
+    **Son Çağrı Tarihi:**
+    - Son 24 saat
+    - Son hafta
+    - Son ay
+    - Hiç aranmayanlar
+  </Tab>
+
+  <Tab title="Durum Filtreleri">
+    **Çağrı Durumu:**
+    - ✅ Ulaşıldı
+    - ❌ Ulaşılamadı
+    - 📞 Meşgul
+    - ⏳ Henüz aranmadı
+
+    **Kampanya Durumu:**
+    - Aktif kampanyada
+    - Tamamlanan kampanyada
+    - Hiç kampanyada olmayan
+
+    **Liste Durumu:**
+    - Belirli listede olanlar
+    - Hiçbir listede olmayanlar
+  </Tab>
+
+  <Tab title="Etiket Filtreleri">
+    **Tag Seçimi:**
+    - VIP müşteriler
+    - Aktif müşteriler
+    - Potansiyel müşteriler
+    - Özel etiketler
+
+    **Tag Kombinasyonu:**
+    - VIP **VE** Aktif (her ikisi de)
+    - VIP **VEYA** Potansiyel (herhangi biri)
+    - Etiketi olmayan
+  </Tab>
+
+  <Tab title="Özel Alan Filtreleri">
+    **Custom Fields:**
+    - Şehir = "İstanbul"
+    - Yaş > 30
+    - Kaynak = "Website"
+
+    **Operatörler:**
+    - Eşittir (=)
+    - Eşit değildir (!=)
+    - Büyüktür (>)
+    - Küçüktür (<)
+    - İçerir
+    - Boş/Dolu
+  </Tab>
+</Tabs>
+
+### Filtre Uygulama
+
+<Steps>
+  <Step title="Filtre Seçimi">
+    1. Filtre panelini açın
+    2. Kategori seçin
+    3. Değer girin veya seçin
+
+    **Örnek:**
+    - **Tag:** VIP
+    - **Oluşturma Tarihi:** Son 30 gün
+    - **Durum:** Ulaşılamadı
+  </Step>
+
+  <Step title="Filtre Ekleme">
+    - **Uygula** butonuna tıklayın
+    - Sonuçlar anında güncellenir
+    - Aktif filtreler gösterilir
+
+    **Aktif Filtreler:**
+    ```
+    🏷️ VIP  📅 Son 30 gün  ❌ Ulaşılamadı  [X]
+    ```
+  </Step>
+
+  <Step title="Filtre Düzenleme">
+    **Filtre Kaldırma:**
+    - Filtrenin yanındaki [X] ikonu
+    - Veya **Tümünü Temizle**
+
+    **Filtre Değiştirme:**
+    - Aynı kategori için yeni değer seç
+    - Otomatik güncellenir
+  </Step>
+</Steps>
+
+<Frame>
+  <img src="/images/customer-filter-panel.png" alt="Müşteri filtreleme paneli" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Filtre paneli ve aktif filtreler
+</Note>
+
+## Kombine Filtreleme
+
+### AND Operatörü (VE)
+
+**Kullanım:** Birden fazla filtre eklediğinizde
+
+**Örnek:**
+- Tag: VIP **VE**
+- Şehir: İstanbul **VE**
+- Son 30 gün
+
+**Sonuç:** Her üç koşulu da sağlayanlar
+
+### OR Operatörü (VEYA)
+
+**Kullanım:** Aynı kategoride çoklu seçim
+
+**Örnek:**
+- Tag: VIP **VEYA** Potansiyel
+
+**Sonuç:** VIP veya Potansiyel etiketine sahip olanlar
+
+### NOT Operatörü (DEĞİL)
+
+**Kullanım:** Hariç tutma
+
+**Örnek:**
+- Tag: **DEĞİL** İptal
+
+**Sonuç:** İptal etiketi olmayanlar
+
+### Karmaşık Sorgular
+
+**Örnek:**
+```
+(Tag: VIP VEYA Potansiyel)
+VE
+(Şehir: İstanbul VEYA Ankara)
+VE
+Son Çağrı: Hiç aranmadı
+```
+
+**Sonuç:** İstanbul veya Ankara'daki, VIP veya Potansiyel etiketli ve hiç aranmamış müşteriler
+
+## Kayıtlı Filtreler
+
+### Filtre Kaydetme
+
+**Neden:** Sık kullanılan filtreleri kaydet
+
+<Steps>
+  <Step title="Filtreleri Uygula">
+    İstediğiniz filtreleri seçin ve uygulayın
+  </Step>
+
+  <Step title="Filtreyi Kaydet">
+    1. **Filtreyi Kaydet** butonuna tıklayın
+    2. İsim verin (örn: "İstanbul VIP")
+    3. **Kaydet** butonuna tıklayın
+  </Step>
+</Steps>
+
+**Avantajlar:**
+- Tek tıkla uygula
+- Zaman tasarrufu
+- Tutarlılık
+
+### Kayıtlı Filtreyi Kullanma
+
+1. **Kayıtlı Filtreler** dropdown menüsünü açın
+2. Filtreyi seçin
+3. Otomatik uygulanır
+
+**Kayıtlı Filtre Listesi:**
+- 📍 İstanbul VIP Müşteriler
+- 📞 Aranmamış Potansiyeller
+- 📅 Son 7 Gün Eklenenler
+- 🏢 Kurumsal Müşteriler
+
+### Filtre Yönetimi
+
+**Düzenleme:**
+1. Kayıtlı filtreye tıkla > **Düzenle**
+2. Filtreleri değiştir
+3. **Güncelle**
+
+**Silme:**
+1. Filtrenin yanındaki ⚙️ ikonu
+2. **Sil**
+3. Onayla
+
+<Info>
+  **Paylaşma:** Gelecek sürümlerde takım üyeleri ile filtre paylaşma ve organizasyon geneli filtre özelliği eklenecektir.
+</Info>
+
+## Sıralama
+
+### Sıralama Seçenekleri
+
+**Kolon Başlıkları:**
+- İsim ↕️
+- E-posta ↕️
+- Telefon ↕️
+- Oluşturma Tarihi ↕️
+- Son Güncelleme ↕️
+
+**Kullanım:**
+- Başlığa tıkla: Artan sıralama
+- Tekrar tıkla: Azalan sıralama
+
+**Örnekler:**
+- İsim A-Z
+- Oluşturma Tarihi (En yeni → En eski)
+- Son Güncelleme (En son → En eski)
+
+### Çoklu Sıralama
+
+**Kullanım:** Shift + tıklama
+
+**Örnek:**
+1. İsim (A-Z)
+2. Shift + Oluşturma Tarihi (Yeni → Eski)
+
+**Sonuç:** Aynı isimdekiler tarih sırasına göre
+
+## Toplu İşlemler
+
+### Filtrelenmiş Müşteriler Üzerinde İşlem
+
+**Seçenekler:**
+- Toplu tag ekleme
+- Kampanyaya ekleme
+- Listede toplama
+- Toplu export
+
+### Toplu Seçim
+
+**Tümünü Seç:**
+1. Üst checkbox işaretleyin
+2. Sayfadaki tüm müşteriler seçilir
+
+**Filtre Sonuçlarını Seç:**
+1. **Tümünü Seç** checkbox işaretleyin
+2. "Tüm 1,250 müşteriyi seç?" mesajı görünür
+3. Evet → Filtrelenmiş tüm sonuçlar seçilir
+
+### Toplu Tag Ekleme
+
+<Steps>
+  <Step title="Müşterileri Seç">
+    Müşterileri filtrele veya manuel seç
+  </Step>
+
+  <Step title="Tag Ekle">
+    1. **Toplu İşlemler** > **Tag Ekle**
+    2. Tag seçin veya yeni oluşturun
+    3. **Uygula**
+  </Step>
+</Steps>
+
+**Örnek:** 500 müşteriye "Mart Kampanya" tag ekle
+
+### Toplu Kampanya Ekleme
+
+<Steps>
+  <Step title="Müşterileri Seç">
+    Müşterileri filtrele veya manuel seç
+  </Step>
+
+  <Step title="Kampanyaya Ekle">
+    1. **Toplu İşlemler** > **Kampanyaya Ekle**
+    2. Kampanya seçin
+    3. **Ekle** butonuna tıklayın
+  </Step>
+</Steps>
+
+## Export ve Raporlama
+
+### Filtrelenmiş Export
+
+**Kullanım:** Sadece filtre sonuçlarını export et
+
+<Steps>
+  <Step title="Filtreleri Uygula">
+    İstediğiniz filtreleri seçin ve uygulayın
+  </Step>
+
+  <Step title="Export">
+    1. **Export** butonuna tıklayın
+    2. Format seçin (Excel/CSV)
+    3. **İndir**
+  </Step>
+</Steps>
+
+**Export İçeriği:**
+- Tüm müşteri bilgileri
+- Tags
+- Custom fields
+- Son çağrı bilgisi
+
+### Export Formatları
+
+<Tabs>
+  <Tab title="Excel (.xlsx)">
+    - ✅ Formatlanmış
+    - ✅ Çoklu sayfa (gelecekte)
+    - ✅ Grafikler (gelecekte)
+  </Tab>
+
+  <Tab title="CSV (.csv)">
+    - ✅ Hafif
+    - ✅ Hızlı
+    - ✅ Diğer sistemlere import
+  </Tab>
+</Tabs>
+
+### Zamanlanmış Export (Gelecekte)
+
+<Info>
+  **Özellik:** Otomatik düzenli export
+
+  **Kullanım:**
+  - Her hafta Pazartesi export et
+  - Filtre uygula > E-posta gönder
+  - FTP/S3'e upload
+</Info>
+
+## Performans ve Limit
+
+### Sayfa Başına Kayıt
+
+**Seçenekler:**
+- 25 (Varsayılan)
+- 50
+- 100
+- 200
+
+**Değiştirme:**
+- Alt kısımda dropdown
+- Seçim anında güncellenir
+
+### Toplam Sonuç
+
+**Gösterim:**
+```
+1,250 müşteriden 25 gösteriliyor
+```
+
+**Sayfalama:**
+- ◀️ Önceki
+- 1, 2, 3, ... 50
+- Sonraki ▶️
+
+### Performans İpuçları
+
+<Tip>
+  - ✅ Spesifik filtreler kullanın (hızlı)
+  - ✅ Sayfa başına 25-50 kayıt ideal
+  - ❌ Çok geniş tarih aralığı (yavaş)
+  - ❌ 200 kayıt/sayfa (yavaşlatır)
+</Tip>
+
+## Klavye Kısayolları
+
+### Arama
+
+- **Ctrl/Cmd + K:** Arama kutusuna odaklan
+- **Esc:** Arama temizle
+
+### Navigasyon
+
+- **→:** Sonraki sayfa
+- **←:** Önceki sayfa
+- **Ctrl/Cmd + A:** Tümünü seç
+
+### Filtreler
+
+- **Ctrl/Cmd + F:** Filtre panelini aç/kapat
+- **Ctrl/Cmd + Shift + C:** Filtreleri temizle
+
+## İpuçları ve En İyi Uygulamalar
+
+### Etkili Arama
+
+<Tip>
+  - ✅ Kısmi kelime kullanın (`ahm` yerine `ahmet`)
+  - ✅ Telefon numarasında boşluk/tire olmadan
+  - ✅ E-posta arama için @ kullanın
+  - ❌ Çok genel terimler (örn: `a`)
+</Tip>
+
+### Filtreleme Stratejisi
+
+<Tip>
+  - ✅ Önce geniş filtre (tarih, tag)
+  - ✅ Sonra daralt (şehir, durum)
+  - ✅ Filtreleri kaydet (tekrar kullan)
+  - ❌ Aynı anda 10+ filtre (yavaşlatır)
+</Tip>
+
+### Kayıtlı Filtreler
+
+<Tip>
+  - ✅ Açıklayıcı isimler verin
+  - ✅ Sık kullanılanları kaydedin
+  - ✅ Kullanılmayanları silin
+  - ❌ "Filtre 1", "Filtre 2" gibi isimler
+</Tip>
+
+### Export
+
+<Tip>
+  - ✅ Export öncesi filtreyi test edin
+  - ✅ Küçük batch'lerle export (5,000 altı)
+  - ❌ Tüm veritabanını export etmeyin
+</Tip>
+
+## Sorun Giderme
+
+<AccordionGroup>
+  <Accordion title="Arama Sonuç Vermiyor">
+    **Sebep:** Arama terimi yanlış veya kayıt yok
+
+    **Çözüm:**
+    1. Büyük-küçük harf deneyin
+    2. Kısmi kelime deneyin
+    3. Başka alanlarda arayın
+  </Accordion>
+
+  <Accordion title="Filtre Çalışmıyor">
+    **Sebep:** Filtre kombinasyonu sonuç vermiyor
+
+    **Çözüm:**
+    1. Filtreleri tek tek test edin
+    2. Filtre mantığını kontrol edin (AND/OR)
+    3. Filtreleri temizleyip tekrar deneyin
+  </Accordion>
+
+  <Accordion title="Export Boş Geliyor">
+    **Sebep:** Filtre tüm kayıtları elemiş
+
+    **Çözüm:**
+    1. Filtreleri kontrol edin
+    2. "0 sonuç" mesajına bakın
+    3. Filtreleri gevşetin
+  </Accordion>
+
+  <Accordion title="Yavaş Yükleme">
+    **Sebep:** Çok fazla sonuç veya filtre
+
+    **Çözüm:**
+    1. Sayfa başına kayıt azaltın
+    2. Daha spesifik filtre kullanın
+    3. Tarih aralığını daraltın
+  </Accordion>
+</AccordionGroup>
+
+## Gelişmiş Özellikler
+
+### Smart Filters (Gelecekte)
+
+<Info>
+  **Özellik:** AI tarafından önerilen filtreler
+
+  **Örnekler:**
+  - "30 günden uzun aranmayan VIP'ler"
+  - "Dönüşüm oranı yüksek segment"
+</Info>
+
+### Saved Views (Gelecekte)
+
+<Info>
+  **Özellik:** Filtre + sıralama + kolon kombinasyonu
+
+  **Kullanım:**
+  - Her görünüm farklı setup
+  - Hızlı geçiş
+</Info>
+
+### Predictive Search (Gelecekte)
+
+<Info>
+  **Özellik:** Yazarken akıllı öneriler
+
+  **Örnek:**
+  - `55` yazdınızda → `5551234567` önerir
+</Info>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Kaç filtre ekleyebilirim?">
+    Limit yok, ancak 5-7 filtre ideal. Fazlası performansı düşürür.
+  </Accordion>
+
+  <Accordion title="Kayıtlı filtre limiti var mı?">
+    20 kayıtlı filtre oluşturabilirsiniz.
+  </Accordion>
+
+  <Accordion title="Filtre sonuçları gerçek zamanlı mı?">
+    Evet, filtre değiştirdikçe sonuçlar anında güncellenir.
+  </Accordion>
+
+  <Accordion title="Export limiti nedir?">
+    Tek seferde 10,000 kayıt export edebilirsiniz.
+  </Accordion>
+
+  <Accordion title="Filtre paylaşabilir miyim?">
+    Şu anda hayır. Gelecek sürümlerde eklenecek.
+  </Accordion>
+
+  <Accordion title="Arama hangi alanlarda yapılır?">
+    İsim, soyisim, telefon, e-posta, şirket, notlar.
+  </Accordion>
+
+  <Accordion title="Regex destekliyor mu?">
+    Şu anda hayır. Basit kısmi eşleşme kullanılıyor.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Müşteri Ekleme" icon="user-plus" href="/customer-management/add-customer">
+    Tek tek müşteri ekleme ve detay bilgiler
+  </Card>
+  <Card title="Toplu Müşteri Ekleme" icon="users" href="/customer-management/bulk-customer-import">
+    Excel/CSV ile toplu müşteri import
+  </Card>
+  <Card title="Kampanya Oluşturma" icon="bullhorn" href="/campaigns/campaign-creation">
+    Filtrelenmiş müşterilerle kampanya başlatma
+  </Card>
+</CardGroup>

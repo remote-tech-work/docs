@@ -1,0 +1,345 @@
+---
+title: "Dashboard Metrikleri"
+description: "Platform performansınızı ve kullanımınızı anlık olarak izleyin"
+---
+
+## Genel Bakış
+
+Kontrol Paneli, platformunuzun performansını ve kullanımını anlık olarak görmenizi sağlayan merkezi bir gösterge panelidir. Bu sayfada görüntülenen metrikler, işletmenizin çağrı merkezi operasyonlarının sağlığı hakkında hızlı bir genel bakış sunar.
+
+Dashboard'da dört ana metrik ve son aktivite listesi bulunur. Bu bilgiler, gün içindeki performansınızı takip etmenize ve hızlı kararlar almanıza yardımcı olur.
+
+## Dashboard'a Erişim
+
+<Steps>
+  <Step title="Platforma Giriş Yapın">
+    Platform'a giriş yapın
+  </Step>
+
+  <Step title="Kontrol Paneli'ni Seçin">
+    Sol menüden **Kontrol Paneli**'ni seçin
+  </Step>
+
+  <Step title="Metrikleri Görüntüleyin">
+    Dashboard otomatik olarak yüklenir ve güncel metrikleri gösterir
+  </Step>
+</Steps>
+
+## Ana Metrikler
+
+### 1. Aktif Çağrılar
+
+**Ne Gösterir:** Şu anda devam eden çağrı sayısını gösterir.
+
+**Anlam:**
+- **0**: Şu anda aktif çağrı yok
+- **1-5**: Normal aktivite seviyesi
+- **5+**: Yoğun aktivite
+
+**Kullanım:**
+- Gerçek zamanlı operasyon yoğunluğunu görün
+- Eş zamanlı çağrı kapasitesini izleyin
+- Ani yoğunluklara hızlı müdahale edin
+
+**Teknik Detay:**
+- Bu metrik, `in-progress` ve `ringing` durumundaki çağrıları sayar
+- Dakikada bir otomatik olarak güncellenir
+- Manuel yenilemek için sayfayı yenileyin
+
+<Note>
+  Organizasyonunuzun eş zamanlı çağrı sınırı ayarlara bağlıdır. Bu limit dolduğunda yeni çağrılar kuyruğa alınır.
+</Note>
+
+### 2. Bugünkü Çağrılar
+
+**Ne Gösterir:** Bugün (00:00'dan itibaren) yapılan toplam çağrı sayısını gösterir.
+
+**Anlam:**
+- Günlük aktivite hacmini takip edin
+- Hedeflerinize göre ilerlemenizi ölçün
+- Kampanya performansını değerlendirin
+
+**Kullanım:**
+- Günlük çağrı hedeflerinizi izleyin
+- Kampanya sonuçlarını anlık takip edin
+- Tarihe göre karşılaştırma yapın
+
+**Teknik Detay:**
+- Tüm durumlar dahil edilir (tamamlanan, devam eden, başarısız)
+- Saat dilimi: Organizasyon ayarlarınızdaki saat dilimine göre
+- Gün sonu: Gece yarısı (00:00) itibarıyla sıfırlanır
+
+### 3. Başarı Oranı
+
+**Ne Gösterir:** Bugün yapılan çağrıların yüzde kaçının başarıyla tamamlandığını gösterir.
+
+**Hesaplama:**
+```
+Başarı Oranı = (Başarılı Çağrılar / Toplam Çağrılar) × 100
+```
+
+**Başarılı Çağrı Kriterleri:**
+- ✅ Çağrı cevaplanmış olmalı
+- ✅ En az 10 saniye konuşma süresi olmalı
+- ✅ `ended` durumunda sonlanmış olmalı (hata ile bitmemiş olmalı)
+
+**Anlam:**
+- **%80-100**: Mükemmel performans
+- **%60-80**: İyi performans
+- **%40-60**: Ortalama performans, iyileştirme gerekebilir
+- **%0-40**: Düşük performans, sorun araştırılmalı
+
+**Kullanım:**
+- Agent performansını ölçün
+- Müşteri ulaşılabilirliğini değerlendirin
+- Kampanya etkinliğini kontrol edin
+
+**Düşük Başarı Oranı Nedenleri:**
+- Yanlış veya geçersiz telefon numaraları
+- Agent yapılandırması hataları
+- Müşterilerin çağrıya cevap vermemesi
+- Yönlendirme sorunları
+- AI servis entegrasyon sorunları
+
+<Tip>
+  Başarı oranınızı artırmak için telefon numaralarınızı düzenli olarak güncelleyin ve DNC (Arama Yasağı) listelerini kontrol edin.
+</Tip>
+
+### 4. Müşteri Sayısı
+
+**Ne Gösterir:** Sisteminizde kayıtlı olan toplam müşteri sayısını gösterir.
+
+**Kullanım:**
+- CRM veritabanı büyüklüğünüzü takip edin
+- Müşteri kazanım hızınızı ölçün
+- Kampanya hedef kitlesi büyüklüğünü görün
+
+**Teknik Detay:**
+- Tüm organizasyonunuzdaki müşteri kayıtlarını sayar
+- Aktif/pasif ayrımı yapılmaz
+- DNC listesindeki müşteriler dahildir
+
+### 5. Kredi Bakiyesi
+
+**Ne Gösterir:** Hesabınızda kalan kullanılabilir kredi tutarını gösterir.
+
+**Kredi Sistemi:**
+- Her çağrı için kredi harcanır
+- Harcanacak miktar çağrı süresine bağlıdır
+- Kredi bittiğinde çağrılar yapılamaz
+
+**Renk Kodları:**
+- **Yeşil**: Yeterli kredi (1000+ birim)
+- **Sarı**: Dikkat (100-1000 birim)
+- **Kırmızı**: Kritik seviye (0-100 birim)
+
+**Kullanım:**
+- Kredi bakiyenizi sürekli izleyin
+- Kredi bitme riskini öngörün
+- Zamanında kredi satın alın
+
+<Warning>
+  Kredi bakiyeniz sıfıra ulaştığında tüm kampanyalar otomatik olarak duraklatılır. Kredileri Kredi Yönetimi sayfasından satın alabilirsiniz.
+</Warning>
+
+## Son Aktivite Listesi
+
+Dashboard'un alt bölümünde **Son Çağrılar** listesi bulunur.
+
+### Gösterilen Bilgiler
+
+Her çağrı için:
+- **Müşteri Adı/Telefon**: Aranan kişi bilgisi
+- **Agent**: Çağrıda kullanılan AI Agent
+- **Durum**: Çağrının mevcut durumu
+- **Süre**: Çağrı süresi (dakika:saniye)
+- **Tarih/Saat**: Çağrının başladığı zaman
+
+### Çağrı Durumları
+
+| Durum | Açıklama | Görünüm |
+|-------|----------|---------|
+| **queued** | Kuyrukta bekliyor | Mavi |
+| **ringing** | Aranıyor, çalıyor | Sarı |
+| **in-progress** | Devam ediyor | Yeşil |
+| **ended** | Tamamlandı | Gri |
+| **failed** | Başarısız | Kırmızı |
+| **forwarding** | Yönlendiriliyor | Turuncu |
+
+### Filtreleme ve Arama
+
+Son aktivite listesinde:
+- **Duruma göre filtrele**: Sadece belirli durumdaki çağrıları görün
+- **Arama**: Telefon numarası veya müşteri adına göre arayın
+- **Sayfalama**: 10 çağrı gösterilir, daha fazlası için sayfa değiştirin
+
+### Çağrı Detaylarına Erişim
+
+<Steps>
+  <Step title="Çağrıya Tıklayın">
+    Son aktivite listesinden bir çağrıya tıklayın
+  </Step>
+
+  <Step title="Detayları Görüntüleyin">
+    Çağrı detay sayfası açılır
+  </Step>
+
+  <Step title="İnceleyin">
+    Transkript, kayıt ve diğer detayları görüntüleyin
+  </Step>
+</Steps>
+
+Daha detaylı çağrı analizi için [Görüşme Kayıtları](/call-monitoring/call-recordings) sayfasını ziyaret edin.
+
+<Frame>
+  <img src="/images/analytics-dashboard-overview.png" alt="Dashboard genel görünüm" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Dashboard'un tüm metriklerini gösteren ekran
+</Note>
+
+## Dashboard'u Yenileme
+
+### Otomatik Yenileme
+
+Dashboard metrikleri **otomatik olarak yenilenmez**. Güncel verileri görmek için sayfayı yenilemeniz gerekir.
+
+### Manuel Yenileme
+
+<Tabs>
+  <Tab title="Sayfa Yenile">
+    1. Tarayıcınızın yenile butonuna basın
+    2. veya `F5` tuşuna basın
+    3. veya `Ctrl+R` (Windows) / `Cmd+R` (Mac)
+  </Tab>
+
+  <Tab title="Yenile Butonu">
+    Dashboard'un sağ üst köşesinde **Yenile** butonu bulunabilir (tema ve versiyona bağlı).
+  </Tab>
+</Tabs>
+
+<Tip>
+  Yoğun operasyon saatlerinde her 2-3 dakikada bir sayfa yenilemenizi öneririz.
+</Tip>
+
+## AI Entegrasyon Durumu
+
+Dashboard'da **AI Entegrasyon Durumu** göstergesi bulunur.
+
+**Göstergeler:**
+- ✅ **Bağlı**: Platform API entegrasyonu aktif ve çalışıyor
+- ⚠️ **Sorun Var**: API anahtarı geçersiz veya bağlantı sorunu
+- ❌ **Bağlı Değil**: API anahtarı ayarlanmamış
+
+**Sorun Giderme:**
+- API anahtarınızı kontrol edin: Ayarlar > API Keys
+- API Bağlantı Sorunları makalesine bakın
+
+<Frame>
+  <img src="/images/analytics-ai-integration-status.png" alt="AI entegrasyon durumu göstergesi" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: AI entegrasyon durumu göstergesini gösteren ekran
+</Note>
+
+## İpuçları ve En İyi Uygulamalar
+
+### Dashboard Takibi
+
+- ✅ **Günlük kontrol**: Her gün en az bir kez dashboard'u kontrol edin
+- ✅ **Başarı oranı hedefi**: %70'in üzerinde tutmayı hedefleyin
+- ✅ **Kredi takibi**: Kredi bakiyeniz 500'ün altına düştüğünde alarm kurun
+- ✅ **Trend analizi**: Haftalık ve aylık trendleri karşılaştırın
+
+### Performans Optimizasyonu
+
+- **Düşük başarı oranı**: Agent konfigürasyonunu gözden geçirin
+- **Yüksek başarısız çağrı**: Telefon numaralarını doğrulayın
+- **Kredi hızlı tükeniyor**: Çağrı stratejinizi optimize edin
+- **Çok aktif çağrı**: Eş zamanlı çağrı limitini artırın
+
+### Raporlama
+
+Dashboard verileri rapor oluşturmak için yeterli değildir. Detaylı analiz için:
+- [Kampanya Analizleri](/analytics/campaign-analytics) kullanın
+- [Çağrı İstatistikleri](/analytics/call-statistics) sayfasını inceleyin
+- Aylık performans raporları oluşturun
+
+## Sorun Giderme
+
+<AccordionGroup>
+  <Accordion title="Dashboard Yüklenmiyor">
+    **Belirtiler:**
+    - Sayfa boş görünüyor
+    - Metrikler yüklenmiyor
+    - "Yükleniyor..." mesajı sürekli görünüyor
+
+    **Çözüm:**
+    1. İnternet bağlantınızı kontrol edin
+    2. Tarayıcı cache'ini temizleyin
+    3. Farklı bir tarayıcıda deneyin
+    4. Oturum açıp tekrar girin
+  </Accordion>
+
+  <Accordion title="Metrikler Yanlış Görünüyor">
+    **Çözüm:**
+    1. Sayfayı yenileyin (F5)
+    2. Saat dilimi ayarlarınızı kontrol edin
+    3. Tarayıcı konsolunda hata olup olmadığına bakın
+    4. Teknik destek ile iletişime geçin
+  </Accordion>
+
+  <Accordion title="Kredi Bakiyesi Görünmüyor">
+    **Çözüm:**
+    1. Organizasyon ayarlarınızı kontrol edin
+    2. Billing ayarlarının aktif olduğundan emin olun
+    3. Kullanıcı rolünüzün kredi görme yetkisi olduğunu doğrulayın
+  </Accordion>
+</AccordionGroup>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Dashboard verileri ne sıklıkla güncellenir?">
+    Dashboard otomatik olarak güncellenmiyor. Güncel verileri görmek için sayfayı manuel olarak yenilemelisiniz.
+  </Accordion>
+
+  <Accordion title="Başarı oranı nasıl hesaplanıyor?">
+    Başarı oranı = (ended durumundaki başarılı çağrılar / toplam çağrılar) × 100 şeklinde hesaplanır. Bir çağrının başarılı sayılması için cevaplanmış, en az 10 saniye sürmüş ve hatasız sonlanmış olması gerekir.
+  </Accordion>
+
+  <Accordion title='"Bugünkü Çağrılar" hangi saat dilimine göre?'>
+    Organizasyon ayarlarınızda belirlediğiniz saat dilimine göre hesaplanır. Varsayılan olarak yerel saat diliminiz kullanılır.
+  </Accordion>
+
+  <Accordion title="Kredi bakiyesi neden eksi değerde?">
+    Kredi bakiyesi eksi değerde olamaz. Eğer eksi görünüyorsa, bu bir gösterim hatası olabilir. Sayfayı yenileyin veya destek ekibi ile iletişime geçin.
+  </Accordion>
+
+  <Accordion title="Aktif çağrılar neden sıfır ama kampanyam çalışıyor?">
+    Kampanya aktif olsa bile o an itibariyle çağrı yapılmıyor olabilir. Kampanya zamanlaması, kuyruktaki çağrılar veya eş zamanlı çağrı limiti nedeniyle bekleme olabilir.
+  </Accordion>
+
+  <Accordion title="Dashboard metriklerini dışa aktarabilir miyim?">
+    Dashboard'dan doğrudan dışa aktarma özelliği yoktur. Detaylı raporlar için [Kampanya Analizleri](/analytics/campaign-analytics) veya [Çağrı İstatistikleri](/analytics/call-statistics) sayfalarını kullanın.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Kampanya Analizleri" icon="chart-line" href="/analytics/campaign-analytics">
+    Kampanya performansını detaylı analiz edin
+  </Card>
+  <Card title="Çağrı İstatistikleri" icon="phone" href="/analytics/call-statistics">
+    Tüm çağrılarınızın detaylı istatistiklerini görün
+  </Card>
+  <Card title="Görüşme Kayıtları" icon="microphone" href="/call-monitoring/call-recordings">
+    Çağrı kayıtlarını ve transkriptleri inceleyin
+  </Card>
+  <Card title="Organizasyon Ayarları" icon="gear" href="/getting-started/organization-settings">
+    Platform ayarlarınızı yapılandırın
+  </Card>
+</CardGroup>

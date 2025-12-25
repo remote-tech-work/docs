@@ -1,0 +1,333 @@
+---
+title: "API Anahtarı Yönetimi"
+description: "Platform API bağlantılarını ekleyin, yönetin ve güvenli kullanma yöntemlerini öğrenin"
+---
+
+## Genel Bakış
+
+API anahtarları, platform ile AI servislerinin bağlantısını sağlar. Bu makale, API anahtarlarını ekleme, yönetme ve güvenli kullanma yöntemlerini açıklar.
+
+## API Anahtarı Nedir?
+
+**Platform API Anahtarı:** Platform'un AI servisleri ile iletişim kurması için gerekli kimlik bilgisidir.
+
+**Kullanım Alanları:**
+- AI Agent oluşturma
+- Çağrı başlatma
+- Webhook alma
+- Ses ve transkript işleme
+
+<Info>
+  Platform otomatik olarak API bağlantılarını yönetir. Genellikle manuel işlem gerektirmez.
+</Info>
+
+## İlk API Anahtarı Kurulumu
+
+### Otomatik Yapılandırma
+
+Platform kurulumu sırasında API bağlantısı otomatik olarak yapılandırılır:
+
+<Steps>
+  <Step title="Organizasyon Oluşturma">
+    Organizasyon oluşturma sırasında API servisi otomatik olarak bağlanır
+  </Step>
+
+  <Step title="Bağlantı Testi">
+    Sistem otomatik olarak bağlantı testini gerçekleştirir
+  </Step>
+
+  <Step title="Doğrulama">
+    Bağlantı durumu gösterilir
+  </Step>
+</Steps>
+
+<Frame>
+  <img src="/images/organization-api-setup.png" alt="API kurulum arayüzü" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: API bağlantı kurulum ekranı
+</Note>
+
+## API Anahtarı Listesi
+
+### Görüntüleme
+
+Ayarlar > API Keys sayfasında:
+
+**Bilgiler:**
+- Servis Sağlayıcısı
+- Environment (Production/Test)
+- Son 4 karakter
+- Ekleme tarihi
+- Son kullanım
+- Durum (Aktif/Pasif)
+
+<Frame>
+  <img src="/images/organization-api-list.png" alt="API anahtarı listesi" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: API anahtarları listesi ekranı
+</Note>
+
+## API Anahtarı Güncelleme
+
+### Anahtar Değiştirme
+
+**Ne zaman:**
+- Anahtar expired oldu
+- Güvenlik nedeniyle rotation
+- Test'ten production'a geçiş
+
+**Adımlar:**
+
+<Steps>
+  <Step title="Yeni Anahtar Alın">
+    AI servis sağlayıcısından yeni anahtar oluşturun
+  </Step>
+
+  <Step title="Platform'da Güncelleyin">
+    1. Platform > API Keys > **Düzenle**
+    2. Yeni anahtarı girin
+    3. **Test Bağlantısı**
+  </Step>
+
+  <Step title="Kaydedin">
+    **Kaydet** butonuna tıklayın
+  </Step>
+</Steps>
+
+<Warning>
+  **Not:** Güncelleme anında aktif olur. Aktif çağrılar etkilenmez.
+</Warning>
+
+## Test Bağlantısı
+
+### Anahtar Doğrulama
+
+**Test Et** butonuna tıklayın:
+
+<Tabs>
+  <Tab title="Başarılı">
+    - ✅ "API key is valid"
+    - Yeşil onay işareti
+    - API bağlantısı OK
+  </Tab>
+
+  <Tab title="Başarısız">
+    - ❌ "Invalid API key"
+    - ❌ "Connection failed"
+    - Kırmızı hata mesajı
+  </Tab>
+</Tabs>
+
+**Çözüm:**
+
+<Steps>
+  <Step title="Anahtarı Kontrol Edin">
+    Anahtarı doğru kopyaladığınızdan emin olun
+  </Step>
+
+  <Step title="Servis Durumunu Kontrol Edin">
+    AI servis sağlayıcısında anahtarın aktif olduğunu kontrol edin
+  </Step>
+
+  <Step title="Yeni Anahtar Deneyin">
+    Gerekirse yeni anahtar oluşturup deneyin
+  </Step>
+</Steps>
+
+## Çoklu Anahtar Yönetimi
+
+### Production vs Test
+
+<Tabs>
+  <Tab title="Test Environment">
+    - Development ve test için
+    - Gerçek çağrı yapmaz
+    - Test modu
+  </Tab>
+
+  <Tab title="Production Environment">
+    - Canlı çağrılar için
+    - Gerçek maliyetlendirme
+    - Live modu
+  </Tab>
+</Tabs>
+
+<Tip>
+  **Öneri:** İkisini de ekleyin ve ihtiyaca göre seçin.
+</Tip>
+
+## Güvenlik
+
+### API Anahtarı Koruması
+
+<Warning>
+  - 🔒 Asla kimseyle paylaşmayın
+  - 🔒 Git'e commit etmeyin
+  - 🔒 E-posta ile göndermeyin
+  - 🔒 Screenshot alırken gizleyin
+  - 🔒 Ekran paylaşımında göstermeyin
+</Warning>
+
+### Anahtar Rotation
+
+**Önerilen Sıklık:** 3-6 ayda bir
+
+**Prosedür:**
+
+<Steps>
+  <Step title="Yeni Anahtar Oluşturun">
+    Servis sağlayıcısından yeni anahtar oluşturun
+  </Step>
+
+  <Step title="Platform'da Güncelleyin">
+    Platform'da yeni anahtarı güncelleyin
+  </Step>
+
+  <Step title="Test Edin">
+    Bağlantıyı test edin
+  </Step>
+
+  <Step title="Eski Anahtarı Silin">
+    Eski anahtarı servis sağlayıcısından silin
+  </Step>
+</Steps>
+
+### Güvenlik İhlali
+
+**Anahtar açığa çıktıysa:**
+
+<Steps>
+  <Step title="Hemen İptal Edin">
+    Servis sağlayıcısından anahtarı hemen revoke edin
+  </Step>
+
+  <Step title="Yeni Anahtar Oluşturun">
+    Yeni anahtar oluşturun
+  </Step>
+
+  <Step title="Platform'da Güncelleyin">
+    Platform'da yeni anahtarı güncelleyin
+  </Step>
+
+  <Step title="Aktivite Kontrol Edin">
+    Şüpheli aktivite olup olmadığını kontrol edin
+  </Step>
+</Steps>
+
+## Sorun Giderme
+
+### "Invalid API Key" Hatası
+
+<AccordionGroup>
+  <Accordion title="Olası Nedenler">
+    - Anahtar yanlış kopyalanmış
+    - Anahtar revoke edilmiş
+    - Servis sağlayıcı hesabı askıda
+  </Accordion>
+
+  <Accordion title="Çözüm Adımları">
+    1. Anahtarı tekrar kopyalayın (boşluk vs yok)
+    2. Servis sağlayıcı panelinde durumu kontrol edin
+    3. Yeni anahtar oluşturun
+  </Accordion>
+</AccordionGroup>
+
+### "Connection Failed" Hatası
+
+<AccordionGroup>
+  <Accordion title="Olası Nedenler">
+    - İnternet bağlantısı yok
+    - AI servisleri down
+    - Firewall/proxy engeli
+  </Accordion>
+
+  <Accordion title="Çözüm Adımları">
+    1. İnternet bağlantınızı kontrol edin
+    2. Servis sağlayıcı durum sayfasını kontrol edin
+    3. VPN/proxy kapatıp deneyin
+  </Accordion>
+</AccordionGroup>
+
+### Agent Oluşturulamıyor
+
+<AccordionGroup>
+  <Accordion title="Sebep">
+    API key ekli değil veya geçersiz
+  </Accordion>
+
+  <Accordion title="Çözüm">
+    1. API Keys sayfasına gidin
+    2. API anahtarı var mı kontrol edin
+    3. Test Bağlantısı başarılı mı?
+    4. Yoksa yeni anahtar ekleyin veya destek ekibi ile iletişime geçin
+  </Accordion>
+</AccordionGroup>
+
+## API Kullanım İstatistikleri
+
+### Servis Sağlayıcı Dashboard
+
+**Görüntüleme:** Servis sağlayıcı panelinde Usage bölümü
+
+**Bilgiler:**
+- API call sayısı
+- Başarılı/başarısız ratio
+- Kullanım trendi
+- Quota bilgisi
+
+### Platform İstatistikleri (Gelecekte)
+
+**Gösterilecek:**
+- API call geçmişi
+- Hata logları
+- Rate limit uyarıları
+
+<Frame>
+  <img src="/images/organization-api-stats.png" alt="API kullanım istatistikleri" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: API kullanım istatistikleri ekranı
+</Note>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="API anahtarı nereden alınır?">
+    API anahtarı genellikle otomatik olarak yapılandırılır. Manuel kurulum için AI servis sağlayıcısı panelinden API Keys bölümünden oluşturabilirsiniz.
+  </Accordion>
+
+  <Accordion title="Birden fazla anahtar ekleyebilir miyim?">
+    Evet, test ve production için ayrı anahtarlar ekleyebilirsiniz.
+  </Accordion>
+
+  <Accordion title="Anahtar süresi doluyor mu?">
+    API anahtarları genellikle expire olmaz, ancak güvenlik için düzenli rotation önerilir.
+  </Accordion>
+
+  <Accordion title="Anahtar silinirse ne olur?">
+    Agent oluşturulamaz ve çağrı başlatılamaz. Yeni anahtar eklemeniz gerekir.
+  </Accordion>
+
+  <Accordion title="Test ve production anahtar farkı nedir?">
+    Test anahtarı test modunda çalışır, gerçek çağrı yapmaz. Production anahtarı canlı çağrılar için kullanılır.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Organizasyon Oluşturma" icon="building" href="/organization-management/create-organization">
+    Yeni organizasyon oluşturma
+  </Card>
+  <Card title="Organizasyon Ayarları" icon="gear" href="/organization-management/organization-settings">
+    Organizasyon konfigürasyonlarını yönetin
+  </Card>
+  <Card title="AI Agent Oluşturma" icon="robot" href="/voice-ai-agents/create-agent">
+    Yapay zeka destekli sesli asistanlar oluşturun
+  </Card>
+</CardGroup>

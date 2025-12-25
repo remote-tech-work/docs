@@ -1,0 +1,723 @@
+---
+title: "Kampanya Yürütme ve Takibi"
+description: "Kampanyanızı izleyin, duraklatın, devam ettirin ve detaylı olarak takip edin"
+---
+
+## Genel Bakış
+
+Kampanya oluşturduktan sonra, kampanyanın yürütülmesini izleyebilir, duraklatabilir, devam ettirebilir ve detaylı takip edebilirsiniz. Bu makale, kampanya yürütme sürecini kapsar.
+
+## Kampanya Durumları
+
+### Durum Listesi
+
+**Draft (Taslak):**
+- Kampanya oluşturuldu ama başlamadı
+- Düzenlenebilir
+- Silinebilir
+
+**Scheduled (Zamanlanmış):**
+- Başlangıç tarihi gelecekte
+- Otomatik başlayacak
+- İptal edilebilir
+
+**Running (Çalışıyor):**
+- Aktif olarak çağrılar yapılıyor
+- Duraklatılabilir
+- İstatistikler güncelleniyor
+
+**Paused (Duraklatılmış):**
+- Geçici olarak durduruldu
+- Devam ettirilebilir
+- Düzenlenebilir
+
+**Completed (Tamamlandı):**
+- Tüm çağrılar yapıldı
+- Artık düzenlenemez
+- Sadece görüntüleme
+
+**Cancelled (İptal Edildi):**
+- Manuel olarak iptal edildi
+- Kalan çağrılar yapılmadı
+- Arşivlendi
+
+**Failed (Başarısız):**
+- Sistemsel hata
+- Tekrar denenebilir
+- Destek ekibine bildirin
+
+## Kampanya Başlatma
+
+### Otomatik Başlatma
+
+**Zamanlanmış Kampanya:**
+1. Başlangıç tarihi geldiğinde
+2. Otomatik olarak `Running` durumuna geçer
+3. Çağrılar başlar
+
+**Bildirim:**
+- E-posta bildirimi (varsa etkin)
+- Dashboard'da görünür
+
+### Manuel Başlatma
+
+<Tabs>
+  <Tab title="Draft Kampanya">
+    <Steps>
+      <Step title="Kampanyalar Sayfasına Gidin">
+        Kampanyalar sayfasını açın
+      </Step>
+      <Step title="Başlat Butonuna Tıklayın">
+        Kampanya satırında **Başlat** butonunu tıklayın
+      </Step>
+      <Step title="Onaylayın">
+        Başlatma işlemini onaylayın
+      </Step>
+      <Step title="Durum Değişir">
+        Kampanya `Running` durumuna geçer
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="Zamanlanmış Kampanyayı Erkenden Başlatma">
+    <Steps>
+      <Step title="Kampanya Detayına Gidin">
+        Kampanya detay sayfasını açın
+      </Step>
+      <Step title="Şimdi Başlat">
+        **Şimdi Başlat** butonuna tıklayın
+      </Step>
+      <Step title="Zamanlamayı İptal Edin">
+        "Zamanlamayı iptal et ve şimdi başlat?" onayını verin
+      </Step>
+      <Step title="Kampanya Başlar">
+        Kampanya hemen çalışmaya başlar
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Kampanya İzleme
+
+### Dashboard Görünümü
+
+**Kampanyalar Sayfası:**
+
+**Özet Kartlar:**
+<CardGroup cols={3}>
+  <Card title="Aktif Kampanyalar" icon="play">
+    3 kampanya çalışıyor
+  </Card>
+  <Card title="Duraklatılmış" icon="pause">
+    1 kampanya beklemede
+  </Card>
+  <Card title="Tamamlanan" icon="check">
+    12 kampanya tamamlandı
+  </Card>
+</CardGroup>
+
+<Frame>
+  <img src="/images/campaign-execution-dashboard.png" alt="Kampanya yürütme dashboard görünümü" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Kampanyalar sayfasındaki özet kartları ve kampanya listesini gösteren ekran
+</Note>
+
+### Kampanya Detay Sayfası
+
+**Erişim:**
+1. Kampanyaya tıklayın
+2. Detay sayfası açılır
+
+**Bölümler:**
+1. **Genel Bilgiler**
+2. **İlerleme Metrikleri**
+3. **Çağrı Listesi**
+4. **Canlı İstatistikler**
+
+### Genel Bilgiler
+
+**Gösterilen:**
+- Kampanya adı
+- Açıklama
+- Başlangıç/Bitiş tarihi
+- Kullanılan AI Agent
+- Oluşturan kullanıcı
+- Oluşturma zamanı
+
+**Düzenleme:**
+- `Draft` ve `Paused` durumundayken düzenlenebilir
+- **Düzenle** butonu ile güncelleyin
+
+### İlerleme Metrikleri
+
+**Progress Bar:**
+
+<Frame>
+  <img src="/images/campaign-execution-progress.png" alt="Kampanya ilerleme göstergesi" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Kampanya detay sayfasındaki ilerleme çubuğu ve detaylı istatistikleri gösteren ekran
+</Note>
+
+**Detaylı İstatistikler:**
+- ✅ **Başarılı:** 305 (68%)
+- ❌ **Başarısız:** 95 (21%)
+- 📞 **Meşgul:** 30 (7%)
+- ⏳ **Bekleyen:** 550
+- 🔄 **Devam Eden:** 20
+
+### Canlı İstatistikler
+
+**Gerçek Zamanlı:**
+- Son 1 dakikada yapılan çağrılar
+- Şu an devam eden çağrılar
+- Ortalama çağrı süresi
+- Başarı oranı trendi
+
+<Info>
+  **Not:** İstatistikler 5-10 saniyede bir otomatik güncellenir.
+</Info>
+
+## Kampanya Yönetimi
+
+### Duraklatma (Pause)
+
+**Ne Zaman:**
+- Sorun tespit ettiniz
+- Agent'ı güncellemek istiyorsunuz
+- Geçici ara vermek istiyorsunuz
+
+<Steps>
+  <Step title="Duraklat Butonuna Tıklayın">
+    Kampanya detayı veya listesinde **Duraklat** butonunu (⏸️) tıklayın
+  </Step>
+  <Step title="Onaylayın">
+    Duraklatma işlemini onaylayın
+  </Step>
+</Steps>
+
+**Sonuç:**
+- Devam eden çağrılar tamamlanır
+- Yeni çağrı başlamaz
+- Durum: `Paused`
+
+### Devam Ettirme (Resume)
+
+**Ne Zaman:**
+- Duraklatılmış kampanyayı tekrar başlatmak
+
+<Steps>
+  <Step title="Devam Ettir Butonuna Tıklayın">
+    Duraklatılmış kampanyada **Devam Ettir** butonunu (▶️) tıklayın
+  </Step>
+  <Step title="Onaylayın">
+    Devam ettirme işlemini onaylayın
+  </Step>
+</Steps>
+
+**Sonuç:**
+- Kaldığı yerden devam eder
+- Yeni çağrılar başlar
+- Durum: `Running`
+
+### Durdurma (Stop)
+
+**Ne Zaman:**
+- Kampanyayı tamamen bitirmek
+- İptal etmek
+
+<Warning>
+  **Uyarı:** Durdurma işlemi geri alınamaz! Tüm bekleyen çağrılar iptal olur.
+</Warning>
+
+<Steps>
+  <Step title="Kampanya Detayına Gidin">
+    Kampanya detay sayfasını açın
+  </Step>
+  <Step title="Durdur Butonuna Tıklayın">
+    **Durdur** butonunu (⏹️) tıklayın
+  </Step>
+  <Step title="Uyarıyı Okuyun">
+    "Kalan çağrılar yapılmayacak" uyarısını okuyun
+  </Step>
+  <Step title="Onaylayın">
+    İşlemi onaylayın
+  </Step>
+</Steps>
+
+**Sonuç:**
+- Tüm bekleyen çağrılar iptal
+- Devam eden çağrılar tamamlanır
+- Durum: `Cancelled`
+- Geri alınamaz!
+
+### Hız Ayarlama
+
+**Call Rate (Çağrı Hızı):**
+- Dakikada kaç çağrı yapılacak
+- Concurrency slot'larınıza bağlı
+
+<Steps>
+  <Step title="Ayarlar Bölümüne Gidin">
+    Kampanya detayı > **Ayarlar** sekmesini açın
+  </Step>
+  <Step title="Call Rate Ayarlayın">
+    **Call Rate:** Slider ile 1-20 arası değer seçin (concurrency'nize göre)
+  </Step>
+  <Step title="Kaydedin">
+    **Kaydet** butonuna tıklayın
+  </Step>
+</Steps>
+
+<Tip>
+  **Öneriler:**
+  - Başlangıç: 5-10 çağrı/dakika
+  - Test ettikten sonra artırın
+  - Concurrency limitinizi aşmayın
+</Tip>
+
+### Öncelik Sıralaması
+
+**Birden Fazla Kampanya:**
+- Eşzamanlı kampanyalar çalışabilir
+- Concurrency slot paylaşılır
+
+<Steps>
+  <Step title="Ayarlar Bölümüne Gidin">
+    Kampanya detayı > **Ayarlar** sekmesini açın
+  </Step>
+  <Step title="Öncelik Belirleyin">
+    **Öncelik:** 1-10 arası değer seçin (10 en yüksek)
+  </Step>
+  <Step title="Kaydedin">
+    **Kaydet** butonuna tıklayın
+  </Step>
+</Steps>
+
+**Davranış:**
+- Yüksek öncelikli kampanya önce çağrı yapar
+- Slot boşaldıkça diğerleri başlar
+
+## Çağrı Listesi Yönetimi
+
+### Bekleyen Çağrılar
+
+**Görüntüleme:**
+1. Kampanya detayı > **Çağrı Listesi** sekmesi
+2. Durum: `Pending`
+
+**Bilgiler:**
+- Müşteri adı
+- Telefon
+- Zamanlanmış saat
+- Öncelik
+
+<Frame>
+  <img src="/images/campaign-execution-call-list.png" alt="Kampanya çağrı listesi" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Çağrı listesi sekmesinde bekleyen, tamamlanan ve başarısız çağrıları gösteren ekran
+</Note>
+
+### Manuel Müşteri Ekleme
+
+**Kampanya Başladıktan Sonra:**
+
+<Steps>
+  <Step title="Müşteri Ekle Butonuna Tıklayın">
+    Çağrı Listesi > **Müşteri Ekle**
+  </Step>
+  <Step title="Müşteri Seçin">
+    Müşteri listesinden seçim yapın
+  </Step>
+  <Step title="Ekle">
+    **Ekle** butonuna tıklayın
+  </Step>
+</Steps>
+
+**Sonuç:**
+- Listeye eklenir
+- Sıraya girer
+- Zamanı gelince aranır
+
+### Manuel Müşteri Çıkarma
+
+**Kullanım:** Belirli müşteriyi aramak istemiyorsunuz
+
+<Steps>
+  <Step title="Müşteri Bulun">
+    Çağrı Listesi'nde müşteriyi bulun
+  </Step>
+  <Step title="Checkbox Seçin">
+    Müşteri yanındaki checkbox'ı seçin
+  </Step>
+  <Step title="Listeden Çıkar">
+    **Listeden Çıkar** butonuna tıklayın
+  </Step>
+  <Step title="Onaylayın">
+    İşlemi onaylayın
+  </Step>
+</Steps>
+
+**Sonuç:**
+- Müşteri aranmaz
+- İstatistikten çıkar
+
+### Öncelikli Arama
+
+**Kullanım:** Belirli müşteriyi hemen aramak
+
+<Steps>
+  <Step title="Müşteri Bulun">
+    Çağrı Listesi'nde müşteriyi bulun
+  </Step>
+  <Step title="Önceliklendir">
+    **Önceliklendir** butonuna tıklayın
+  </Step>
+</Steps>
+
+**Sonuç:**
+- Sıradaki ilk çağrı olur
+
+## Retry (Yeniden Deneme) Yönetimi
+
+### Otomatik Retry
+
+**Başarısız Çağrılar İçin:**
+- Ulaşılamadı
+- Meşgul
+- Yanıt yok
+
+<Steps>
+  <Step title="Ayarlar Bölümüne Gidin">
+    Kampanya detayı > **Ayarlar**
+  </Step>
+  <Step title="Retry Settings Yapılandırın">
+    **Retry Settings:**
+    - Max Retry: 3 (maksimum deneme)
+    - Retry Delay: 30 dakika (denemeler arası süre)
+  </Step>
+  <Step title="Kaydedin">
+    **Kaydet** butonuna tıklayın
+  </Step>
+</Steps>
+
+**Davranış:**
+1. İlk arama: Başarısız
+2. 30 dakika sonra: 2. deneme
+3. 30 dakika sonra: 3. deneme
+4. Hala başarısız → `Failed`
+
+### Manuel Retry
+
+**Kullanım:** Belirli çağrıyı tekrar denemek
+
+<Steps>
+  <Step title="Başarısız Çağrı Bulun">
+    Çağrı Listesi > Başarısız çağrıyı bulun
+  </Step>
+  <Step title="Tekrar Ara">
+    **Tekrar Ara** butonuna tıklayın
+  </Step>
+</Steps>
+
+**Sonuç:**
+- Anında tekrar aranır
+
+### Retry İstatistikleri
+
+**Görüntüleme:**
+- Kaç çağrı retry ediliyor
+- Retry başarı oranı
+- Toplam retry sayısı
+
+## Zaman Yönetimi
+
+### Çalışma Saatleri
+
+<Steps>
+  <Step title="Ayarlar Bölümüne Gidin">
+    Kampanya detayı > **Ayarlar**
+  </Step>
+  <Step title="Çalışma Saatleri Belirleyin">
+    **Çalışma Saatleri:**
+    - Başlangıç: 09:00
+    - Bitiş: 18:00
+    - Günler: Pzt-Cuma
+  </Step>
+  <Step title="Kaydedin">
+    **Kaydet** butonuna tıklayın
+  </Step>
+</Steps>
+
+**Davranış:**
+- Sadece bu saatlerde arama yapılır
+- Dışında kampanya otomatik durur
+- Ertesi gün devam eder
+
+### Zaman Aşımı
+
+**Call Timeout:**
+- Bir çağrı maksimum kaç dakika sürebilir
+- Agent ayarından gelir
+- Aşılırsa otomatik sonlanır
+
+### Kampanya Bitiş
+
+**Otomatik Bitiş:**
+- Tüm çağrılar tamamlandı
+- Durum: `Completed`
+
+**Zamanlanmış Bitiş:**
+- Bitiş tarihi geldi
+- Kalan çağrılar iptal edilir
+- Durum: `Completed`
+
+**Manuel Bitiş:**
+- Stop butonu
+- Durum: `Cancelled`
+
+## Hata Yönetimi
+
+### Yaygın Hatalar
+
+<AccordionGroup>
+  <Accordion title="Çağrı Başarısız">
+    **Sebepler:**
+    - Müşteri ulaşılamadı
+    - Numara geçersiz
+    - Agent hatası
+
+    **Görüntüleme:**
+    1. Çağrı Listesi > Durum: `Failed`
+    2. Hata mesajına tıklayın
+    3. Detay görün
+
+    **Örnek Hatalar:**
+    - "No answer" - Yanıt yok
+    - "Busy" - Meşgul
+    - "Invalid number" - Geçersiz numara
+    - "Agent error" - Agent hatası
+  </Accordion>
+
+  <Accordion title="Concurrency Limit">
+    **Hata:** "Concurrency limit reached"
+
+    **Sebep:** Slot doldu
+
+    **Çözüm:**
+    1. Kampanya önceliğini düşürün
+    2. Diğer kampanyaları durdurun
+    3. Plan upgrade yapın (daha fazla slot)
+  </Accordion>
+
+  <Accordion title="Agent Not Available">
+    **Hata:** "Agent is not available"
+
+    **Sebep:** Agent silinmiş veya devre dışı
+
+    **Çözüm:**
+    1. Kampanyayı duraklatın
+    2. Agent'ı kontrol edin
+    3. Başka agent atayın
+    4. Devam ettirin
+  </Accordion>
+</AccordionGroup>
+
+### Hata Logları
+
+**Erişim:**
+1. Kampanya detayı > **Loglar** sekmesi
+2. Tüm hatalar listelenir
+
+**Bilgiler:**
+- Hata zamanı
+- Hata mesajı
+- Müşteri bilgisi
+- Stack trace (teknik detay)
+
+<Frame>
+  <img src="/images/campaign-execution-error-logs.png" alt="Kampanya hata logları" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Kampanya detay sayfasındaki Loglar sekmesini ve hata kayıtlarını gösteren ekran
+</Note>
+
+## Bildirimler
+
+### E-posta Bildirimleri
+
+<Steps>
+  <Step title="Bildirim Ayarlarına Gidin">
+    Profil > **Bildirim Ayarları**
+  </Step>
+  <Step title="Kampanya Bildirimlerini Ayarlayın">
+    **Kampanya Bildirimleri:**
+    - ✅ Kampanya başladı
+    - ✅ Kampanya tamamlandı
+    - ✅ Hata oluştu
+    - ❌ Her çağrı sonrası (çok fazla)
+  </Step>
+  <Step title="Kaydedin">
+    **Kaydet** butonuna tıklayın
+  </Step>
+</Steps>
+
+### Platform Bildirimleri
+
+**Bildirim Merkezi:**
+- Sağ üst köşe 🔔 ikonu
+- Kampanya olayları görünür
+
+**Örnek Bildirimler:**
+- "Mart Satış kampanyası başladı"
+- "Anket kampanyası tamamlandı (500/500)"
+- "Hata: Agent bulunamadı"
+
+## İpuçları ve En İyi Uygulamalar
+
+### Kampanya Başlatma
+
+<Tip>
+  **Öneriler:**
+  - ✅ İlk 10-20 çağrıyı izleyin
+  - ✅ Agent performansını kontrol edin
+  - ✅ Başarı oranını gözlemleyin
+  - ✅ Sorun yoksa devam ettirin
+  - ❌ Başlat ve unut - İlk saatlerde takip edin
+</Tip>
+
+### İzleme
+
+<Tip>
+  **Öneriler:**
+  - ✅ Günde 2-3 kez kontrol edin
+  - ✅ Başarı oranını takip edin
+  - ✅ Hata loglarını inceleyin
+  - ✅ Gerçek zamanlı metriklere bakın
+</Tip>
+
+### Duraklatma
+
+<Tip>
+  **Öneriler:**
+  - ✅ Sorun tespit edince hemen duraklatın
+  - ✅ Agent güncellemesi öncesi duraklatın
+  - ❌ Gereksiz sık duraklatma (inefficient)
+</Tip>
+
+### Retry
+
+<Tip>
+  **Öneriler:**
+  - ✅ 2-3 retry ideal
+  - ✅ 30-60 dakika delay
+  - ❌ Çok fazla retry (spam olabilir)
+  - ❌ Çok kısa delay (rahatsız eder)
+</Tip>
+
+### Çalışma Saatleri
+
+<Tip>
+  **Öneriler:**
+  - ✅ 09:00-18:00 iş saatleri
+  - ✅ Müşteri saat dilimini dikkate alın
+  - ❌ Gece/erken sabah aramalar
+  - ❌ Hafta sonu (özel durum hariç)
+</Tip>
+
+## Sorun Giderme
+
+<AccordionGroup>
+  <Accordion title="Kampanya İleremiyor">
+    **Sebep:** Concurrency slot dolu
+
+    **Çözüm:**
+    1. Diğer kampanyaları kontrol edin
+    2. Öncelikleri ayarlayın
+    3. Gereksiz kampanyaları durdurun
+  </Accordion>
+
+  <Accordion title="Başarı Oranı Düşük">
+    **Sebep:** Agent veya liste problemi
+
+    **Çözüm:**
+    1. İlk 50 çağrıyı inceleyin
+    2. Agent promptunu kontrol edin
+    3. Müşteri segmentini değerlendirin
+    4. Test görüşmesi yapın
+  </Accordion>
+
+  <Accordion title="Çağrılar Çok Yavaş">
+    **Sebep:** Call rate düşük
+
+    **Çözüm:**
+    1. Call rate artırın
+    2. Concurrency slot kontrol edin
+    3. Çalışma saatleri içinde mi?
+  </Accordion>
+
+  <Accordion title="Çok Fazla Hata">
+    **Sebep:** Geçersiz numaralar veya agent hatası
+
+    **Çözüm:**
+    1. Hata loglarını inceleyin
+    2. Numara formatlarını kontrol edin
+    3. Agent'ı test edin
+    4. Geçersiz numaraları temizleyin
+  </Accordion>
+</AccordionGroup>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Kampanya başladıktan sonra düzenleyebilir miyim?">
+    Sadece duraklatılmışken. Running durumdayken önce duraklatmalısınız.
+  </Accordion>
+
+  <Accordion title="Kaç kampanya aynı anda çalışabilir?">
+    Limit yok, ancak concurrency slot paylaşılır.
+  </Accordion>
+
+  <Accordion title="Retry otomatik mi?">
+    Evet, ayarlara göre otomatik retry yapılır.
+  </Accordion>
+
+  <Accordion title="Kampanya tamamlandıktan sonra tekrar başlatabilir miyim?">
+    Hayır, tamamlanan kampanya kopyalanıp yeni kampanya oluşturulabilir.
+  </Accordion>
+
+  <Accordion title="Çağrı listesine sonradan müşteri ekleyebilir miyim?">
+    Evet, kampanya Running veya Paused durumdayken eklenebilir.
+  </Accordion>
+
+  <Accordion title="İstatistikler gerçek zamanlı mı?">
+    Evet, 5-10 saniyede bir güncellenir.
+  </Accordion>
+
+  <Accordion title="Kampanya iptal edersem ne olur?">
+    Kalan çağrılar yapılmaz, tamamlanan kayıtlar kalır.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Kampanya Oluşturma" icon="rocket" href="/campaigns/create-campaign">
+    Yeni kampanya oluşturma ve yapılandırma
+  </Card>
+  <Card title="Kampanya Analitiği" icon="chart-line" href="/campaigns/campaign-analytics">
+    Kampanya performans analizi ve raporlama
+  </Card>
+  <Card title="AI Agent Oluşturma" icon="robot" href="/voice-ai-agents/create-agent">
+    Kampanyalar için AI Agent yapılandırması
+  </Card>
+  <Card title="Müşteri Ekleme" icon="user-plus" href="/customer-management/add-customers">
+    Kampanyalara müşteri ekleme
+  </Card>
+</CardGroup>

@@ -1,0 +1,471 @@
+---
+title: "API Bağlantı Sorunları"
+description: "Platform ve harici servisler arasındaki bağlantı sorunları ve çözümleri"
+---
+
+## Genel Bakış
+
+Bu makale, platform ile AI servisleri ve diğer harici servisler arasındaki bağlantı sorunlarını ele alır. API bağlantı problemleri, çağrı yapılamama, agent çalışmama ve veri senkronizasyon hatalarına neden olabilir.
+
+## API Anahtarı Sorunları
+
+<AccordionGroup>
+  <Accordion title='"Geçersiz API Anahtarı" Hatası'>
+    **Belirtiler:**
+    - "API key is invalid" mesajı
+    - Agent oluşturulamıyor
+    - Çağrı başlatılamıyor
+    - Dashboard'da ⚠️ **Bağlantı Sorunu** göstergesi
+
+    **Olası Nedenler:**
+    - API anahtarı yanlış girilmiş
+    - API anahtarı silinmiş veya iptal edilmiş
+    - API anahtarı süresi dolmuş
+    - Yanlış environment (test/production) anahtarı
+
+    **Çözüm:**
+
+    **Adım 1: API Anahtarını Kontrol Edin**
+    1. Sol menüden **Ayarlar** > **API Keys** sayfasına gidin
+    2. Platform API anahtarınızı görüntüleyin
+    3. Anahtarın tam olarak doğru olduğundan emin olun
+
+    **Adım 2: Yeni API Anahtarı Alın**
+    1. API servis sağlayıcısı kontrol paneline gidin
+    2. **API Keys** bölümüne gidin
+    3. Yeni bir API anahtarı oluşturun
+    4. Anahtarı kopyalayın
+
+    **Adım 3: API Anahtarını Güncelleyin**
+    1. Platform Ayarlar > API Keys
+    2. Eski anahtarı silin
+    3. **Yeni API Key Ekle** butonuna tıklayın
+    4. API anahtarını yapıştırın
+    5. **Kaydet** ve **Test Bağlantısı** yapın
+
+    **Doğrulama:**
+    - Dashboard'da AI Entegrasyon Durumu ✅ **Bağlı** olmalı
+    - Test agent oluşturabilmelisiniz
+
+    <Warning>
+      API anahtarınızı kimseyle paylaşmayın ve güvenli bir yerde saklayın.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="API Anahtarı Görünmüyor">
+    **Belirtiler:**
+    - API Keys sayfası boş
+    - "Henüz API anahtarı eklenmedi" mesajı
+    - Agent oluştur butonu pasif
+
+    **Neden:**
+    - İlk kurulum tamamlanmamış
+    - API anahtarı hiç eklenmemiş
+
+    **Çözüm:**
+    1. **İlk Kurulum Wizard'ı Tamamlayın**:
+       - Ayarlar > Setup sayfasına gidin
+       - Adım adım kurulum talimatlarını izleyin
+    2. **Manuel API Key Ekleme**:
+       - Ayarlar > API Keys > **Yeni API Key Ekle**
+       - API anahtarınızı yapıştırın
+       - Kaydedin
+  </Accordion>
+
+  <Accordion title='"API Quota Exceeded" Hatası'>
+    **Belirtiler:**
+    - "API request limit exceeded" mesajı
+    - Çağrılar başlamıyor
+    - 429 Too Many Requests hatası
+
+    **Neden:**
+    - API servis planı limitine ulaşıldı
+    - Çok fazla concurrent request
+
+    **Çözüm:**
+    1. **API Plan Kontrolü**:
+       - Servis sağlayıcısı kontrol panelinde plan limitlerinizi kontrol edin
+       - Kullanım istatistiklerinizi görün
+    2. **Plan Yükseltme**:
+       - Daha yüksek plana geçin
+       - Daha fazla API call hakkı satın alın
+    3. **Rate Limiting Ayarı**:
+       - Platform ayarlarından eş zamanlı çağrı limitini düşürün
+       - Kampanyaları daha yavaş çalıştırın
+  </Accordion>
+</AccordionGroup>
+
+## AI Servis Entegrasyon Sorunları
+
+<AccordionGroup>
+  <Accordion title="Agent Oluşturulamıyor">
+    **Belirtiler:**
+    - "Agent oluşturulamadı" hatası
+    - API bağlantı hatası
+    - Timeout error
+
+    **Olası Nedenler:**
+    - AI servisleri çalışmıyor
+    - API anahtarı geçersiz
+    - Network bağlantı sorunu
+
+    **Çözüm:**
+
+    **Adım 1: Servis Durumu**
+    1. Servis sağlayıcısı durum sayfasını kontrol edin
+    2. Servisler çalışıyor mu bakın
+    3. Maintenance window olabilir
+
+    **Adım 2: API Anahtarı Test**
+    1. Ayarlar > API Keys > **Test Bağlantısı**
+    2. Başarılı olursa API key çalışıyor
+    3. Başarısız olursa anahtarı yenileyin
+
+    **Adım 3: Network Kontrolü**
+    1. İnternet bağlantınızı kontrol edin
+    2. Firewall/proxy ayarlarını kontrol edin
+    3. VPN kullanıyorsanız kapatıp deneyin
+
+    **Adım 4: Farklı Tarayıcı**
+    1. Incognito/private mode deneyin
+    2. Farklı cihazdan deneyin
+
+    <Tip>
+      AI servis kesintileri nadirdir ama olabilir. Servis durum sayfasını takip edin.
+    </Tip>
+  </Accordion>
+
+  <Accordion title="Çağrı Başlatılamıyor - API Error">
+    **Belirtiler:**
+    - "Failed to start call" mesajı
+    - API error
+    - Call status: failed immediately
+
+    **Olası Nedenler:**
+    - Agent konfigürasyonu hatalı
+    - Telefon numarası geçersiz
+    - Provider credentials eksik
+
+    **Çözüm:**
+
+    **Agent Konfigürasyonu:**
+    1. Agent ayarlarına gidin
+    2. Tüm zorunlu alanların dolu olduğundan emin olun:
+       - Agent adı
+       - İlk mesaj modu
+       - Sistem talimatı
+    3. Test araması yapın
+
+    **Telefon Numarası:**
+    1. E.164 formatında olmalı: +905551234567
+    2. Geçerli bir numara olduğundan emin olun
+    3. DNC listesinde olmamalı
+
+    **Provider Credentials:**
+    1. Servis sağlayıcısı kontrol panelinde telefon numarası bağlantınızı kontrol edin
+    2. SIP trunk ayarlarını doğrulayın
+    3. Telefon servisi credentials güncel mi bakın
+  </Accordion>
+
+  <Accordion title="Webhook Hataları">
+    **Belirtiler:**
+    - Call events alınamıyor
+    - Transcript görünmüyor
+    - Call status güncellenmiyor
+
+    **Neden:**
+    - Webhook signature doğrulaması başarısız
+    - Webhook URL'i yanlış
+    - Webhook secret yanlış
+
+    **Çözüm:**
+
+    **Webhook Secret Kontrolü:**
+    1. Backend environment variables kontrol edin:
+       - Webhook secret doğru ayarlanmış mı?
+    2. Servis sağlayıcısı kontrol panelinde webhook secret'i görüntüleyin
+    3. İkisi eşleşiyor mu kontrol edin
+
+    **Webhook URL:**
+    1. Servis sağlayıcısı kontrol paneli > Webhooks
+    2. Webhook URL'in doğru olduğundan emin olun:
+       - `https://your-domain.com/webhooks/api`
+    3. HTTPS kullanılıyor olmalı (HTTP değil)
+
+    **Webhook Test:**
+    1. Servis kontrol panelinden test webhook gönderin
+    2. Backend logs'larını kontrol edin
+    3. Webhook alınıyor mu bakın
+  </Accordion>
+</AccordionGroup>
+
+## Clerk Kimlik Doğrulama Sorunları
+
+<AccordionGroup>
+  <Accordion title='"Authentication Failed" Hatası'>
+    **Belirtiler:**
+    - Giriş yapılamıyor
+    - Oturum otomatik kapanıyor
+    - 401 Unauthorized hatası
+
+    **Olası Nedenler:**
+    - Clerk secret key yanlış
+    - JWT token geçersiz
+    - Clerk servisi down
+
+    **Çözüm:**
+
+    **Clerk Secret Key:**
+    1. Backend environment variables kontrol edin:
+       - `ClerkSecretKey` doğru mu?
+    2. Clerk dashboard'dan secret key'i alın
+    3. Environment variable'ı güncelleyin
+    4. Backend'i yeniden başlatın
+
+    **Token Kontrolü:**
+    1. Tarayıcı developer tools > Application > Cookies
+    2. `__session` cookie'si var mı?
+    3. Expire olmamış mı kontrol edin
+
+    **Clerk Servis Durumu:**
+    1. Clerk status sayfasını kontrol edin: status.clerk.com
+    2. Servis kesintisi varsa bekleyin
+  </Accordion>
+
+  <Accordion title='"Invalid JWT" Hatası'>
+    **Belirtiler:**
+    - API calls 401 dönüyor
+    - "JWT signature verification failed"
+    - Sürekli login ekranına yönlendirme
+
+    **Neden:**
+    - JWK cache sorunu
+    - Clerk public key değişmiş
+    - System clock senkronizasyon sorunu
+
+    **Çözüm:**
+
+    **Backend Cache Temizle:**
+    1. Backend'i yeniden başlatın
+    2. JWK cache otomatik yenilenecek
+
+    **System Clock:**
+    1. Bilgisayarınızın saat ayarını kontrol edin
+    2. Otomatik saat ayarını aktif edin
+    3. Saat dilimi doğru mu bakın
+
+    **Clerk Configuration:**
+    1. Clerk dashboard > JWT Template
+    2. Configuration doğru mu kontrol edin
+  </Accordion>
+</AccordionGroup>
+
+## Stripe Billing Entegrasyonu Sorunları
+
+<AccordionGroup>
+  <Accordion title="Ödeme İşlemi Başarısız">
+    **Belirtiler:**
+    - "Payment failed" mesajı
+    - Stripe checkout açılmıyor
+    - Kredi eklenmiyor
+
+    **Olası Nedenler:**
+    - Stripe secret key yanlış
+    - Checkout session oluşturulamadı
+    - Stripe webhook sorunu
+
+    **Çözüm:**
+
+    **Stripe Secret Key:**
+    1. Backend environment variables:
+       - `StripeSecretKey` kontrol edin
+    2. Stripe dashboard'dan key'i alın
+    3. Test mode vs live mode kontrolü yapın
+
+    **Checkout Session:**
+    1. Backend logs'larını kontrol edin
+    2. Stripe dashboard > Logs
+    3. Hata mesajlarını inceleyin
+
+    **Webhook:**
+    1. Stripe dashboard > Webhooks
+    2. Webhook URL doğru mu?
+    3. Webhook secret eşleşiyor mu?
+  </Accordion>
+
+  <Accordion title="Kredi Satın Alınamıyor">
+    **Belirtiler:**
+    - "Checkout session failed"
+    - Stripe sayfası açılmıyor
+    - Popup engelleniyor
+
+    **Çözüm:**
+    1. **Popup Engelleyiciyi Kaldırın**
+    2. **Farklı Tarayıcı Deneyin**
+    3. **Incognito Mode Kullanın**
+    4. **Stripe Test Cards** (test modda):
+       - 4242 4242 4242 4242
+       - Herhangi bir gelecek tarih
+       - Herhangi bir CVC
+  </Accordion>
+</AccordionGroup>
+
+## AWS S3 Dosya Yükleme Sorunları
+
+<AccordionGroup>
+  <Accordion title="Bilgi Bankası Dosyası Yüklenemiyor">
+    **Belirtiler:**
+    - "File upload failed"
+    - S3 bağlantı hatası
+    - Timeout error
+
+    **Olası Nedenler:**
+    - AWS credentials yanlış
+    - S3 bucket erişim sorunu
+    - Dosya boyutu çok büyük
+
+    **Çözüm:**
+
+    **Dosya Boyutu:**
+    1. Maksimum dosya boyutu: 10 MB
+    2. Desteklenen formatlar: PDF, TXT, DOC, DOCX
+    3. Dosyayı küçültün veya bölün
+
+    **AWS Credentials:**
+    1. Backend'de AWS credentials kontrol edin
+    2. S3 bucket adı doğru mu: `ai-agent-tr-knowledge-base-files`
+    3. IAM permissions kontrol edin
+
+    **S3 Bucket:**
+    1. AWS Console > S3
+    2. Bucket var mı?
+    3. Public access engelleniyor mu?
+  </Accordion>
+</AccordionGroup>
+
+## Network ve Firewall Sorunları
+
+<AccordionGroup>
+  <Accordion title="Timeout Hataları">
+    **Belirtiler:**
+    - "Request timeout"
+    - API calls 30+ saniye sürüyor
+    - Aralıklı bağlantı kopmaları
+
+    **Olası Nedenler:**
+    - Yavaş internet bağlantısı
+    - Firewall API isteklerini engelliyor
+    - Proxy ayarları
+
+    **Çözüm:**
+
+    **İnternet Hızı:**
+    1. Speedtest yapın (speedtest.net)
+    2. Minimum 10 Mbps gerekli
+    3. WiFi yerine kablo deneyin
+
+    **Firewall Ayarları:**
+    1. Firewall'u geçici olarak devre dışı bırakın
+    2. Platform domain'lerini whitelist'e ekleyin:
+       - `*.aiagenttr.com`
+       - API servis domain'leri
+       - `clerk.com`
+       - `stripe.com`
+
+    **Proxy/VPN:**
+    1. Proxy kullanmıyorsanız kontrol edin
+    2. VPN kapatıp deneyin
+    3. Corporate network'teyseniz IT ile görüşün
+  </Accordion>
+
+  <Accordion title="CORS Hataları">
+    **Belirtiler:**
+    - "CORS policy blocked"
+    - Browser console'da CORS error
+    - API calls başarısız
+
+    **Neden:**
+    - Yanlış domain'den istek
+    - Backend CORS ayarları hatalı
+
+    **Çözüm:**
+    1. **Encore CORS otomatik handle eder**
+    2. **Doğru domain kullandığınızdan emin olun**
+    3. **Local development:** localhost:3000
+    4. **Production:** your-domain.com
+
+    <Note>
+      CORS hataları genellikle backend konfigürasyon sorunudur. Frontend kullanıcısı olarak yapabileceğiniz fazla bir şey yok.
+    </Note>
+  </Accordion>
+</AccordionGroup>
+
+## İpuçları ve En İyi Uygulamalar
+
+### API Anahtarı Güvenliği
+
+<Tip>
+  - **Asla paylaşmayın**: API anahtarınızı kimseyle paylaşmayın
+  - **Git'e commit etmeyin**: .env dosyalarını .gitignore'a ekleyin
+  - **Düzenli rotation**: 3-6 ayda bir yenileyin
+  - **Test vs production**: Farklı anahtarlar kullanın
+</Tip>
+
+### Monitoring
+
+- **Servis durum sayfalarını takip edin**:
+  - Servis sağlayıcısı status page
+  - status.clerk.com
+  - status.stripe.com
+- **Backend logs izleyin**: Hata pattern'lerini tespit edin
+- **Alert kurun**: Kritik hatalar için bildirim alın
+
+### Hata Durumunda
+
+- Hata mesajını kaydedin: Tam metni kopyalayın
+- Request/Response logları: Network tab'dan inceleyin
+- Timestamp not edin: Ne zaman oldu?
+- Destek ekibine bildirin: Detaylı bilgi verin
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="API anahtarımı nasıl test edebilirim?">
+    Ayarlar > API Keys sayfasında **Test Bağlantısı** butonunu kullanın. Başarılı olursa anahtar çalışıyor demektir.
+  </Accordion>
+
+  <Accordion title="API servis kesintisini nasıl anlarım?">
+    Servis sağlayıcısının status page adresinden gerçek zamanlı servis durumunu kontrol edebilirsiniz.
+  </Accordion>
+
+  <Accordion title="Webhook'lar çalışmıyor, ne yapmalıyım?">
+    1. Servis kontrol panelinde webhook URL'inizi kontrol edin
+    2. Webhook secret'in backend'de doğru ayarlandığından emin olun
+    3. HTTPS kullandığınızdan emin olun
+  </Accordion>
+
+  <Accordion title='"Rate limit exceeded" hatası alıyorum'>
+    API kullanım limitinize ulaştınız. Daha yüksek plana geçin veya çağrı hızınızı azaltın.
+  </Accordion>
+
+  <Accordion title="Stripe test mode'da gerçek kart kullanabilir miyim?">
+    Hayır, test mode'da sadece Stripe test kartları çalışır. Gerçek kart için live mode'a geçin.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Genel Sorunlar" icon="triangle-exclamation" href="/troubleshooting/general-issues">
+    Yaygın platform kullanım sorunları
+  </Card>
+  <Card title="Çağrı Hataları" icon="phone-slash" href="/troubleshooting/call-errors">
+    Çağrı başlatma ve yönetim hataları
+  </Card>
+  <Card title="Hata Kodları Referansı" icon="code" href="/troubleshooting/error-codes-reference">
+    Tüm hata kodları ve anlamları
+  </Card>
+  <Card title="API Anahtarı Kurulumu" icon="key" href="/getting-started/api-key-setup">
+    Platform API anahtarı yapılandırması
+  </Card>
+</CardGroup>

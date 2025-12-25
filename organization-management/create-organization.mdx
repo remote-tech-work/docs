@@ -1,0 +1,189 @@
+---
+title: "Organizasyon Oluşturma"
+description: "Platform'da ilk organizasyonunuzu oluşturun ve temel kurulumu tamamlayın"
+---
+
+## Genel Bakış
+
+Organizasyon, platformdaki tüm kaynaklarınızın (agent'lar, müşteriler, kampanyalar) toplandığı ana birimidir. İlk girişte organizasyon oluşturmanız gerekir.
+
+## İlk Kurulum
+
+<Steps>
+  <Step title="Platform'a Kaydolun">
+    1. https://platform-url.com/signup adresine gidin
+    2. E-posta adresinizi girin
+    3. Şifre oluşturun (min. 8 karakter)
+    4. E-posta doğrulama linkine tıklayın
+  </Step>
+
+  <Step title="Organizasyon Bilgilerini Girin">
+    İlk girişte otomatik olarak organizasyon oluşturma sayfasına yönlendirilirsiniz.
+
+    **Organizasyon Adı:**
+    - Şirketinizin adını girin
+    - Benzersiz olmalı
+    - Örnek: "ABC Teknoloji"
+
+    **İletişim Bilgileri:**
+    - Telefon
+    - E-posta
+    - Adres (opsiyonel)
+
+    **Vergi Bilgileri:**
+    - Şirket unvanı
+    - Vergi numarası
+    - Fatura adresi
+  </Step>
+
+  <Step title="API Bağlantısını Tamamlayın">
+    Platform API bağlantısı otomatik olarak yapılandırılır. Kurulum sırasında:
+    - API servisi otomatik olarak test edilir
+    - Bağlantı durumu görüntülenir
+    - **Oluştur** butonuna tıklayın
+  </Step>
+
+  <Step title="İlk AI Agent'ınızı Oluşturun">
+    Organizasyon oluşturulduktan sonra:
+    1. **AI Agent'lar** sayfasına yönlendirilirsiniz
+    2. **Yeni AI Agent Oluştur** tıklayın
+    3. Basit bir test agent'ı yapın
+    4. Test araması yaparak kontrol edin
+  </Step>
+</Steps>
+
+<Frame>
+  <img src="/images/organization-create-form.png" alt="Organizasyon oluşturma formu" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Organizasyon oluşturma formunu gösteren ekran görüntüsü
+</Note>
+
+## Kullanıcı Ekleme
+
+### İlk Admin
+
+- Organizasyonu oluşturan kişi otomatik olarak **Admin** rolündedir
+- Tüm yetkilere sahiptir
+
+### Diğer Kullanıcıları Davet Etme
+
+<Steps>
+  <Step title="Kullanıcılar Sayfasına Gidin">
+    Ayarlar > **Kullanıcılar** sayfasına gidin
+  </Step>
+
+  <Step title="Davet Gönderin">
+    1. **Kullanıcı Davet Et** butonuna tıklayın
+    2. E-posta adresi girin
+    3. Rol seçin (Admin/User)
+    4. **Davet Gönder**
+  </Step>
+</Steps>
+
+Detaylar için [Kullanıcı Davetleri](/organization-management/user-invitations) makalesine bakın.
+
+## Organizasyon Ayarları
+
+### Özelleştirme
+
+<AccordionGroup>
+  <Accordion title="Logo ve Görsel">
+    **Logo:** Organizasyon logonuzu yükleyin
+
+    **Renk Teması:** Marka renklerinizi seçin (gelecekte)
+  </Accordion>
+
+  <Accordion title="Bölgesel Ayarlar">
+    **Saat Dilimi:** Yerel saat diliminizi ayarlayın
+
+    **Dil:** Türkçe (varsayılan)
+  </Accordion>
+
+  <Accordion title="Concurrency Ayarları">
+    **Eş Zamanlı Çağrı Limiti:**
+    - Free: 3
+    - Starter: 10
+    - Professional: 50
+    - Enterprise: Sınırsız
+
+    Plan'ınıza göre otomatik ayarlanır.
+  </Accordion>
+</AccordionGroup>
+
+## Veri Yönetimi
+
+### İlk Verileri Ekleme
+
+**Müşteri Listesi:**
+
+<Steps>
+  <Step title="Müşteriler Sayfasına Gidin">
+    CRM > **Müşteriler** sayfasına gidin
+  </Step>
+
+  <Step title="Müşteri Ekleyin">
+    **Toplu Müşteri Ekle** veya manuel tek tek ekleyin
+    1. CSV template indir ve doldurun
+    2. Import edin
+  </Step>
+</Steps>
+
+**Bilgi Bankası:**
+
+<Steps>
+  <Step title="Bilgi Bankası Sayfasına Gidin">
+    Bilgi Bankası sayfasına gidin
+  </Step>
+
+  <Step title="Dosya Yükleyin">
+    1. PDF/DOCX dosyalarınızı yükleyin
+    2. Agent'larla ilişkilendirin
+  </Step>
+</Steps>
+
+<Frame>
+  <img src="/images/organization-initial-data.png" alt="İlk veri ekleme" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Müşteri ve bilgi bankası ekleme arayüzü
+</Note>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Birden fazla organizasyon oluşturabilir miyim?">
+    Evet, aynı hesapla birden fazla organizasyon oluşturabilirsiniz.
+  </Accordion>
+
+  <Accordion title="Organizasyon adını değiştirebilir miyim?">
+    Evet, Ayarlar > Organizasyon > Organizasyon Adı'ndan değiştirebilirsiniz.
+  </Accordion>
+
+  <Accordion title="API bağlantısını sonra yapılandırabilir miyim?">
+    API bağlantısı otomatik olarak yapılandırılır. Sorun yaşarsanız destek ekibi ile iletişime geçin.
+  </Accordion>
+
+  <Accordion title="Vergi bilgileri zorunlu mu?">
+    Fatura kesimi için gereklidir. Atlayabilirsiniz ama sonra eklemeniz gerekir.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Organizasyon Ayarları" icon="gear" href="/organization-management/organization-settings">
+    Organizasyon konfigürasyonlarını yönetin
+  </Card>
+  <Card title="Kullanıcı Davetleri" icon="user-plus" href="/organization-management/user-invitations">
+    Kullanıcı ekleme ve rol yönetimi
+  </Card>
+  <Card title="API Anahtarı Yönetimi" icon="key" href="/organization-management/api-key-management">
+    API bağlantılarını yönetin
+  </Card>
+  <Card title="Çoklu Organizasyon" icon="building" href="/organization-management/multi-organization">
+    Birden fazla organizasyon yönetimi
+  </Card>
+</CardGroup>

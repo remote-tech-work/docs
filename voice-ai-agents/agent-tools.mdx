@@ -1,0 +1,538 @@
+---
+title: "Agent Araçları"
+description: "AI Agent'ınıza dış sistemlerle etkileşim kurma ve işlem yapma yeteneği kazandırın"
+---
+
+## Genel Bakış
+
+Agent araçları, AI Agent'ınızın görüşme sırasında dış sistemlerle etkileşim kurmasını, veri çekmesini ve işlemler yapmasını sağlar. Araçlar sayesinde agent, sadece konuşmakla kalmaz, aynı zamanda aksiyonlar da alabilir.
+
+## Araç Nedir?
+
+**Tool (Araç):** Agent'ın görüşme sırasında çağırabileceği dış fonksiyonlardır.
+
+<CardGroup cols={2}>
+  <Card title="Randevu Yönetimi" icon="calendar-check">
+    - Randevu oluşturma
+    - Müsait saatleri kontrol etme
+    - Randevu iptal etme
+    - Randevu güncelleme
+  </Card>
+
+  <Card title="E-ticaret" icon="cart-shopping">
+    - Ürün stok kontrolü
+    - Fiyat sorgulama
+    - Sipariş oluşturma
+    - Kargo takibi
+  </Card>
+
+  <Card title="CRM Entegrasyonu" icon="users">
+    - Müşteri bilgisi çekme
+    - Müşteri notu ekleme
+    - Lead oluşturma
+    - Ticket açma
+  </Card>
+
+  <Card title="Finansal İşlemler" icon="dollar-sign">
+    - Bakiye sorgulama
+    - İşlem geçmişi
+    - Ödeme linki gönderme
+    - Fatura oluşturma
+  </Card>
+</CardGroup>
+
+## Araç Tipleri
+
+### 1. Dahili Araçlar (Built-in)
+
+Platform ile gelen hazır araçlar:
+
+<Tabs>
+  <Tab title="Müşteri Araçları">
+    - `getCustomer` - Müşteri bilgisi çekme
+    - `updateCustomer` - Müşteri güncelleme
+    - `createCustomer` - Yeni müşteri oluşturma
+  </Tab>
+
+  <Tab title="Çağrı Araçları">
+    - `endCall` - Görüşmeyi sonlandırma
+    - `transferCall` - Görüşme transferi
+    - `recordCall` - Kayıt başlatma/durdurma
+  </Tab>
+
+  <Tab title="Not Araçları">
+    - `addNote` - Görüşme notu ekleme
+    - `getNote` - Not okuma
+  </Tab>
+</Tabs>
+
+### 2. Özel Araçlar (Custom)
+
+Kendi oluşturduğunuz araçlar:
+
+- Kendi API'nize istek atma
+- Harici servislerle entegrasyon
+- Özel iş mantığı
+
+## Araç Ekleme
+
+<Steps>
+  <Step title="Agent Düzenleme">
+    1. **AI Agent'lar** sayfası
+    2. Agent seçin > **Düzenle**
+    3. **Araçlar** sekmesi
+  </Step>
+
+  <Step title="Dahili Araç Ekleme">
+    **Mevcut Araçlar listesi:**
+
+    1. Eklemek istediğiniz aracı seçin
+    2. **Etkinleştir** switch'i açın
+    3. **Ayarlar** (varsa) yapılandırın
+    4. **Kaydet**
+  </Step>
+
+  <Step title="Özel Araç Oluşturma">
+    **Custom Tool bölümü:**
+
+    1. **Yeni Araç Oluştur** butonu
+    2. **Araç Adı:** İngilizce, boşluksuz (örn: `checkStock`)
+    3. **Açıklama:** Ne iş yaptığını açıklayın
+    4. **API Endpoint:** Çağrılacak URL
+    5. **HTTP Method:** GET/POST/PUT/DELETE
+    6. **Headers:** API key vb. header'lar
+    7. **Parameters:** Gönderilecek parametreler
+  </Step>
+
+  <Step title="Prompt Güncellemesi">
+    Agent promptuna araç kullanımı ile ilgili talimat ekleyin.
+
+    **Örnek:**
+    ```
+    Müşteri stok durumu sorarsa, checkStock aracını kullanarak
+    kontrol et ve sonucu müşteriye bildir.
+    ```
+  </Step>
+
+  <Step title="Test ve Kaydet">
+    **Test Et** butonuyla test edin, sonra **Kaydet**
+  </Step>
+</Steps>
+
+<Frame>
+  <img src="/images/voice-ai-tools.png" alt="Agent araçları ayarları" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Araçlar sekmesinde dahili ve özel araç ekleme
+</Note>
+
+## Özel Araç Oluşturma Detayı
+
+### Araç Şeması
+
+**Örnek: Stok Kontrol Aracı**
+
+```json
+{
+  "name": "checkStock",
+  "description": "Ürün stok durumunu kontrol eder",
+  "endpoint": "https://api.yourstore.com/products/check-stock",
+  "method": "POST",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "productId": {
+        "type": "string",
+        "description": "Ürün ID'si"
+      },
+      "quantity": {
+        "type": "number",
+        "description": "İstenen miktar"
+      }
+    },
+    "required": ["productId"]
+  },
+  "headers": {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+  }
+}
+```
+
+### API Response Format
+
+<Tabs>
+  <Tab title="Başarılı">
+    ```json
+    {
+      "success": true,
+      "inStock": true,
+      "availableQuantity": 25,
+      "productName": "iPhone 15 Pro"
+    }
+    ```
+
+    **Agent Davranışı:** "Ürün stoklarımızda mevcut. 25 adet bulunuyor."
+  </Tab>
+
+  <Tab title="Başarısız">
+    ```json
+    {
+      "success": false,
+      "error": "Product not found"
+    }
+    ```
+
+    **Agent Davranışı:** "Üzgünüm, bu ürün stoklarda yok."
+  </Tab>
+</Tabs>
+
+### Test Etme
+
+<Steps>
+  <Step title="Test Tool Butonu">
+    Araç oluşturma sayfasında **Test Tool** butonuna tıklayın
+  </Step>
+
+  <Step title="Test Parametreleri">
+    Test parametreleri girin
+  </Step>
+
+  <Step title="Test Et">
+    **Test Et** butonuna tıklayın ve response'u görüntüleyin
+  </Step>
+
+  <Step title="Kaydet">
+    Başarılıysa aracı kaydedin
+  </Step>
+</Steps>
+
+## Katalog Yönetimi
+
+### Katalog Nedir?
+
+**Catalog:** Agent'a önceden yüklenmiş ürün/hizmet listesi.
+
+**Kullanım:**
+- Agent, katalogdaki ürünleri bilir
+- Fiyat sorularına cevap verebilir
+- Stok durumunu kontrol edebilir
+- Sipariş alabilir
+
+### Katalog Oluşturma
+
+<Steps>
+  <Step title="Katalog Sayfası">
+    **Ayarlar** > **Kataloglar** veya **Araçlar** > **Kataloglar**
+  </Step>
+
+  <Step title="Yeni Katalog">
+    1. **Yeni Katalog Oluştur**
+    2. **Katalog Adı:** Örn: "Ürün Kataloğu"
+    3. **Açıklama:** "Satış ürünleri listesi"
+    4. **Oluştur**
+  </Step>
+
+  <Step title="Ürün Ekleme">
+    **Manuel Ekleme:**
+    1. **Ürün Ekle** butonu
+    2. Ürün Adı, SKU/ID, Fiyat, Açıklama, Stok Durumu
+    3. **Kaydet**
+
+    **Toplu Ekleme:**
+    1. **Toplu İçe Aktar**
+    2. CSV template indir
+    3. Excel'de doldurun
+    4. Upload edin
+  </Step>
+
+  <Step title="Agent İlişkilendirme">
+    **Agent Düzenleme:**
+    1. **Araçlar** sekmesi
+    2. **Katalog Ayarları**
+    3. Kullanılacak kataloğu seçin
+    4. **Kaydet**
+  </Step>
+</Steps>
+
+### CSV Format
+
+```csv
+name,sku,price,description,inStock
+iPhone 15 Pro,IP15P,45000,256GB Model,true
+MacBook Air M2,MBA-M2,35000,8GB RAM 256GB SSD,true
+AirPods Pro,APP2,9000,2. Nesil,false
+```
+
+<Frame>
+  <img src="/images/voice-ai-catalog.png" alt="Katalog yönetimi" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Katalog oluşturma ve ürün ekleme sayfası
+</Note>
+
+### Kategori ve Alt Kategori
+
+**Hiyerarşi:**
+
+```
+Elektronik
+  ├─ Telefonlar
+  │   ├─ iPhone
+  │   └─ Samsung
+  └─ Bilgisayarlar
+      ├─ Laptop
+      └─ Masaüstü
+```
+
+**Kategori Oluşturma:**
+1. Katalog içinde **Kategori Ekle**
+2. Kategori adı (örn: "Telefonlar")
+3. **Kaydet**
+
+**Alt Kategori:**
+1. Kategorinin yanındaki **+** ikonu
+2. Alt kategori adı (örn: "iPhone")
+3. **Kaydet**
+
+## Araç Çağrısı ve Yanıt
+
+### Agent Araç Çağırma Süreci
+
+<Steps>
+  <Step title="Müşteri Sorusu">
+    ```
+    Müşteri: "iPhone 15 Pro stokta var mı?"
+    ```
+  </Step>
+
+  <Step title="Agent Karar">
+    Agent promptuna göre `checkStock` aracını çağırmaya karar verir
+  </Step>
+
+  <Step title="Araç Çağrısı">
+    ```json
+    {
+      "tool": "checkStock",
+      "parameters": {
+        "productId": "IP15P"
+      }
+    }
+    ```
+  </Step>
+
+  <Step title="API Response">
+    ```json
+    {
+      "success": true,
+      "inStock": true,
+      "availableQuantity": 15
+    }
+    ```
+  </Step>
+
+  <Step title="Agent Cevabı">
+    ```
+    Agent: "Evet, iPhone 15 Pro stoklarımızda mevcut.
+    15 adet bulunuyor."
+    ```
+  </Step>
+</Steps>
+
+### Çoklu Araç Çağrısı
+
+**Senaryo:** Müşteri sipariş vermek istiyor.
+
+**Adımlar:**
+1. `checkStock` - Stok kontrolü
+2. `createOrder` - Sipariş oluşturma
+3. `sendConfirmation` - SMS onayı gönderme
+
+Agent bu araçları sırayla çağırır.
+
+## Araç Güvenliği
+
+<Warning>
+  ### API Key Yönetimi
+  - API key'leri güvenli saklayın
+  - Environment variables kullanın
+  - Hard-code etmeyin
+</Warning>
+
+### Yetkilendirme
+
+- Agent sadece yetkili işlemleri yapabilmeli
+- Ödeme işlemleri için ek doğrulama
+- Kritik işlemler için onay mekanizması
+
+### Rate Limiting
+
+- API'nize rate limit koyun
+- Agent çok fazla istek atarsa engelleyin
+- Abuse koruması
+
+## İpuçları ve En İyi Uygulamalar
+
+### Araç Tasarımı
+
+<Tip>
+  - ✅ Tek bir işe odaklanın (Single Responsibility)
+  - ✅ Açıklayıcı isim kullanın
+  - ✅ Parametreleri minimumda tutun
+  - ✅ Hata durumlarını iyi yönetin
+  - ❌ Çok karmaşık araçlar yapmayın
+  - ❌ Çok fazla parametre eklemeyin
+</Tip>
+
+### Katalog Yönetimi
+
+<Tip>
+  - ✅ Katalog düzenli güncelleyin
+  - ✅ Stok durumlarını senkron tutun
+  - ✅ Fiyatları güncel tutun
+  - ✅ Kategori kullanın
+  - ❌ Güncel olmayan verilerle çalışmayın
+</Tip>
+
+### Prompt ile Uyum
+
+**Kötü Örnek:**
+```
+Araç ekledim ama prompt'ta belirtmedim.
+Agent ne zaman kullanacağını bilmiyor.
+```
+
+**İyi Örnek:**
+```
+"Müşteri ürün stoku sorarsa checkStock aracını kullan.
+Sipariş vermek isterse createOrder aracını kullan."
+```
+
+## Örnek Entegrasyonlar
+
+<AccordionGroup>
+  <Accordion title="Takvim Entegrasyonu">
+    **Araç:** `checkAvailability`
+
+    **Endpoint:** Google Calendar API
+
+    **Kullanım:**
+    - Müşteri randevu tarihi sorar
+    - Agent takvimden müsait saatleri kontrol eder
+    - Müsait saati önerir
+  </Accordion>
+
+  <Accordion title="CRM Entegrasyonu">
+    **Araç:** `getCRMData`
+
+    **Endpoint:** HubSpot/Salesforce API
+
+    **Kullanım:**
+    - Müşteri ID ile CRM'den bilgi çeker
+    - Önceki etkileşimleri görür
+    - Kişiselleştirilmiş hizmet verir
+  </Accordion>
+
+  <Accordion title="Payment Gateway">
+    **Araç:** `createPaymentLink`
+
+    **Endpoint:** Stripe/PayTR API
+
+    **Kullanım:**
+    - Sipariş tutarı hesaplanır
+    - Ödeme linki oluşturulur
+    - Müşteriye SMS ile gönderilir
+  </Accordion>
+</AccordionGroup>
+
+## Sorun Giderme
+
+<AccordionGroup>
+  <Accordion title="Araç Çağrılmıyor">
+    **Sebep:** Agent ne zaman kullanacağını bilmiyor
+
+    **Çözüm:**
+    1. Prompt'u güncelleyin
+    2. Araç kullanımını açık bir şekilde belirtin
+    3. Test görüşmesi yapın
+  </Accordion>
+
+  <Accordion title="Araç Hatası">
+    **Sebep:** API endpoint çalışmıyor veya hatalı
+
+    **Çözüm:**
+    1. Test Tool ile test edin
+    2. API endpoint'i kontrol edin
+    3. Headers ve authentication kontrol edin
+    4. Response formatını kontrol edin
+  </Accordion>
+
+  <Accordion title="Katalog Boş">
+    **Sebep:** Ürünler eklenmemiş veya agent ile ilişkilendirilmemiş
+
+    **Çözüm:**
+    1. Katalog'a ürün ekleyin
+    2. Agent ayarlarından katalog seçin
+    3. Kaydedin ve test edin
+  </Accordion>
+
+  <Accordion title="Yanlış Bilgi Veriyor">
+    **Sebep:** Katalog güncel değil
+
+    **Çözüm:**
+    1. Katalog'u güncelleyin
+    2. Fiyat ve stok durumlarını kontrol edin
+    3. Agent'ı yeniden test edin
+  </Accordion>
+</AccordionGroup>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Kaç araç ekleyebilirim?">
+    Teknik limit yok, ancak 5-10 arası ideal. Çok fazla araç agent'ı karıştırabilir.
+  </Accordion>
+
+  <Accordion title="Araç ücretli mi?">
+    Platform ücreti yok, ancak kendi API'nizin maliyeti size aittir.
+  </Accordion>
+
+  <Accordion title="Araç çağrısı başarısız olursa ne olur?">
+    Agent hata mesajını alır ve müşteriye kibarca bilgi verir. İşlemi tekrar deneyebilir.
+  </Accordion>
+
+  <Accordion title="Catalog güncellemesi otomatik olabilir mi?">
+    Şu anda manuel veya CSV import. Gelecekte API ile otomatik güncelleme eklenebilir.
+  </Accordion>
+
+  <Accordion title="Bir agent birden fazla katalog kullanabilir mi?">
+    Şu anda bir agent bir katalog kullanabilir. Gelecekte çoklu katalog desteği eklenebilir.
+  </Accordion>
+
+  <Accordion title="Özel araç oluştururken kod yazmam gerekir mi?">
+    Hayır, sadece API endpoint ve parametreleri tanımlarsınız. Kod yazmaya gerek yok.
+  </Accordion>
+
+  <Accordion title="Araç çağrısı transkriptte görünür mü?">
+    Evet, transkript detayında araç çağrıları ve yanıtları görünür.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="AI Agent Oluşturma" icon="robot" href="/voice-ai-agents/create-agent">
+    Yeni AI Agent oluşturma ve yapılandırma
+  </Card>
+  <Card title="Yapılandırılmış Çıktılar" icon="table" href="/voice-ai-agents/structured-outputs">
+    JSON formatında veri toplama
+  </Card>
+  <Card title="Bilgi Bankası Yönetimi" icon="database" href="/voice-ai-agents/knowledge-base-management">
+    Agent bilgi kaynaklarını yönetme
+  </Card>
+  <Card title="Gelişmiş Yapılandırma" icon="sliders" href="/voice-ai-agents/advanced-configuration">
+    Agent performans optimizasyonu
+  </Card>
+</CardGroup>

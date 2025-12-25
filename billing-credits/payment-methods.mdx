@@ -1,0 +1,427 @@
+---
+title: "Ödeme Yöntemleri"
+description: "Kart ekleme, yönetme ve güvenli ödeme işlemleri"
+---
+
+## Genel Bakış
+
+Platform, Stripe güvenli ödeme altyapısı üzerinden kredi kartı ve banka kartı ile ödeme kabul eder. Bu makale, ödeme yöntemlerini ekleme, yönetme ve güvenlik özelliklerini açıklar.
+
+## Desteklenen Kartlar
+
+<CardGroup cols={2}>
+  <Card title="Kredi Kartları" icon="credit-card">
+    - ✅ Visa
+    - ✅ Mastercard
+    - ✅ American Express
+    - ✅ Troy (Türkiye)
+  </Card>
+
+  <Card title="Banka Kartları (Debit)" icon="credit-card">
+    - ✅ Visa Debit
+    - ✅ Mastercard Debit
+    - ✅ Troy Debit
+  </Card>
+</CardGroup>
+
+### Desteklenmeyen Ödeme Yöntemleri
+
+- ❌ Havale/EFT
+- ❌ Kapıda ödeme
+- ❌ Kripto para
+- ❌ PayPal
+
+## Kart Ekleme
+
+### İlk Kart Ekleme
+
+<Tabs>
+  <Tab title="Kredi Satın Alma Sırasında">
+    <Steps>
+      <Step title="Kredi Satın Al">
+        Kredi Satın Al > Ödeme sayfasına gidin
+      </Step>
+
+      <Step title="Kart Bilgileri">
+        Kart bilgilerinizi girin
+      </Step>
+
+      <Step title="Kartı Kaydet">
+        "Kartı kaydet" seçeneğini işaretleyin
+      </Step>
+
+      <Step title="Ödemeyi Tamamla">
+        Ödemeyi tamamlayın
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="Ayarlardan">
+    <Steps>
+      <Step title="Ödeme Yöntemleri">
+        Ayarlar > Billing > Ödeme Yöntemleri sayfasına gidin
+      </Step>
+
+      <Step title="Yeni Kart Ekle">
+        **Yeni Kart Ekle** butonuna tıklayın
+      </Step>
+
+      <Step title="Bilgileri Girin">
+        Kart bilgilerini girin
+      </Step>
+
+      <Step title="Kaydet">
+        **Kaydet** butonuna tıklayın
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+<Frame>
+  <img src="/images/billing-add-payment-method.png" alt="Kart ekleme ekranı" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Kart bilgileri ekleme formu
+</Note>
+
+### Kart Bilgileri
+
+**Gerekli Alanlar:**
+- Kart numarası (16 haneli)
+- Son kullanma tarihi (AA/YY)
+- CVV/CVC (3-4 haneli güvenlik kodu)
+- Kart sahibinin adı
+
+**Opsiyonel:**
+- Fatura adresi
+- Kart için takma ad (örn: "İş Kartı")
+
+## Kayıtlı Kartları Yönetme
+
+### Kart Listesi
+
+**Görünüm:** Ayarlar > Billing > Ödeme Yöntemleri
+
+**Gösterilen Bilgiler:**
+- Kart tipi (Visa, Mastercard, vb.)
+- Son 4 hane
+- Son kullanma tarihi
+- Varsayılan kart işareti
+- İşlemler (Düzenle/Sil)
+
+### Varsayılan Kart Belirleme
+
+<Steps>
+  <Step title="Ödeme Yöntemleri Sayfası">
+    Ödeme Yöntemleri sayfasını açın
+  </Step>
+
+  <Step title="Kart Menüsü">
+    İstediğiniz kartın yanındaki **...** menüsüne tıklayın
+  </Step>
+
+  <Step title="Varsayılan Yap">
+    **Varsayılan Yap** seçeneğini seçin
+  </Step>
+
+  <Step title="Otomatik Ödemeler">
+    Bu kart artık otomatik ödemelerde kullanılır
+  </Step>
+</Steps>
+
+### Kart Silme
+
+<Steps>
+  <Step title="Kart Menüsü">
+    Silmek istediğiniz kartın **...** menüsünü açın
+  </Step>
+
+  <Step title="Sil Seçeneği">
+    **Sil** seçeneğini tıklayın
+  </Step>
+
+  <Step title="Onaylayın">
+    Silme işlemini onaylayın
+  </Step>
+</Steps>
+
+<Warning>
+  **Not:** Varsayılan kartı silemezsiniz. Önce başka bir kartı varsayılan yapın.
+</Warning>
+
+### Kart Güncelleme
+
+<AccordionGroup>
+  <Accordion title="Son kullanma tarihi değişti">
+    1. Kart > **Düzenle**
+    2. Yeni son kullanma tarihini girin
+    3. **Güncelle**
+  </Accordion>
+
+  <Accordion title="Yeni kart aldım (aynı numara)">
+    - CVV değişmişse güncelleyin
+    - Otomatik ödemeler etkilenmez
+  </Accordion>
+</AccordionGroup>
+
+## Güvenlik
+
+### Stripe Güvenliği
+
+**Güvenlik Özellikleri:**
+
+<CardGroup cols={2}>
+  <Card title="PCI-DSS Sertifikalı" icon="shield-check">
+    PCI-DSS Level 1 sertifikalı güvenli altyapı
+  </Card>
+
+  <Card title="Şifreli Veri" icon="lock">
+    Kart bilgileri şifrelenir ve korunur
+  </Card>
+
+  <Card title="Saklanmayan Bilgi" icon="eye-slash">
+    Kart numarası platform'da saklanmaz
+  </Card>
+
+  <Card title="Maskelenmiş Görünüm" icon="credit-card">
+    Sadece son 4 hane görünür
+  </Card>
+</CardGroup>
+
+### 3D Secure
+
+**Nedir:** Ekstra güvenlik katmanı (Verified by Visa, Mastercard SecureCode)
+
+**Nasıl Çalışır:**
+
+<Steps>
+  <Step title="Yönlendirme">
+    Ödeme yaparken bankınızın sayfasına yönlendirilirsiniz
+  </Step>
+
+  <Step title="Doğrulama">
+    SMS kodu veya mobil app onayı istersiniz
+  </Step>
+
+  <Step title="Tamamlama">
+    Doğrulama sonrası ödeme tamamlanır
+  </Step>
+</Steps>
+
+**Avantajları:**
+- ✅ Yetkisiz kullanımı önler
+- ✅ Chargeback koruması
+- ✅ Daha güvenli işlem
+
+### Güvenlik İpuçları
+
+<Tip>
+  **Güvenli Ödeme İçin:**
+  - ✅ Güvenilir ağlarda işlem yapın (halka açık WiFi'den kaçının)
+  - ✅ Kart bilgilerinizi kimseyle paylaşmayın
+  - ✅ İşlem bildirimleri aktif tutun
+  - ✅ Düzenli kart ekstrenizi kontrol edin
+  - ✅ Şüpheli işlem görürseniz hemen bildirin
+</Tip>
+
+## Otomatik Ödemeler
+
+### Auto-Pay (Otomatik Ödeme)
+
+<Tabs>
+  <Tab title="Abonelik İçin">
+    - Her fatura döngüsünde otomatik tahsilat
+    - Varsayılan karttan çekilir
+    - 3 gün önceden e-posta bildirimi
+  </Tab>
+
+  <Tab title="Auto-Recharge İçin">
+    - Kredi belirli seviyenin altına düşünce
+    - Otomatik kredi satın alımı
+    - Varsayılan karttan tahsilat
+  </Tab>
+</Tabs>
+
+### Otomatik Ödeme Başarısız Olursa
+
+**Olası Senaryolar:**
+- Kart limiti yetersiz
+- Kart süresi dolmuş
+- 3D Secure onayı verilmedi
+
+**İşlem Süreci:**
+
+<Steps>
+  <Step title="İlk Deneme">
+    İlk ödeme denemesi başarısız olur
+  </Step>
+
+  <Step title="İkinci Deneme">
+    24 saat sonra tekrar deneme yapılır
+  </Step>
+
+  <Step title="Son Deneme">
+    48 saat sonra son deneme yapılır
+  </Step>
+
+  <Step title="Başarısızlık">
+    Tüm denemeler başarısız olursa:
+    - E-posta bildirimi gönderilir
+    - Hesap askıya alınır (abonelik)
+    - Kampanyalar durdurulur (kredi)
+  </Step>
+</Steps>
+
+**Çözüm:**
+
+<Steps>
+  <Step title="Kart Güncelle">
+    Kart bilgilerini güncelleyin
+  </Step>
+
+  <Step title="Farklı Kart">
+    Farklı kart ekleyin
+  </Step>
+
+  <Step title="Manuel Ödeme">
+    Manuel ödeme yapın
+  </Step>
+</Steps>
+
+## Ödeme Geçmişi
+
+### İşlem Kaydı
+
+**Görünüm:** Ayarlar > Billing > Ödeme Geçmişi
+
+**Gösterilen Bilgiler:**
+- Tarih ve saat
+- Tutar
+- Kullanılan kart (son 4 hane)
+- İşlem tipi (Abonelik/Kredi)
+- Durum (Başarılı/Başarısız)
+- Fatura numarası
+
+### Filtreleme ve Dışa Aktarma
+
+**Filtreleme Seçenekleri:**
+- Tarih aralığı
+- İşlem tipi
+- Kart
+- Durum
+
+**Dışa Aktarma:**
+- CSV formatında indir
+- Excel'de analiz et
+- Muhasebe kayıtları için kullan
+
+## Ödeme Sorunları
+
+<AccordionGroup>
+  <Accordion title="Kart Reddedildi">
+    **Olası Nedenler:**
+    - ❌ Yetersiz bakiye/limit
+    - ❌ Kart blokeli
+    - ❌ Yurt dışı işlem kısıtlaması
+    - ❌ 3D Secure başarısız
+
+    **Çözüm:**
+    1. Bankanızla iletişime geçin
+    2. Limit/bakiye kontrolü yapın
+    3. Farklı kart deneyin
+    4. Yurt dışı işlem iznini aktif edin
+  </Accordion>
+
+  <Accordion title='"Payment Failed" Hatası'>
+    **Stripe Hata Kodları:**
+    - `card_declined`: Banka kartı reddetti
+    - `insufficient_funds`: Yetersiz bakiye
+    - `expired_card`: Kart süresi dolmuş
+    - `incorrect_cvc`: CVV yanlış
+
+    **Genel Çözüm:**
+    1. Kart bilgilerini doğru girdiğinizden emin olun
+    2. Başka kart deneyin
+    3. Destek ekibi ile iletişime geçin
+  </Accordion>
+
+  <Accordion title="Çift Tahsilat">
+    **Nadiren olur:**
+    - İlk işlem pending kaldıysa
+    - Tekrar deneme yapıldıysa
+    - Ödeme iki kez yansıyabilir
+
+    **Çözüm:**
+    1. Pending işlemin düşmesini bekleyin (24-48 saat)
+    2. Hala çift tahsilat varsa destek bildirin
+    3. İade işlemi başlatılır
+  </Accordion>
+</AccordionGroup>
+
+## Para İadesi
+
+### İade Süreci
+
+**İade Süreleri:**
+- Stripe iadesi: Anında
+- Banka hesabına yansıma: 5-10 iş günü
+
+**İade Tutarı:**
+- Tam iade (kullanılmamış hizmet)
+- Kısmi iade (pro-rata)
+
+**İade Takibi:**
+- E-posta bildirimi alırsınız
+- Ödeme Geçmişi'nde görünür
+- Durum: "Refunded"
+
+<Frame>
+  <img src="/images/billing-refund-process.png" alt="İade işlemi" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: İade işlemi durumu ve takip ekranı
+</Note>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Hangi kartları kabul ediyorsunuz?">
+    Visa, Mastercard, American Express ve Troy kredi/banka kartları kabul edilmektedir.
+  </Accordion>
+
+  <Accordion title="Kart bilgilerim güvende mi?">
+    Evet, Stripe PCI-DSS Level 1 sertifikalı güvenli altyapı kullanır. Kart bilgileriniz şifrelenir ve platform'da saklanmaz.
+  </Accordion>
+
+  <Accordion title="Otomatik ödemeden nasıl çıkarım?">
+    Auto-Pay için aboneliği iptal edin. Auto-Recharge için Ayarlar > Billing > Auto-Recharge'ı devre dışı bırakın.
+  </Accordion>
+
+  <Accordion title="Farklı kartla ödeme yapabilir miyim?">
+    Evet, ödeme sırasında kayıtlı kartlardan birini seçebilir veya yeni kart ekleyebilirsiniz.
+  </Accordion>
+
+  <Accordion title="İade ne kadar sürer?">
+    Stripe iadesi anında, ancak bankanıza yansıması 5-10 iş günü sürebilir.
+  </Accordion>
+
+  <Accordion title="Havale/EFT ile ödeme yapabilir miyim?">
+    Şu anda sadece kart ile ödeme kabul edilmektedir.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Abonelik Planları" icon="layer-group" href="/billing-credits/subscription-plans">
+    Platform abonelik planları ve özellikler
+  </Card>
+  <Card title="Kredi Yönetimi" icon="coins" href="/billing-credits/credit-management">
+    Kredi satın alma ve kullanım takibi
+  </Card>
+  <Card title="Fatura İşlemleri" icon="file-invoice" href="/billing-credits/billing-operations">
+    Fatura erişimi ve indirme işlemleri
+  </Card>
+</CardGroup>

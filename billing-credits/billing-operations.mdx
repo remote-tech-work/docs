@@ -1,0 +1,436 @@
+---
+title: "Fatura İşlemleri"
+description: "Faturalara erişim, indirme ve vergi işlemleri"
+---
+
+## Genel Bakış
+
+Platform, tüm abonelik ve kredi alımları için otomatik fatura oluşturur. Bu makale, faturalara erişim, indirme ve vergi işlemlerini açıklar.
+
+## Fatura Türleri
+
+<Tabs>
+  <Tab title="Abonelik Faturaları">
+    **Özellikler:**
+    - **Oluşturulma:** Her fatura döngüsü başında
+    - **İçerik:** Aylık/yıllık plan ücreti
+    - **Ödeme:** Otomatik (kayıtlı kart)
+    - **Frekans:** Aylık veya yıllık
+  </Tab>
+
+  <Tab title="Kredi Faturaları">
+    **Özellikler:**
+    - **Oluşturulma:** Her kredi satın alımında
+    - **İçerik:** Satın alınan kredi miktarı ve tutarı
+    - **Ödeme:** Anında (Stripe)
+    - **Frekans:** Her satın almada
+  </Tab>
+</Tabs>
+
+## Faturalara Erişim
+
+### Web Arayüzü
+
+<Steps>
+  <Step title="Billing Sayfası">
+    **Ayarlar** > **Billing** > **Faturalar** sayfasına gidin
+  </Step>
+
+  <Step title="Fatura Listesi">
+    Fatura listesini görüntüleyin
+  </Step>
+
+  <Step title="Filtreleme">
+    Tarih, tip veya tutar bazında filtreleme yapın
+  </Step>
+
+  <Step title="Detay Görüntüleme">
+    Detay için faturaya tıklayın
+  </Step>
+</Steps>
+
+### Fatura Listesi Sütunları
+
+| Sütun | Açıklama |
+|-------|----------|
+| Tarih | Fatura oluşturulma tarihi |
+| Fatura No | Benzersiz fatura numarası |
+| Açıklama | Abonelik veya kredi |
+| Tutar | Toplam tutar (TL) |
+| Durum | Ödendi/Beklemede/İptal |
+| İndir | PDF indirme butonu |
+
+<Frame>
+  <img src="/images/billing-invoice-list.png" alt="Fatura listesi" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Fatura listesi ve filtreleme seçenekleri
+</Note>
+
+## Fatura Detayları
+
+### Fatura İçeriği
+
+**Başlık Bilgileri:**
+- Fatura numarası ve tarihi
+- Düzenleyen: Platform Adı
+- Alıcı: Organizasyon bilgileri
+
+**Kalemler:**
+- Ürün/Hizmet açıklaması
+- Birim fiyat
+- Miktar
+- Toplam
+
+**Özet:**
+- Ara toplam
+- KDV (%20)
+- Genel toplam
+
+### Örnek Fatura
+
+```
+FATURA #INV-2025-001234
+Tarih: 01.01.2025
+
+Alıcı:
+Demo Organizasyonu
+Vergi No: 1234567890
+
+Kalemler:
+1. Profesyonel Plan (Ocak 2025)    1,499.00 TL
+2. Kredi Paketi (1,000 kredi)        350.00 TL
+                                   -----------
+Ara Toplam:                        1,849.00 TL
+KDV (%20):                          369.80 TL
+                                   -----------
+GENEL TOPLAM:                      2,218.80 TL
+```
+
+## Fatura İndirme
+
+### PDF Formatı
+
+<Steps>
+  <Step title="İndir Butonu">
+    Fatura listesinde **İndir** butonuna tıklayın
+  </Step>
+
+  <Step title="Otomatik İndirme">
+    PDF otomatik olarak indirilir
+  </Step>
+
+  <Step title="Dosya Adı">
+    Dosya adı: `Fatura_INV-2025-001234.pdf`
+  </Step>
+</Steps>
+
+### Toplu İndirme
+
+<Steps>
+  <Step title="Faturaları İşaretleyin">
+    İndirmek istediğiniz faturaları işaretleyin (checkbox)
+  </Step>
+
+  <Step title="Toplu İndir">
+    **Toplu İndir** butonuna tıklayın
+  </Step>
+
+  <Step title="ZIP Dosyası">
+    Tüm faturalar ZIP dosyası olarak indirilir
+  </Step>
+</Steps>
+
+### E-posta ile Gönderme
+
+<Steps>
+  <Step title="Fatura Detayı">
+    Fatura detay sayfasına gidin
+  </Step>
+
+  <Step title="E-posta Gönder">
+    **E-posta Gönder** butonuna tıklayın
+  </Step>
+
+  <Step title="Adres Girin">
+    E-posta adresini girin veya kayıtlı adresi kullanın
+  </Step>
+
+  <Step title="Gönder">
+    **Gönder** butonuna tıklayın
+  </Step>
+</Steps>
+
+## Vergi ve Muhasebe
+
+### KDV
+
+<Info>
+  **KDV Oranı:** %20 (Türkiye standart)
+
+  KDV hesaplaması otomatik yapılır ve faturada ayrı satır olarak görünür.
+</Info>
+
+### Vergi Bilgileri Güncelleme
+
+<Steps>
+  <Step title="Organization Ayarları">
+    Ayarlar > Organization > Vergi Bilgileri sayfasına gidin
+  </Step>
+
+  <Step title="Şirket Unvanı">
+    Şirket unvanını girin
+  </Step>
+
+  <Step title="Vergi Numarası">
+    Vergi numarası veya TC kimlik numarasını girin
+  </Step>
+
+  <Step title="Adres">
+    Fatura adresini girin
+  </Step>
+
+  <Step title="Kaydet">
+    **Kaydet** butonuna tıklayın
+  </Step>
+</Steps>
+
+<Warning>
+  **Önemli:** Vergi bilgileriniz tüm yeni faturalarda görünür. Mevcut faturalar değişmez.
+</Warning>
+
+### Muhasebe Entegrasyonu
+
+**Manuel Entegrasyon:**
+- Faturaları PDF olarak indirin
+- Muhasebe programınıza yükleyin
+
+**Gelecek Özellik:**
+<Info>
+  API entegrasyonu (e-Fatura, e-Arşiv) yakında eklenecek
+</Info>
+
+## Ödeme Durumları
+
+<Tabs>
+  <Tab title="Ödendi (Paid)">
+    ✅ **Başarılı Ödeme**
+    - Ödeme başarıyla tamamlandı
+    - Fatura onaylandı
+    - Hizmet aktif
+  </Tab>
+
+  <Tab title="Beklemede (Pending)">
+    ⏳ **İşlem Devam Ediyor**
+    - Ödeme işlemi devam ediyor
+    - 3D Secure bekleniyor
+    - Genellikle 5-10 dakika sürer
+  </Tab>
+
+  <Tab title="Başarısız (Failed)">
+    ❌ **Ödeme Başarısız**
+    - Kart problemi veya limit
+    - Tekrar deneme gerekli
+
+    **Çözüm:**
+    1. Kart bilgilerini kontrol edin
+    2. Limit yeterli mi?
+    3. Farklı kart deneyin
+  </Tab>
+
+  <Tab title="İptal (Cancelled)">
+    **İptal Edildi**
+    - Fatura iptal edildi
+    - Ödeme yapılmadı
+    - İade işlemi başlatıldı
+  </Tab>
+</Tabs>
+
+## İade ve İptal
+
+### İade Talebi
+
+**Koşullar:**
+- Hizmet kullanılmadıysa
+- Sistem hatası varsa
+- İlk 7 gün içinde (Abonelik için)
+
+<Steps>
+  <Step title="İade Talebi Formu">
+    Ayarlar > Billing > İade Talebi sayfasına gidin
+  </Step>
+
+  <Step title="Fatura Seçimi">
+    İade edilecek faturayı seçin
+  </Step>
+
+  <Step title="İade Nedeni">
+    İade nedenini belirtin
+  </Step>
+
+  <Step title="Destek Değerlendirmesi">
+    Destek ekibi talebi değerlendirir
+  </Step>
+
+  <Step title="Sonuç">
+    5-7 iş günü içinde sonuç bildirilir
+  </Step>
+</Steps>
+
+### İptal Politikası
+
+<AccordionGroup>
+  <Accordion title="Abonelik İptali">
+    - Mevcut dönem sonuna kadar geçerli
+    - İade yapılmaz (kullanılmış süre)
+    - Sonraki dönem otomatik yenilenmez
+  </Accordion>
+
+  <Accordion title="Kredi İptali">
+    - Kullanılmayan kredi iptal edilemez/iade edilmez
+  </Accordion>
+</AccordionGroup>
+
+## Fatura Geçmişi
+
+### Dönemsel Rapor Oluşturma
+
+<Steps>
+  <Step title="Fatura Geçmişi">
+    Billing > Fatura Geçmişi sayfasına gidin
+  </Step>
+
+  <Step title="Tarih Aralığı">
+    Tarih aralığı seçin (örn: 2024 yılı)
+  </Step>
+
+  <Step title="Rapor Oluştur">
+    **Rapor Oluştur** butonuna tıklayın
+  </Step>
+
+  <Step title="İndir">
+    PDF veya Excel formatında raporu indirin
+  </Step>
+</Steps>
+
+**Rapor İçeriği:**
+- Tüm faturalar
+- Toplam harcama
+- KDV toplamı
+- Kategori bazında (Abonelik/Kredi)
+
+## E-Fatura Entegrasyonu
+
+### Mevcut Durum
+
+**Şu anda:** Standard PDF fatura
+
+**Gelecek Özellikler:**
+- e-Fatura desteği
+- GİB entegrasyonu
+- e-Arşiv fatura
+
+<Info>
+  E-fatura desteği eklendiğinde e-posta ile duyurulacak
+</Info>
+
+## Otomatik Fatura Bildirimleri
+
+### E-posta Uyarıları
+
+**Bildirim Zamanları:**
+- Fatura oluşturulduğunda
+- Ödeme başarılı olduğunda
+- Ödeme başarısız olduğunda
+- İade işlemi tamamlandığında
+
+### Bildirim Ayarları
+
+<Steps>
+  <Step title="Bildirimler Sayfası">
+    Ayarlar > Bildirimler > Fatura Bildirimleri sayfasına gidin
+  </Step>
+
+  <Step title="Bildirimleri Seçin">
+    İstediğiniz bildirimleri seçin
+  </Step>
+
+  <Step title="E-posta Adresi">
+    E-posta adresi ekleyin
+  </Step>
+
+  <Step title="Kaydet">
+    Ayarları kaydedin
+  </Step>
+</Steps>
+
+## Sorun Giderme
+
+<AccordionGroup>
+  <Accordion title="Fatura Görünmüyor">
+    **Çözüm:**
+    1. Ödeme gerçekten başarılı mı? (Stripe dashboard kontrol edin)
+    2. 10 dakika bekleyin (işleme süresi)
+    3. Sayfayı yenileyin
+    4. Destek ile iletişime geçin
+  </Accordion>
+
+  <Accordion title="PDF İndirilmiyor">
+    **Çözüm:**
+    1. Pop-up engellemeyi kaldırın
+    2. Tarayıcı indirme klasörünü kontrol edin
+    3. Farklı tarayıcı deneyin
+    4. E-posta ile gönderme seçeneğini kullanın
+  </Accordion>
+
+  <Accordion title="Vergi Bilgileri Yanlış">
+    **Düzeltme:**
+    1. Ayarlar > Organization > Vergi Bilgileri
+    2. Bilgileri güncelleyin
+    3. **Kaydet**
+    4. Eski faturalar değişmez, yeni faturalar doğru olur
+    5. Eski fatura düzeltmesi için destek ile görüşün
+  </Accordion>
+</AccordionGroup>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Faturalar ne zaman oluşturulur?">
+    Abonelik faturaları her fatura döngüsü başında, kredi faturaları satın alma anında oluşturulur.
+  </Accordion>
+
+  <Accordion title="e-Fatura kesebilir miyim?">
+    Şu anda standart PDF fatura. e-Fatura desteği yakında eklenecek.
+  </Accordion>
+
+  <Accordion title="İade ne kadar sürer?">
+    İade talebi 5-7 iş günü içinde değerlendirilir. Onaylanırsa 10-14 iş günü içinde hesaba iade edilir.
+  </Accordion>
+
+  <Accordion title="Geçmiş faturaları görebilir miyim?">
+    Evet, tüm fatura geçmişi Ayarlar > Billing > Faturalar bölümünde bulunur.
+  </Accordion>
+
+  <Accordion title="Fatura bilgilerini değiştirebilir miyim?">
+    Vergi bilgilerini değiştirebilirsiniz ama eski faturalar değişmez. Düzeltme için destek ekibine başvurun.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Abonelik Planları" icon="layer-group" href="/billing-credits/subscription-plans">
+    Platform abonelik planları ve özellikler
+  </Card>
+  <Card title="Kredi Yönetimi" icon="coins" href="/billing-credits/credit-management">
+    Kredi satın alma ve kullanım takibi
+  </Card>
+  <Card title="Ödeme Yöntemleri" icon="credit-card" href="/billing-credits/payment-methods">
+    Kart ekleme ve ödeme güvenliği
+  </Card>
+  <Card title="Organizasyon Ayarları" icon="building" href="/getting-started/organization-settings">
+    Organizasyon ve vergi bilgileri yönetimi
+  </Card>
+</CardGroup>

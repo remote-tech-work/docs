@@ -1,0 +1,712 @@
+---
+title: "Kampanya Analitiği"
+description: "Kampanya performansını detaylı olarak inceleyin, karşılaştırın ve optimize edin"
+---
+
+## Genel Bakış
+
+Kampanya analitiği ile kampanyalarınızın performansını detaylı olarak inceleyebilir, başarı oranlarını takip edebilir, karşılaştırmalar yapabilir ve gelecek kampanyalarınızı optimize edebilirsiniz.
+
+## Analytics Sayfasına Erişim
+
+<Tabs>
+  <Tab title="Kampanya Detayından">
+    <Steps>
+      <Step title="Kampanyalar Sayfasına Gidin">
+        **Kampanyalar** sayfasını açın
+      </Step>
+      <Step title="Kampanya Seçin">
+        İncelemek istediğiniz kampanyayı seçin
+      </Step>
+      <Step title="Analytics Sekmesi">
+        **Analytics** sekmesine tıklayın
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="Global Analytics">
+    <Steps>
+      <Step title="Analytics Menüsüne Gidin">
+        Sol menü > **Analytics**
+      </Step>
+      <Step title="Kampanyalar Sekmesi">
+        **Kampanyalar** sekmesini seçin
+      </Step>
+      <Step title="Tüm Kampanyaları Görün">
+        Tüm kampanyalarınızı görüntüleyin
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+<Frame>
+  <img src="/images/campaign-analytics-overview.png" alt="Kampanya analitiği genel bakış" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Analytics sayfasının genel görünümü ve temel metrikleri gösteren ekran
+</Note>
+
+## Temel Metrikler
+
+### Genel Bakış Kartları
+
+<CardGroup cols={4}>
+  <Card title="Toplam Çağrı" icon="phone">
+    1,000
+
+    Kampanyada yapılan toplam çağrı sayısı
+  </Card>
+  <Card title="Başarılı Çağrı" icon="check">
+    680 (68%)
+
+    Hedefine ulaşan çağrılar
+  </Card>
+  <Card title="Ortalama Süre" icon="clock">
+    2:35
+
+    Çağrı başına ortalama konuşma süresi
+  </Card>
+  <Card title="Toplam Maliyet" icon="dollar-sign">
+    ₺425
+
+    Kampanya maliyeti (kredi bazlı)
+  </Card>
+</CardGroup>
+
+### Detaylı İstatistikler
+
+**Çağrı Durumu Dağılımı:**
+
+| Durum | Sayı | Yüzde |
+|-------|------|-------|
+| ✅ Başarılı | 680 | 68% |
+| ❌ Başarısız | 200 | 20% |
+| 📞 Meşgul | 50 | 5% |
+| ⏳ Yanıt Yok | 70 | 7% |
+| **Toplam** | **1,000** | **100%** |
+
+**Başarısız Sebepleri:**
+- No Answer: 70 (35%)
+- Invalid Number: 50 (25%)
+- Agent Error: 30 (15%)
+- Call Rejected: 50 (25%)
+
+<Frame>
+  <img src="/images/campaign-analytics-call-status.png" alt="Çağrı durumu dağılımı" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Çağrı durumu dağılımını gösteren pasta grafik ve başarısız sebeplerini gösteren bar grafik
+</Note>
+
+## Zaman Bazlı Analiz
+
+### Saatlik Dağılım
+
+**Insights:**
+- En yoğun saat: 13:00 (125 çağrı)
+- En düşük saat: 17:00 (45 çağrı)
+- Başarı oranı en yüksek: 11:00 (%75)
+
+<Frame>
+  <img src="/images/campaign-analytics-hourly.png" alt="Saatlik çağrı dağılımı" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Saatlik çağrı dağılımını ve başarı oranını gösteren çizgi grafik
+</Note>
+
+### Günlük Dağılım
+
+**Tablo:**
+
+| Gün | Çağrı | Başarılı | Başarı % |
+|-----|-------|----------|----------|
+| Pzt | 200 | 145 | 72.5% |
+| Sal | 220 | 160 | 72.7% |
+| Çar | 210 | 148 | 70.5% |
+| Per | 190 | 135 | 71.1% |
+| Cum | 180 | 92 | 51.1% |
+
+**Insights:**
+- En iyi gün: Salı (%72.7)
+- En kötü gün: Cuma (%51.1)
+- Hafta ortası daha başarılı
+
+<Info>
+  **Not:** Cuma günleri daha düşük başarı oranı normal bir pattern'dir. Hafta ortası günlerine odaklanın.
+</Info>
+
+### Haftalık Trend
+
+**Insights:**
+- Trend: Düşüş
+- W1: %75 → W5: %62
+- Müşteri yorgunluğu olabilir
+
+<Warning>
+  **Dikkat:** Başarı oranında %10'un üzerinde düşüş tespit edildi. Agent promptunu ve hedef kitleyi gözden geçirin.
+</Warning>
+
+<Frame>
+  <img src="/images/campaign-analytics-weekly-trend.png" alt="Haftalık trend grafiği" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Haftalık başarı oranı trendini gösteren çizgi grafik
+</Note>
+
+## Segmentasyon Analizi
+
+### Müşteri Segmentlerine Göre
+
+**Tag Bazlı Başarı:**
+
+| Segment | Çağrı | Başarı % | Ortalama Süre |
+|---------|-------|----------|---------------|
+| VIP | 200 | 85% | 3:20 |
+| Aktif | 400 | 72% | 2:45 |
+| Potansiyel | 300 | 55% | 2:10 |
+| Yeni | 100 | 45% | 1:50 |
+
+**Insights:**
+- VIP segment en başarılı (%85)
+- Yeni müşteriler düşük (%45)
+- VIP'ler daha uzun konuşuyor
+
+<Tip>
+  VIP segment %85 başarı ile en iyi performans gösteriyor. VIP'lere özel kampanya düşünün.
+</Tip>
+
+### Coğrafi Analiz
+
+**Şehir Bazlı:**
+
+| Şehir | Çağrı | Başarı % |
+|-------|-------|----------|
+| İstanbul | 400 | 72% |
+| Ankara | 250 | 68% |
+| İzmir | 200 | 65% |
+| Diğer | 150 | 58% |
+
+**Insights:**
+- Büyük şehirler daha başarılı
+- İstanbul %72 ile zirvede
+
+<Frame>
+  <img src="/images/campaign-analytics-segmentation.png" alt="Segmentasyon analizi" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Segment bazlı başarı oranlarını ve coğrafi dağılımı gösteren ekran
+</Note>
+
+## Performans Analizi
+
+### Başarı Oranı Trendi
+
+**Analiz:**
+- Başlangıç: %75
+- Güncel: %65
+- Düşüş: -10 puan
+- **Aksiyon:** Agent prompt gözden geçir
+
+<Warning>
+  Başarı oranı son 7 günde %10 düştü. Agent promptunu gözden geçirin.
+</Warning>
+
+### Ortalama Çağrı Süresi
+
+**Süre Dağılımı:**
+
+| Süre Aralığı | Çağrı Sayısı | Yüzde |
+|--------------|--------------|-------|
+| 0-1 dk | 150 | 15% |
+| 1-2 dk | 300 | 30% |
+| 2-3 dk | 350 | 35% |
+| 3-5 dk | 150 | 15% |
+| 5+ dk | 50 | 5% |
+
+**Insights:**
+- Çoğunluk 2-3 dk arasında
+- Çok kısa çağrılar (%15) → İlgisizlik?
+- Çok uzun çağrılar (%5) → Sorun mu?
+
+<Frame>
+  <img src="/images/campaign-analytics-call-duration.png" alt="Çağrı süresi dağılımı" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Çağrı süresi dağılımını gösteren histogram
+</Note>
+
+### Cost Per Call (Çağrı Başına Maliyet)
+
+**Hesaplama:**
+```
+Toplam Maliyet: ₺425
+Toplam Çağrı: 1,000
+CPC = ₺0.43
+```
+
+**Başarılı Çağrı Başına:**
+```
+Toplam Maliyet: ₺425
+Başarılı Çağrı: 680
+Cost Per Success = ₺0.63
+```
+
+### ROI (Yatırım Getirisi)
+
+**Satış Kampanyası İçin:**
+```
+Toplam Satış: ₺12,500
+Kampanya Maliyeti: ₺425
+ROI = (12,500 - 425) / 425 = 2,841%
+```
+
+**Ölçüm:**
+- Structured output'tan satış verisi
+- Manuel giriş
+- CRM entegrasyonu
+
+<Info>
+  **Not:** ROI hesaplaması için satış verilerini sisteme manuel olarak girmeniz veya structured output ile otomatik toplamanız gerekir.
+</Info>
+
+## Karşılaştırmalı Analiz
+
+### Kampanya Karşılaştırma
+
+<Steps>
+  <Step title="Karşılaştır Bölümüne Gidin">
+    Analytics > **Kampanyaları Karşılaştır**
+  </Step>
+  <Step title="Kampanyaları Seçin">
+    En fazla 3 kampanya seçin
+  </Step>
+  <Step title="Karşılaştır">
+    **Karşılaştır** butonuna tıklayın
+  </Step>
+</Steps>
+
+**Tablo:**
+
+| Metrik | Mart Satış | Nisan Anket | Mayıs Destek |
+|--------|------------|-------------|--------------|
+| Toplam Çağrı | 1,000 | 500 | 750 |
+| Başarı % | 68% | 75% | 62% |
+| Ortalama Süre | 2:35 | 1:45 | 3:20 |
+| Maliyet | ₺425 | ₺200 | ₺350 |
+| CPC | ₺0.43 | ₺0.40 | ₺0.47 |
+
+**Insights:**
+- Nisan Anket en düşük maliyetli
+- Mayıs Destek en uzun süreli
+- Mart Satış dengeli
+
+<Frame>
+  <img src="/images/campaign-analytics-comparison.png" alt="Kampanya karşılaştırması" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Kampanya karşılaştırma sayfasını gösteren ekran
+</Note>
+
+### A/B Test Sonuçları
+
+**Senaryo:** Farklı agent promptları test etme
+
+<Tabs>
+  <Tab title="Kampanya A (Resmi Ton)">
+    - Başarı: 65%
+    - Ortalama Süre: 2:10
+  </Tab>
+
+  <Tab title="Kampanya B (Samimi Ton)">
+    - Başarı: 72%
+    - Ortalama Süre: 2:45
+  </Tab>
+</Tabs>
+
+**Sonuç:** Samimi ton %7 daha başarılı
+
+<Tip>
+  A/B testleri için aynı müşteri listesini farklı agent'larla test edin. En az 100 çağrı sonrası anlamlı sonuçlar elde edebilirsiniz.
+</Tip>
+
+## Export ve Raporlama
+
+### Export Seçenekleri
+
+**Format:**
+- Excel (.xlsx)
+- CSV (.csv)
+- PDF (Rapor formatında)
+
+**İçerik:**
+- Tüm metrikler
+- Grafikler (PDF)
+- Detaylı çağrı listesi
+- Segmentasyon verileri
+
+<Steps>
+  <Step title="Analytics Sayfasını Açın">
+    İlgili kampanyanın analytics sayfasına gidin
+  </Step>
+  <Step title="Export Butonuna Tıklayın">
+    **Export** butonuna tıklayın
+  </Step>
+  <Step title="Format Seçin">
+    Excel, CSV veya PDF seçin
+  </Step>
+  <Step title="İndirin">
+    **İndir** butonuna tıklayın
+  </Step>
+</Steps>
+
+<Frame>
+  <img src="/images/campaign-analytics-export.png" alt="Export seçenekleri" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Export menüsünü ve format seçeneklerini gösteren ekran
+</Note>
+
+### Otomatik Raporlama
+
+**Zamanlanmış Rapor (Gelecekte):**
+- Haftalık özet e-posta
+- Aylık performans raporu
+- Karşılaştırmalı analiz
+
+<Info>
+  **Not:** Otomatik raporlama özelliği gelecek sürümlerde eklenecek.
+</Info>
+
+### Custom Rapor
+
+<Steps>
+  <Step title="Özel Rapor Oluştur">
+    **Özel Rapor Oluştur** butonuna tıklayın
+  </Step>
+  <Step title="Metrikleri Seçin">
+    Rapora dahil etmek istediğiniz metrikleri seçin
+  </Step>
+  <Step title="Tarih Aralığı Belirle">
+    Rapor için tarih aralığı seçin
+  </Step>
+  <Step title="Oluştur">
+    **Oluştur** butonuna tıklayın
+  </Step>
+</Steps>
+
+**Kaydedilmiş Raporlar:**
+- Tekrar kullanılabilir
+- Düzenlenebilir
+- Paylaşılabilir (gelecekte)
+
+## Gelişmiş Metrikler
+
+### Conversion Rate (Dönüşüm Oranı)
+
+**Satış Kampanyası:**
+```
+Başarılı Çağrı: 680
+Satış Yapılan: 120
+Conversion Rate = 120/680 = 17.6%
+```
+
+**Benchmark:**
+- Düşük: <10%
+- Orta: 10-20%
+- İyi: 20-30%
+- Mükemmel: >30%
+
+### Engagement Score (Etkileşim Skoru)
+
+**Hesaplama:**
+```
+Etkileşim Skoru = (Ortalama Süre × Başarı Oranı) / 100
+```
+
+**Örnek:**
+```
+2.5 dakika × 68% / 100 = 1.7
+```
+
+**Yorumlama:**
+- <1.0: Düşük etkileşim
+- 1.0-2.0: Orta etkileşim
+- >2.0: Yüksek etkileşim
+
+### Agent Performance Score
+
+**Faktörler:**
+- Başarı oranı (40%)
+- Ortalama süre (20%)
+- Müşteri memnuniyeti (30%)
+- Hata oranı (10%)
+
+**Örnek:**
+```
+APS = (68×0.4) + (75×0.2) + (80×0.3) + (90×0.1)
+    = 27.2 + 15 + 24 + 9
+    = 75.2 / 100
+```
+
+## Insights ve Öneriler
+
+### Otomatik Insights
+
+**Sistem Önerileri:**
+
+<AccordionGroup>
+  <Accordion title="Trend Analizi" icon="chart-line">
+    ⚠️ Başarı oranı son 7 günde %10 düştü.
+
+    **Öneri:** Agent promptunu gözden geçirin.
+  </Accordion>
+
+  <Accordion title="Zaman Optimizasyonu" icon="clock">
+    ✅ 11:00-13:00 arası en başarılı saatler.
+
+    **Öneri:** Bu saatlere daha fazla çağrı planlayın.
+  </Accordion>
+
+  <Accordion title="Segment Önerisi" icon="users">
+    💡 VIP segment %85 başarı ile en iyi performans.
+
+    **Öneri:** VIP'lere özel kampanya düşünün.
+  </Accordion>
+</AccordionGroup>
+
+### Actionable Recommendations
+
+<Tabs>
+  <Tab title="Başarı Oranı Düşükse">
+    1. Agent promptunu optimize edin
+    2. Hedef kitleyi daraltın
+    3. Çağrı zamanlamasını ayarlayın
+    4. Retry stratejisini gözden geçirin
+  </Tab>
+
+  <Tab title="Maliyet Yüksekse">
+    1. Çağrı süresini kısaltın (agent ayarı)
+    2. Başarısız çağrı retry'ını azaltın
+    3. Hedef kitleyi filtreyin
+    4. Daha ucuz modeli deneyin
+  </Tab>
+
+  <Tab title="Engagement Düşükse">
+    1. Agent tonunu değiştirin
+    2. Value proposition güçlendirin
+    3. Doğru segment mi kontrol edin
+    4. Call-to-action netleştirin
+  </Tab>
+</Tabs>
+
+## Dashboard Widgets
+
+### Custom Dashboard
+
+<Steps>
+  <Step title="Dashboard Özelleştir">
+    Analytics > **Dashboard Özelleştir**
+  </Step>
+  <Step title="Widget Seçin">
+    Widget seçin:
+    - Başarı Oranı Grafiği
+    - Maliyet Trendi
+    - Saatlik Dağılım
+    - Top Performing Segments
+  </Step>
+  <Step title="Yerleştir">
+    Sürükle-bırak ile yerleştir
+  </Step>
+  <Step title="Kaydet">
+    **Kaydet** butonuna tıklayın
+  </Step>
+</Steps>
+
+### Widget Tipleri
+
+<CardGroup cols={2}>
+  <Card title="Metrik Kartı" icon="chart-simple">
+    Tek bir metriği büyük ve net gösterir
+  </Card>
+  <Card title="Line Chart" icon="chart-line">
+    Trend grafiği ve zaman serisi
+  </Card>
+  <Card title="Bar Chart" icon="chart-bar">
+    Karşılaştırma ve segmentasyon
+  </Card>
+  <Card title="Pie Chart" icon="chart-pie">
+    Dağılım ve oranlar
+  </Card>
+</CardGroup>
+
+## Filtreler ve Segmentasyon
+
+### Tarih Filtresi
+
+**Hızlı Seçim:**
+- Bugün
+- Son 7 gün
+- Son 30 gün
+- Bu ay
+- Geçen ay
+- Özel aralık
+
+### Segment Filtresi
+
+**Müşteri Özellikleri:**
+- Tag
+- Şehir
+- Şirket
+- Custom field
+
+**Çağrı Özellikleri:**
+- Durum
+- Süre aralığı
+- Saat dilimi
+- Retry sayısı
+
+### Birden Fazla Filtre
+
+**Örnek:**
+```
+Tag: VIP
+VE
+Şehir: İstanbul
+VE
+Başarı: Evet
+```
+
+**Sonuç:** İstanbul'daki başarılı VIP çağrıları
+
+<Frame>
+  <img src="/images/campaign-analytics-filters.png" alt="Filtre ve segmentasyon" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Filtre panelini ve uygulanan filtreleri gösteren ekran
+</Note>
+
+## İpuçları ve En İyi Uygulamalar
+
+### Düzenli Takip
+
+<Tip>
+  **Öneriler:**
+  - ✅ Günlük: Başarı oranı ve maliyet
+  - ✅ Haftalık: Trend analizi
+  - ✅ Aylık: Karşılaştırmalı analiz
+  - ❌ Sadece kampanya bitince bakmak
+</Tip>
+
+### Benchmark
+
+<Tip>
+  **Öneriler:**
+  - ✅ Kendi kampanyalarınızı karşılaştırın
+  - ✅ Sektör ortalaması ile karşılaştırın
+  - ✅ Hedef belirleyin ve takip edin
+</Tip>
+
+### Data-Driven Decisions
+
+<Tip>
+  **Öneriler:**
+  - ✅ Veriye dayalı kararlar alın
+  - ✅ A/B test yapın
+  - ✅ Insights'ları uygulayın
+  - ❌ Sezgilere göre hareket etmeyin
+</Tip>
+
+### Export ve Paylaşım
+
+<Tip>
+  **Öneriler:**
+  - ✅ Düzenli rapor çıkarın
+  - ✅ Takımla paylaşın
+  - ✅ Gelişimi takip edin
+</Tip>
+
+## Sorun Giderme
+
+<AccordionGroup>
+  <Accordion title="Veri Görünmüyor">
+    **Sebep:** Kampanya henüz çağrı yapmadı
+
+    **Çözüm:** En az 10-20 çağrı yapıldıktan sonra anlamlı veri görünür.
+  </Accordion>
+
+  <Accordion title="Grafik Yüklenmiyor">
+    **Sebep:** Çok fazla veri veya bağlantı sorunu
+
+    **Çözüm:** Tarih aralığını daraltın veya sayfayı yenileyin.
+  </Accordion>
+
+  <Accordion title="Export Hatası">
+    **Sebep:** Dosya çok büyük
+
+    **Çözüm:** Filtre uygulayın ve daha küçük batch'lerle export edin.
+  </Accordion>
+
+  <Accordion title="Yanlış Metrik">
+    **Sebep:** Filtre yanlış uygulanmış
+
+    **Çözüm:** Filtreleri temizle ve tekrar uygula.
+  </Accordion>
+</AccordionGroup>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Analytics ne sıklıkla güncellenir?">
+    Gerçek zamanlı. 5-10 saniyede bir yenilenir.
+  </Accordion>
+
+  <Accordion title="Eski kampanya verilerini görebilir miyim?">
+    Evet, tüm kampanya verileri sınırsız saklanır.
+  </Accordion>
+
+  <Accordion title="Birden fazla kampanyayı karşılaştırabilir miyim?">
+    Evet, en fazla 3 kampanya aynı anda karşılaştırılabilir.
+  </Accordion>
+
+  <Accordion title="Custom metrik oluşturabilir miyim?">
+    Şu anda hayır. Gelecek sürümlerde eklenecek.
+  </Accordion>
+
+  <Accordion title="Export limiti var mı?">
+    10,000 satır tek seferde export edilebilir.
+  </Accordion>
+
+  <Accordion title="Analytics ücretli mi?">
+    Hayır, tüm planlarda dahil.
+  </Accordion>
+
+  <Accordion title="Rapor otomatik e-posta ile gelebilir mi?">
+    Şu anda hayır. Gelecek sürümlerde eklenecek.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Kampanya Oluşturma" icon="rocket" href="/campaigns/create-campaign">
+    Yeni kampanya oluşturma ve yapılandırma
+  </Card>
+  <Card title="Kampanya Yürütme ve Takibi" icon="play" href="/campaigns/campaign-execution-tracking">
+    Kampanya izleme ve yönetimi
+  </Card>
+  <Card title="AI Agent Oluşturma" icon="robot" href="/voice-ai-agents/create-agent">
+    Kampanyalar için AI Agent yapılandırması
+  </Card>
+  <Card title="Müşteri Ekleme" icon="user-plus" href="/customer-management/add-customers">
+    Kampanyalara müşteri ekleme
+  </Card>
+</CardGroup>

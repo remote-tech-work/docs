@@ -25,23 +25,41 @@
             ]
           },
           {
+            "group": "Organizasyon Yönetimi",
+            "pages": [
+              "organization-management/create-organization",
+              "organization-management/organization-settings",
+              "organization-management/user-invitations",
+              "organization-management/api-key-management",
+              "organization-management/multi-organization"
+            ]
+          },
+          {
             "group": "Sesli Yapay Zeka Ajanlar",
             "pages": [
               "voice-ai-agents/create-agent",
-              "voice-ai-agents/knowledge-base-management"
+              "voice-ai-agents/knowledge-base-management",
+              "voice-ai-agents/structured-outputs",
+              "voice-ai-agents/voice-transcript-settings",
+              "voice-ai-agents/agent-tools",
+              "voice-ai-agents/advanced-configuration"
             ]
           },
           {
             "group": "Müşteri Yönetimi",
             "pages": [
               "customer-management/add-customer",
-              "customer-management/customer-interactions"
+              "customer-management/customer-interactions",
+              "customer-management/bulk-customer-import",
+              "customer-management/search-filtering"
             ]
           },
           {
             "group": "Kampanyalar",
             "pages": [
-              "campaigns/create-campaign"
+              "campaigns/create-campaign",
+              "campaigns/campaign-execution-tracking",
+              "campaigns/campaign-analytics"
             ]
           },
           {
@@ -66,15 +84,29 @@
             ]
           },
           {
+            "group": "Faturalandırma ve Krediler",
+            "pages": [
+              "billing-credits/subscription-plans",
+              "billing-credits/credit-management",
+              "billing-credits/billing-operations",
+              "billing-credits/payment-methods"
+            ]
+          },
+          {
             "group": "Analizler",
             "pages": [
-              "analytics/coming-soon"
+              "analytics/dashboard-metrics",
+              "analytics/campaign-analytics",
+              "analytics/call-statistics"
             ]
           },
           {
             "group": "Sorun Giderme",
             "pages": [
-              "troubleshooting/coming-soon"
+              "troubleshooting/general-issues",
+              "troubleshooting/api-connection-issues",
+              "troubleshooting/call-errors",
+              "troubleshooting/error-codes-reference"
             ]
           }
         ]

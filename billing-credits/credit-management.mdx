@@ -1,0 +1,376 @@
+---
+title: "Kredi Yönetimi"
+description: "Kredi satın alma, kullanım takibi ve otomatik yükleme işlemleri"
+---
+
+## Genel Bakış
+
+Kredi sistemi, platformda çağrı yapabilmeniz için gerekli olan ön ödemeli sistemdir. Bu makale, kredi satın alma, kullanım takibi ve yönetim süreçlerini açıklar.
+
+## Kredi Nedir?
+
+**Kredi:** Çağrı yapabilmek için kullanılan sanal para birimidir.
+
+**Kullanım Alanları:**
+- Outbound çağrılar (dışa dönük aramalar)
+- Inbound çağrılar (gelen aramalar, gelecekte)
+- Agent kullanımı
+- Transkript işleme
+- Kayıt depolama
+
+## Kredi Fiyatlandırması
+
+### Kredi Paketleri
+
+| Paket | Kredi | Fiyat | Birim Fiyat | İndirim |
+|-------|-------|-------|-------------|---------|
+| Küçük | 100 | 50 TL | 0.50 TL | - |
+| Orta | 500 | 200 TL | 0.40 TL | %20 |
+| Büyük | 1,000 | 350 TL | 0.35 TL | %30 |
+| Mega | 5,000 | 1,500 TL | 0.30 TL | %40 |
+| Özel | 10,000+ | İletişim | İndirimli | Özel |
+
+<Tip>
+  Büyük paketlerde %40'a varan indirimlerden yararlanabilirsiniz!
+</Tip>
+
+### Kullanım Maliyetleri
+
+**Çağrı Başına:**
+- Bağlanmayan çağrı: 1 kredi (minimum)
+- Başarılı çağrı: ~2-5 kredi/dakika
+- Yönlendirme: +1 kredi/dakika
+
+**Örnek Hesaplama:**
+```
+2 dakikalık çağrı: ~6 kredi
+100 çağrı (ortalama 2 dk): ~600 kredi
+Maliyet: 600 × 0.35 = 210 TL (büyük paket)
+```
+
+## Kredi Satın Alma
+
+<Steps>
+  <Step title="Dashboard'da Kredi Bölümü">
+    Sağ üst köşede Kredi Bakiyesi'ni görün ve **Kredi Satın Al** butonuna tıklayın
+  </Step>
+
+  <Step title="Paket Seçimi">
+    İhtiyacınıza uygun paketi seçin ve bonus kredileri görüntüleyin. **Devam** butonuna tıklayın.
+  </Step>
+
+  <Step title="Stripe Ödeme">
+    Kart bilgilerinizi girin ve 3D Secure doğrulama yapın. Ödemeyi onaylayın.
+  </Step>
+
+  <Step title="Kredi Yükleme">
+    Ödeme başarılıysa kredi anında yüklenir. Dashboard'da bakiyeyi görürsünüz ve e-posta ile onay gelir.
+  </Step>
+</Steps>
+
+<Frame>
+  <img src="/images/billing-credit-purchase.png" alt="Kredi satın alma ekranı" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Kredi paket seçimi ve satın alma ekranı
+</Note>
+
+### Ödeme Yöntemleri
+
+- ✅ Kredi kartı (Visa, Mastercard, Amex, Troy)
+- ✅ Banka kartı (debit)
+- 🔒 Stripe güvenli ödeme
+
+## Kredi Kullanım Takibi
+
+### Bakiye Kontrolü
+
+**Dashboard:**
+
+Sağ üst köşede anlık bakiye görüntülenir. Renk kodları:
+
+- 🟢 **1000+ kredi**: Yeterli
+- 🟡 **100-1000 kredi**: Dikkat
+- 🔴 **0-100 kredi**: Kritik
+
+**Detaylı Rapor:**
+
+<Steps>
+  <Step title="Kredi Geçmişi">
+    Ayarlar > Billing > Kredi Geçmişi sayfasına gidin
+  </Step>
+
+  <Step title="Tarih Bazlı Kullanım">
+    Tarih bazlı kullanım verilerini görüntüleyin
+  </Step>
+
+  <Step title="Çağrı Bazlı Maliyet">
+    Her çağrının maliyetini inceleyin
+  </Step>
+
+  <Step title="Grafik Gösterim">
+    Kullanım grafiklerini analiz edin
+  </Step>
+</Steps>
+
+### Kullanım Bildirimleri
+
+**E-posta Uyarıları:**
+- Bakiye 500'ün altına düştüğünde
+- Bakiye 100'ün altına düştüğünde
+- Bakiye sıfır olduğunda
+
+**Ayarlama:**
+
+<Steps>
+  <Step title="Bildirimler Sayfası">
+    Ayarlar > Bildirimler sayfasına gidin
+  </Step>
+
+  <Step title="Kredi Uyarıları">
+    **Kredi Uyarıları** bölümünü bulun
+  </Step>
+
+  <Step title="Eşik Değerleri">
+    Uyarı eşik değerlerini belirleyin
+  </Step>
+
+  <Step title="Kaydedin">
+    Ayarları kaydedin
+  </Step>
+</Steps>
+
+## Auto-Recharge (Otomatik Yükleme)
+
+### Özellik
+
+Bakiye belirli seviyenin altına düştüğünde otomatik kredi satın alır.
+
+**Avantajları:**
+- ✅ Kampanyalar kesintisiz çalışır
+- ✅ Manuel takip gerektirmez
+- ✅ Sürekli kredi mevcudiyeti
+
+### Auto-Recharge Ayarlama
+
+<Steps>
+  <Step title="Auto-Recharge Sayfası">
+    Ayarlar > Billing > Auto-Recharge sayfasına gidin
+  </Step>
+
+  <Step title="Aktif Et">
+    **Aktif Et** toggle'ı açın
+  </Step>
+
+  <Step title="Minimum Bakiye">
+    **Minimum Bakiye** belirleyin (örn: 100 kredi)
+  </Step>
+
+  <Step title="Yüklenecek Miktar">
+    **Yüklenecek Miktar** seçin (örn: 500 kredi)
+  </Step>
+
+  <Step title="Ödeme Yöntemi">
+    **Ödeme Yöntemi**'ni kaydedin
+  </Step>
+
+  <Step title="Kaydet">
+    Tüm ayarları kaydedin
+  </Step>
+</Steps>
+
+**Örnek Senaryo:**
+```
+Minimum: 100 kredi
+Yüklenecek: 500 kredi
+→ Bakiye 100'ün altına düşünce otomatik 500 kredi alınır
+```
+
+<Frame>
+  <img src="/images/billing-auto-recharge.png" alt="Auto-recharge ayarları" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Auto-recharge ayarları ve yapılandırma ekranı
+</Note>
+
+## Kredi Geçmişi
+
+### Detaylı Rapor
+
+**Erişim:** Ayarlar > Billing > Kredi Geçmişi
+
+**Gösterilen Bilgiler:**
+- Tarih/Saat
+- İşlem Tipi (Satın Alma / Kullanım)
+- Miktar (+/-)
+- Kalan Bakiye
+- Açıklama (Hangi çağrı için)
+
+**Filtreleme:**
+- Tarih aralığı
+- İşlem tipi
+- Minimum/maksimum tutar
+
+**Dışa Aktarma:**
+- CSV formatında indir
+- Excel'de analiz et
+
+## Kredi İadesi
+
+### İade Politikası
+
+**İade Edilebilir:**
+- ❌ Kullanılmamış kredi iade edilmez
+- ❌ Kısmi kullanım iade edilmez
+- ✅ Sistem hatası durumunda iade edilir
+
+### İade Talebi
+
+<Steps>
+  <Step title="Destek Başvurusu">
+    Destek ekibine başvurun
+  </Step>
+
+  <Step title="İade Nedeni">
+    İade nedenini açıklayın
+  </Step>
+
+  <Step title="Belgeler">
+    Gerekli belgeleri gönderin
+  </Step>
+
+  <Step title="Değerlendirme">
+    İade talebi 5-7 iş günü içinde değerlendirilir
+  </Step>
+</Steps>
+
+## Kampanya Maliyet Optimizasyonu
+
+### Kredi Tasarrufu İpuçları
+
+<AccordionGroup>
+  <Accordion title="Telefon Numarası Temizleme">
+    - Geçersiz numaraları silin
+    - DNC listesi kullanın
+    - Başarısız numaraları kaldırın
+
+    **Tasarruf:** %30-40
+  </Accordion>
+
+  <Accordion title="Arama Saati Optimizasyonu">
+    - En verimli saatlerde arayın
+    - Cevaplama oranı yüksek zamanlar seçin
+
+    **Tasarruf:** %20-30
+  </Accordion>
+
+  <Accordion title="Agent Optimizasyonu">
+    - Çağrı süresini kısaltın (gereksiz uzatmayın)
+    - Yönlendirmeleri azaltın
+    - İlk mesajı optimize edin
+
+    **Tasarruf:** %15-25
+  </Accordion>
+
+  <Accordion title="Test ve İyileştirme">
+    - Küçük gruplarla test edin
+    - Başarı oranını ölçün
+    - En verimli stratejiyi uygulayın
+  </Accordion>
+</AccordionGroup>
+
+### Maliyet Tahmin Aracı
+
+**Örnek Hesaplama:**
+```
+Hedef Çağrı Sayısı: 1,000
+Ortalama Süre: 2 dakika
+Başarı Oranı: %70
+
+Başarılı çağrı: 700 × 2 dk × 3 kredi/dk = 4,200 kredi
+Başarısız çağrı: 300 × 1 kredi = 300 kredi
+Toplam: 4,500 kredi ≈ 1,575 TL (büyük paket)
+```
+
+## Kredi Transfer
+
+### Organizasyonlar Arası
+
+<Info>
+  **Şu anda desteklenmiyor.** Gelecek sürümlerde organizasyonlar arası kredi transferi eklenecek.
+</Info>
+
+## Sorun Giderme
+
+<AccordionGroup>
+  <Accordion title="Kredi Yüklenmiyor">
+    **Çözüm:**
+    1. Ödeme başarılı mı kontrol edin (Stripe dashboard)
+    2. E-posta onayı geldi mi?
+    3. 5 dakika bekleyin
+    4. Sayfayı yenileyin
+    5. Destek ekibine bildirin
+  </Accordion>
+
+  <Accordion title="Kredi Hızla Tükeniyor">
+    **Analiz:**
+    1. Kredi Geçmişi > Kullanımları inceleyin
+    2. Hangi çağrılar maliyetli?
+    3. Ortalama çağrı süresi ne?
+    4. Başarısız çağrı oranı yüksek mi?
+
+    **Optimizasyon:**
+    - Yukarıdaki tasarruf ipuçlarını uygulayın
+  </Accordion>
+
+  <Accordion title="Auto-Recharge Çalışmıyor">
+    **Kontroller:**
+    1. Özellik aktif mi?
+    2. Kayıtlı kart geçerli mi?
+    3. Kart limiti yeterli mi?
+    4. Minimum bakiye doğru ayarlanmış mı?
+  </Accordion>
+</AccordionGroup>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Kullanılmayan kredi iade edilir mi?">
+    Hayır, satın alınan kredilerin son kullanma tarihi yoktur ve iade edilmez.
+  </Accordion>
+
+  <Accordion title="Kredi transferi yapabilir miyim?">
+    Şu anda organizasyonlar arası kredi transferi desteklenmemektedir.
+  </Accordion>
+
+  <Accordion title="Auto-recharge ne kadar güvenli?">
+    Stripe'ın güvenli ödeme altyapısı kullanılır. Kart bilgileriniz saklanmaz.
+  </Accordion>
+
+  <Accordion title="Toplu kredi alımda indirim var mı?">
+    Evet, büyük paketlerde %40'a varan indirimler mevcuttur.
+  </Accordion>
+
+  <Accordion title="Fatura kesilir mi?">
+    Evet, her kredi alımı için otomatik fatura oluşturulur ve e-posta ile gönderilir.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Abonelik Planları" icon="layer-group" href="/billing-credits/subscription-plans">
+    Platform abonelik planları ve özellikler
+  </Card>
+  <Card title="Fatura İşlemleri" icon="file-invoice" href="/billing-credits/billing-operations">
+    Fatura erişimi ve indirme işlemleri
+  </Card>
+  <Card title="Ödeme Yöntemleri" icon="credit-card" href="/billing-credits/payment-methods">
+    Kart ekleme ve ödeme güvenliği
+  </Card>
+  <Card title="Kampanya Yönetimi" icon="bullhorn" href="/campaigns/create-campaign">
+    Kampanya oluşturma ve yönetimi
+  </Card>
+</CardGroup>

@@ -1,0 +1,472 @@
+---
+title: "Genel Sorunlar ve Çözümleri"
+description: "Platform kullanımında karşılaşılan yaygın sorunlar ve adım adım çözüm yöntemleri"
+---
+
+## Genel Bakış
+
+Bu makale, AI Agent TR platformunu kullanırken karşılaşabileceğiniz yaygın sorunları ve bunların çözümlerini içermektedir. Sorunları kategorilere ayırarak hızlı çözüm bulmanızı sağlıyoruz.
+
+Her sorun için belirtiler, olası nedenler ve adım adım çözüm yöntemleri sunulmaktadır.
+
+## Giriş ve Kimlik Doğrulama Sorunları
+
+<AccordionGroup>
+  <Accordion title="Giriş Yapamıyorum">
+    **Belirtiler:**
+    - "Geçersiz kullanıcı adı veya şifre" hatası
+    - Giriş butonu çalışmıyor
+    - Giriş ekranı sürekli yükleniyor
+
+    **Olası Nedenler:**
+    - Yanlış e-posta veya şifre
+    - Clerk kimlik doğrulama sorunu
+    - Tarayıcı cookie'leri engelleniyor
+    - İnternet bağlantısı kesik
+
+    **Çözüm:**
+
+    **Adım 1: Bilgilerinizi Kontrol Edin**
+    1. E-posta adresinizi doğru yazdığınızdan emin olun
+    2. Caps Lock kapalı mı kontrol edin
+    3. Şifre sıfırlama linkini deneyin
+
+    **Adım 2: Tarayıcı Ayarlarını Kontrol Edin**
+    1. Tarayıcı cookie'lerinin aktif olduğundan emin olun
+    2. Gizli mod kullanıyorsanız normal moda geçin
+    3. Tarayıcı cache'ini temizleyin
+
+    **Adım 3: Farklı Tarayıcı Deneyin**
+    1. Chrome, Firefox veya Safari deneyin
+    2. Tarayıcınızın güncel olduğundan emin olun
+
+    **Adım 4: İnternet Bağlantısı**
+    1. İnternet bağlantınızı kontrol edin
+    2. VPN kullanıyorsanız kapatın
+    3. Mobil veri ile deneyin
+
+    <Note>
+      3 başarısız giriş denemesinden sonra hesabınız geçici olarak kilitlenebilir. 15 dakika bekleyip tekrar deneyin.
+    </Note>
+  </Accordion>
+
+  <Accordion title='"Oturum Süresi Doldu" Hatası'>
+    **Belirtiler:**
+    - İşlem sırasında oturum kapanıyor
+    - "Oturum süresi doldu, lütfen tekrar giriş yapın" mesajı
+
+    **Neden:**
+    - Güvenlik nedeniyle oturumlar 8 saat sonra otomatik kapatılır
+    - İnaktivite sonrası zaman aşımı
+
+    **Çözüm:**
+    1. Tekrar giriş yapın
+    2. "Beni hatırla" seçeneğini işaretleyin
+    3. Tarayıcıyı tamamen kapatıp açın
+
+    **Önleme:**
+    - Platformu aktif kullanmaya devam edin
+    - Uzun süre kullanmayacaksanız güvenli bir şekilde çıkış yapın
+  </Accordion>
+
+  <Accordion title="Organizasyon Oluşturamıyorum">
+    **Belirtiler:**
+    - "Organizasyon oluşturulamadı" hatası
+    - Oluştur butonu pasif
+
+    **Olası Nedenler:**
+    - Organizasyon adı zaten kullanılıyor
+    - Zorunlu alanlar eksik
+    - Kullanıcı izinleri yetersiz
+
+    **Çözüm:**
+    1. **Organizasyon adını değiştirin**: Benzersiz bir isim seçin
+    2. **Tüm zorunlu alanları doldurun**:
+       - Organizasyon adı
+       - İletişim bilgileri
+    3. **Hesap tipinizi kontrol edin**: Organizasyon oluşturmak için admin hesabı gerekebilir
+
+    <Tip>
+      Organizasyon adında özel karakterler kullanmaktan kaçının.
+    </Tip>
+  </Accordion>
+</AccordionGroup>
+
+## Veri Yükleme Sorunları
+
+<AccordionGroup>
+  <Accordion title="Dashboard Yüklenmiyor">
+    **Belirtiler:**
+    - Beyaz ekran
+    - Sürekli "Yükleniyor..." mesajı
+    - Metrikler görünmüyor
+
+    **Olası Nedenler:**
+    - API bağlantı sorunu
+    - Tarayıcı uyumsuzluğu
+    - Cache problemi
+
+    **Çözüm:**
+
+    **Adım 1: Basit Çözümler**
+    1. Sayfayı yenileyin (F5 veya Ctrl+R)
+    2. Hard refresh yapın (Ctrl+Shift+R veya Cmd+Shift+R)
+    3. 30 saniye bekleyip tekrar deneyin
+
+    **Adım 2: Tarayıcı Cache Temizleme**
+    1. Tarayıcı ayarlarına gidin
+    2. **Gizlilik ve Güvenlik** > **Tarama Verilerini Temizle**
+    3. Son 24 saati seçin
+    4. Cache ve cookie'leri temizleyin
+    5. Tarayıcıyı yeniden başlatın
+
+    **Adım 3: Tarayıcı Konsolu Kontrolü**
+    1. F12 tuşuna basın (Developer Tools)
+    2. **Console** sekmesine gidin
+    3. Kırmızı hata mesajları var mı kontrol edin
+    4. Screenshot alıp destek ekibine gönderin
+
+    **Adım 4: Alternatif Tarayıcı**
+    1. Farklı bir tarayıcıda deneyin
+    2. Problem devam ediyorsa sunucu tarafında sorun olabilir
+  </Accordion>
+
+  <Accordion title="Sayfalar Çok Yavaş Yükleniyor">
+    **Belirtiler:**
+    - Sayfa değiştirme 10+ saniye sürüyor
+    - Butonlar geç tepki veriyor
+    - Genel yavaşlık
+
+    **Olası Nedenler:**
+    - İnternet bağlantısı yavaş
+    - Tarayıcıda çok fazla sekme açık
+    - Bilgisayar performansı düşük
+
+    **Çözüm:**
+
+    **İnternet Bağlantısı:**
+    1. İnternet hızınızı test edin (speedtest.net)
+    2. Minimum 5 Mbps bağlantı gereklidir
+    3. WiFi yerine kablo bağlantı deneyin
+    4. Router'ı yeniden başlatın
+
+    **Tarayıcı Optimizasyonu:**
+    1. Gereksiz sekmeleri kapatın
+    2. Tarayıcı uzantılarını devre dışı bırakın
+    3. Tarayıcı güncellemelerini yapın
+    4. Başka bir tarayıcı deneyin
+
+    **Bilgisayar Performansı:**
+    1. Gereksiz programları kapatın
+    2. Bilgisayarı yeniden başlatın
+    3. Disk alanını kontrol edin (minimum 5GB boş alan)
+
+    <Info>
+      **Önerilen Tarayıcılar:** Chrome 100+, Firefox 100+, Safari 15+, Edge 100+
+    </Info>
+  </Accordion>
+
+  <Accordion title="Veriler Güncel Görünmüyor">
+    **Belirtiler:**
+    - Yeni eklenen çağrılar listede yok
+    - Metrikler eski
+    - Değişiklikler yansımıyor
+
+    **Neden:**
+    - Cache problemi
+    - Otomatik yenileme yok
+    - Senkronizasyon gecikmesi
+
+    **Çözüm:**
+    1. **Manuel Yenileme**: Sayfayı yenileyin (F5)
+    2. **Hard Refresh**: Ctrl+Shift+R (Mac: Cmd+Shift+R)
+    3. **Cache Temizleme**: Tarayıcı cache'ini temizleyin
+    4. **Bekleyin**: Veriler 2-5 dakika gecikme ile güncellenebilir
+
+    <Note>
+      Dashboard otomatik yenileme yapmaz, manuel yenileme gereklidir.
+    </Note>
+  </Accordion>
+</AccordionGroup>
+
+## Kullanıcı İzinleri ve Erişim Sorunları
+
+<AccordionGroup>
+  <Accordion title='"Yetkisiz Erişim" Hatası'>
+    **Belirtiler:**
+    - "Bu sayfaya erişim izniniz yok" mesajı
+    - 403 Forbidden hatası
+    - Bazı menü öğeleri görünmüyor
+
+    **Neden:**
+    - Kullanıcı rolünüz yeterli değil
+    - RBAC (Role-Based Access Control) kısıtlaması
+
+    **Çözüm:**
+
+    **Rolünüzü Kontrol Edin:**
+    1. Ayarlar > Profil sayfasına gidin
+    2. Rolünüzü görün: **Admin** veya **User**
+
+    **Rol Yetkileri:**
+
+    | İşlem | Admin | User |
+    |-------|-------|------|
+    | Dashboard görüntüleme | ✅ | ✅ |
+    | Agent oluşturma | ✅ | ❌ |
+    | Kampanya oluşturma | ✅ | ❌ |
+    | Müşteri ekleme | ✅ | ✅ |
+    | API key yönetimi | ✅ | ❌ |
+    | Kullanıcı davet etme | ✅ | ❌ |
+    | Billing işlemleri | ✅ | ❌ |
+
+    **Çözüm:**
+    1. Organizasyon admin'i ile iletişime geçin
+    2. Rol yükseltme isteyin
+    3. Admin sizi **Admin** rolüne yükseltebilir
+  </Accordion>
+
+  <Accordion title="Diğer Organizasyonların Verilerini Görüyorum">
+    **Belirtiler:**
+    - Yabancı müşteri kayıtları
+    - Tanımadığım kampanyalar
+    - Başka organizasyonun verileri
+
+    **Neden:**
+    - **ÇOK CİDDİ BUG** - Hemen rapor edilmeli!
+    - Multi-tenant izolasyon sorunu
+
+    **Çözüm - Derhal:**
+    1. **Oturumu kapatın** (hemen!)
+    2. **Screenshot alın** (kanıt için)
+    3. **Destek ekibine bildirin** (acil)
+    4. **Başka işlem yapmayın**
+
+    <Warning>
+      Bu tür bir sorun veri güvenliği açısından kritiktir. Derhal rapor edilmelidir.
+    </Warning>
+  </Accordion>
+</AccordionGroup>
+
+## UI/UX Sorunları
+
+<AccordionGroup>
+  <Accordion title="Butonlar Çalışmıyor">
+    **Belirtiler:**
+    - Butonlara tıklama tepki vermiyor
+    - "Kaydet" butonu pasif
+    - Formlar submit olmuyor
+
+    **Olası Nedenler:**
+    - JavaScript hatası
+    - Form validasyonu başarısız
+    - Bağlantı kesintisi
+
+    **Çözüm:**
+
+    **Adım 1: Form Validasyonu**
+    1. Tüm zorunlu alanları doldurduğunuzdan emin olun
+    2. Kırmızı hata mesajlarını kontrol edin
+    3. Gerekli format kurallarına uyun (örn: telefon numarası)
+
+    **Adım 2: Tarayıcı Konsolu**
+    1. F12 ile konsolu açın
+    2. Kırmızı hata mesajları var mı bakın
+    3. Screenshot alın
+
+    **Adım 3: Sayfa Yenileme**
+    1. Formunuzu kaydedin (varsa taslak olarak)
+    2. Sayfayı yenileyin
+    3. Tekrar deneyin
+
+    **Adım 4: Farklı Tarayıcı**
+    1. Chrome, Firefox veya Safari ile deneyin
+    2. Problem devam ediyorsa bug raporu açın
+  </Accordion>
+
+  <Accordion title="Modals (Pop-ups) Açılmıyor">
+    **Belirtiler:**
+    - Düzenle/Sil dialog'ları görünmüyor
+    - Onay kutuları açılmıyor
+    - Karanlık overlay var ama modal yok
+
+    **Neden:**
+    - Pop-up engelliyici aktif
+    - Z-index CSS sorunu
+    - JavaScript yüklenmemiş
+
+    **Çözüm:**
+    1. **Pop-up Engellemeyi Kaldırın**:
+       - Tarayıcı adres çubuğundaki pop-up ikonu
+       - "Bu site için her zaman izin ver"
+    2. **Sayfayı Yenileyin**
+    3. **Arka plan overlay'e tıklayın**: Modal kapatılıp tekrar açılabilir
+  </Accordion>
+
+  <Accordion title="Tablolar Bozuk Görünüyor">
+    **Belirtiler:**
+    - Sütunlar üst üste biniyor
+    - Scrollbar çalışmıyor
+    - Veriler taşıyor
+
+    **Neden:**
+    - Tarayıcı zoom seviyesi
+    - Responsive tasarım sorunu
+    - Ekran çözünürlüğü çok düşük
+
+    **Çözüm:**
+    1. **Zoom Seviyesini Sıfırlayın**: Ctrl+0 (Mac: Cmd+0)
+    2. **Tam Ekran Moda Geçin**: F11
+    3. **Tarayıcı Penceresini Büyütün**
+    4. **Minimum Çözünürlük**: 1366x768 önerilir
+  </Accordion>
+</AccordionGroup>
+
+## Tarayıcı Uyumluluğu
+
+### Desteklenen Tarayıcılar
+
+| Tarayıcı | Minimum Versiyon | Önerilen |
+|----------|------------------|----------|
+| Chrome | 100 | 110+ |
+| Firefox | 100 | 110+ |
+| Safari | 15 | 16+ |
+| Edge | 100 | 110+ |
+
+### Desteklenmeyen Tarayıcılar
+
+- ❌ Internet Explorer (tüm versiyonlar)
+- ❌ Opera Mini
+- ❌ Eski mobil tarayıcılar
+
+<Warning>
+  Desteklenmeyen tarayıcılarda platform düzgün çalışmayabilir.
+</Warning>
+
+### Tarayıcı Güncellemesi
+
+<Tabs>
+  <Tab title="Chrome">
+    1. Sağ üst köşe > Ayarlar
+    2. Hakkında > Google Chrome
+    3. Otomatik güncelleme yapılır
+  </Tab>
+
+  <Tab title="Firefox">
+    1. Menü > Yardım > Firefox Hakkında
+    2. Otomatik güncelleme yapılır
+  </Tab>
+
+  <Tab title="Safari">
+    1. macOS güncelleme yapın
+    2. Safari otomatik güncellenir
+  </Tab>
+</Tabs>
+
+## Mobil Cihaz Sorunları
+
+<AccordionGroup>
+  <Accordion title="Mobilde Platform Kullanılamıyor">
+    **Belirtiler:**
+    - Sayfa responsive değil
+    - Butonlar çok küçük
+    - Tablo taşıyor
+
+    **Neden:**
+    - Platform öncelikle masaüstü için tasarlanmış
+    - Mobil optimize edilmemiş özellikler var
+
+    **Çözüm:**
+    1. **Yatay Moda Geçin** (landscape)
+    2. **Tarayıcı "Masaüstü Sitesi" Seçeneğini Açın**:
+       - Chrome: Menü > "Masaüstü sitesi"
+       - Safari: AA > "Masaüstü Web Sitesi İste"
+    3. **Tablet Kullanın**: Daha iyi deneyim sunar
+    4. **Masaüstü Bilgisayar Tercih Edin**: Önerilen yöntem
+
+    <Note>
+      Mobil uygulama şu anda mevcut değil. Web tarayıcı üzerinden erişim gereklidir.
+    </Note>
+  </Accordion>
+</AccordionGroup>
+
+## İpuçları ve En İyi Uygulamalar
+
+### Genel Kullanım
+
+<Tip>
+  - Güncel tarayıcı kullanın: En son sürümleri tercih edin
+  - Stable internet bağlantısı: Minimum 5 Mbps
+  - Düzenli cache temizleme: Haftada bir temizleyin
+  - Güvenli çıkış: İşiniz bitince çıkış yapın
+</Tip>
+
+### Hata Durumunda
+
+- Screenshot alın: Hatanın görselini kaydedin
+- Console loglarını kaydedin: F12 > Console
+- Adımları not edin: Hatayı nasıl tekrar ettirirsiniz?
+- Destek ekibine bildirin: Detaylı bilgi verin
+
+### Önleme
+
+- Şifrenizi güvende tutun: Düzenli değiştirin
+- İki faktörlü kimlik doğrulama: Clerk ayarlarından aktif edin
+- Güvenli ağ: Halka açık WiFi'lerde kullanmaktan kaçının
+
+## Destek Kaynakları
+
+### Self-Service Çözümler
+
+1. **Knowledge Base**: Bu dokümantasyon
+2. **SSS Sayfaları**: Her modül altında
+3. **Video Tutorials**: (Gelecek sürümlerde)
+
+### Teknik Destek
+
+**E-posta**: support@aiagenttr.com
+**Çalışma Saatleri**: 09:00 - 18:00 (Hafta içi)
+**Cevap Süresi**: 24 saat içinde
+
+**Destek Talebi Oluştururken:**
+- Sorunun detaylı açıklaması
+- Screenshot'lar
+- Tarayıcı ve işletim sistemi bilgisi
+- Hatayı tekrarlama adımları
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Platform hangi dilleri destekliyor?">
+    Şu anda sadece Türkçe desteklenmektedir. İngilizce desteği gelecek sürümlerde eklenecektir.
+  </Accordion>
+
+  <Accordion title="Verilerim yedekleniyor mu?">
+    Evet, tüm veriler günlük olarak yedeklenir ve 30 gün boyunca saklanır.
+  </Accordion>
+
+  <Accordion title="Silinen verileri geri getirebilir miyim?">
+    Silinen veriler 7 gün boyunca geri getirilebilir. Destek ekibi ile iletişime geçin.
+  </Accordion>
+
+  <Accordion title="Platform çöktüğünde ne yapmalıyım?">
+    Önce sayfayı yenileyin. Problem devam ediyorsa farklı tarayıcı deneyin. Hala çökmüyorsa destek ekibine bildirin.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="API Bağlantı Sorunları" icon="plug" href="/troubleshooting/api-connection-issues">
+    API ve servis bağlantı problemleri
+  </Card>
+  <Card title="Çağrı Hataları" icon="phone-slash" href="/troubleshooting/call-errors">
+    Çağrı başlatma ve yönetim hataları
+  </Card>
+  <Card title="Hata Kodları Referansı" icon="code" href="/troubleshooting/error-codes-reference">
+    Tüm hata kodları ve anlamları
+  </Card>
+  <Card title="Organizasyon Ayarları" icon="building" href="/getting-started/organization-settings">
+    Organizasyon yapılandırması
+  </Card>
+</CardGroup>

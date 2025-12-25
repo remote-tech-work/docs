@@ -1,0 +1,292 @@
+---
+title: "Organizasyon Ayarları"
+description: "Organizasyonunuzun genel yapılandırmalarını, bilgilerini ve tercihlerini yönetin"
+---
+
+## Genel Bakış
+
+Organizasyon ayarları sayfasından, organizasyonunuzun genel konfigürasyonlarını yapabilir, bilgilerini güncelleyebilir ve tercihleri ayarlayabilirsiniz.
+
+## Erişim
+
+Sol menü > **Ayarlar** > **Organizasyon**
+
+## Genel Bilgiler
+
+### Organizasyon Adı
+- Şirket/proje adınız
+- Değiştirilebilir
+- Tüm kullanıcılar tarafından görülür
+
+### İletişim Bilgileri
+- Telefon
+- E-posta
+- Web sitesi
+- Adres
+
+<Info>
+  **Güncelleme:** Değişiklik yapın > **Kaydet** butonuna tıklayın
+</Info>
+
+<Frame>
+  <img src="/images/organization-general-settings.png" alt="Genel organizasyon ayarları" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Organizasyon genel bilgileri bölümü
+</Note>
+
+## Vergi Bilgileri
+
+### Fatura İçin Gerekli
+
+<AccordionGroup>
+  <Accordion title="Zorunlu Alanlar">
+    - Şirket unvanı
+    - Vergi numarası / TC kimlik
+    - Fatura adresi
+    - Vergi dairesi
+  </Accordion>
+
+  <Accordion title="Kullanım Alanları">
+    Tüm faturalarda bu bilgiler görünür.
+  </Accordion>
+</AccordionGroup>
+
+## Saat Dilimi
+
+### Ayarlama
+
+<Steps>
+  <Step title="Saat Dilimi Seçin">
+    1. Saat Dilimi dropdown menüsünü açın
+    2. Yerel saat diliminizi seçin (örn: Europe/Istanbul)
+  </Step>
+
+  <Step title="Kaydedin">
+    **Kaydet** butonuna tıklayın
+  </Step>
+</Steps>
+
+**Etkilediği Alanlar:**
+- Dashboard metrikleri
+- Çağrı zamanları
+- Rapor tarihleri
+- Kampanya zamanlamaları
+
+## Eş Zamanlı Çağrı Limiti (Concurrency)
+
+### Görüntüleme
+
+**Concurrency Slots:** Plan'ınıza göre belirlenir
+
+| Plan | Eş Zamanlı Çağrı |
+|------|------------------|
+| Free | 3 |
+| Starter | 10 |
+| Professional | 50 |
+| Enterprise | Sınırsız |
+
+### Artırma
+
+Plan upgrade yaparak artırabilirsiniz.
+
+<Tip>
+  Kampanyalarınızda eş zamanlı çağrı sayısını artırmak istiyorsanız, planınızı yükseltmeyi düşünün.
+</Tip>
+
+## Kategori ve Alt Kategori Yönetimi
+
+### Bilgi Bankası Kategorileri
+
+Bilgi bankası dosyalarınızı organize etmek için:
+
+<Steps>
+  <Step title="Kategori Oluşturun">
+    1. Kategoriler bölümü > **Yeni Kategori**
+    2. Kategori adı girin
+    3. **Oluştur**
+  </Step>
+
+  <Step title="Alt Kategori Ekleyin (Opsiyonel)">
+    1. Kategorinin yanındaki **+** ikonu
+    2. Alt kategori adı girin
+    3. **Oluştur**
+  </Step>
+</Steps>
+
+**Kullanım:** Dosya yüklerken kategori seçin.
+
+## Logo ve Marka
+
+### Logo Yükleme (Gelecekte)
+
+<Steps>
+  <Step title="Logo Yükleyin">
+    1. Logo bölümü > **Logo Yükle**
+    2. PNG/JPG dosyası seçin (max 2MB)
+  </Step>
+
+  <Step title="Düzenleyin ve Kaydedin">
+    1. Crop/resize işlemlerini yapın
+    2. **Kaydet**
+  </Step>
+</Steps>
+
+**Kullanım:** Faturalarda, e-postalarda görünür.
+
+## Bildirim Tercihleri
+
+### E-posta Bildirimleri
+
+**Aktif/Pasif Yapabilirsiniz:**
+
+<Tabs>
+  <Tab title="Sistem Bildirimleri">
+    - ✅ Yeni kullanıcı davetleri
+    - ✅ Kredi düşük uyarıları
+    - ✅ Fatura bildirimleri
+    - ✅ Sistem güncellemeleri
+  </Tab>
+
+  <Tab title="Pazarlama">
+    - ❌ Pazarlama e-postaları
+  </Tab>
+</Tabs>
+
+### Bildirim Sıklığı
+
+- Anında
+- Günlük özet
+- Haftalık özet
+
+## Güvenlik Ayarları
+
+### İki Faktörlü Kimlik Doğrulama (2FA)
+
+**Clerk Üzerinden:**
+
+<Steps>
+  <Step title="Güvenlik Ayarlarına Gidin">
+    1. Profil menüsü > Security
+    2. Two-factor authentication
+  </Step>
+
+  <Step title="2FA Kurun">
+    1. Authenticator app ile setup yapın
+    2. Yedek kodları kaydedin
+  </Step>
+</Steps>
+
+### Oturum Yönetimi
+
+- Aktif oturumları görüntüleyin
+- Diğer cihazlardan çıkış yapın
+- Oturum süresi: 8 saat
+
+<Warning>
+  Güvenlik için tüm kullanıcılara 2FA'yı zorunlu hale getirebilirsiniz.
+</Warning>
+
+## API Anahtarları
+
+<Info>
+  **Not:** Detaylı bilgi için [API Anahtarı Yönetimi](/organization-management/api-key-management) makalesine bakın.
+</Info>
+
+Kısaca:
+- Platform API bağlantınızı buradan yönetin
+- Test bağlantısı yapın
+- Yeni anahtar ekleyin/güncelleyin
+
+## Veri Saklama ve Gizlilik
+
+### Veri Saklama Süresi
+
+| Veri Tipi | Saklama Süresi |
+|-----------|----------------|
+| Çağrı kayıtları | Sınırsız |
+| Transkriptler | Sınırsız |
+| Faturalar | Sınırsız |
+| Loglar | 90 gün |
+
+### Veri Silme
+
+<Tabs>
+  <Tab title="Manuel Silme">
+    - Müşteri verilerini tek tek silebilirsiniz
+    - Çağrı kayıtlarını silebilirsiniz
+  </Tab>
+
+  <Tab title="Toplu Silme">
+    - Destek ekibi ile iletişime geçin
+    - GDPR/KVKK uyumlu silme
+  </Tab>
+</Tabs>
+
+## Organizasyon Silme
+
+<Warning>
+  **Dikkat! Geri alınamaz işlem!**
+</Warning>
+
+**Silinecek veriler:**
+- Tüm AI Agent'lar
+- Tüm müşteri kayıtları
+- Tüm çağrı geçmişi
+- Tüm kampanyalar
+- Tüm bilgi bankası dosyaları
+
+**Süreç:**
+
+<Steps>
+  <Step title="Silme Sayfasına Gidin">
+    Ayarlar > Organizasyon > En altta **Organizasyonu Sil**
+  </Step>
+
+  <Step title="Onaylayın">
+    1. "DELETE" yazarak onaylayın
+    2. Şifrenizi girin
+  </Step>
+
+  <Step title="Geri Alma Hakkı">
+    7 gün içinde geri alma hakkınız var
+  </Step>
+</Steps>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Organizasyon adını değiştirebilir miyim?">
+    Evet, dilediğiniz zaman değiştirebilirsiniz.
+  </Accordion>
+
+  <Accordion title="Saat dilimi değiştirsem eski veriler etkilenir mi?">
+    Hayır, eski veriler oldukları gibi kalır. Sadece yeni veriler ve görünümler yeni saat dilimine göre olur.
+  </Accordion>
+
+  <Accordion title="Kategori silersem dosyalar da silinir mi?">
+    Hayır, dosyalar silinmez ama kategorisiz kalır.
+  </Accordion>
+
+  <Accordion title="Organizasyonu sildikten sonra geri getirebilir miyim?">
+    7 gün içinde destek ekibine başvurarak geri getirebilirsiniz.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Organizasyon Oluşturma" icon="building" href="/organization-management/create-organization">
+    Yeni organizasyon oluşturma
+  </Card>
+  <Card title="Kullanıcı Davetleri" icon="user-plus" href="/organization-management/user-invitations">
+    Kullanıcı ekleme ve rol yönetimi
+  </Card>
+  <Card title="API Anahtarı Yönetimi" icon="key" href="/organization-management/api-key-management">
+    API bağlantılarını yönetin
+  </Card>
+  <Card title="Çoklu Organizasyon" icon="building" href="/organization-management/multi-organization">
+    Birden fazla organizasyon yönetimi
+  </Card>
+</CardGroup>

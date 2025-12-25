@@ -1,0 +1,531 @@
+---
+title: "Çağrı Hataları ve Sorun Giderme"
+description: "Platform üzerinden yapılan çağrılarda karşılaşılan hatalar ve çözüm yöntemleri"
+---
+
+## Genel Bakış
+
+Bu makale, platform üzerinden yapılan çağrılarda karşılaşılabilecek hataları, nedenlerini ve çözüm yöntemlerini detaylı olarak açıklar. Çağrı hataları, agent konfigürasyonundan telefon numarası geçerliliğine kadar birçok farklı nedenden kaynaklanabilir.
+
+## Çağrı Başlatma Hataları
+
+<AccordionGroup>
+  <Accordion title="Çağrı Başlatılamıyor">
+    **Belirtiler:**
+    - "Failed to start call" mesajı
+    - Çağrı durumu hemen `failed` oluyor
+    - Kuyrukta bekleyip başlamıyor
+
+    **Olası Nedenler:**
+    - Kredi yetersiz
+    - API anahtarı geçersiz
+    - Agent konfigürasyonu hatalı
+    - Telefon numarası geçersiz
+
+    **Çözüm:**
+
+    **Adım 1: Kredi Kontrolü**
+    1. Dashboard'da kredi bakiyenizi kontrol edin
+    2. Yetersizse kredi satın alın
+    3. Minimum 10 kredi gereklidir
+
+    **Adım 2: API Anahtarı**
+    1. Ayarlar > API Keys
+    2. Platform API anahtarı geçerli mi kontrol edin
+    3. Test Bağlantısı yapın
+
+    **Adım 3: Agent Kontrolü**
+    1. Agent'ın tüm zorunlu alanları dolu mu?
+    2. Test araması yapın
+    3. Agent aktif mi kontrol edin
+
+    **Adım 4: Telefon Numarası**
+    1. E.164 formatında mı? (+905551234567)
+    2. Geçerli bir numara mı?
+    3. DNC listesinde değil mi?
+
+    <Tip>
+      En yaygın neden kredi yetersizliğidir. İlk olarak kredi bakiyenizi kontrol edin.
+    </Tip>
+  </Accordion>
+
+  <Accordion title='"Insufficient Credits" Hatası'>
+    **Belirtiler:**
+    - Çağrı başlamadan `failed` oluyor
+    - Error message: "Insufficient credits"
+    - Kampanya duraklatılıyor
+
+    **Neden:**
+    - Hesabınızda yeterli kredi yok
+    - Çağrı maliyeti mevcut krediden fazla
+
+    **Çözüm:**
+    1. **Kredi Satın Alın**:
+       - Sağ üst köşede Kredi Bakiyesi > **Kredi Satın Al**
+       - İhtiyacınız kadar kredi seçin
+       - Stripe ile ödeme yapın
+    2. **Kampanyayı Yeniden Başlatın**:
+       - Kampanyalar sayfasına gidin
+       - Duraklatılmış kampanyayı bulun
+       - **Başlat** butonuna tıklayın
+
+    **Önleme:**
+    - Auto-recharge özelliğini aktif edin
+    - Düşük kredi uyarıları kurun
+    - Düzenli kredi kontrolü yapın
+  </Accordion>
+
+  <Accordion title='"Invalid Phone Number" Hatası'>
+    **Belirtiler:**
+    - Çağrı hemen başarısız oluyor
+    - Hata: "Invalid phone number format"
+    - Numara kırmızı işaretleniyor
+
+    **Neden:**
+    - Telefon numarası E.164 formatında değil
+    - Özel karakterler veya boşluklar var
+    - Ülke kodu eksik
+
+    **Doğru Format:**
+    ```
+    ✅ +905551234567
+    ✅ +14155551234
+
+    ❌ 0555 123 45 67
+    ❌ 555-123-4567
+    ❌ (555) 123-4567
+    ```
+
+    **Çözüm:**
+    1. **Manuel Düzeltme**:
+       - Müşteri detayına gidin
+       - Telefon numarasını düzenleyin
+       - E.164 formatında kaydedin: +[ülke kodu][numara]
+    2. **Toplu Düzeltme**:
+       - Müşteri listesini CSV olarak indirin
+       - Excel'de formatı düzeltin
+       - Toplu import yapın
+  </Accordion>
+
+  <Accordion title="Çağrı Kuyruğa Takılı Kalıyor">
+    **Belirtiler:**
+    - Çağrı `queued` durumunda saatlerce kalıyor
+    - Hiç `ringing`'e geçmiyor
+    - Kampanya ilerlemesi durmuş
+
+    **Olası Nedenler:**
+    - Eş zamanlı çağrı limiti dolmuş
+    - Orchestrator servisi çalışmıyor
+    - Call slot sorunu
+
+    **Çözüm:**
+
+    **Adım 1: Aktif Çağrı Kontrolü**
+    1. Dashboard > Aktif Çağrılar
+    2. Kaç çağrı aktif?
+    3. Eş zamanlı limit kaç? (Ayarlar > Organization)
+
+    **Adım 2: Limit Artırma**
+    1. Ayarlar > Organization > Concurrency Slots
+    2. Limiti artırın (örn: 5 → 10)
+    3. **Kaydet**
+
+    **Adım 3: Kuyruk Temizleme**
+    1. Kampanyayı durdurun
+    2. 2 dakika bekleyin
+    3. Tekrar başlatın
+
+    <Note>
+      Ücretsiz planda maksimum 3 eş zamanlı çağrı yapılabilir.
+    </Note>
+  </Accordion>
+</AccordionGroup>
+
+## Çağrı Sırasında Hatalar
+
+<AccordionGroup>
+  <Accordion title="Çağrı Erken Sonlanıyor">
+    **Belirtiler:**
+    - Çağrı 5-10 saniye sonra kendiliğinden kapanıyor
+    - `ended` durumuna geçiyor ama konuşma olmadı
+    - Agent konuşmaya başlamadan bitiyor
+
+    **Olası Nedenler:**
+    - Agent ilk mesajını üretemiyor
+    - Timeout çok kısa ayarlanmış
+    - Müşteri hemen kapatıyor
+
+    **Çözüm:**
+
+    **Agent Konfigürasyonu:**
+    1. Agent ayarlarına gidin
+    2. **İlk Mesaj Modu** kontrol edin:
+       - "Agent ilk konuşur" seçili mi?
+       - Karşılama mesajı var mı?
+    3. **Sistem Talimatı**:
+       - Çok uzun değil mi? (max 2000 karakter)
+       - Açık ve net mi?
+
+    **Timeout Ayarları:**
+    1. Agent > Gelişmiş Ayarlar
+    2. Response timeout'u artırın (30s → 60s)
+
+    **Çağrı Analizi:**
+    1. Çağrı detayına gidin
+    2. Transkript var mı kontrol edin
+    3. Konuşma hiç başladı mı?
+  </Accordion>
+
+  <Accordion title='"No Answer" - Cevapsız Çağrılar'>
+    **Belirtiler:**
+    - Çağrı `ringing` durumunda 30 saniye kalıyor
+    - Sonra `failed` - `no-answer` oluyor
+    - Müşteri cevaplamıyor
+
+    **Neden:**
+    - Müşteri telefona bakmıyor
+    - Numara yanlış
+    - Müşteri meşgul
+
+    **Analiz:**
+    1. **Tek bir çağrı için**: Normal, müşteri cevaplamamış olabilir
+    2. **%50+ çağrı için**: Sorun var
+       - Telefon numaraları yanlış olabilir
+       - Arama saati uygun değil
+       - DNC listesinde olabilir
+
+    **Çözüm:**
+
+    **Arama Zamanını Değiştirin:**
+    - 09:00-12:00 ve 14:00-17:00 en verimli saatler
+    - Öğle arası (12:00-14:00) düşük cevaplama
+    - Akşam 19:00'dan sonra düşük cevaplama
+
+    **Telefon Numaralarını Doğrulayın:**
+    1. Rastgele 10 numara seçin
+    2. Manuel arayıp doğrulayın
+    3. Geçersizleri silin
+
+    **Retry Stratejisi:**
+    1. Kampanya ayarlarında retry sayısını artırın
+    2. Farklı saatlerde tekrar arama yapılsın
+    3. 2-3 deneme yeterlidir
+  </Accordion>
+
+  <Accordion title="Müşteri Agent'ı Anlamıyor">
+    **Belirtiler:**
+    - Transkript'te anlama sorunları
+    - Müşteri "Ne dedin?" diyor
+    - Çağrı uzuyor ve başarısız oluyor
+
+    **Olası Nedenler:**
+    - Agent sesi net değil
+    - Konuşma hızı çok yüksek/düşük
+    - Teknik terimler kullanılıyor
+
+    **Çözüm:**
+
+    **Agent Ses Ayarları:**
+    1. Agent > Ses Ayarları (gelecek sürümlerde)
+    2. Konuşma hızını ayarlayın
+    3. Farklı ses modelleri deneyin
+
+    **Sistem Talimatı İyileştirme:**
+    1. "Yavaş ve açık konuş" ekleyin
+    2. "Kısa cümleler kur" talimatı verin
+    3. Teknik terimler yerine basit Türkçe kullan
+
+    **Örnek İyileştirme:**
+    ```
+    ❌ Önceki:
+    "Siparişinizin ETA'sını verify etmek için CRM sistemimize access sağlıyorum."
+
+    ✅ Sonrası:
+    "Siparişinizin ne zaman geleceğini kontrol ediyorum."
+    ```
+  </Accordion>
+
+  <Accordion title="Agent Yönlendirme Yapamıyor">
+    **Belirtiler:**
+    - Yönlendirme mesajı okunuyor ama bağlantı gerçekleşmiyor
+    - `forwarding` durumundan `failed` oluyor
+    - "Transfer failed" hatası
+
+    **Olası Nedenler:**
+    - Yönlendirme numarası yanlış
+    - SIP URI hatalı
+    - Hedef numara cevap vermiyor
+
+    **Çözüm:**
+
+    **Yönlendirme Ayarlarını Kontrol:**
+    1. Agent > Yönlendirme ve Eskalasyon
+    2. Hedef tipi doğru mu? (Telefon / SIP)
+    3. Numara/URI formatı doğru mu?
+
+    **Telefon Numarası için:**
+    - E.164 format: +905551234567
+    - Geçerli bir numara olmalı
+    - Cevaplıyor olmalı
+
+    **SIP URI için:**
+    - Format: sip:user@domain.com
+    - SIP trunk ayarları yapılmış olmalı
+    - Provider credentials doğru olmalı
+
+    **Test:**
+    1. Manuel olarak hedef numarayı arayın
+    2. Cevap veriyor mu?
+    3. Erişilebilir mi?
+  </Accordion>
+
+  <Accordion title="Ses Kalitesi Kötü">
+    **Belirtiler:**
+    - Müşteri agent'ı duymuyor
+    - Ses kesilmeler var
+    - Echo (yankı) problemi
+
+    **Olası Nedenler:**
+    - Network bağlantısı zayıf (müşteri tarafı)
+    - AI servis provider sorunu
+    - SIP trunk kalite sorunu
+
+    **Çözüm:**
+
+    **AI Servis Provider Kontrolü:**
+    1. Servis sağlayıcısı kontrol paneli > Call Quality Metrics
+    2. Kalite raporlarını inceleyin
+    3. Provider değiştirmeyi düşünün (Twilio, Vonage)
+
+    **SIP Trunk Kalitesi:**
+    1. SIP provider'ınızın kalite SLA'sını kontrol edin
+    2. Alternatif provider deneyin
+    3. Dedicated line kullanımı değerlendirin
+
+    <Note>
+      Ses kalitesi genellikle müşteri tarafındaki internet bağlantısından kaynaklanır. Platform tarafında yapılabilecek sınırlı şey vardır.
+    </Note>
+  </Accordion>
+</AccordionGroup>
+
+## Transkript ve Kayıt Sorunları
+
+<AccordionGroup>
+  <Accordion title="Transkript Görünmüyor">
+    **Belirtiler:**
+    - Çağrı tamamlandı ama transkript yok
+    - "Transkript mevcut değil" mesajı
+    - Konuşma kayıtları boş
+
+    **Olası Nedenler:**
+    - Webhook events alınmadı
+    - Transkript henüz işlenmedi
+    - Konuşma gerçekleşmedi (erken sonlanma)
+
+    **Çözüm:**
+
+    **Adım 1: Bekleyin**
+    - Transkript işlenmesi 1-2 dakika sürebilir
+    - Sayfayı yenileyin
+
+    **Adım 2: Çağrı Durumunu Kontrol**
+    - Çağrı gerçekten tamamlandı mı?
+    - Süre en az 10 saniye mi?
+    - Konuşma gerçekleşti mi?
+
+    **Adım 3: Webhook Kontrolü**
+    - API webhook'ları alınıyor mu?
+    - Backend logs kontrol edin
+    - Webhook signature doğru mu?
+  </Accordion>
+
+  <Accordion title="Kayıt Dosyası İndirilemiyor">
+    **Belirtiler:**
+    - "Kayıt mevcut değil"
+    - İndirme butonu pasif
+    - 404 Not Found hatası
+
+    **Olası Nedenler:**
+    - Kayıt henüz işlenmedi
+    - S3 erişim sorunu
+    - API recording devre dışı
+
+    **Çözüm:**
+
+    **Kayıt İşleme Süresi:**
+    - Çağrı bittikten 5-10 dakika sonra hazır olur
+    - Uzun çağrılar daha fazla sürebilir
+
+    **API Recording Ayarı:**
+    1. Servis sağlayıcısı kontrol paneli > Settings > Recordings
+    2. Recording enabled mi kontrol edin
+    3. Storage provider (S3) ayarları doğru mu?
+
+    **S3 Erişim:**
+    1. AWS Console > S3
+    2. Bucket permissions kontrol edin
+    3. Dosya var mı bakın
+  </Accordion>
+</AccordionGroup>
+
+## Kampanya Çağrı Hataları
+
+<AccordionGroup>
+  <Accordion title="Kampanya Çağrıları Başlamıyor">
+    **Belirtiler:**
+    - Kampanya "aktif" ama hiç çağrı yapılmıyor
+    - Call tasks oluşturuluyor ama çalışmıyor
+    - Kuyruk dolu ama işlem yok
+
+    **Olası Nedenler:**
+    - Kampanya zamanlaması henüz başlamadı
+    - Agent seçilmemiş
+    - Call list boş
+
+    **Çözüm:**
+
+    **Zamanlama Kontrolü:**
+    1. Kampanya detayına gidin
+    2. Başlangıç tarihi/saati geçmiş mi?
+    3. Bitiş tarihi geçmemiş mi?
+
+    **Agent Ataması:**
+    1. Kampanyada agent seçili mi?
+    2. Agent aktif mi?
+    3. Agent test edildi mi?
+
+    **Call List:**
+    1. Kampanya > Call List
+    2. Müşteri sayısı > 0 mı?
+    3. Telefon numaraları geçerli mi?
+  </Accordion>
+
+  <Accordion title="Kampanya Çok Yavaş İlerliyor">
+    **Belirtiler:**
+    - Saatte sadece 10-20 çağrı yapılıyor
+    - Hedef 100+ çağrı ama çok yavaş
+    - Kuyrukta bekleyen çok fazla
+
+    **Neden:**
+    - Eş zamanlı çağrı limiti düşük
+    - Call rate limit aktif
+    - Orchestrator yavaş çalışıyor
+
+    **Çözüm:**
+
+    **Concurrency Artırın:**
+    1. Ayarlar > Organization > Concurrency Slots
+    2. 3 → 10 veya daha fazla yapın
+    3. Plan upgrade gerekebilir
+
+    **Call Rate:**
+    1. Kampanya > Advanced Settings (gelecek)
+    2. Calls per hour limitini kaldırın veya artırın
+
+    **Orchestrator:**
+    - Backend sistemsel bir sorun varsa destek ekibi ile görüşün
+  </Accordion>
+</AccordionGroup>
+
+## Billing ve Maliyet Hataları
+
+<AccordionGroup>
+  <Accordion title="Çağrı Maliyeti Beklenenden Yüksek">
+    **Belirtiler:**
+    - Kredi hızla tükeniyor
+    - Çağrı başı maliyet yüksek görünüyor
+    - Fatura beklenenden fazla
+
+    **Olası Nedenler:**
+    - Çağrılar çok uzun sürüyor
+    - Başarısız çağrılar da ücretlendiriliyor
+    - Yönlendirmeler ekstra maliyet oluşturuyor
+
+    **Analiz:**
+
+    **Çağrı Süresi:**
+    1. Çağrı İstatistikleri > Ortalama Süre
+    2. 3+ dakika uzun sayılır
+    3. Agent talimatlarını kısaltın
+
+    **Başarısız Çağrı Ücreti:**
+    - Bağlanmayan çağrılar için minimum ücret var
+    - %50+ başarısızlık oranı maliyeti artırır
+    - Telefon numaralarını temizleyin
+
+    **Yönlendirme Maliyeti:**
+    - Her yönlendirme ekstra dakika olarak sayılır
+    - Gereksiz yönlendirmeleri azaltın
+    - Agent capability'sini artırın
+
+    **Optimizasyon:**
+    1. Ortalama çağrı süresini 1-2 dakikaya indirin
+    2. Başarısız çağrı oranını %30 altına çekin
+    3. Yönlendirme oranını %10 altında tutun
+  </Accordion>
+</AccordionGroup>
+
+## İpuçları ve En İyi Uygulamalar
+
+### Çağrı Kalitesi İyileştirme
+
+<Tip>
+  - **Test aramaları yapın**: Agent'ı kendiniz arayıp test edin
+  - **Transkriptleri inceleyin**: Sorunlu pattern'leri tespit edin
+  - **Agent talimatlarını iyileştirin**: Sürekli optimize edin
+  - **Başarılı örnekleri kopyalayın**: İyi çalışan konfigürasyonları tekrarlayın
+</Tip>
+
+### Hata Önleme
+
+- **Telefon numarası doğrulama**: Toplu import öncesi doğrulayın
+- **Kredi takibi**: Düşük kredi uyarısı kurun
+- **Agent test**: Yeni agent'ları test araması ile deneyin
+- **Kampanya test**: Küçük listeler ile başlayın
+
+### Monitoring
+
+- **Başarı oranını izleyin**: %70 altına düşerse araştırın
+- **Hata pattern'leri**: Hangi hatalar tekrarlıyor?
+- **Çağrı süresi trendi**: Artıyor mu azalıyor mu?
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Başarısız çağrılar ücretlendirilir mi?">
+    Evet, bağlantı denemesi için minimum ücret kesilir. Ancak tamamlanan çağrılara göre çok düşüktür.
+  </Accordion>
+
+  <Accordion title='"No answer" oranım çok yüksek, ne yapmalıyım?'>
+    Arama saatlerinizi optimize edin, telefon numaralarını doğrulayın ve farklı zamanlarda retry yapın.
+  </Accordion>
+
+  <Accordion title="Agent transkriptleri neden geç yükleniyor?">
+    Transkript işleme 1-2 dakika sürer. Uzun çağrılar daha fazla sürebilir.
+  </Accordion>
+
+  <Accordion title="Kampanyam neden durdu?">
+    Kredi yetersizliği, kampanya bitiş tarihi veya manual duraklama olabilir. Kampanya detaylarını kontrol edin.
+  </Accordion>
+
+  <Accordion title="Yönlendirme her zaman başarısız oluyor">
+    Hedef numaranın doğru, erişilebilir ve cevap veriyor olduğundan emin olun.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Genel Sorunlar" icon="triangle-exclamation" href="/troubleshooting/general-issues">
+    Yaygın platform kullanım sorunları
+  </Card>
+  <Card title="API Bağlantı Sorunları" icon="plug" href="/troubleshooting/api-connection-issues">
+    API ve servis bağlantı problemleri
+  </Card>
+  <Card title="Hata Kodları Referansı" icon="code" href="/troubleshooting/error-codes-reference">
+    Tüm hata kodları ve anlamları
+  </Card>
+  <Card title="Görüşme Kayıtları" icon="microphone" href="/call-monitoring/call-recordings">
+    Çağrı kayıtları ve transkriptler
+  </Card>
+</CardGroup>

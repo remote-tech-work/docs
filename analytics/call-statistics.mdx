@@ -1,0 +1,610 @@
+---
+title: "Çağrı İstatistikleri"
+description: "Tüm çağrılarınızın detaylı analizini yapın ve operasyonel iyileştirmeler gerçekleştirin"
+---
+
+## Genel Bakış
+
+Çağrı İstatistikleri sayfası, platformunuzda gerçekleşen tüm çağrıların detaylı analizini sunar. Bu sayfa sayesinde çağrılarınızın başarı oranını, süresini, durumlarını ve trendlerini izleyebilir, operasyonel iyileştirmeler yapabilirsiniz.
+
+Hem genel istatistikler hem de detaylı filtreler ile istediğiniz veriyi kolayca bulabilir ve analiz edebilirsiniz.
+
+## Çağrı İstatistiklerine Erişim
+
+<Steps>
+  <Step title="Görüşmeler Bölümüne Gidin">
+    Sol menüden **Görüşmeler** bölümüne gidin
+  </Step>
+
+  <Step title="İstatistikler Sekmesine Tıklayın">
+    Üst menüdeki **İstatistikler** sekmesine tıklayın
+  </Step>
+
+  <Step title="Alternatif Yöntem">
+    veya Dashboard'dan **Detaylı İstatistikler** linkine tıklayın
+  </Step>
+</Steps>
+
+## Çağrı Durumları
+
+### Durum Türleri ve Anlamları
+
+Platform, çağrıları altı ana durumda sınıflandırır:
+
+<AccordionGroup>
+  <Accordion title="1. Queued (Kuyrukta)">
+    **Açıklama:** Çağrı başlatılmış ancak henüz arama yapılmamış.
+
+    **Ne Zaman Olur:**
+    - Kampanya çağrısı sıraya alındığında
+    - Eş zamanlı çağrı limiti dolduğunda
+    - Zamanlanmış çağrı başlama saatini beklediğinde
+
+    **Normal Süre:** Birkaç saniye - birkaç dakika
+
+    **Sorun Belirtisi:**
+    - 10 dakikadan uzun süre kuyrukta kalma
+    - Sürekli artan kuyruk sayısı
+
+    **Çözüm:**
+    - Eş zamanlı çağrı limitini artırın
+    - Kampanya zamanlamasını kontrol edin
+    - Sistem kaynaklarını kontrol edin
+  </Accordion>
+
+  <Accordion title="2. Ringing (Çalıyor)">
+    **Açıklama:** Müşterinin telefonu çalıyor, cevap bekleniyor.
+
+    **Ne Zaman Olur:**
+    - Çağrı başarıyla başlatıldığında
+    - Telefon çalmaya başladığında
+
+    **Normal Süre:** 5-30 saniye
+
+    **Sonuçlar:**
+    - Müşteri cevaplarsa → in-progress
+    - Cevap verilmezse → failed (no-answer)
+    - Meşgulse → failed (busy)
+  </Accordion>
+
+  <Accordion title="3. In-Progress (Devam Ediyor)">
+    **Açıklama:** Çağrı cevaplandı ve konuşma devam ediyor.
+
+    **Ne Zaman Olur:**
+    - Müşteri çağrıyı cevapladığında
+    - Agent konuşmaya başladığında
+
+    **Normal Süre:** 30 saniye - 5 dakika
+
+    **İyi Sinyal:**
+    - 1 dakikadan uzun sürüyorsa → Anlamlı konuşma
+    - 30 saniye - 1 dakika → Normal etkileşim
+    - 30 saniyeden kısa → Erken sonlanma, araştırılmalı
+  </Accordion>
+
+  <Accordion title="4. Forwarding (Yönlendiriliyor)">
+    **Açıklama:** Agent, çağrıyı insan temsilciye yönlendiriyor.
+
+    **Ne Zaman Olur:**
+    - Müşteri insan temsilci istediğinde
+    - Agent çözemediği bir durumla karşılaştığında
+    - Yönlendirme koşulları tetiklendiğinde
+
+    **Normal Süre:** 5-15 saniye
+
+    **Takip:**
+    - Yönlendirme başarılı → ended
+    - Yönlendirme başarısız → failed
+
+    <Note>
+      Yüksek yönlendirme oranı, agent konfigürasyonunun iyileştirilmesi gerektiğini gösterebilir.
+    </Note>
+  </Accordion>
+
+  <Accordion title="5. Ended (Tamamlandı)">
+    **Açıklama:** Çağrı başarıyla tamamlandı.
+
+    **Ne Zaman Olur:**
+    - Konuşma normal şekilde sonlandığında
+    - Müşteri veya agent çağrıyı kapattığında
+
+    **Başarı Kriterleri:**
+    - ✅ Minimum 10 saniye konuşma
+    - ✅ Hata almadan sonlanma
+    - ✅ İstenilen etkileşimin gerçekleşmesi
+
+    **Analiz:**
+    - Transkript inceleme
+    - Structured output kontrolü
+    - Hedef eylem gerçekleşme durumu
+  </Accordion>
+
+  <Accordion title="6. Failed (Başarısız)">
+    **Açıklama:** Çağrı başarısız oldu.
+
+    **Başarısızlık Nedenleri:**
+    - `no-answer`: Cevap verilmedi
+    - `busy`: Meşgul
+    - `rejected`: Reddedildi
+    - `invalid-number`: Geçersiz telefon numarası
+    - `network-error`: Ağ hatası
+    - `agent-error`: Agent konfigürasyon hatası
+    - `timeout`: Zaman aşımı
+    - `insufficient-credits`: Yetersiz kredi
+
+    **Detaylı Analiz:**
+    Her başarısız çağrı için detaylı hata mesajı ve neden kodu saklanır.
+  </Accordion>
+</AccordionGroup>
+
+<Frame>
+  <img src="/images/analytics-call-status-flow.png" alt="Çağrı durum akışı diyagramı" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Çağrı durumlarının akış diyagramı
+</Note>
+
+## Ana Metrikler ve Göstergeler
+
+### Toplam Çağrı Sayısı
+
+**Açıklama:** Seçilen tarih aralığında yapılan tüm çağrılar.
+
+**Filtreleme:**
+- Tarih aralığına göre
+- Kampanyaya göre
+- Agent'a göre
+- Duruma göre
+
+### Başarılı Çağrılar
+
+**Hesaplama:** `ended` durumunda olan ve başarı kriterlerini sağlayan çağrılar.
+
+**Başarı Kriterleri:**
+- Minimum 10 saniye konuşma
+- Hatasız sonlanma
+- Agent görevini tamamlama
+
+### Başarısız Çağrılar
+
+**Kategoriler:**
+- Teknik başarısızlıklar (network-error, agent-error)
+- Müşteri kaynaklı (no-answer, busy, rejected)
+- Sistem kaynaklı (timeout, insufficient-credits)
+
+### Başarı Oranı
+
+**Formül:**
+```
+Başarı Oranı = (Başarılı Çağrılar / Toplam Çağrılar) × 100
+```
+
+**Hedef Değerler:**
+- **%80+**: Mükemmel
+- **%60-80**: İyi
+- **%40-60**: Orta
+- **%40 altı**: İyileştirme gerekli
+
+### Ortalama Çağrı Süresi
+
+**Hesaplama:**
+```
+Ortalama Süre = Toplam Konuşma Süresi / Tamamlanan Çağrı Sayısı
+```
+
+**Değerlendirme:**
+- **< 30 saniye**: Çok kısa, sorun olabilir
+- **30 saniye - 2 dakika**: İdeal
+- **2-5 dakika**: Normal
+- **> 5 dakika**: Uzun, optimizasyon gerekebilir
+
+### En Uzun/En Kısa Çağrılar
+
+İstatistikler sayfasında:
+- En uzun çağrı süresi ve detayları
+- En kısa (tamamlanan) çağrı süresi
+- Ortalamadan sapma analizi
+
+<Frame>
+  <img src="/images/analytics-call-metrics-overview.png" alt="Çağrı metrikleri özeti" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Ana metrikleri gösteren dashboard
+</Note>
+
+## Filtreleme ve Arama
+
+### Tarih Aralığı Filtresi
+
+<Tabs>
+  <Tab title="Hızlı Seçenekler">
+    - Bugün
+    - Dün
+    - Son 7 gün
+    - Son 30 gün
+    - Bu ay
+    - Geçen ay
+  </Tab>
+
+  <Tab title="Özel Aralık">
+    1. Başlangıç tarihi seçin
+    2. Bitiş tarihi seçin
+    3. **Uygula** butonuna tıklayın
+  </Tab>
+</Tabs>
+
+<Note>
+  Maksimum 90 günlük veri tek seferde gösterilebilir. Daha geniş aralıklar için veri dışa aktarma kullanın.
+</Note>
+
+### Durum Filtresi
+
+Çağrıları durumlarına göre filtreleyin:
+
+**Tek Durum:**
+- Sadece tamamlanan çağrıları göster
+- Sadece başarısız çağrıları göster
+- Sadece devam eden çağrıları göster
+
+**Çoklu Durum:**
+- Birden fazla durumu seçin
+- Kombine filtreler oluşturun
+
+### Kampanya Filtresi
+
+<Steps>
+  <Step title="Kampanya Seçin">
+    Kampanya dropdown'ından seçim yapın
+  </Step>
+
+  <Step title="Filtreleme Yapın">
+    **Tüm Kampanyalar** veya **Spesifik Kampanya** seçin
+  </Step>
+
+  <Step title="Görüntüleyin">
+    Sadece o kampanyanın çağrılarını görün
+  </Step>
+</Steps>
+
+**Karşılaştırma:**
+- Farklı kampanyaların performansını karşılaştırın
+- Hangi kampanyanın daha başarılı olduğunu görün
+
+### Agent Filtresi
+
+**Kullanım:**
+1. Agent dropdown'ından seçim yapın
+2. Belirli bir agent'ın çağrılarını görün
+
+**Agent Performans Analizi:**
+- Hangi agent daha başarılı?
+- Ortalama çağrı süreleri
+- Başarı oranı karşılaştırması
+
+### Telefon Numarası Arama
+
+**Kullanım:**
+1. Arama kutusuna telefon numarası girin
+2. +90 veya 0 ile başlama gerekmez
+3. Kısmi arama desteklenir
+
+**Örnek:**
+- "555" → Tüm 555 ile başlayan numaralar
+- "123456" → İçinde 123456 geçen numaralar
+
+<Frame>
+  <img src="/images/analytics-call-filters.png" alt="Çağrı filtreleme seçenekleri" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Filtreleme ve arama araçlarını gösteren ekran
+</Note>
+
+## Zaman Bazlı Analiz
+
+### Saatlik Dağılım Grafiği
+
+**X Ekseni:** Saat (00:00 - 23:00)
+**Y Ekseni:** Çağrı sayısı
+
+**Gösterilen Bilgiler:**
+- Saatlik toplam çağrı sayısı
+- Saatlik başarı oranı
+- Yoğun saatler
+- Sakin saatler
+
+**Kullanım:**
+- En verimli arama saatlerini belirleyin
+- Kampanya zamanlamasını optimize edin
+- Personel planlaması yapın
+
+### Günlük Trend Çizgisi
+
+**X Ekseni:** Tarihler
+**Y Ekseni:** Metrikler
+
+**Gösterilebilir Metrikler:**
+- Günlük çağrı sayısı
+- Günlük başarı oranı
+- Günlük ortalama süre
+- Günlük maliyet
+
+**Trend Analizi:**
+- Yükselen trend: İyileşme
+- Düşen trend: Performans kaybı
+- Dalgalı trend: İstikrarsızlık
+
+### Haftalık Karşılaştırma
+
+Haftanın günlerine göre performans:
+
+**Genellikle Görülen Trendler:**
+- **Pazartesi**: Yüksek cevaplama oranı
+- **Salı-Perşembe**: Stabil performans
+- **Cuma**: Ortalama performans
+- **Hafta sonu**: Düşük cevaplama oranı
+
+<Info>
+  Sektöre göre değişiklik gösterebilir.
+</Info>
+
+<Frame>
+  <img src="/images/analytics-call-time-trends.png" alt="Zaman bazlı analiz grafikleri" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Saatlik, günlük ve haftalık trend grafiklerini gösteren ekran
+</Note>
+
+## Detaylı İstatistik Tablosu
+
+### Tablo Sütunları
+
+| Sütun | Açıklama |
+|-------|----------|
+| **Tarih/Saat** | Çağrının başlangıç zamanı |
+| **Müşteri** | Müşteri adı veya telefon |
+| **Agent** | Kullanılan AI Agent |
+| **Durum** | Çağrının son durumu |
+| **Süre** | Konuşma süresi (dk:sn) |
+| **Maliyet** | Çağrı maliyeti (kredi) |
+| **Kampanya** | Bağlı olduğu kampanya |
+
+### Tablo İşlemleri
+
+**Sıralama:**
+- Herhangi bir sütun başlığına tıklayın
+- Artan/azalan sıralama yapın
+
+**Sayfalama:**
+- 25, 50, 100 satır göster seçenekleri
+- İleri/geri sayfa navigasyonu
+
+**Detay Görüntüleme:**
+- Satıra tıklayarak çağrı detayına gidin
+- Transkript, kayıt ve diğer detayları görün
+
+<Frame>
+  <img src="/images/analytics-call-table.png" alt="Detaylı çağrı istatistikleri tablosu" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Çağrı istatistikleri tablosunu gösteren ekran
+</Note>
+
+## Dışa Aktarma Seçenekleri
+
+### CSV Formatında İndirme
+
+<Steps>
+  <Step title="Filtreleri Uygulayın">
+    İstediğiniz filtreleri uygulayın
+  </Step>
+
+  <Step title="CSV Seçin">
+    **Dışa Aktar** > **CSV** seçin
+  </Step>
+
+  <Step title="İndirin">
+    Dosya otomatik indirilir
+  </Step>
+</Steps>
+
+**CSV İçeriği:**
+- Tüm görüntülenen çağrılar
+- Tüm sütun bilgileri
+- Uygulanmış filtreler dahil
+
+**Kullanım:**
+- Excel'de analiz
+- Veri tabanına import
+- Harici raporlama
+
+### Excel Formatında İndirme
+
+<Steps>
+  <Step title="Excel Seçin">
+    **Dışa Aktar** > **Excel** seçin
+  </Step>
+
+  <Step title="İndirin">
+    XLSX dosyası indirilir
+  </Step>
+</Steps>
+
+**Excel Özellikleri:**
+- Otomatik format
+- Filtreler aktif
+- Grafikler dahil
+- Özet sayfa
+
+### PDF Rapor
+
+<Steps>
+  <Step title="Rapor Oluştur">
+    **Rapor Oluştur** butonuna tıklayın
+  </Step>
+
+  <Step title="Rapor Ayarları">
+    Rapor ayarlarını yapın:
+    - Grafik dahil et
+    - Özet istatistikler
+    - Detay tablosu
+  </Step>
+
+  <Step title="PDF Oluştur">
+    **PDF Oluştur** tıklayın
+  </Step>
+</Steps>
+
+**PDF Rapor İçeriği:**
+- Özet metrikler
+- Grafik ve çizgiler
+- Durum dağılımı
+- Detay tablosu (ilk 100 kayıt)
+
+## İleri Seviye Analiz
+
+### Başarısızlık Analizi
+
+Başarısız çağrıları detaylı inceleyin:
+
+**Başarısızlık Nedenleri Breakdown:**
+- `no-answer`: %45
+- `busy`: %20
+- `invalid-number`: %15
+- `rejected`: %10
+- `network-error`: %5
+- `other`: %5
+
+**Aksiyon Planı:**
+- Yüksek `no-answer`: Arama saatlerini değiştirin
+- Yüksek `invalid-number`: Numara doğrulama yapın
+- Yüksek `network-error`: Teknik destek ile görüşün
+
+### Konuşma Süresi Analizi
+
+**Segmentasyon:**
+- 0-30 saniye: Erken sonlanma
+- 30 saniye - 1 dakika: Kısa etkileşim
+- 1-2 dakika: Normal konuşma
+- 2-5 dakika: Detaylı görüşme
+- 5+ dakika: Uzun görüşme/sorun giderme
+
+**Her Segment İçin:**
+- Çağrı sayısı
+- Başarı oranı
+- Dönüşüm oranı (varsa)
+
+### Coğrafi Analiz
+
+Telefon numarası alan kodlarına göre analiz:
+
+**Bölgesel Performans:**
+- İstanbul: %75 başarı
+- Ankara: %70 başarı
+- İzmir: %72 başarı
+- Diğer: %65 başarı
+
+**Kullanım:**
+- Bölgesel kampanyalar oluşturun
+- Yerel agent konfigürasyonları yapın
+
+<Frame>
+  <img src="/images/analytics-call-advanced-analysis.png" alt="İleri seviye analiz grafikleri" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Başarısızlık analizi, süre segmentasyonu ve coğrafi dağılım
+</Note>
+
+## İpuçları ve En İyi Uygulamalar
+
+### Veri İzleme
+
+- ✅ **Günlük kontrol**: Her gün istatistikleri inceleyin
+- ✅ **Trend takibi**: Haftalık trendleri izleyin
+- ✅ **Anormallikleri tespit**: Ani düşüş/artışları araştırın
+
+### Performans İyileştirme
+
+- **Başarısız çağrı analizi**: Nedenleri kategorize edin ve çözüm bulun
+- **Zaman optimizasyonu**: En başarılı saatlerde yoğunlaşın
+- **Agent optimizasyonu**: Düşük performanslı agent'ları iyileştirin
+
+### Raporlama
+
+- **Haftalık rapor**: Yönetim için özet rapor oluşturun
+- **Aylık değerlendirme**: Aylık toplam performans raporu
+- **Kampanya bazlı**: Her kampanya sonrası detaylı rapor
+
+## Sorun Giderme
+
+<AccordionGroup>
+  <Accordion title="İstatistikler Yüklenmiyor">
+    **Çözüm:**
+    1. İnternet bağlantınızı kontrol edin
+    2. Tarayıcı cache'ini temizleyin
+    3. Sayfayı yenileyin
+    4. Farklı tarayıcı deneyin
+  </Accordion>
+
+  <Accordion title="Veriler Yanlış Görünüyor">
+    **Çözüm:**
+    1. Filtreleri kontrol edin
+    2. Tarih aralığını doğrulayın
+    3. Saat dilimi ayarlarını kontrol edin
+    4. Sayfayı yenileyin
+  </Accordion>
+
+  <Accordion title="Dışa Aktarma Başarısız">
+    **Çözüm:**
+    1. Pop-up engelleyiciyi kapatın
+    2. Tarayıcı indirme klasörünü kontrol edin
+    3. Veri boyutunu küçültün (tarih aralığını daraltın)
+    4. Tekrar deneyin
+  </Accordion>
+</AccordionGroup>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="İstatistikler gerçek zamanlı mı?">
+    Hayır, istatistikler yaklaşık 2-5 dakika gecikme ile güncellenir. Gerçek zamanlı veri için Dashboard'u kullanın.
+  </Accordion>
+
+  <Accordion title="Geçmiş verilere ne kadar süre erişebilirim?">
+    Tüm çağrı verileri sonsuza kadar saklanır. İstediğiniz tarihe ait verileri sorgulayabilirsiniz.
+  </Accordion>
+
+  <Accordion title='"Başarılı çağrı" tanımı nedir?'>
+    Başarılı çağrı, cevaplanmış, en az 10 saniye konuşulmuş ve hatasız sonlanmış çağrılardır.
+  </Accordion>
+
+  <Accordion title="Birden fazla filtre kullanabilir miyim?">
+    Evet, tarih, durum, kampanya ve agent filtrelerini birlikte kullanabilirsiniz.
+  </Accordion>
+
+  <Accordion title="İstatistikleri API üzerinden alabilir miyim?">
+    Şu anda istatistikler sadece web arayüzünden erişilebilir. API desteği gelecek sürümlerde eklenecek.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Dashboard Metrikleri" icon="gauge" href="/analytics/dashboard-metrics">
+    Platform performansınızı anlık izleyin
+  </Card>
+  <Card title="Kampanya Analizleri" icon="chart-line" href="/analytics/campaign-analytics">
+    Kampanya performansını detaylı analiz edin
+  </Card>
+  <Card title="Görüşme Kayıtları" icon="microphone" href="/call-monitoring/call-recordings">
+    Çağrı kayıtlarını ve transkriptleri inceleyin
+  </Card>
+  <Card title="AI Agent Oluşturma" icon="robot" href="/voice-ai-agents/create-agent">
+    Yeni AI Agent oluşturun
+  </Card>
+</CardGroup>

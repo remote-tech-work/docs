@@ -1,0 +1,572 @@
+---
+title: "Yapılandırılmış Çıktılar"
+description: "AI Agent'ınızın görüşme sonunda belirli formatta veri döndürmesini sağlayın"
+---
+
+## Genel Bakış
+
+Yapılandırılmış çıktılar, AI Agent'ın görüşme sonunda belirli bir formatta veri döndürmesini sağlar. Bu özellik sayesinde, görüşme sırasında toplanan bilgileri otomatik olarak JSON formatında alabilir ve CRM, veritabanı veya diğer sistemlere aktarabilirsiniz.
+
+## Kullanım Senaryoları
+
+<CardGroup cols={2}>
+  <Card title="Randevu Alma" icon="calendar">
+    - Müşteri adı, telefon, tercih edilen tarih/saat
+    - Otomatik takvim entegrasyonu
+    - SMS/E-posta onayı
+  </Card>
+
+  <Card title="Anket ve Form Doldurma" icon="clipboard-list">
+    - Müşteri memnuniyet anketi
+    - Ürün/hizmet geri bildirimi
+    - Demografik bilgi toplama
+  </Card>
+
+  <Card title="Sipariş Alma" icon="cart-shopping">
+    - Ürün adı, miktar, fiyat
+    - Teslimat adresi
+    - Ödeme tercihi
+  </Card>
+
+  <Card title="Lead Kalifikasyonu" icon="filter">
+    - Bütçe bilgisi
+    - Satın alma zamanlaması
+    - Karar verici bilgisi
+  </Card>
+</CardGroup>
+
+## JSON Schema Nedir?
+
+**JSON Schema:** Veri yapısını tanımlayan bir format. Agent'ın hangi bilgileri toplaması gerektiğini belirtir.
+
+**Örnek Schema:**
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "customerName": {
+      "type": "string",
+      "description": "Müşterinin tam adı"
+    },
+    "appointmentDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Randevu tarihi (YYYY-MM-DD)"
+    },
+    "phoneNumber": {
+      "type": "string",
+      "pattern": "^[0-9]{10}$",
+      "description": "Telefon numarası"
+    }
+  },
+  "required": ["customerName", "appointmentDate"]
+}
+```
+
+## Yapılandırılmış Çıktı Oluşturma
+
+<Steps>
+  <Step title="Agent Düzenleme">
+    1. **AI Agent'lar** sayfasına gidin
+    2. Düzenlemek istediğiniz agent'ı seçin
+    3. **Düzenle** butonuna tıklayın
+    4. **Gelişmiş Ayarlar** sekmesine geçin
+  </Step>
+
+  <Step title="Schema Tanımlama">
+    **Structured Output bölümü:**
+
+    1. **Etkinleştir** switch'ini açın
+    2. **Schema Editor** açılır
+    3. JSON schema'nızı girin veya Template kullanın
+  </Step>
+
+  <Step title="Template Seçimi">
+    Platform hazır template'ler sunar. İhtiyacınıza uygun olanı seçin veya özelleştirin.
+  </Step>
+
+  <Step title="Schema Doğrulama">
+    **Validate** butonuna tıklayın:
+
+    - ✅ "Schema is valid" - Yeşil onay işareti
+    - ❌ Hata mesajı - Satır numarası ve düzeltme önerileri
+  </Step>
+
+  <Step title="Prompt Güncellemesi">
+    Agent promptuna structured output ile ilgili talimat ekleyin.
+  </Step>
+
+  <Step title="Kaydetme">
+    **Test Et** butonuyla test edin, sonra **Kaydet**
+  </Step>
+</Steps>
+
+<Frame>
+  <img src="/images/voice-ai-structured-output.png" alt="Yapılandırılmış çıktı ayarları" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Structured Output bölümünde schema editor ve template seçimi
+</Note>
+
+## Hazır Template'ler
+
+<Tabs>
+  <Tab title="Randevu Alma">
+    ```json
+    {
+      "type": "object",
+      "properties": {
+        "name": {"type": "string"},
+        "phone": {"type": "string"},
+        "date": {"type": "string", "format": "date"},
+        "time": {"type": "string"}
+      },
+      "required": ["name", "phone", "date"]
+    }
+    ```
+  </Tab>
+
+  <Tab title="Sipariş Alma">
+    ```json
+    {
+      "type": "object",
+      "properties": {
+        "productName": {"type": "string"},
+        "quantity": {"type": "number", "minimum": 1},
+        "totalPrice": {"type": "number"},
+        "deliveryAddress": {"type": "string"}
+      },
+      "required": ["productName", "quantity"]
+    }
+    ```
+  </Tab>
+
+  <Tab title="Anket">
+    ```json
+    {
+      "type": "object",
+      "properties": {
+        "satisfaction": {"type": "number", "minimum": 1, "maximum": 5},
+        "feedback": {"type": "string"},
+        "wouldRecommend": {"type": "boolean"}
+      },
+      "required": ["satisfaction"]
+    }
+    ```
+  </Tab>
+</Tabs>
+
+<Info>
+  Agent promptuna structured output ile ilgili talimat eklemeyi unutmayın. Örnek: "Görüşme sonunda müşteri adı, telefon numarası ve randevu tarihini topla."
+</Info>
+
+## Veri Tipleri
+
+### String (Metin)
+
+```json
+{
+  "type": "string",
+  "description": "Açıklama",
+  "minLength": 2,
+  "maxLength": 100,
+  "pattern": "^[A-Za-z ]+$"
+}
+```
+
+**Kullanım:** İsim, adres, açıklama
+
+### Number (Sayı)
+
+```json
+{
+  "type": "number",
+  "description": "Açıklama",
+  "minimum": 0,
+  "maximum": 100
+}
+```
+
+**Kullanım:** Miktar, fiyat, yaş, puan
+
+### Boolean (Evet/Hayır)
+
+```json
+{
+  "type": "boolean",
+  "description": "Açıklama"
+}
+```
+
+**Kullanım:** Onay, tercih, durum
+
+### Date (Tarih)
+
+```json
+{
+  "type": "string",
+  "format": "date",
+  "description": "YYYY-MM-DD formatında"
+}
+```
+
+### Array (Liste)
+
+```json
+{
+  "type": "array",
+  "items": {
+    "type": "string"
+  },
+  "minItems": 1,
+  "maxItems": 10
+}
+```
+
+**Kullanım:** Ürün listesi, tercih listesi
+
+## Zorunlu Alanlar
+
+### Required Kullanımı
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "name": {"type": "string"},
+    "email": {"type": "string"},
+    "phone": {"type": "string"}
+  },
+  "required": ["name", "email"]
+}
+```
+
+<Info>
+  **Anlamı:** name ve email mutlaka doldurulmalı, phone opsiyonel.
+</Info>
+
+**Agent Davranışı:**
+- Zorunlu alanları mutlaka sorar
+- Opsiyonel alanları konuşma akışına göre sorar
+- Zorunlu alan eksikse görüşmeyi tamamlamaz
+
+## Çıktıyı Görüntüleme
+
+### Görüşme Detayı
+
+<Steps>
+  <Step title="Görüşme Kayıtlarına Gidin">
+    **Çağrı İzleme** > **Görüşme Kayıtları**
+  </Step>
+
+  <Step title="Görüşme Seçin">
+    İlgili görüşmeye tıklayın
+  </Step>
+
+  <Step title="Structured Output Sekmesi">
+    Toplanan veriler JSON formatında gösterilir
+  </Step>
+</Steps>
+
+**Örnek Görüntüleme:**
+
+```json
+{
+  "name": "Ahmet Yılmaz",
+  "phone": "5551234567",
+  "appointmentDate": "2024-03-15",
+  "appointmentTime": "14:00"
+}
+```
+
+### Export ve Kullanım
+
+<CardGroup cols={3}>
+  <Card title="JSON Download" icon="download">
+    Download JSON butonu ile dosya indirin
+  </Card>
+
+  <Card title="Copy" icon="copy">
+    Copy butonu ile panoya kopyalayın
+  </Card>
+
+  <Card title="Entegrasyon" icon="webhook">
+    Webhook ile otomatik gönderim veya API ile çekme
+  </Card>
+</CardGroup>
+
+## İleri Düzey Schema Özellikleri
+
+### Enum (Sabit Değerler)
+
+```json
+{
+  "type": "string",
+  "enum": ["Küçük", "Orta", "Büyük"],
+  "description": "Beden seçimi"
+}
+```
+
+Agent sadece bu 3 değerden birini seçebilir.
+
+### Pattern (Regex)
+
+```json
+{
+  "type": "string",
+  "pattern": "^[0-9]{10}$",
+  "description": "10 haneli telefon numarası"
+}
+```
+
+Telefon numarası formatını zorlar.
+
+### Conditional Schema
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "hasDiscount": {"type": "boolean"},
+    "discountCode": {"type": "string"}
+  },
+  "if": {
+    "properties": {"hasDiscount": {"const": true}}
+  },
+  "then": {
+    "required": ["discountCode"]
+  }
+}
+```
+
+hasDiscount true ise discountCode zorunlu olur.
+
+## Webhook Entegrasyonu
+
+### Otomatik Gönderim
+
+Görüşme bittiğinde structured output otomatik olarak webhook'a gönderilebilir.
+
+<Steps>
+  <Step title="Webhook Ayarları">
+    **Ayarlar** > **Webhook** bölümüne gidin
+  </Step>
+
+  <Step title="Webhook URL Girin">
+    Webhook URL'inizi girin
+  </Step>
+
+  <Step title="Include Structured Output">
+    **Include Structured Output** seçeneğini aktif edin
+  </Step>
+
+  <Step title="Kaydet">
+    Ayarları kaydedin
+  </Step>
+</Steps>
+
+**Gönderilen Veri:**
+
+```json
+{
+  "callId": "call_xyz123",
+  "status": "ended",
+  "structuredOutput": {
+    "name": "Ahmet Yılmaz",
+    "phone": "5551234567"
+  }
+}
+```
+
+## İpuçları ve En İyi Uygulamalar
+
+### Schema Tasarımı
+
+<Tip>
+  - ✅ Sadece gerekli alanları ekleyin
+  - ✅ Açıklayıcı description kullanın
+  - ✅ Uygun validation (min, max, pattern) ekleyin
+  - ✅ Zorunlu alanları minimize edin
+  - ❌ Çok karmaşık schema oluşturmayın
+  - ❌ Gereksiz nested object kullanmayın
+</Tip>
+
+### Prompt ile Uyum
+
+Agent promptu ile schema uyumlu olmalı. Promptta hangi bilgilerin toplanacağı belirtilmeli.
+
+**Kötü Örnek:**
+```
+Müşteriye şu soruları sor:
+1. Adınız?
+2. Telefonunuz?
+3. Randevu tarihi?
+```
+
+**İyi Örnek:**
+```
+Müşteriyle doğal bir randevu konuşması yap.
+Görüşme sırasında adını, telefon numarasını ve
+tercih ettiği randevu tarihini öğren.
+```
+
+## Gerçek Dünya Örnekleri
+
+<AccordionGroup>
+  <Accordion title="Restoran Rezervasyon">
+    **Schema:**
+
+    ```json
+    {
+      "type": "object",
+      "properties": {
+        "name": {"type": "string", "description": "Müşteri adı"},
+        "phone": {"type": "string", "pattern": "^[0-9]{10}$"},
+        "guests": {"type": "integer", "minimum": 1, "maximum": 20},
+        "date": {"type": "string", "format": "date"},
+        "time": {"type": "string", "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"},
+        "specialRequests": {"type": "string"}
+      },
+      "required": ["name", "phone", "guests", "date", "time"]
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="E-ticaret Sipariş">
+    **Schema:**
+
+    ```json
+    {
+      "type": "object",
+      "properties": {
+        "products": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {"type": "string"},
+              "quantity": {"type": "integer", "minimum": 1}
+            }
+          }
+        },
+        "deliveryAddress": {
+          "type": "object",
+          "properties": {
+            "street": {"type": "string"},
+            "city": {"type": "string"},
+            "zipCode": {"type": "string"}
+          }
+        },
+        "paymentMethod": {"type": "string", "enum": ["Kredi Kartı", "Kapıda Ödeme"]}
+      },
+      "required": ["products", "deliveryAddress", "paymentMethod"]
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="Müşteri Memnuniyeti Anketi">
+    **Schema:**
+
+    ```json
+    {
+      "type": "object",
+      "properties": {
+        "overallSatisfaction": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "description": "1-5 arası genel memnuniyet"
+        },
+        "productQuality": {"type": "integer", "minimum": 1, "maximum": 5},
+        "customerService": {"type": "integer", "minimum": 1, "maximum": 5},
+        "wouldRecommend": {"type": "boolean"},
+        "suggestions": {"type": "string"}
+      },
+      "required": ["overallSatisfaction", "wouldRecommend"]
+    }
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Sorun Giderme
+
+<AccordionGroup>
+  <Accordion title="Schema Validation Hatası">
+    **Sebep:** JSON syntax hatası
+
+    **Çözüm:**
+    1. JSON validator kullanın (jsonlint.com)
+    2. Virgül, parantez kontrolü yapın
+    3. String değerleri çift tırnak içinde olmalı
+  </Accordion>
+
+  <Accordion title="Agent Veri Toplamıyor">
+    **Sebep:** Prompt ile schema uyumsuz
+
+    **Çözüm:**
+    1. Promptu güncelleyin
+    2. Schema'daki alanları prompt ile eşleştirin
+    3. Test görüşmesi yapın
+  </Accordion>
+
+  <Accordion title="Structured Output Boş Geliyor">
+    **Sebepler:**
+    - Müşteri bilgi vermedi
+    - Agent soruları sormadı
+    - Görüşme erken sonlandı
+
+    **Çözüm:**
+    1. Prompt'u daha direktif yapın
+    2. Agent'ı zorunlu alanları mutlaka sormaya yönlendirin
+    3. Görüşme akışını gözden geçirin
+  </Accordion>
+
+  <Accordion title="Webhook'a Gönderilmiyor">
+    **Çözüm:**
+    1. Webhook URL'i doğru mu kontrol edin
+    2. "Include Structured Output" aktif mi?
+    3. Webhook endpoint'i çalışıyor mu test edin
+    4. Webhook loglarını inceleyin
+  </Accordion>
+</AccordionGroup>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Structured output zorunlu mu?">
+    Hayır, opsiyoneldir. Ancak veri toplama ihtiyacınız varsa kullanmanız önerilir.
+  </Accordion>
+
+  <Accordion title="Kaç alan ekleyebilirim?">
+    Teknik limit yok, ancak 5-10 alan ideal. Çok fazla alan agent'ı yavaşlatır.
+  </Accordion>
+
+  <Accordion title="Agent schema'ya uymayan veri girerse ne olur?">
+    Validation hatası oluşur ve veri kaydedilmez. Agent tekrar deneyebilir.
+  </Accordion>
+
+  <Accordion title="Structured output ücretlendirilir mi?">
+    Hayır, ek ücret yok. Normal çağrı maliyeti geçerlidir.
+  </Accordion>
+
+  <Accordion title="Mevcut agent'a sonradan ekleyebilir miyim?">
+    Evet, istediğiniz zaman ekleyebilir veya çıkarabilirsiniz.
+  </Accordion>
+
+  <Accordion title="Birden fazla schema kullanabilir miyim?">
+    Bir agent'ta tek bir schema kullanılabilir. Farklı senaryolar için farklı agent'lar oluşturun.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="AI Agent Oluşturma" icon="robot" href="/voice-ai-agents/create-agent">
+    Yeni AI Agent oluşturma ve yapılandırma
+  </Card>
+  <Card title="Gelişmiş Yapılandırma" icon="sliders" href="/voice-ai-agents/advanced-configuration">
+    Agent performans optimizasyonu
+  </Card>
+</CardGroup>

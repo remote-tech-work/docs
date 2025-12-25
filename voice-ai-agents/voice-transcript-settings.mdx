@@ -1,0 +1,564 @@
+---
+title: "Ses ve Transkript Ayarları"
+description: "AI Agent'ınızın konuşmayı daha doğru anlaması ve transkript kalitesini artırın"
+---
+
+## Genel Bakış
+
+Ses ve transkript ayarları, AI Agent'ınızın konuşmayı daha doğru anlaması ve transkript kalitesini artırması için kullanılır. Bu ayarlar ile özel terimleri, marka isimlerini ve sektöre özel kelimeleri tanımlayabilir, yanlış telaffuzları düzeltebilirsiniz.
+
+## İki Ana Özellik
+
+<CardGroup cols={2}>
+  <Card title="Transcriber Key Terms" icon="key">
+    **Anahtar Kelimeler**
+
+    - Özel terimlerin doğru tanınması
+    - Marka isimlerinin doğru yazılması
+    - Teknik kelimelerin doğru transkript edilmesi
+
+    **Örnek:** "DijitalBank" → Transkriptte "dijital bank" yerine "DijitalBank"
+  </Card>
+
+  <Card title="Voice Text Replacements" icon="volume">
+    **Ses Metni Değiştirme**
+
+    - Agent'ın belirli kelimeleri farklı telaffuz etmesi
+    - Kısaltmaların açılması
+    - Rakamların okunuş şeklini değiştirme
+
+    **Örnek:** "Dr." → Agent "Doktor" der
+  </Card>
+</CardGroup>
+
+## Transcriber Key Terms
+
+### Ne Zaman Kullanılır?
+
+<Tabs>
+  <Tab title="Şirket/Marka İsimleri">
+    - ✅ "TechnoPlus", "AkıllıEv"
+    - ✅ Büyük-küçük harf önemli
+  </Tab>
+
+  <Tab title="Teknik Terimler">
+    - ✅ "API", "OAuth", "JWT"
+    - ✅ Sektöre özel jargon
+  </Tab>
+
+  <Tab title="Ürün İsimleri">
+    - ✅ "iPhone 15", "MacBook Pro"
+    - ✅ Rakam ve harf kombinasyonları
+  </Tab>
+
+  <Tab title="Kısaltmalar">
+    - ✅ "KDV", "SGK", "IBAN"
+    - ✅ Sesli açılımlar yerine kısaltma
+  </Tab>
+</Tabs>
+
+### Anahtar Kelime Ekleme
+
+<Steps>
+  <Step title="Agent Düzenleme">
+    1. **AI Agent'lar** sayfası
+    2. Agent'ı seçin > **Düzenle**
+    3. **Gelişmiş Ayarlar** sekmesi
+    4. **Transcriber Settings** bölümü
+  </Step>
+
+  <Step title="Key Term Ekleme">
+    **Key Terms bölümü:**
+
+    **Tek Ekleme:**
+    1. **Add Key Term** butonu
+    2. Kelimeyi girin (örn: "TechnoPlus")
+    3. **Ekle**
+
+    **Toplu Ekleme:**
+    1. **Bulk Add** butonu
+    2. Her satıra bir kelime
+    3. **Import**
+  </Step>
+
+  <Step title="Kaydetme">
+    **Test Et** > **Kaydet**
+  </Step>
+</Steps>
+
+<Frame>
+  <img src="/images/voice-ai-key-terms.png" alt="Anahtar kelime ekleme" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Key Terms bölümünde kelime ekleme ve toplu import
+</Note>
+
+### Toplu Ekleme Örneği
+
+**Örnek Liste:**
+
+```
+TechnoPlus
+COVID-19
+API
+iPhone 15
+MacBook Pro
+KDV
+IBAN
+OAuth 2.0
+```
+
+### Key Term Formatı
+
+<Tip>
+  **Doğru Kullanım:**
+  - ✅ "TechnoPlus" - Tam olarak nasıl görünmesini istiyorsanız
+  - ✅ "COVID-19" - Tire, rakam dahil
+  - ✅ "Dr." - Noktalama dahil
+
+  **Yanlış Kullanım:**
+  - ❌ "technoplus" - Büyük-küçük harf önemli
+  - ❌ "covid 19" - Tire eksik
+  - ❌ "Dr" - Nokta eksik
+</Tip>
+
+<Warning>
+  **Önemli:** Key terms büyük-küçük harf duyarlıdır. "API" ≠ "api" ≠ "Api"
+</Warning>
+
+### Sektör Bazlı Örnekler
+
+<AccordionGroup>
+  <Accordion title="Banka">
+    **Key Terms:**
+    ```
+    IBAN
+    SWIFT
+    BIC
+    EFT
+    Havale
+    Vadesiz Mevduat
+    Vadeli Mevduat
+    TL
+    USD
+    EUR
+    ```
+  </Accordion>
+
+  <Accordion title="E-ticaret">
+    **Key Terms:**
+    ```
+    iPhone 15 Pro
+    MacBook Air M2
+    AirPods Pro
+    iPad
+    Apple Watch
+    Samsung Galaxy S24
+    PlayStation 5
+    Xbox Series X
+    ```
+  </Accordion>
+
+  <Accordion title="Sağlık">
+    **Key Terms:**
+    ```
+    COVID-19
+    MR
+    BT
+    Tansiyon
+    Diyabet
+    Kolesterol
+    HDL
+    LDL
+    TSH
+    T3
+    T4
+    ```
+  </Accordion>
+
+  <Accordion title="Teknoloji">
+    **Key Terms:**
+    ```
+    API
+    REST API
+    OAuth 2.0
+    JWT
+    JSON
+    XML
+    HTTP
+    HTTPS
+    SSL
+    TLS
+    AWS
+    Azure
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Voice Text Replacements
+
+### Ne Zaman Kullanılır?
+
+<CardGroup cols={2}>
+  <Card title="Kısaltmaların Açılması" icon="text">
+    - "Dr." → "Doktor"
+    - "Yrd. Doç." → "Yardımcı Doçent"
+  </Card>
+
+  <Card title="Telaffuz Düzeltme" icon="microphone">
+    - "IBAN" → "İ-BAN"
+    - "API" → "A-P-İ"
+  </Card>
+
+  <Card title="Rakam Formatları" icon="hashtag">
+    - "24/7" → "yirmi dört saat yedi gün"
+    - "7/24" → "haftanın yedi günü günde yirmi dört saat"
+  </Card>
+
+  <Card title="Marka İsimleri" icon="trademark">
+    - "GitHub" → "Git Hub"
+    - "LinkedIn" → "Linked In"
+  </Card>
+</CardGroup>
+
+### Voice Replacement Ekleme
+
+<Steps>
+  <Step title="Agent Düzenleme">
+    1. **AI Agent'lar** > Agent seçin > **Düzenle**
+    2. **Gelişmiş Ayarlar** sekmesi
+    3. **Voice Settings** bölümü
+  </Step>
+
+  <Step title="Replacement Ekleme">
+    **Voice Replacements bölümü:**
+
+    **Tek Ekleme:**
+    1. **Add Replacement** butonu
+    2. **Original Text:** Metinde görünen (örn: "Dr.")
+    3. **Spoken Text:** Agent'ın söyleyeceği (örn: "Doktor")
+    4. **Ekle**
+
+    **Toplu Ekleme:**
+    1. **Bulk Add**
+    2. Format: `Original -> Spoken` (her satıra bir kural)
+    3. **Import**
+  </Step>
+
+  <Step title="Kaydetme">
+    **Test Et** > **Kaydet**
+  </Step>
+</Steps>
+
+### Toplu Ekleme Örneği
+
+```
+Dr. -> Doktor
+Yrd. Doç. -> Yardımcı Doçent
+Prof. Dr. -> Profesör Doktor
+IBAN -> İ-BAN
+API -> A-P-İ
+24/7 -> yirmi dört saat yedi gün
+COVID-19 -> kovid on dokuz
+```
+
+<Frame>
+  <img src="/images/voice-ai-replacements.png" alt="Voice replacement ayarları" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Voice Replacements bölümünde original/spoken text girişi
+</Note>
+
+### Telaffuz İyileştirme
+
+<Tabs>
+  <Tab title="Harf Harf Okuma">
+    **Kısaltmalar:**
+    ```
+    IBAN -> İ-BAN
+    API -> A-P-İ
+    HTTP -> H-T-T-P
+    SQL -> Es-Ku-El
+    ```
+  </Tab>
+
+  <Tab title="Kelime Olarak Okuma">
+    **Akronimler:**
+    ```
+    NASA -> Nasa
+    NATO -> Nato
+    UNICEF -> Yunisef
+    ```
+  </Tab>
+
+  <Tab title="Rakamlar ve Tarihler">
+    ```
+    24/7 -> yirmi dört saat yedi gün
+    7/24 -> haftanın yedi günü günde yirmi dört saat
+    2024 -> iki bin yirmi dört
+    01.01.2024 -> bir Ocak iki bin yirmi dört
+    %20 -> yüzde yirmi
+    ```
+  </Tab>
+
+  <Tab title="Semboller">
+    ```
+    & -> ve
+    @ -> et işareti
+    # -> diyez
+    $ -> dolar
+    € -> euro
+    £ -> sterlin
+    ```
+  </Tab>
+</Tabs>
+
+### Sektör Bazlı Replacement Örnekleri
+
+<AccordionGroup>
+  <Accordion title="Banka Agent">
+    **Replacements:**
+    ```
+    IBAN -> İ-BAN
+    TL -> Türk Lirası
+    USD -> Amerikan Doları
+    EUR -> Euro
+    EFT -> E-F-T
+    SMS -> Es-Em-Es
+    ATM -> A-T-M
+    POS -> P-O-S
+    ```
+  </Accordion>
+
+  <Accordion title="Sağlık Agent">
+    **Replacements:**
+    ```
+    Dr. -> Doktor
+    Doç. -> Doçent
+    Prof. -> Profesör
+    MR -> Manyetik Rezonans
+    BT -> Bilgisayarlı Tomografi
+    COVID-19 -> kovid on dokuz
+    PCR -> P-C-R
+    TSH -> T-S-H
+    ```
+  </Accordion>
+
+  <Accordion title="E-ticaret Agent">
+    **Replacements:**
+    ```
+    24/7 -> yirmi dört saat yedi gün
+    % -> yüzde
+    TL -> lira
+    ₺ -> lira
+    kg -> kilogram
+    gr -> gram
+    cm -> santimetre
+    m² -> metrekare
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Kombine Kullanım
+
+### Key Terms + Voice Replacements
+
+**Senaryo:** "COVID-19" kelimesini hem transkriptte doğru yazmak hem de doğru telaffuz etmek.
+
+<Steps>
+  <Step title="Key Term Ekleyin">
+    ```
+    COVID-19
+    ```
+    → Transkriptte "kovid on dokuz" yerine "COVID-19" görünür
+  </Step>
+
+  <Step title="Voice Replacement Ekleyin">
+    ```
+    COVID-19 -> kovid on dokuz
+    ```
+    → Agent metinde "COVID-19" görürse "kovid on dokuz" der
+  </Step>
+
+  <Step title="Sonuç">
+    - **Transkript:** "COVID-19 testi pozitif çıktı"
+    - **Agent der:** "kovid on dokuz testi pozitif çıktı"
+  </Step>
+</Steps>
+
+### Çoklu Replacement Zinciri
+
+**Örnek:**
+
+```
+Dr. COVID-19 uzmanı Prof. Dr. Ahmet Yılmaz
+```
+
+**Replacements:**
+
+```
+Dr. -> Doktor
+Prof. Dr. -> Profesör Doktor
+COVID-19 -> kovid on dokuz
+```
+
+**Agent Der:**
+
+```
+Doktor kovid on dokuz uzmanı Profesör Doktor Ahmet Yılmaz
+```
+
+## Test Etme
+
+### Test Görüşmesi
+
+<Steps>
+  <Step title="Ayarları Yapın">
+    Agent'a key terms ve replacements ekleyin
+  </Step>
+
+  <Step title="Test Edin">
+    **Test Et** butonu ile test telefon araması yapın
+  </Step>
+
+  <Step title="Kontrol Edin">
+    - Transkripti kontrol edin
+    - Agent'ın telaffuzunu dinleyin
+  </Step>
+
+  <Step title="İyileştirin">
+    Gerekirse ayarları güncelleyin ve tekrar test edin
+  </Step>
+</Steps>
+
+### Kontrol Listesi
+
+**Key Terms Test:**
+- [ ] Özel terimler transkriptte doğru yazılıyor mu?
+- [ ] Büyük-küçük harf doğru mu?
+- [ ] Rakam ve tire gibi karakterler korunuyor mu?
+
+**Voice Replacements Test:**
+- [ ] Kısaltmalar doğru telaffuz ediliyor mu?
+- [ ] Rakamlar doğru okunuyor mu?
+- [ ] Marka isimleri doğru söyleniyor mu?
+
+## İpuçları ve En İyi Uygulamalar
+
+### Key Terms
+
+<Tip>
+  - ✅ Sadece özel terimleri ekleyin (genel kelimeler değil)
+  - ✅ Resmi yazılışı kullanın
+  - ✅ 20-30 term ideal, çok fazla eklemeyin
+  - ✅ Sektörünüze özel terimlere odaklanın
+  - ❌ Genel kelimeler eklemeyin ("müşteri", "ürün" gibi)
+  - ❌ Yüzlerce term eklemeyin (performans düşer)
+</Tip>
+
+### Voice Replacements
+
+<Tip>
+  - ✅ Doğal telaffuza odaklanın
+  - ✅ Müşterinin anlayabileceği şekilde değiştirin
+  - ✅ Kısa ve net replacement'lar kullanın
+  - ✅ Test ederek doğrulayın
+  - ❌ Gereksiz replacement yapmayın
+  - ❌ Çok karmaşık replacement zincirleri oluşturmayın
+</Tip>
+
+### Performans
+
+<Warning>
+  - Çok fazla term/replacement agent'ı yavaşlatabilir
+  - 30-50 arası ideal
+  - 100+ olunca performans düşebilir
+</Warning>
+
+## Sorun Giderme
+
+<AccordionGroup>
+  <Accordion title="Key Term Çalışmıyor">
+    **Sebep:** Büyük-küçük harf uyumsuzluğu
+
+    **Çözüm:**
+    1. Key term'i tam olarak nasıl görünmesini istiyorsanız öyle yazın
+    2. "API" ≠ "api" - Kontrol edin
+    3. Test edin
+  </Accordion>
+
+  <Accordion title="Voice Replacement Uygulanmıyor">
+    **Sebep:** Original text tam eşleşmiyor
+
+    **Çözüm:**
+    1. Original text'i kontrol edin
+    2. Noktalama işaretlerini dahil edin
+    3. Boşlukları kontrol edin
+    4. Test edin
+  </Accordion>
+
+  <Accordion title="Agent Garip Telaffuz Ediyor">
+    **Sebep:** Replacement çok karmaşık
+
+    **Çözüm:**
+    1. Daha basit replacement kullanın
+    2. Sesli harf ekleme gerekliyse tire kullanın (A-P-İ)
+    3. Test edin ve dinleyin
+  </Accordion>
+
+  <Accordion title="Transkript Yanlış">
+    **Sebepler:**
+    - Key term eksik
+    - Key term yanlış yazılmış
+    - Ses kalitesi düşük
+
+    **Çözüm:**
+    1. Key terms listesini genişletin
+    2. Yazımları kontrol edin
+    3. Test görüşmesi yapın
+    4. Ses kalitesini artırın
+  </Accordion>
+</AccordionGroup>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Kaç key term ekleyebilirim?">
+    Teknik limit yok, ancak 30-50 arası ideal. 100+ performansı düşürebilir.
+  </Accordion>
+
+  <Accordion title="Voice replacement transkripti etkiler mi?">
+    Hayır, sadece agent'ın telaffuzunu etkiler. Transkript değişmez.
+  </Accordion>
+
+  <Accordion title="Key term'ler büyük-küçük harf duyarlı mı?">
+    Evet, "API" ve "api" farklı kabul edilir.
+  </Accordion>
+
+  <Accordion title="Mevcut agent'a sonradan ekleyebilir miyim?">
+    Evet, istediğiniz zaman ekleyebilir veya çıkarabilirsiniz.
+  </Accordion>
+
+  <Accordion title="Key term eklemek ücretli mi?">
+    Hayır, ek ücret yok.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="AI Agent Oluşturma" icon="robot" href="/voice-ai-agents/create-agent">
+    Yeni AI Agent oluşturma ve yapılandırma
+  </Card>
+  <Card title="Yapılandırılmış Çıktılar" icon="table" href="/voice-ai-agents/structured-outputs">
+    JSON formatında veri toplama
+  </Card>
+  <Card title="Agent Araçları" icon="wrench" href="/voice-ai-agents/agent-tools">
+    Katalog ve API entegrasyonları
+  </Card>
+  <Card title="Gelişmiş Yapılandırma" icon="sliders" href="/voice-ai-agents/advanced-configuration">
+    Agent performans optimizasyonu
+  </Card>
+</CardGroup>

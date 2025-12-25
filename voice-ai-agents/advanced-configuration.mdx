@@ -1,0 +1,551 @@
+---
+title: "Gelişmiş Yapılandırma"
+description: "AI Agent performansını optimize edin ve davranışını ince ayarlayın"
+---
+
+## Genel Bakış
+
+Gelişmiş yapılandırma özellikleri ile AI Agent'ınızın performansını optimize edebilir, davranışını ince ayarlayabilir ve özel ihtiyaçlarınıza göre kişiselleştirebilirsiniz.
+
+## Model Seçimi
+
+### Kullanılabilir Modeller
+
+<CardGroup cols={3}>
+  <Card title="GPT-4 Turbo" icon="brain">
+    **Varsayılan**
+
+    - En akıllı model
+    - Karmaşık görevler için ideal
+    - Daha yavaş yanıt süresi
+    - Daha yüksek maliyet
+  </Card>
+
+  <Card title="GPT-4" icon="microchip">
+    **Dengeli**
+
+    - Dengeli performans
+    - Orta seviye görevler
+    - Makul maliyet
+    - İyi yanıt süresi
+  </Card>
+
+  <Card title="GPT-3.5 Turbo" icon="bolt">
+    **Hızlı**
+
+    - Hızlı yanıt süresi
+    - Basit görevler için yeterli
+    - Düşük maliyet
+    - Sınırlı anlama kapasitesi
+  </Card>
+</CardGroup>
+
+### Model Değiştirme
+
+<Steps>
+  <Step title="Agent Düzenle">
+    **AI Agent'lar** > Agent seçin > **Düzenle**
+  </Step>
+
+  <Step title="Gelişmiş Ayarlar">
+    **Gelişmiş Ayarlar** sekmesi > **Model Settings** bölümü
+  </Step>
+
+  <Step title="Model Seçin">
+    **Model:** Dropdown'dan seçin
+  </Step>
+
+  <Step title="Kaydet">
+    **Kaydet** butonuna tıklayın
+  </Step>
+</Steps>
+
+### Model Karşılaştırması
+
+| Özellik | GPT-3.5 Turbo | GPT-4 | GPT-4 Turbo |
+|---------|---------------|-------|-------------|
+| Hız | ⚡⚡⚡ | ⚡⚡ | ⚡ |
+| Zeka | 🧠 | 🧠🧠 | 🧠🧠🧠 |
+| Maliyet | 💰 | 💰💰 | 💰💰💰 |
+| Karmaşık Görevler | ❌ | ✅ | ✅ |
+| Basit Görevler | ✅ | ✅ | ✅ |
+
+### Hangi Modeli Seçmeliyim?
+
+<Tabs>
+  <Tab title="GPT-3.5 Turbo">
+    ✅ **Kullanım Senaryoları:**
+    - Basit bilgi verme
+    - Randevu alma
+    - Yönlendirme
+    - Hızlı yanıt öncelikli
+  </Tab>
+
+  <Tab title="GPT-4">
+    ✅ **Kullanım Senaryoları:**
+    - Orta karmaşıklık
+    - Müşteri desteği
+    - Satış görüşmeleri
+    - Denge (hız + kalite)
+  </Tab>
+
+  <Tab title="GPT-4 Turbo">
+    ✅ **Kullanım Senaryoları:**
+    - Karmaşık sorun çözme
+    - Teknik destek
+    - Detaylı danışmanlık
+    - Kalite öncelikli
+  </Tab>
+</Tabs>
+
+## Parametre Ayarları
+
+### Temperature (Yaratıcılık)
+
+**Ne İşe Yarar:** Agent'ın ne kadar yaratıcı/tahmin edilemez olacağını belirler (0.0 - 1.0 arası değer)
+
+<Tabs>
+  <Tab title="0.0 - 0.3 (Tutarlı)">
+    - Her zaman benzer cevaplar
+    - Tahmin edilebilir
+    - Resmi/profesyonel ton
+
+    **Kullanım:** Müşteri hizmetleri, bilgi verme
+  </Tab>
+
+  <Tab title="0.4 - 0.7 (Dengeli)">
+    **Varsayılan**
+
+    - Dengeli yaratıcılık
+    - Doğal konuşma
+
+    **Kullanım:** Genel amaçlı agent'lar
+  </Tab>
+
+  <Tab title="0.8 - 1.0 (Yaratıcı)">
+    - Çok yaratıcı cevaplar
+    - Tahmin edilemez
+
+    **Kullanım:** Yaratıcı içerik, beyin fırtınası
+  </Tab>
+</Tabs>
+
+**Ayarlama:**
+1. **Gelişmiş Ayarlar** > **Model Settings**
+2. **Temperature:** Slider ile ayarlayın
+3. **Kaydet**
+
+### Max Tokens (Maksimum Uzunluk)
+
+**Ne İşe Yarar:** Agent'ın tek seferde üretebileceği maksimum kelime sayısı (1 token ≈ 0.75 kelime)
+
+<AccordionGroup>
+  <Accordion title="250-500 tokens (Kısa)">
+    - Hızlı yanıtlar
+    - Basit bilgi verme
+
+    **Kullanım:** IVR, yönlendirme
+  </Accordion>
+
+  <Accordion title="500-1000 tokens (Orta - Varsayılan)">
+    - Detaylı açıklamalar
+    - Normal konuşma
+
+    **Kullanım:** Genel amaçlı
+  </Accordion>
+
+  <Accordion title="1000-2000 tokens (Uzun)">
+    - Çok detaylı açıklamalar
+    - Karmaşık konular
+
+    **Kullanım:** Teknik destek, eğitim
+  </Accordion>
+</AccordionGroup>
+
+**Ayarlama:**
+1. **Gelişmiş Ayarlar** > **Model Settings**
+2. **Max Tokens:** Sayı girin
+3. **Kaydet**
+
+## Zaman Aşımı Ayarları
+
+### Call Timeout (Çağrı Zaman Aşımı)
+
+**Ne İşe Yarar:** Görüşme maksimum ne kadar sürebilir (otomatik sonlandırma)
+
+<CardGroup cols={3}>
+  <Card title="5 dakika" icon="clock">
+    - Kısa bilgilendirmeler
+    - Randevu alma
+  </Card>
+
+  <Card title="10 dakika" icon="clock">
+    **Varsayılan**
+
+    - Müşteri hizmetleri
+    - Satış görüşmeleri
+  </Card>
+
+  <Card title="20 dakika" icon="clock">
+    - Teknik destek
+    - Detaylı danışmanlık
+  </Card>
+</CardGroup>
+
+<Warning>
+  **Sınırsız timeout kullanılması önerilmez** - Maliyet kontrolsüz artar
+</Warning>
+
+### Idle Timeout (Boşta Bekleme)
+
+**Ne İşe Yarar:** Müşteri ne kadar süre sessiz kalırsa görüşme sonlanır
+
+**Değerler:**
+- **30 saniye** - Agresif
+- **60 saniye** - Orta (Varsayılan)
+- **90 saniye** - Toleranslı
+
+## Ses Ayarları
+
+### Voice Selection (Ses Seçimi)
+
+**Mevcut Sesler:**
+- Kadın sesleri
+- Erkek sesleri
+- Farklı aksanlar
+- Farklı tonlar
+
+<Steps>
+  <Step title="Temel Ayarlar">
+    **Temel Ayarlar** > **Ses** bölümü
+  </Step>
+
+  <Step title="Ses Seçin">
+    Ses listesinden uygun sesi seçin
+  </Step>
+
+  <Step title="Önizle">
+    **Dinle** butonu ile önizleyin
+  </Step>
+
+  <Step title="Kaydet">
+    **Kaydet** butonuna tıklayın
+  </Step>
+</Steps>
+
+<Frame>
+  <img src="/images/voice-ai-voice-settings.png" alt="Ses ayarları" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Ses seçimi ve önizleme bölümü
+</Note>
+
+### Speaking Rate (Konuşma Hızı)
+
+**Değerler:**
+- **0.5x** - Çok yavaş
+- **0.75x** - Yavaş
+- **1.0x** - Normal (Varsayılan)
+- **1.25x** - Hızlı
+- **1.5x** - Çok hızlı
+
+<Info>
+  **Öneri:** 1.0x veya 1.1x ideal
+</Info>
+
+### Pitch (Ses Tonu)
+
+**Değerler:**
+- **-10 ile +10** arası
+- **0** = Normal (Varsayılan)
+- **Negatif** = Daha kalın
+- **Pozitif** = Daha ince
+
+## Davranış Ayarları
+
+### Interruption Sensitivity (Kesme Hassasiyeti)
+
+**Ne İşe Yarar:** Agent konuşurken müşteri araya girerse ne olur
+
+<Tabs>
+  <Tab title="Düşük Hassasiyet">
+    - Agent konuşmayı bitirmeden durdurmaz
+    - Müşteri ısrarla araya girmeli
+  </Tab>
+
+  <Tab title="Orta Hassasiyet">
+    **Varsayılan**
+
+    - Dengeli
+    - Doğal konuşma akışı
+  </Tab>
+
+  <Tab title="Yüksek Hassasiyet">
+    - Müşteri hemen araya girebilir
+    - Agent anında durur
+  </Tab>
+</Tabs>
+
+### Background Noise Handling (Arka Plan Gürültüsü)
+
+<CardGroup cols={3}>
+  <Card title="Aggressive Filtering" icon="filter">
+    - Arka plan seslerini filtrele
+    - Sadece insan sesine odaklan
+
+    **Risk:** Bazen gerçek konuşmayı da filtreleyebilir
+  </Card>
+
+  <Card title="Standard" icon="sliders">
+    **Varsayılan**
+
+    - Dengeli filtreleme
+  </Card>
+
+  <Card title="Minimal" icon="microphone">
+    - Çok az filtreleme
+    - Arka plan sesleri duyulabilir
+  </Card>
+</CardGroup>
+
+## Performans Optimizasyonu
+
+### Latency Optimization (Gecikme Optimizasyonu)
+
+<Tabs>
+  <Tab title="Low Latency Mode">
+    - ✅ Daha hızlı yanıt
+    - ❌ Biraz daha az akıllı
+  </Tab>
+
+  <Tab title="Balanced">
+    **Varsayılan**
+
+    - Dengeli performans
+  </Tab>
+
+  <Tab title="High Quality">
+    - ✅ En iyi kalite
+    - ❌ Daha yavaş yanıt
+  </Tab>
+</Tabs>
+
+### Caching
+
+**Etkin:**
+- Sık kullanılan bilgiler cache'lenir
+- Daha hızlı yanıt
+- Daha az API çağrısı
+
+**Devre Dışı:**
+- Her zaman fresh data
+- Daha yavaş
+
+<Tip>
+  **Öneri:** Etkin tutun
+</Tip>
+
+### Concurrent Call Limit (Eş Zamanlı Çağrı Limiti)
+
+**Agent Bazında:** Bir agent aynı anda kaç çağrıda bulunabilir
+
+**Varsayılan:** Plan'ınıza bağlı
+
+## İleri Düzey Özellikler
+
+### Custom Headers (Özel HTTP Header'lar)
+
+**Kullanım:** API çağrılarında özel header göndermek için
+
+**Ayarlama:**
+
+```json
+{
+  "X-Custom-ID": "your-value",
+  "X-Tenant-ID": "tenant-123"
+}
+```
+
+### Retry Logic (Yeniden Deneme)
+
+**API Hatalarında:**
+- Otomatik retry
+- Maksimum 3 deneme
+- Exponential backoff
+
+**Ayarlama:**
+1. **Gelişmiş Ayarlar** > **Error Handling**
+2. **Max Retries:** 0-5
+3. **Kaydet**
+
+### Fallback Behavior (Yedek Davranış)
+
+**Agent Hata Alırsa:**
+- Standart mesaj söyle
+- Görüşmeyi transfer et
+- Görüşmeyi sonlandır
+
+## A/B Testing
+
+### Farklı Konfigürasyonları Test Etme
+
+**Senaryo:** Hangi model/temperature daha iyi?
+
+<Steps>
+  <Step title="Agent Kopyala">
+    Agent'ı kopyalayın
+  </Step>
+
+  <Step title="Version A Oluştur">
+    Version A: GPT-3.5, Temperature 0.3
+  </Step>
+
+  <Step title="Version B Oluştur">
+    Version B: GPT-4, Temperature 0.7
+  </Step>
+
+  <Step title="Test Edin">
+    Her ikisini de aynı senaryoda test edin
+  </Step>
+
+  <Step title="Karşılaştırın">
+    Performans metriklerini karşılaştırın
+  </Step>
+</Steps>
+
+**Metrikler:**
+- Başarı oranı
+- Ortalama çağrı süresi
+- Müşteri memnuniyeti
+- Maliyet
+
+## İpuçları ve En İyi Uygulamalar
+
+### Model Seçimi
+
+<Tip>
+  - ✅ Basit görevler için GPT-3.5
+  - ✅ Karmaşık görevler için GPT-4 Turbo
+  - ✅ A/B test yapın
+  - ❌ Gereksiz yere pahalı model kullanmayın
+</Tip>
+
+### Temperature
+
+<Tip>
+  - ✅ Müşteri hizmetleri: 0.3-0.5
+  - ✅ Satış: 0.5-0.7
+  - ✅ Yaratıcı: 0.7-0.9
+  - ❌ 0.0 çok robotik
+  - ❌ 1.0 çok tahmin edilemez
+</Tip>
+
+### Timeout
+
+<Tip>
+  - ✅ Görev süresine göre ayarlayın
+  - ✅ Idle timeout 60 saniye ideal
+  - ❌ Çok kısa timeout müşteriyi keser
+  - ❌ Çok uzun timeout maliyeti artırır
+</Tip>
+
+### Ses Ayarları
+
+<Tip>
+  - ✅ Konuşma hızı 1.0x-1.1x
+  - ✅ Pitch varsayılan (0)
+  - ✅ Müşteriye uygun ses seçin
+  - ❌ Çok hızlı konuşma anlaşılmaz
+  - ❌ Çok yavaş konuşma can sıkıcı
+</Tip>
+
+## Sorun Giderme
+
+<AccordionGroup>
+  <Accordion title="Agent Çok Yavaş Yanıt Veriyor">
+    **Çözüm:**
+    1. Model: GPT-3.5 Turbo deneyin
+    2. Latency Mode: Low
+    3. Max Tokens: Azaltın
+    4. Temperature: Düşürün
+  </Accordion>
+
+  <Accordion title="Agent Tutarsız Cevaplar Veriyor">
+    **Çözüm:**
+    1. Temperature: 0.3'e düşürün
+    2. Model: GPT-4 deneyin
+    3. Prompt'u daha detaylı yapın
+  </Accordion>
+
+  <Accordion title="Görüşme Sık Sık Kesiliyor">
+    **Çözüm:**
+    1. Idle Timeout: Artırın (90 saniye)
+    2. Call Timeout: Artırın
+    3. Interruption Sensitivity: Düşürün
+  </Accordion>
+
+  <Accordion title="Müşteri Agent'ı Anlamıyor">
+    **Çözüm:**
+    1. Speaking Rate: Yavaşlatın (0.9x)
+    2. Max Tokens: Azaltın (kısa cevaplar)
+    3. Daha basit dil kullanın (prompt)
+  </Accordion>
+
+  <Accordion title="Maliyet Çok Yüksek">
+    **Çözüm:**
+    1. Model: GPT-3.5 Turbo
+    2. Max Tokens: Azaltın
+    3. Temperature: Düşürün
+    4. Call Timeout: Optimize edin
+  </Accordion>
+</AccordionGroup>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Hangi model en iyi?">
+    Göreve bağlı. Basit görevler için GPT-3.5, karmaşık için GPT-4 Turbo.
+  </Accordion>
+
+  <Accordion title="Temperature ne olmalı?">
+    Müşteri hizmetleri için 0.3-0.5, satış için 0.5-0.7 ideal.
+  </Accordion>
+
+  <Accordion title="Max tokens kaç olmalı?">
+    500-1000 arası genel amaçlı kullanım için yeterli.
+  </Accordion>
+
+  <Accordion title="Ayarları değiştirmek ücretli mi?">
+    Hayır, ama model değişikliği çağrı maliyetini etkiler.
+  </Accordion>
+
+  <Accordion title="Mevcut görüşmeler etkilenir mi?">
+    Hayır, sadece yeni görüşmeler yeni ayarları kullanır.
+  </Accordion>
+
+  <Accordion title="Optimal ayarlar neler?">
+    Görevinize bağlı. A/B test yaparak bulun.
+  </Accordion>
+
+  <Accordion title="Ayarları başka agent'a kopyalayabilir miyim?">
+    Evet, agent kopyalama özelliğiyle ayarlar da kopyalanır.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="AI Agent Oluşturma" icon="robot" href="/voice-ai-agents/create-agent">
+    Yeni AI Agent oluşturma ve yapılandırma
+  </Card>
+  <Card title="Yapılandırılmış Çıktılar" icon="table" href="/voice-ai-agents/structured-outputs">
+    JSON formatında veri toplama
+  </Card>
+  <Card title="Ses ve Transkript Ayarları" icon="microphone" href="/voice-ai-agents/voice-transcript-settings">
+    Özel terim ve telaffuz ayarları
+  </Card>
+  <Card title="Agent Araçları" icon="wrench" href="/voice-ai-agents/agent-tools">
+    Katalog ve API entegrasyonları
+  </Card>
+</CardGroup>

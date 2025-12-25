@@ -1,0 +1,518 @@
+---
+title: "Kampanya Analizleri"
+description: "Dışa dönük arama kampanyalarınızın performansını detaylı olarak izleyin ve optimize edin"
+---
+
+## Genel Bakış
+
+Kampanya Analizleri sayfası, dışa dönük arama kampanyalarınızın performansını detaylı olarak izlemenizi sağlar. Bu sayfa sayesinde kampanyalarınızın ne kadar etkili olduğunu, hangi alanlarda iyileştirme yapabileceğinizi ve ROI (yatırım getirisi) hesaplamalarınızı kolayca yapabilirsiniz.
+
+Kampanya analizleri, hem gerçek zamanlı hem de geçmiş veriler üzerinden detaylı istatistikler sunar.
+
+## Kampanya Analizlerine Erişim
+
+<Steps>
+  <Step title="Kampanyalar Bölümünü Açın">
+    Sol menüden **Kampanyalar** bölümünü açın
+  </Step>
+
+  <Step title="Kampanya Analitiği Seçin">
+    **Kampanya Analitiği** seçeneğine tıklayın
+  </Step>
+
+  <Step title="Alternatif Yöntem">
+    veya herhangi bir kampanyanın detay sayfasından **Analitik** sekmesine gidin
+  </Step>
+</Steps>
+
+## Ana Metrikler
+
+### Toplam Çağrı Sayısı
+
+**Açıklama:** Kampanya boyunca yapılan tüm çağrıların toplam sayısı.
+
+**Dahil Edilen Durumlar:**
+- Tamamlanan çağrılar (ended)
+- Devam eden çağrılar (in-progress)
+- Başarısız çağrılar (failed)
+- Kuyrukta bekleyen çağrılar (queued)
+
+**Kullanım:**
+- Kampanya hacmini ölçün
+- Planlanan çağrı sayısı ile karşılaştırın
+- Günlük/saatlik çağrı trendlerini görün
+
+### Tamamlanan Çağrılar
+
+**Açıklama:** Başarıyla sonuçlanan çağrı sayısı.
+
+**Tamamlanma Kriterleri:**
+- ✅ Müşteri cevaplamış olmalı
+- ✅ Konuşma gerçekleşmiş olmalı
+- ✅ `ended` durumunda sonlanmış olmalı
+
+**Alt Kategoriler:**
+- **Başarılı**: Hedef eylemi tamamlayan çağrılar
+- **Kısmi Başarılı**: Konuşma gerçekleşti ama hedef eyleme ulaşılmadı
+- **Başarısız**: Cevap verilmedi veya erken sonlandırıldı
+
+### Başarı Oranı
+
+**Hesaplama:**
+```
+Başarı Oranı = (Başarılı Çağrılar / Toplam Çağrılar) × 100
+```
+
+**Performans Seviyeleri:**
+- **%80-100**: Mükemmel - Agent ve hedef kitle optimum
+- **%60-80**: İyi - Küçük iyileştirmeler yapılabilir
+- **%40-60**: Ortalama - Strateji gözden geçirilmeli
+- **%0-40**: Düşük - Ciddi optimizasyon gerekli
+
+### Ortalama Çağrı Süresi
+
+**Açıklama:** Tamamlanan çağrıların ortalama konuşma süresi.
+
+**Hesaplama:**
+```
+Ortalama Süre = Toplam Konuşma Süresi / Tamamlanan Çağrı Sayısı
+```
+
+**Değerlendirme:**
+- **30 saniye altı**: Çok kısa, erken sonlanıyor olabilir
+- **30 saniye - 2 dakika**: İdeal aralık
+- **2-5 dakika**: Normal, karmaşık konuşmalar
+- **5 dakika üzeri**: Uzun, yönlendirme veya sorun giderme
+
+**Kullanım:**
+- Agent performansını optimize edin
+- Konuşma akışını iyileştirin
+- Maliyet hesaplaması yapın
+
+### Toplam Maliyet
+
+**Açıklama:** Kampanyanın toplam kredi maliyeti.
+
+**Maliyet Hesaplama:**
+- Her çağrı için dakika başına kredi harcanır
+- Bağlanmayan çağrılar için minimum ücret
+- Agent kullanımı, API çağrıları ve depolama dahil
+
+**Formül:**
+```
+Toplam Maliyet = Σ (Çağrı Süresi × Dakika Başı Kredi)
+```
+
+<Frame>
+  <img src="/images/analytics-campaign-metrics.png" alt="Kampanya ana metrikleri" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Kampanya ana metriklerini gösteren dashboard
+</Note>
+
+## Çağrı Durum Dağılımı
+
+### Durum Breakdown Grafiği
+
+Kampanya analizlerinde çağrıların durumlara göre dağılımını gösteren pasta grafik bulunur.
+
+**Durumlar ve Anlamları:**
+
+| Durum | Açıklama | Renk | Aksiyon |
+|-------|----------|------|---------|
+| **ended** | Başarıyla tamamlandı | Yeşil | - |
+| **failed** | Başarısız oldu | Kırmızı | Nedenleri analiz edin |
+| **in-progress** | Devam ediyor | Sarı | - |
+| **queued** | Kuyrukta bekliyor | Mavi | Kuyruğu optimize edin |
+| **ringing** | Aranıyor | Mor | - |
+| **forwarding** | Yönlendiriliyor | Turuncu | Yönlendirme başarısını kontrol edin |
+
+### Başarısızlık Nedenleri
+
+Kampanya analitik sayfasında başarısız çağrıların nedenleri de görüntülenir:
+
+**Yaygın Başarısızlık Nedenleri:**
+- **no-answer**: Cevap verilmedi
+- **busy**: Meşgul
+- **rejected**: Reddedildi
+- **invalid-number**: Geçersiz numara
+- **network-error**: Ağ hatası
+- **agent-error**: Agent yapılandırma hatası
+
+**Çözüm Önerileri:**
+- **no-answer**: Farklı saatlerde aramayı deneyin
+- **busy**: Tekrar arama stratejisi ekleyin
+- **rejected**: DNC listesine ekleyin
+- **invalid-number**: Numara doğrulama yapın
+- **network-error**: Teknik destek ile iletişime geçin
+- **agent-error**: Agent konfigürasyonunu kontrol edin
+
+<Frame>
+  <img src="/images/analytics-campaign-status-breakdown.png" alt="Çağrı durum dağılımı grafiği" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Durum dağılımı pasta grafiği ve başarısızlık nedenleri tablosu
+</Note>
+
+## Zaman Bazlı Analiz
+
+### Saatlik Dağılım
+
+Kampanyanın saatlere göre performans grafiği:
+
+**Analiz Edilen Metrikler:**
+- Saatlik çağrı sayısı
+- Saat bazında başarı oranı
+- En verimli saatler
+- En az verimli saatler
+
+**Kullanım:**
+- En iyi arama saatlerini belirleyin
+- Kampanya zamanlamasını optimize edin
+- Müşteri ulaşılabilirliğini analiz edin
+
+**Örnek İncelemeler:**
+- 09:00-12:00: Genelde yüksek cevaplama oranı
+- 12:00-14:00: Düşük cevaplama (öğle yemeği)
+- 14:00-17:00: Orta seviye aktivite
+- 17:00-19:00: Yüksek aktivite
+- 19:00+: Düşük cevaplama oranı
+
+### Günlük Trend
+
+Kampanyanın günlere göre performans çizgisi:
+
+**Görüntülenen Bilgiler:**
+- Günlük çağrı hacmi
+- Günlük başarı oranı
+- Günlük ortalama çağrı süresi
+- Günlük maliyet
+
+**Kullanım:**
+- Haftalık performans trendlerini görün
+- Hafta sonu vs hafta içi karşılaştırması yapın
+- Kampanya ivmesini takip edin
+
+<Frame>
+  <img src="/images/analytics-campaign-time-analysis.png" alt="Zaman bazlı analiz grafikleri" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Saatlik ve günlük trend grafiklerini gösteren ekran
+</Note>
+
+## Performans Göstergeleri (KPI)
+
+### Conversion Rate (Dönüşüm Oranı)
+
+**Tanım:** Çağrıların hedef eyleme ne kadarının dönüştüğü.
+
+**Hesaplama:**
+```
+Dönüşüm Oranı = (Hedef Eylemi Gerçekleştirenler / Tamamlanan Çağrılar) × 100
+```
+
+**Hedef Eylemler:**
+- Randevu alma
+- Sipariş alma
+- Bilgi aktarımı
+- Yönlendirme kabul
+
+**Hedefler:**
+- **E-ticaret kampanyaları**: %15-25
+- **Randevu kampanyaları**: %30-50
+- **Bilgilendirme kampanyaları**: %60-80
+
+### Reach Rate (Ulaşma Oranı)
+
+**Tanım:** Çağrıların ne kadarının müşteriye ulaştığı.
+
+**Hesaplama:**
+```
+Ulaşma Oranı = (Cevaplanan Çağrılar / Toplam Denenen Çağrılar) × 100
+```
+
+**Optimizasyon:**
+- Telefon numaralarını doğrulayın
+- DNC listesini güncelleyin
+- Arama saatlerini optimize edin
+
+### Cost Per Call (Çağrı Başı Maliyet)
+
+**Hesaplama:**
+```
+Çağrı Başı Maliyet = Toplam Kampanya Maliyeti / Toplam Çağrı Sayısı
+```
+
+**Kullanım:**
+- Kampanya ROI hesaplaması
+- Bütçe planlaması
+- Maliyet optimizasyonu
+
+### Cost Per Conversion (Dönüşüm Başı Maliyet)
+
+**Hesaplama:**
+```
+Dönüşüm Başı Maliyet = Toplam Kampanya Maliyeti / Toplam Dönüşüm Sayısı
+```
+
+**Örnek:**
+- Toplam maliyet: 1000 kredi
+- Toplam dönüşüm: 50 randevu
+- Dönüşüm başı maliyet: 20 kredi
+
+## Karşılaştırmalı Analiz
+
+### Kampanya Karşılaştırma
+
+Birden fazla kampanyayı yan yana karşılaştırın:
+
+**Karşılaştırma Metrikleri:**
+- Başarı oranı
+- Ortalama çağrı süresi
+- Dönüşüm oranı
+- Maliyet verimliliği
+
+<Steps>
+  <Step title="Karşılaştır Seçeneğini Seçin">
+    Kampanya Analitiği sayfasında **Karşılaştır** seçeneğini seçin
+  </Step>
+
+  <Step title="Kampanyaları İşaretleyin">
+    Karşılaştırmak istediğiniz kampanyaları işaretleyin (2-5 kampanya)
+  </Step>
+
+  <Step title="Karşılaştır">
+    **Karşılaştır** butonuna tıklayın
+  </Step>
+
+  <Step title="İnceleyin">
+    Yan yana grafikleri inceleyin
+  </Step>
+</Steps>
+
+**Öneriler:**
+- Benzer hedeflere sahip kampanyaları karşılaştırın
+- Aynı dönemdeki kampanyaları analiz edin
+- En başarılı kampanyanın stratejisini kopyalayın
+
+### Zaman Karşılaştırması
+
+Aynı kampanyanın farklı dönemlerini karşılaştırın:
+
+**Örnek Senaryolar:**
+- Bu hafta vs geçen hafta
+- Bu ay vs geçen ay
+- İlk haftalar vs son haftalar
+
+**Değerlendirme:**
+- İyileşme var mı?
+- Düşüş var mı? Neden?
+- Optimizasyonlar işe yarıyor mu?
+
+<Frame>
+  <img src="/images/analytics-campaign-comparison.png" alt="Kampanya karşılaştırma grafiği" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: İki kampanyanın yan yana karşılaştırılması
+</Note>
+
+## Veri Dışa Aktarma
+
+### Excel/CSV Formatında İndirme
+
+Kampanya analiz verilerini dışa aktarın:
+
+<Steps>
+  <Step title="Kampanya Analitiği Sayfasına Gidin">
+    İlgili kampanyanın analitik sayfasına gidin
+  </Step>
+
+  <Step title="Dışa Aktar">
+    Sağ üst köşedeki **Dışa Aktar** butonuna tıklayın
+  </Step>
+
+  <Step title="Format Seçin">
+    Format seçin: Excel (.xlsx) veya CSV (.csv)
+  </Step>
+
+  <Step title="Tarih Aralığı">
+    Tarih aralığı seçin (opsiyonel)
+  </Step>
+
+  <Step title="İndir">
+    **İndir** butonuna tıklayın
+  </Step>
+</Steps>
+
+**İndirilen Dosyada:**
+- Tüm kampanya metrikleri
+- Saatlik/günlük dağılım tablosu
+- Çağrı durum dökümü
+- Maliyet analizi
+
+**Kullanım:**
+- Kendi raporlarınızı oluşturun
+- Üst yönetime sunumlar hazırlayın
+- Harici analiz araçlarında değerlendirin
+
+### PDF Rapor
+
+Görsel olarak zengin PDF raporu oluşturun:
+
+<Steps>
+  <Step title="Rapor Oluştur">
+    **Rapor Oluştur** butonuna tıklayın
+  </Step>
+
+  <Step title="Özelleştir">
+    Rapor özelleştirme seçeneklerini belirleyin:
+    - Logo ekleme
+    - Şirket bilgileri
+    - Tarih aralığı
+    - Dahil edilecek grafikler
+  </Step>
+
+  <Step title="PDF Oluştur">
+    **PDF Oluştur** butonuna tıklayın
+  </Step>
+
+  <Step title="İndir veya Paylaş">
+    Rapor oluşturuldu bildirimini bekleyin, indirin veya e-posta ile gönderin
+  </Step>
+</Steps>
+
+## İleri Seviye Analizler
+
+### Cohort Analizi
+
+Belirli müşteri gruplarının kampanyalara tepkisini analiz edin:
+
+**Grup Bazlı Segmentasyon:**
+- Yeni müşteriler vs mevcut müşteriler
+- Bölge bazlı performans
+- Yaş grubu bazlı cevaplama oranı
+
+### A/B Testi
+
+Farklı stratejileri test edin:
+
+**Test Edilebilir Elementler:**
+- Farklı agent konfigürasyonları
+- Farklı karşılama mesajları
+- Farklı arama saatleri
+- Farklı hedef kitleler
+
+**Yöntem:**
+<Steps>
+  <Step title="İki Kampanya Oluşturun">
+    İki ayrı kampanya oluşturun
+  </Step>
+
+  <Step title="Tek Değişken">
+    Tek bir değişkeni değiştirin
+  </Step>
+
+  <Step title="Aynı Süre">
+    Aynı süre boyunca çalıştırın
+  </Step>
+
+  <Step title="Karşılaştırın">
+    Sonuçları karşılaştırın
+  </Step>
+
+  <Step title="Uygulayın">
+    Kazanan stratejiyi uygulayın
+  </Step>
+</Steps>
+
+## İpuçları ve En İyi Uygulamalar
+
+### Performans İzleme
+
+- ✅ **Günlük kontrol**: Kampanya performansını her gün inceleyin
+- ✅ **Haftalık rapor**: Haftalık özet raporlar oluşturun
+- ✅ **Aylık değerlendirme**: Aylık olarak genel değerlendirme yapın
+
+### Optimizasyon Stratejileri
+
+- **Başarısızlık analizi**: Başarısız çağrıların nedenlerini sürekli izleyin
+- **Zaman optimizasyonu**: En verimli saatleri belirleyip ona göre planlayın
+- **Agent tuning**: Başarı oranına göre agent ayarlarını ince ayarlayın
+- **Hedef kitle segmentasyonu**: Müşterileri gruplara ayırıp özel kampanyalar oluşturun
+
+### Maliyet Yönetimi
+
+- **Bütçe takibi**: Kampanya maliyetini sürekli izleyin
+- **ROI hesaplama**: Dönüşüm başı maliyeti düzenli hesaplayın
+- **Verimlilik iyileştirme**: Düşük performanslı saatlerde kampanyayı duraklatın
+
+## Sorun Giderme
+
+<AccordionGroup>
+  <Accordion title="Analizler Yüklenmiyor">
+    **Çözüm:**
+    1. Kampanyanın en az bir çağrı yapmış olduğundan emin olun
+    2. Tarih aralığını kontrol edin
+    3. Sayfayı yenileyin
+    4. Tarayıcı cache'ini temizleyin
+  </Accordion>
+
+  <Accordion title="Grafikler Boş Görünüyor">
+    **Çözüm:**
+    1. Seçili tarih aralığında veri olduğundan emin olun
+    2. Tarayıcı konsolu hatalarını kontrol edin
+    3. Farklı tarayıcı deneyin
+  </Accordion>
+
+  <Accordion title="Dışa Aktarma Çalışmıyor">
+    **Çözüm:**
+    1. Pop-up engellemenin kapalı olduğundan emin olun
+    2. Tarayıcı indirme ayarlarını kontrol edin
+    3. Veri boyutunun çok büyük olup olmadığını kontrol edin (tarih aralığını daraltın)
+  </Accordion>
+</AccordionGroup>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Kampanya analizleri ne sıklıkla güncellenir?">
+    Kampanya analizleri yaklaşık olarak her 5 dakikada bir güncellenir. Anlık veriler için sayfayı manuel olarak yenileyebilirsiniz.
+  </Accordion>
+
+  <Accordion title="Geçmiş kampanyaların analizlerine erişebilir miyim?">
+    Evet, tamamlanmış kampanyaların tüm analizleri saklanır ve istediğiniz zaman erişebilirsiniz.
+  </Accordion>
+
+  <Accordion title="Başarı oranımı nasıl artırabilirim?">
+    Başarı oranını artırmak için: telefon numaralarını doğrulayın, arama saatlerini optimize edin, agent konfigürasyonunu iyileştirin ve hedef kitle segmentasyonu yapın.
+  </Accordion>
+
+  <Accordion title="A/B testi nasıl yapılır?">
+    İki farklı kampanya oluşturun, sadece bir değişkeni değiştirin (örn: karşılama mesajı) ve aynı süre boyunca çalıştırın. Sonuçları karşılaştır seçeneği ile analiz edin.
+  </Accordion>
+
+  <Accordion title="Raporları otomatik olarak alabilir miyim?">
+    Şu anda otomatik rapor gönderimi özelliği bulunmamaktadır. Manuel olarak PDF/Excel formatında indirebilir ve paylaşabilirsiniz.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Dashboard Metrikleri" icon="gauge" href="/analytics/dashboard-metrics">
+    Platform performansınızı anlık izleyin
+  </Card>
+  <Card title="Çağrı İstatistikleri" icon="chart-simple" href="/analytics/call-statistics">
+    Detaylı çağrı istatistiklerini inceleyin
+  </Card>
+  <Card title="Kampanya Oluşturma" icon="bullhorn" href="/campaigns/campaign-creation">
+    Yeni kampanya oluşturun
+  </Card>
+  <Card title="Görüşme Kayıtları" icon="microphone" href="/call-monitoring/call-recordings">
+    Çağrı kayıtlarını dinleyin
+  </Card>
+</CardGroup>

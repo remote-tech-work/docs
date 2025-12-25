@@ -1,0 +1,308 @@
+---
+title: "Çoklu Organizasyon Yönetimi"
+description: "Birden fazla organizasyon oluşturun, yönetin ve organizasyonlar arasında geçiş yapın"
+---
+
+## Genel Bakış
+
+Aynı kullanıcı hesabı ile birden fazla organizasyon oluşturabilir ve yönetebilirsiniz. Bu özellik, farklı projeler, müşteriler veya departmanlar için ayrı ortamlar oluşturmanıza olanak tanır.
+
+## Çoklu Organizasyon Kullanım Senaryoları
+
+<CardGroup cols={2}>
+  <Card title="Ajans Kullanımı" icon="briefcase">
+    - Her müşteri için ayrı organizasyon
+    - Veri izolasyonu
+    - Ayrı faturalandırma
+  </Card>
+  <Card title="Departman Bazlı" icon="building">
+    - Satış departmanı
+    - Destek departmanı
+    - Pazarlama departmanı
+  </Card>
+  <Card title="Proje Bazlı" icon="folder">
+    - Proje A organizasyonu
+    - Proje B organizasyonu
+    - Test ortamı
+  </Card>
+  <Card title="Test ve Production" icon="flask">
+    - Test organizasyonu (denemeler için)
+    - Production organizasyonu (canlı kullanım)
+  </Card>
+</CardGroup>
+
+## Yeni Organizasyon Oluşturma
+
+<Steps>
+  <Step title="Organization Switcher'ı Açın">
+    Sağ üst köşede organizasyon adına tıklayın
+  </Step>
+
+  <Step title="Yeni Organizasyon Seçeneğini Seçin">
+    **Yeni Organizasyon Oluştur** seçeneğini seçin
+  </Step>
+
+  <Step title="Organizasyon Bilgilerini Girin">
+    - Organizasyon adı
+    - İletişim bilgileri
+    - Vergi bilgileri
+  </Step>
+
+  <Step title="API Bağlantısını Yapılandırın">
+    Platform API bağlantısı otomatik olarak yapılandırılır
+  </Step>
+
+  <Step title="Organizasyonu Oluşturun">
+    **Oluştur** butonuna tıklayın
+  </Step>
+</Steps>
+
+<Frame>
+  <img src="/images/organization-multi-create.png" alt="Çoklu organizasyon oluşturma" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Yeni organizasyon oluşturma ekranı
+</Note>
+
+### İlk Ayarlar
+
+Yeni organizasyon oluşturulduktan sonra:
+- Otomatik olarak Admin rolündesiniz
+- Boş dashboard görürsünüz
+- İlk agent'ı oluşturabilirsiniz
+
+## Organizasyonlar Arası Geçiş
+
+### Organization Switcher
+
+<Steps>
+  <Step title="Switcher'ı Açın">
+    Sağ üst köşede mevcut organizasyon adına tıklayın
+  </Step>
+
+  <Step title="Organizasyon Seçin">
+    Açılır listede tüm organizasyonlarınızı görürsünüz
+  </Step>
+
+  <Step title="Geçiş Yapın">
+    Geçmek istediğiniz organizasyona tıklayın
+  </Step>
+</Steps>
+
+<Tip>
+  **Kısayol:** `Ctrl+K` (veya `Cmd+K` Mac'te) > Organizasyon ara
+</Tip>
+
+<Frame>
+  <img src="/images/organization-switcher.png" alt="Organizasyon değiştirici" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Organization switcher arayüzü
+</Note>
+
+## Veri İzolasyonu
+
+### Tam Ayrım
+
+Her organizasyon tamamen izole edilmiştir:
+
+<Tabs>
+  <Tab title="Ayrı Olan">
+    - ✅ AI Agent'lar
+    - ✅ Müşteri verileri
+    - ✅ Çağrı geçmişi
+    - ✅ Kampanyalar
+    - ✅ Bilgi bankası
+    - ✅ API anahtarları
+    - ✅ Kullanıcılar
+    - ✅ Billing ve krediler
+    - ✅ Ayarlar
+  </Tab>
+
+  <Tab title="Paylaşılan">
+    - Hesap bilgileri (e-posta, şifre)
+    - Profil resmi
+    - Clerk kimlik doğrulama
+  </Tab>
+</Tabs>
+
+<Info>
+  Organizasyonlar arasında veri transferi mümkün değildir. Her organizasyon bağımsızdır.
+</Info>
+
+## Kullanıcı Rolleri
+
+### Farklı Organizasyonlarda Farklı Roller
+
+Aynı kullanıcı:
+- Org A'da Admin olabilir
+- Org B'de User olabilir
+- Org C'ye erişimi olmayabilir
+
+**Davet:** Her organizasyon ayrı ayrı davet eder.
+
+## Abonelik ve Faturalandırma
+
+### Ayrı Abonelikler
+
+**Her organizasyon:**
+- Kendi planını seçer (Free, Starter, vb.)
+- Kendi kredilerini yönetir
+- Ayrı faturalanır
+
+<Warning>
+  **Ortak Fatura:** Şu anda desteklenmiyor.
+</Warning>
+
+### Kredi Transferi
+
+<Info>
+  **Organizasyonlar arası kredi transferi:** Şu anda desteklenmiyor.
+
+  **Gelecekte:** Ortak kredi havuzu özelliği eklenebilir.
+</Info>
+
+## Organizasyon Limitleri
+
+### Maksimum Organizasyon Sayısı
+
+| Hesap Tipi | Organizasyon Limiti |
+|-----------|---------------------|
+| Ücretsiz hesap | 2 organizasyon |
+| Ücretli hesap | Sınırsız |
+
+**Artırma:** Plan upgrade ile.
+
+## Organizasyon Silme
+
+### Bir Organizasyonu Silme
+
+<Steps>
+  <Step title="Organizasyona Geçin">
+    Silmek istediğiniz organizasyona geçin
+  </Step>
+
+  <Step title="Silme Sayfasına Gidin">
+    Ayarlar > Organizasyon > **Organizasyonu Sil**
+  </Step>
+
+  <Step title="Onaylayın">
+    1. "DELETE" yazarak onaylayın
+    2. Şifrenizi girin
+  </Step>
+</Steps>
+
+<Warning>
+  **Dikkat:** Organizasyon ve tüm verileri silinir. Diğer organizasyonlar etkilenmez.
+</Warning>
+
+### Son Organizasyon
+
+**Tüm organizasyonlarınızı silerseniz:**
+- Hesabınız kalır
+- Yeni organizasyon oluşturabilirsiniz
+
+## En İyi Uygulamalar
+
+### İsimlendirme
+
+<Tip>
+  - ✅ Açıklayıcı isimler kullanın
+  - ✅ Proje/müşteri adını ekleyin
+  - ✅ Test/production belirtin
+  - ❌ "Org 1", "Org 2" gibi belirsiz isimler
+</Tip>
+
+**Örnekler:**
+- "ABC Müşteri - Production"
+- "Test Ortamı"
+- "Satış Departmanı"
+
+### Organizasyon Stratejisi
+
+<Warning>
+  **Çok fazla organizasyon oluşturmayın:**
+  - Yönetim zorlaşır
+  - Maliyetler artar
+  - Karmaşıklık artar
+</Warning>
+
+<Tip>
+  **Öneri:**
+  - Gerçekten gerekli olmadıkça yeni organizasyon açmayın
+  - Departmanlar için kullanıcı rolleri yeterli olabilir
+</Tip>
+
+### Güvenlik
+
+- Her organizasyon için farklı API anahtarı kullanın
+- Test organizasyonunda test API key kullanın
+- Production'da güçlü şifreler ve 2FA
+
+## Sorun Giderme
+
+<AccordionGroup>
+  <Accordion title="Organizasyon Bulamıyorum">
+    **Çözüm:**
+    1. Organization switcher'ı açın
+    2. Tüm listeyi kontrol edin
+    3. Arama özelliğini kullanın
+    4. Başka hesapla mı oluşturdunuz kontrol edin
+  </Accordion>
+
+  <Accordion title="Yanlış Organizasyonda İşlem Yaptım">
+    **Çözüm:**
+    - Veri başka organizasyona taşınamaz
+    - Manuel olarak yeniden oluşturmanız gerekir
+    - Destek ekibi yardımcı olabilir (bazı durumlarda)
+  </Accordion>
+
+  <Accordion title="Organization Switcher Görünmüyor">
+    **Neden:** Tek organizasyonunuz varsa switcher gizlidir.
+
+    **Görünür olması için:** İkinci bir organizasyon oluşturun.
+  </Accordion>
+</AccordionGroup>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Kaç organizasyon oluşturabilirim?">
+    Ücretsiz hesapta 2, ücretli hesapta sınırsız organizasyon oluşturabilirsiniz.
+  </Accordion>
+
+  <Accordion title="Organizasyonlar arası veri transferi yapabilir miyim?">
+    Hayır, her organizasyon tamamen izole edilmiştir. Manuel olarak yeniden oluşturmanız gerekir.
+  </Accordion>
+
+  <Accordion title="Organizasyonu başkasına devredebilir miyim?">
+    Şu anda ownership transfer özelliği yok. Gelecek sürümlerde eklenecek.
+  </Accordion>
+
+  <Accordion title="Tüm organizasyonları tek fatura ile alabilir miyim?">
+    Şu anda her organizasyon ayrı faturalanır. Konsolide fatura özelliği gelecekte eklenebilir.
+  </Accordion>
+
+  <Accordion title="Organizasyon silersem verileri geri getirebilir miyim?">
+    7 gün içinde destek ekibine başvurarak geri getirebilirsiniz. Sonrasında tamamen silinir.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Organizasyon Oluşturma" icon="building" href="/organization-management/create-organization">
+    Yeni organizasyon oluşturma
+  </Card>
+  <Card title="Organizasyon Ayarları" icon="gear" href="/organization-management/organization-settings">
+    Organizasyon konfigürasyonlarını yönetin
+  </Card>
+  <Card title="Kullanıcı Davetleri" icon="user-plus" href="/organization-management/user-invitations">
+    Kullanıcı ekleme ve rol yönetimi
+  </Card>
+  <Card title="API Anahtarı Yönetimi" icon="key" href="/organization-management/api-key-management">
+    API bağlantılarını yönetin
+  </Card>
+</CardGroup>
