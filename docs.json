@@ -59,10 +59,7 @@
           {
             "group": "Pipeline Yönetimi",
             "pages": [
-              "pipeline-management/introduction",
-              "pipeline-management/ticket-creation",
-              "pipeline-management/pipeline-stages",
-              "pipeline-management/ticket-details"
+              "pipeline-management/introduction"
             ]
           },
           {
