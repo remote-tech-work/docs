@@ -1,0 +1,319 @@
+---
+title: "Hızlı Başlangıç"
+description: "AI Agent TR platformunu dakikalar içinde kullanmaya başlayın"
+---
+
+## 3 Adımda Başlayın
+
+Platform ile çalışmaya başlamak ve ilk AI çağrınızı gerçekleştirmek için bu rehberi takip edin.
+
+<Steps>
+  <Step title="Hesap Kurulumu ve API Anahtarı">
+    Platforma giriş yapın ve AI özelliklerini aktive edin
+  </Step>
+  <Step title="İlk AI Agent'ınızı Oluşturun">
+    Sesli yapay zeka asistanınızı yapılandırın
+  </Step>
+  <Step title="Test Araması Yapın">
+    Agent'ınızı test edin ve sonuçları gözden geçirin
+  </Step>
+</Steps>
+
+---
+
+## Adım 1: Hesap Kurulumu ve API Anahtarı
+
+### Platforma Giriş
+
+<Steps>
+  <Step title="Platformu Açın">
+    Tarayıcınızda platformun URL adresine gidin
+  </Step>
+  <Step title="Giriş Yapın">
+    **Giriş Yap** butonuna tıklayın veya **Kayıt Ol** ile hesap oluşturun
+  </Step>
+  <Step title="Kurulum Sihirbazı">
+    İlk giriş için **Kurulum Sihirbazı** sizi karşılayacak
+  </Step>
+</Steps>
+
+### Organizasyon Bilgilerini Doldurun
+
+İlk kurulum sırasında:
+- Şirket bilgilerinizi girin
+- Vergi bilgilerinizi ekleyin
+- Yetkili kişi bilgilerini doldurun
+- Adres bilgilerini tamamlayın
+
+### API Anahtarını Yapılandırın
+
+<Warning>
+  **Önemli**: API anahtarı olmadan platformun AI özellikleri çalışmayacaktır.
+</Warning>
+
+<Steps>
+  <Step title="VAPI API Anahtarınızı Alın">
+    VAPI hesabınızdan API anahtarı oluşturun
+  </Step>
+  <Step title="Anahtarı Yapıştırın">
+    Kurulum sihirbazında API Anahtarı alanına yapıştırın
+  </Step>
+  <Step title="Bağlantıyı Test Edin">
+    **Bağlantıyı Test Et** butonuna tıklayın
+  </Step>
+  <Step title="Kaydedin">
+    Test başarılı olursa **Kaydet** butonuna tıklayın
+  </Step>
+</Steps>
+
+<Tip>
+  API anahtarınız hazır değilse **"Daha sonra ayarla"** seçeneğini kullanabilirsiniz.
+
+  Daha sonra **Ayarlar > API Keys** bölümünden yapılandırabilirsiniz.
+</Tip>
+
+<Frame>
+  <img src="/images/quickstart-api-setup.png" alt="API anahtarı kurulumu" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: API anahtarı kurulum adımları
+</Note>
+
+### Kontrol Panelini Keşfedin
+
+Kurulum tamamlandıktan sonra **Kontrol Paneli** sayfasına yönlendirileceksiniz.
+
+Ana metrikler:
+- **Aktif Çağrılar**: Şu anda devam eden çağrı sayısı
+- **Bugün Yapılan Çağrılar**: Bugünkü toplam çağrı ve süre
+- **Başarı Oranı**: Geçen haftayla karşılaştırmalı başarı metriği
+- **AI Entegrasyonu**: Bağlantı durumu (Bağlı olmalı ✅)
+- **Kalan Krediler**: Kullanılabilir kredi bakiyeniz
+
+---
+
+## Adım 2: İlk AI Agent'ınızı Oluşturun
+
+### Agent Oluşturma Sayfasına Gidin
+
+<Steps>
+  <Step title="Sol Menüden AI Agent'lar'ı Seçin">
+    Ana menüden **AI Agent'lar** bölümüne gidin
+  </Step>
+  <Step title="Yeni AI Agent Oluştur">
+    **Yeni AI Agent Oluştur** butonuna tıklayın
+  </Step>
+</Steps>
+
+### Temel Bilgileri Doldurun
+
+<Tabs>
+  <Tab title="AI Agent Adı">
+    Açıklayıcı bir isim verin:
+    - Örnek: "Müşteri Hizmetleri Asistanı"
+    - Örnek: "Randevu Yönetim Botu"
+  </Tab>
+
+  <Tab title="AI Agent Tipi">
+    Kullanım amacınıza göre seçin:
+    - **E-ticaret**: Sipariş takibi, ürün bilgisi
+    - **Randevu**: Randevu alma ve yönetimi
+    - **Destek**: Teknik destek ve sorun giderme
+  </Tab>
+
+  <Tab title="Pipeline Departmanı">
+    - **Satış**: Satış fırsatları için
+    - **Destek**: Müşteri destek talepleri için
+  </Tab>
+
+  <Tab title="İlk Mesaj Modu">
+    **Öneri:** "Agent ilk konuşur" - Dışa dönük aramalar için ideal
+  </Tab>
+</Tabs>
+
+### Karşılama Mesajını Yazın
+
+Agent'ınızın müşteriyi nasıl karşılayacağını belirleyin:
+
+```
+Merhaba! Ben [Şirket Adı]'ndan yapay zeka asistanıyım.
+Size nasıl yardımcı olabilirim?
+```
+
+### Sistem Talimatını Oluşturun
+
+Agent'ınızın nasıl davranacağını açıklayın:
+
+**Örnek Talimat:**
+```
+Sen bir müşteri hizmetleri asistanısın.
+Müşterilere ürünler hakkında bilgi ver ve sorularını yanıtla.
+Her zaman nazik ve yardımsever ol.
+Cevaplayamadığın sorular için insan temsilciye yönlendir.
+```
+
+<Tip>
+  **İpucu**: Açık ve spesifik olun. Agent'ın ne yapması ve ne YAPMAMASI gerektiğini belirtin.
+</Tip>
+
+### Agent'ı Oluşturun
+
+<Steps>
+  <Step title="Formu Tamamlayın">
+    Tüm zorunlu alanları doldurduktan sonra **AI Agent Oluştur** butonuna tıklayın
+  </Step>
+  <Step title="Başarı Mesajı">
+    "AI Agent başarıyla oluşturuldu" mesajını göreceksiniz
+  </Step>
+</Steps>
+
+<Frame>
+  <img src="/images/quickstart-agent-created.png" alt="AI Agent oluşturuldu" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Başarıyla oluşturulmuş AI Agent
+</Note>
+
+---
+
+## Adım 3: Test Araması Yapın
+
+### Test Araması Başlatın
+
+<Steps>
+  <Step title="Agent Listesine Gidin">
+    **AI Agent'lar** sayfasında oluşturduğunuz agent'ı bulun
+  </Step>
+  <Step title="Ara Butonuna Tıklayın">
+    Agent kartında **Ara** butonuna tıklayın
+  </Step>
+  <Step title="Test Numarasını Girin">
+    Kendi telefon numaranızı veya test numarasını girin (E.164 format: +905301234567)
+  </Step>
+  <Step title="Aramayı Başlatın">
+    **Ara** butonuna tıklayın
+  </Step>
+</Steps>
+
+### Çağrıyı Test Edin
+
+<AccordionGroup>
+  <Accordion title="Çağrı Başladığında">
+    - Telefonunuz çalacak
+    - Agent'ınız karşılama mesajını söyleyecek
+    - Soru sorun ve yanıtları değerlendirin
+  </Accordion>
+
+  <Accordion title="Test Sırasında Kontrol Edin">
+    - Agent'ın karşılaması doğru mu?
+    - Sorularınızı anlıyor mu?
+    - Yanıtları mantıklı mı?
+    - Ses kalitesi iyi mi?
+  </Accordion>
+
+  <Accordion title="Çağrı Sonrası">
+    - **Görüşmeler** sayfasına gidin
+    - Test çağrınızı bulun ve detaylarını görüntüleyin
+    - Transkripti okuyun
+    - Gerekirse agent ayarlarını düzenleyin
+  </Accordion>
+</AccordionGroup>
+
+### Sonuçları İnceleyin
+
+Çağrı detay sayfasında:
+- **Transkript**: Tam konuşma metni
+- **Analiz**: AI tarafından oluşturulan özet
+- **Kayıt**: Ses kaydını dinleyin
+
+<Frame>
+  <img src="/images/quickstart-call-details.png" alt="Çağrı detayları" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Çağrı detay sayfası ve transkript görünümü
+</Note>
+
+---
+
+## Sonraki Adımlar
+
+Tebrikler! İlk AI Agent'ınızı oluşturup test ettiniz. 🎉
+
+### Önerilen Sonraki Adımlar
+
+<CardGroup cols={2}>
+  <Card title="Bilgi Bankası Ekleyin" icon="database" href="/voice-ai-agents/knowledge-base-management">
+    Agent'ınıza ürün/hizmet bilgileri yükleyin
+  </Card>
+  <Card title="Müşteri Ekleyin" icon="users" href="/customer-management/add-customer">
+    CRM'e müşterilerinizi ekleyin
+  </Card>
+  <Card title="Telefon Numarası Ekleyin" icon="phone" href="/phone-numbers/sip-trunk-setup">
+    SIP trunk yapılandırmasını tamamlayın
+  </Card>
+  <Card title="Kampanya Başlatın" icon="megaphone" href="/campaigns/create-campaign">
+    Toplu çağrı kampanyanızı oluşturun
+  </Card>
+</CardGroup>
+
+### İleri Seviye Özellikler
+
+<Steps>
+  <Step title="Yönlendirme Ayarlayın">
+    Agent'ın karmaşık durumları insan temsilciye yönlendirebilmesini sağlayın
+  </Step>
+  <Step title="Pipeline Oluşturun">
+    Satış veya destek süreçlerinizi pipeline'lar ile yönetin
+  </Step>
+  <Step title="Analitik İnceleyin">
+    Kampanya performansınızı detaylı metriklerle takip edin
+  </Step>
+</Steps>
+
+## Sık Karşılaşılan Sorunlar
+
+<AccordionGroup>
+  <Accordion title='API Bağlantısı "Bağlı Değil" Görünüyor'>
+    **Çözüm:**
+    1. Ayarlar > API Keys sayfasına gidin
+    2. API anahtarınızı tekrar girin
+    3. **Bağlantıyı Test Et** butonuna tıklayın
+    4. Başarılı olursa Kaydet
+
+    Daha fazla bilgi: [API Anahtarı Kurulumu](/getting-started/api-key-setup)
+  </Accordion>
+
+  <Accordion title="Test Araması Başlamıyor">
+    **Kontrol Listesi:**
+    - ✅ API anahtarı doğrulandı mı?
+    - ✅ Kredi bakiyeniz var mı?
+    - ✅ Telefon numarası doğru formatta mı? (+905301234567)
+    - ✅ Agent aktif durumda mı?
+  </Accordion>
+
+  <Accordion title="Agent Ses Çıkarmıyor">
+    **Çözüm:**
+    - Karşılama mesajının dolu olduğundan emin olun
+    - Sistem talimatını gözden geçirin
+    - API bağlantısını kontrol edin
+    - Farklı bir telefon numarası ile deneyin
+  </Accordion>
+</AccordionGroup>
+
+## Yardıma mı İhtiyacınız Var?
+
+<CardGroup cols={2}>
+  <Card title="Platforma Giriş" icon="book" href="/getting-started/platform-introduction">
+    Platform özelliklerinin detaylı açıklaması
+  </Card>
+  <Card title="Kontrol Paneli" icon="gauge" href="/getting-started/dashboard">
+    Metrikleri anlama ve izleme
+  </Card>
+</CardGroup>
+
+<Info>
+  **İpucu**: Platform içinde her sayfada yardım butonlarını kullanabilir ve ilgili dokümantasyon bölümlerine hızlıca erişebilirsiniz.
+</Info>

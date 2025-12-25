@@ -1,0 +1,261 @@
+---
+title: "Zorunlu Alanlar Tablosu"
+description: "Tüm formlar için zorunlu alan özet tablosu ve hızlı referans"
+---
+
+## Genel Bakış
+
+Bu sayfa, platformdaki tüm formlarda zorunlu olan alanların özet tablosunu içerir.
+
+<Info>
+  **Kaynak:** Frontend kod analizi ile oluşturulmuştur.
+
+  **Güncelleme:** 2025-11-16
+</Info>
+
+## Hızlı Referans
+
+### AI Agent Oluşturma
+
+<Card title="4 Zorunlu Alan" icon="robot">
+  1. AI Agent Adı (max 100 karakter)
+  2. AI Agent Tipi (e-commerce/appointment/support)
+  3. Pipeline Departmanı (sales/support)
+  4. İlk Mesaj Modu
+</Card>
+
+**Ek Koşullu Alanlar (Yönlendirme aktifse):**
+- Hedef Tipi ve Hedef Bilgisi
+- Yönlendirme Mesajı (20-100 karakter)
+- En az 1 Yönlendirme Koşulu
+
+### Müşteri Ekleme
+
+<Card title="3 Zorunlu Alan" icon="users">
+  1. Ad (max 100 karakter, sadece harf+boşluk)
+  2. Soyad (max 100 karakter, sadece harf+boşluk)
+  3. Telefon (E.164 format, max 16 karakter)
+</Card>
+
+### Kampanya Oluşturma
+
+<Card title="4 Zorunlu Alan" icon="megaphone">
+  1. Kampanya Adı
+  2. Çağrı Listesi Seçimi
+  3. AI Agent Seçimi
+  4. Telefon Numarası Seçimi
+</Card>
+
+### Bilgi Bankası Oluşturma
+
+<Card title="3 Zorunlu Alan" icon="database">
+  1. İsim (min 2 karakter)
+  2. Açıklama (max 2000 karakter)
+  3. En az 1 dosya yükle
+</Card>
+
+### SIP Trunk Oluşturma
+
+<Card title="6 Zorunlu Alan" icon="phone">
+  **Temel Bilgiler (3 alan):**
+  1. Ad (max 100 karakter)
+  2. Kullanıcı Adı (max 100 karakter)
+  3. Şifre (max 100 karakter)
+
+  **Gateway Bilgileri (3 alan, en az 1 gateway gerekli):**
+  4. Port (1-65535)
+  5. Protocol (udp/tcp/tls/tls-srtp)
+  6. Netmask (0-32)
+</Card>
+
+---
+
+## Detaylı Karşılaştırma Tablosu
+
+<Tabs>
+  <Tab title="AI Agent">
+    | Sıra | Alan Adı | Tip | Zorunlu | Validasyon |
+    |------|----------|-----|---------|------------|
+    | 1 | AI Agent Adı | Text | ✅ | Max 100 karakter |
+    | 2 | Açıklama | Textarea | ❌ | Max 1000 karakter |
+    | 3 | AI Agent Tipi | Select | ✅ | 3 seçenek |
+    | 4 | Pipeline | Select | ✅ | API'den yüklenir |
+    | 5 | Karşılama Mesajı | Textarea | ❌ | Max 250 karakter |
+    | 6 | İlk Mesaj Modu | Select | ✅ | 3 seçenek |
+    | 7 | Sistem Talimatı | Textarea | ❌ | Sınırsız |
+    | 8 | Yönlendirme | Toggle | ❌ | - |
+    | 9 | Hedef Tipi | Select | ⚠️ Koşullu | Yönlendirme aktifse |
+    | 10 | Hedef Bilgisi | Text | ⚠️ Koşullu | Format kontrolü |
+    | 11 | Yönlendirme Mesajı | Textarea | ⚠️ Koşullu | 20-100 karakter |
+    | 12 | Koşullar | Multi-checkbox | ⚠️ Koşullu | En az 1 |
+  </Tab>
+
+  <Tab title="Müşteri">
+    | Sıra | Alan Adı | Tip | Zorunlu | Validasyon |
+    |------|----------|-----|---------|------------|
+    | 1 | Ad | Text | ✅ | Max 100, harf+boşluk |
+    | 2 | Soyad | Text | ✅ | Max 100, harf+boşluk |
+    | 3 | Telefon | Text | ✅ | E.164, max 16 |
+    | 4 | E-posta | Text | ❌ | Email format |
+    | 5 | Şirket | Text | ❌ | Max 100 |
+    | 6 | Pozisyon | Text | ❌ | Max 100 |
+    | 7 | Adres | Textarea | ❌ | Max 1000 |
+    | 8 | Şehir | Text | ❌ | Max 100 |
+    | 9 | Ülke | Text | ❌ | Max 100 |
+    | 10 | Doğum Tarihi | Date | ❌ | 1900-bugün |
+    | 11 | Cinsiyet | Select | ❌ | 3 seçenek |
+    | 12 | Segment | Select | ❌ | API'den |
+    | 13 | Etiketler | Badge Array | ❌ | Max 5 |
+    | 14 | Özel Alanlar | Key-Value | ❌ | Max 5 |
+    | 15 | Notlar | Textarea | ❌ | Max 2000 |
+  </Tab>
+
+  <Tab title="Kampanya">
+    | Sıra | Alan Adı | Tip | Zorunlu | Validasyon |
+    |------|----------|-----|---------|------------|
+    | 1 | Kampanya Adı | Text | ✅ | - |
+    | 2 | Amaç | Textarea | ❌ | - |
+    | 3 | Çağrı Listesi | Select | ✅ | API'den |
+    | 4 | AI Agent | Select | ✅ | Aktif agent'lar |
+    | 5 | Telefon Numarası | Select | ✅ | Aktif numaralar |
+    | 6 | Başlangıç Zamanı | DateTime | ❌ | Gelecek tarih |
+    | 7 | Eş Zamanlı Çağrılar | Number | ❌ | Min 1 |
+    | 8 | Gecikme | Number | ❌ | 0-300 saniye |
+    | 9 | Karşılama Şablonu | Textarea | ❌ | - |
+  </Tab>
+
+  <Tab title="Bilgi Bankası">
+    | Sıra | Alan Adı | Tip | Zorunlu | Validasyon |
+    |------|----------|-----|---------|------------|
+    | 1 | İsim | Text | ✅ | Min 2 karakter |
+    | 2 | Açıklama | Textarea | ✅ | Max 2000 karakter |
+    | 3 | Dosyalar | File Upload | ✅ | En az 1 dosya |
+  </Tab>
+
+  <Tab title="SIP Trunk">
+    | Sıra | Alan Adı | Tip | Zorunlu | Validasyon |
+    |------|----------|-----|---------|------------|
+    | 1 | Ad | Text | ✅ | Max 100 |
+    | 2 | Kullanıcı Adı | Text | ✅ | Max 100 |
+    | 3 | Şifre | Password | ✅ | Max 100 |
+    | 4 | Gateway IP | Text | ❌ | IPv4 format |
+    | 5 | Gateway Port | Number | ✅ | 1-65535 |
+    | 6 | Protocol | Select | ✅ | 4 seçenek |
+    | 7 | Netmask | Number | ✅ | 0-32 |
+    | 8 | Options Ping | Checkbox | ❌ | - |
+  </Tab>
+</Tabs>
+
+---
+
+## Özel Validasyon Kuralları
+
+### E.164 Telefon Format
+
+<Note>
+  **Format:** `+[ülke kodu][alan kodu][numara]`
+
+  **Örnek:** `+905301234567`
+
+  **Kurallar:**
+  - Başında `+` işareti zorunlu
+  - Sadece rakam
+  - Maksimum 16 karakter
+</Note>
+
+### E-posta Validasyonu
+
+<Note>
+  **Kurallar:**
+  - Geçerli e-posta formatı
+  - `@` işareti zorunlu
+  - Domain uzantısı zorunlu
+
+  **Örnek:** `ornek@sirket.com`
+</Note>
+
+### SIP URI Format
+
+<Note>
+  **Format:** `sip:[kullanıcı]@[domain]`
+
+  **Örnek:** `sip:ozan@mysip.com`
+</Note>
+
+---
+
+## Koşullu Zorunluluk
+
+Bazı alanlar sadece belirli koşullarda zorunlu hale gelir:
+
+### AI Agent - Yönlendirme Alanları
+
+<Warning>
+  Aşağıdaki alanlar sadece **"Otomatik Yönlendirme"** toggle'ı aktif edildiğinde zorunludur:
+</Warning>
+
+1. **Hedef Tipi**: number veya sip seçimi
+2. **Hedef Bilgisi**:
+   - Hedef tipi "number" ise → Telefon numarası (E.164)
+   - Hedef tipi "sip" ise → SIP URI
+3. **Yönlendirme Mesajı**: 20-100 karakter arası
+4. **Yönlendirme Koşulları**: En az 1 koşul seçilmeli
+
+---
+
+## Gizli/Sabit Değerler
+
+Bazı değerler kullanıcı arayüzünde gösterilmez ancak kodda sabit olarak tanımlanmıştır:
+
+### AI Agent Sabitleri
+
+| Parametre | Değer | Açıklama |
+|-----------|-------|----------|
+| `temperature` | 0.7 | Yaratıcılık seviyesi (değiştirilemez) |
+| `escalationTimeout` | 2 saniye | Yönlendirme öncesi bekleme |
+| `maxEscalationAttempts` | 3 | Maksimum yönlendirme denemesi |
+
+<Info>
+  Bu değerler dokümantasyonda kullanıcının ayarlayabileceği şekilde gösterilmiş olabilir, ancak gerçekte kodda sabittir ve değiştirilemez.
+</Info>
+
+---
+
+## Form Doğrulama İpuçları
+
+<Tip>
+  **Zorunlu Alanları Doldurma:**
+  - Zorunlu alanlar yıldız (*) işareti ile işaretlidir
+  - Form gönderilmeden önce tüm zorunlu alanların doldurulması gerekir
+  - Karakter limitleri gerçek zamanlı gösterilir
+</Tip>
+
+<Tip>
+  **Hata Mesajları:**
+  - Geçersiz format girildiğinde alan kırmızı renkte görünür
+  - Hata mesajı alanın altında gösterilir
+  - Hatayı düzeltin ve tekrar deneyin
+</Tip>
+
+<Tip>
+  **Koşullu Alanlar:**
+  - Bazı alanlar sadece belirli seçenekler yapıldığında görünür
+  - Toggle veya seçim yapıldığında ilgili alanlar otomatik gösterilir
+  - Koşullu zorunlu alanlar da doldurulmalıdır
+</Tip>
+
+---
+
+## İlgili Sayfalar
+
+<CardGroup cols={2}>
+  <Card title="Form Alanları Detaylı Referans" icon="book" href="/reference/form-fields">
+    Her form için detaylı alan açıklamaları
+  </Card>
+  <Card title="AI Agent Oluşturma" icon="robot" href="/voice-ai-agents/create-agent">
+    AI Agent oluşturma rehberi
+  </Card>
+  <Card title="Müşteri Ekleme" icon="users" href="/customer-management/add-customer">
+    Müşteri ekleme rehberi
+  </Card>
+</CardGroup>

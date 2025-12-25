@@ -1,0 +1,368 @@
+---
+title: 'Pipeline Yönetimi - Giriş'
+description: 'İş süreçlerinizi görselleştirin ve müşterilerinizi etkin şekilde yönetin'
+---
+
+## Genel Bakış
+
+AI Çağrı Merkezi Platformu, müşteri ilişkilerini organize etmek ve takip etmek için güçlü bir **Pipeline Yönetim Sistemi** sunar. Pipeline'lar, iş süreçlerinizi görselleştirmenize ve müşterilerinizi satış veya destek sürecinin farklı aşamalarında yönetmenize olanak tanır.
+
+## Pipeline Nedir?
+
+Pipeline, müşteri kayıtlarının (ticket'ların) kategorize edildiği ve aşamalı olarak takip edildiği bir iş akışı sistemidir. Her pipeline, belirli bir departmanın iş sürecini temsil eder ve birden fazla aşamadan (stage) oluşur.
+
+## Platform'da Bulunan Pipeline Türleri
+
+<Tabs>
+  <Tab title="Satış Pipeline">
+    **Satış Pipeline (Sales Pipeline)**
+
+    Satış fırsatlarını yönetmek için kullanılır. Potansiyel müşterilerden başlayarak, kazanılmış veya kaybedilmiş satışlara kadar tüm süreci takip eder.
+
+    **Varsayılan Aşamalar:**
+    - **Lead (Potansiyel Müşteri)**: Yeni fırsatlar ve ilk temas edilen müşteriler
+    - **Qualified (Nitelikli)**: Satış potansiyeli doğrulanmış müşteriler
+    - **Proposal (Teklif)**: Teklifin hazırlandığı ve sunulduğu aşama
+    - **Negotiation (Müzakere)**: Fiyat ve koşulların görüşüldüğü aşama
+    - **Won (Kazanıldı)**: Başarıyla kapatılan satışlar
+    - **Lost (Kaybedildi)**: Sonuçlanmayan satış fırsatları
+  </Tab>
+
+  <Tab title="Servis Pipeline">
+    **Servis Pipeline (Support Pipeline)**
+
+    Müşteri destek taleplerini yönetmek için kullanılır. Destek taleplerinin açılmasından çözümüne kadar tüm süreci takip eder.
+
+    **Varsayılan Aşamalar:**
+    - **New (Yeni)**: Yeni oluşturulan destek talepleri
+    - **In Progress (İşlemde)**: Üzerinde çalışılan talepler
+    - **Waiting (Bekliyor)**: Müşteri veya üçüncü taraf yanıtı beklenen talepler
+    - **Resolved (Çözüldü)**: Çözüme kavuşturulan talepler
+    - **Closed (Kapatıldı)**: Tamamlanan ve kapatılan talepler
+  </Tab>
+</Tabs>
+
+<Frame>
+  <img src="/images/placeholder-pipeline.png" alt="Pipeline görünümü" />
+</Frame>
+
+## Ticket (Kayıt) Nedir?
+
+**Ticket**, pipeline içinde yönetilen bir müşteri kaydıdır. Her ticket şunları içerir:
+
+<AccordionGroup>
+  <Accordion title="Müşteri Bilgileri">
+    Müşterinin adı, telefonu, e-postası
+  </Accordion>
+
+  <Accordion title="Konu ve Açıklama">
+    Ticket'ın ne hakkında olduğu
+  </Accordion>
+
+  <Accordion title="Pipeline Aşaması">
+    Ticket'ın bulunduğu aşama
+  </Accordion>
+
+  <Accordion title="Öncelik Seviyesi">
+    1 (En Yüksek) - 4 (En Düşük)
+  </Accordion>
+
+  <Accordion title="Durum">
+    Açık, Devam Ediyor, Beklemede, Çözüldü, Kapatıldı
+  </Accordion>
+
+  <Accordion title="Atanmış Kişi">
+    Ticket'tan sorumlu AI Agent veya kullanıcı
+  </Accordion>
+
+  <Accordion title="Kategori">
+    Ticket'ın sınıflandırması
+  </Accordion>
+
+  <Accordion title="Notlar ve Aramalar">
+    Ticket hakkında eklenen notlar ve ilişkilendirilmiş telefon aramaları
+  </Accordion>
+</AccordionGroup>
+
+## Pipeline Yönetiminin Faydaları
+
+### 1. Görsel İş Akışı
+
+<CardGroup cols={2}>
+  <Card title="Kolay Takip" icon="eye">
+    Müşterileri süreci boyunca kolayca takip edin
+  </Card>
+  <Card title="Hızlı Görünüm" icon="dashboard">
+    Hangi aşamada kaç müşteri olduğunu tek bakışta görün
+  </Card>
+  <Card title="Darboğaz Tespiti" icon="triangle-exclamation">
+    Darboğazları ve fırsatları hızlıca tespit edin
+  </Card>
+  <Card title="Gerçek Zamanlı" icon="clock">
+    Canlı güncellemelerle anlık durum
+  </Card>
+</CardGroup>
+
+### 2. Organize Çalışma
+
+<Info>
+- Tüm müşteri etkileşimlerini tek yerde toplayın
+- Arama kayıtlarını, notları ve geçmişi bir arada saklayın
+- Takım üyeleri arasında iş yükünü dengeli dağıtın
+</Info>
+
+### 3. Performans İzleme
+
+<Tip>
+- Pipeline metriklerini gerçek zamanlı takip edin
+- Hangi aşamalarda daha fazla zaman harcandığını görün
+- Başarı oranlarını ve dönüşüm rakamlarını analiz edin
+</Tip>
+
+### 4. AI Entegrasyonu
+
+<CardGroup cols={2}>
+  <Card title="AI Agent Atama" icon="robot">
+    AI Agent'larınızı belirli pipeline'lara atayın
+  </Card>
+  <Card title="Otomatik Arama" icon="phone">
+    Otomatik arama yapan ve ticket güncelleyen AI'lar kullanın
+  </Card>
+  <Card title="Akıllı Analiz" icon="brain">
+    AI destekli müşteri etkileşim analizi
+  </Card>
+  <Card title="Otomasyon" icon="gears">
+    Müşteri etkileşimlerini otomatikleştirin
+  </Card>
+</CardGroup>
+
+## Pipeline Yönetimi İle Neler Yapabilirsiniz?
+
+### Görüntüleme ve İzleme
+
+<Steps>
+  <Step title="Pipeline listesi">
+    Tüm pipeline'larınızı listeleyin
+  </Step>
+  <Step title="Aşama takibi">
+    Pipeline aşamalarını görsel olarak takip edin
+  </Step>
+  <Step title="Ticket ve müşteri sayısı">
+    Her aşamadaki ticket sayısını ve müşteri sayısını görün
+  </Step>
+  <Step title="Metrikler">
+    Pipeline metriklerini inceleyin (toplam ticket, aktif fırsat vb.)
+  </Step>
+</Steps>
+
+### Ticket Yönetimi
+
+<CardGroup cols={2}>
+  <Card title="Oluştur" icon="plus">
+    Yeni ticket oluşturun
+  </Card>
+  <Card title="Taşı" icon="arrows-left-right">
+    Ticket'ları aşamalar arasında sürükle-bırak ile taşıyın
+  </Card>
+  <Card title="Düzenle" icon="pen">
+    Ticket detaylarını görüntüleyin ve düzenleyin
+  </Card>
+  <Card title="Not Ekle" icon="note-sticky">
+    Ticket'lara not ekleyin
+  </Card>
+  <Card title="Atama" icon="user-check">
+    Ticket'ları kullanıcılara veya AI Agent'lara atayın
+  </Card>
+  <Card title="Öncelik" icon="flag">
+    Öncelik ve durum değiştirin
+  </Card>
+</CardGroup>
+
+### Özelleştirme
+
+<AccordionGroup>
+  <Accordion title="Aşamaları Özelleştir">
+    Pipeline aşamalarını ihtiyaçlarınıza göre düzenleyin
+  </Accordion>
+
+  <Accordion title="Yeni Aşamalar Ekle">
+    Sabit aşamalar arasına yeni aşamalar ekleyin
+  </Accordion>
+
+  <Accordion title="Renk ve İsim">
+    Aşamaların ismini, rengini ve açıklamasını değiştirin
+  </Accordion>
+
+  <Accordion title="Aşama Silme">
+    Kullanılmayan aşamaları silin
+  </Accordion>
+</AccordionGroup>
+
+### Raporlama
+
+<Tabs>
+  <Tab title="Satış Pipeline">
+    - Lead sayısı
+    - Kazanılan/kaybedilen satışlar
+    - Dönüşüm oranları
+  </Tab>
+
+  <Tab title="Destek Pipeline">
+    - Aktif ticket sayısı
+    - Çözülmüş ticket sayısı
+    - Kapatılmış ticket sayısı
+    - Ortalama çözüm süresi
+  </Tab>
+
+  <Tab title="Genel">
+    - Her aşamada geçirilen ortalama süre
+    - Müşteri etkileşim geçmişi
+    - Performans metrikleri
+  </Tab>
+</Tabs>
+
+## Pipeline Navigasyonu
+
+Platform içinde pipeline'lara erişim:
+
+<Steps>
+  <Step title="Pipeline menüsü">
+    Sol menüden **"Pipeline'lar"** bağlantısına tıklayın
+  </Step>
+  <Step title="Aktif pipeline">
+    Açılan sayfada aktif pipeline'ınız otomatik olarak gösterilir
+  </Step>
+  <Step title="Geçiş yapın">
+    Üst kısımda bulunan sekmelerle farklı pipeline'lar arasında geçiş yapın:
+    - **Satış Pipeline**
+    - **Servis Pipeline**
+  </Step>
+</Steps>
+
+## Kullanım Senaryoları
+
+### Satış Ekipleri İçin
+
+<Steps>
+  <Step title="Lead ekleme">
+    Yeni potansiyel müşterileri Lead aşamasına ekleyin
+  </Step>
+  <Step title="AI arama">
+    AI Agent'lar otomatik olarak müşterileri arayarak bilgi toplasın
+  </Step>
+  <Step title="Nitelendirme">
+    Nitelikli müşterileri Qualified aşamasına taşıyın
+  </Step>
+  <Step title="Teklif ve müzakere">
+    Teklif ve müzakere süreçlerini takip edin
+  </Step>
+  <Step title="Raporlama">
+    Başarılı satışları Won aşamasına taşıyarak raporlayın
+  </Step>
+</Steps>
+
+### Destek Ekipleri İçin
+
+<Steps>
+  <Step title="Talep toplama">
+    Gelen destek taleplerini New aşamasında toplayın
+  </Step>
+  <Step title="AI dinleme">
+    AI Agent'lar otomatik olarak müşterileri arayarak sorunları dinlesin
+  </Step>
+  <Step title="Aktif çalışma">
+    Aktif çalışılan talepleri In Progress'e taşıyın
+  </Step>
+  <Step title="Çözüm">
+    Çözümlenen talepleri Resolved aşamasına alın
+  </Step>
+  <Step title="Kapatma">
+    Müşteri onayından sonra Closed aşamasına taşıyın
+  </Step>
+</Steps>
+
+## Önemli Kavramlar
+
+### Sabit Aşamalar (Fixed Stages)
+
+<Warning>
+Bazı aşamalar **sabit** olarak işaretlenmiştir ve bunlar silinemez veya konumları değiştirilemez. Bu aşamalar, pipeline'ın temel yapısını oluşturur ve raporlama için kritik öneme sahiptir.
+
+**Satış Pipeline'da Sabit Aşamalar:**
+- Lead, Qualified, Won, Lost
+
+**Servis Pipeline'da Sabit Aşamalar:**
+- New, In Progress, Resolved, Closed
+</Warning>
+
+### Özelleştirilebilir Aşamalar
+
+Sabit olmayan aşamalar, ihtiyaçlarınıza göre:
+
+<CardGroup cols={2}>
+  <Card title="Düzenlenebilir" icon="pen">
+    İsim, renk, açıklama değiştirilebilir
+  </Card>
+  <Card title="Silinebilir" icon="trash">
+    İçinde ticket yoksa silinebilir
+  </Card>
+  <Card title="Yeniden Adlandırılabilir" icon="tag">
+    İsim ve açıklama güncellenebilir
+  </Card>
+  <Card title="Renk Değiştirilebilir" icon="palette">
+    Görsel ayırt etme için renk kodu
+  </Card>
+</CardGroup>
+
+### Aşama Sıralaması
+
+<Info>
+Pipeline aşamaları soldan sağa doğru sıralanır. Bu sıralama:
+- İş sürecinizin mantıksal akışını yansıtmalıdır
+- Müşterilerin genellikle izlediği yolu göstermelidir
+- Sabit aşamaların konumu korunarak özelleştirilebilir
+</Info>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Pipeline'ları silebilir miyim?">
+    Hayır, Satış ve Servis pipeline'ları sistem varsayılanıdır ve silinemez. Ancak içlerindeki özelleştirilebilir aşamaları düzenleyebilirsiniz.
+  </Accordion>
+
+  <Accordion title="Birden fazla pipeline oluşturabilir miyim?">
+    Şu anda platform, iki varsayılan pipeline (Satış ve Servis) ile gelir. Özel pipeline oluşturma özelliği gelecekte eklenebilir.
+  </Accordion>
+
+  <Accordion title="Ticket'lar aşamalar arasında nasıl taşınır?">
+    Ticket'ları sürükle-bırak yöntemiyle veya ticket detay sayfasından "Pipeline Aşaması" seçeneğini değiştirerek taşıyabilirsiniz.
+  </Accordion>
+
+  <Accordion title="Bir aşamada kaç ticket olabilir?">
+    Aşama başına ticket sayısı konusunda bir sınır yoktur. Ancak performans için her aşamada makul sayıda ticket tutmanız önerilir.
+  </Accordion>
+
+  <Accordion title="Sabit aşamaları düzenleyebilir miyim?">
+    Hayır, sabit aşamaların konumu, sırası ve temel işlevi değiştirilemez. Ancak aralarına yeni aşamalar ekleyebilirsiniz.
+  </Accordion>
+</AccordionGroup>
+
+## Sonraki Adımlar
+
+Pipeline yönetimi hakkında daha fazla bilgi için:
+
+<CardGroup cols={2}>
+  <Card title="Ticket Oluşturma" icon="plus" href="/pipeline-management/ticket-creation">
+    Yeni ticket nasıl oluşturulur, düzenlenir ve yönetilir
+  </Card>
+  <Card title="Pipeline Aşamaları" icon="list">
+    href="/pipeline-management/pipeline-stages">
+    Aşamaları nasıl ekler, düzenler ve silersiniz
+  </Card>
+  <Card title="Ticket Detayları" icon="file-lines" href="/pipeline-management/ticket-details">
+    Ticket detaylarında neleri bulabilir ve nasıl not ekleyebilirsiniz
+  </Card>
+  <Card title="AI Agent Entegrasyonu" icon="robot" href="/voice-ai-agents/create-agent">
+    AI Agent'larınızı pipeline'larla nasıl kullanırsınız
+  </Card>
+</CardGroup>

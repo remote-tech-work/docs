@@ -1,0 +1,475 @@
+---
+title: 'SIP Trunk ve Telefon Numarası Kurulumu'
+description: 'Telefon altyapınızı yapılandırın ve SIP trunk bağlantılarını kurun'
+---
+
+## Genel Bakış
+
+Santral sistemi, platformun telefon altyapısını yönetir. SIP trunk'lar ve telefon numaraları, AI Agent'larınızın arama yapabilmesi için gereklidir.
+
+## Santral Sayfasına Erişim
+
+<Steps>
+  <Step title="Sol menüden Santral'ı seçin">
+    Ana menüden **Santral** seçeneğine tıklayın
+  </Step>
+  <Step title="İki ana bölüm görünür">
+    - **SIP Trunk'lar**: Telefon sağlayıcı bağlantıları
+    - **Telefon Numaraları**: Arama yapmak için numaralar
+  </Step>
+</Steps>
+
+## SIP Trunk Nedir?
+
+SIP (Session Initiation Protocol) Trunk, platformunuzu telefon ağına bağlayan sanal telefon hattıdır.
+
+### SIP Trunk Özellikleri
+
+<CardGroup cols={2}>
+  <Card title="İnternet Üzerinden" icon="wifi">
+    Internet üzerinden telefon bağlantısı
+  </Card>
+  <Card title="Çoklu Çağrı" icon="users">
+    Eşzamanlı çoklu çağrı desteği
+  </Card>
+  <Card title="Coğrafi Bağımsızlık" icon="globe">
+    Coğrafi konum bağımsızlığı
+  </Card>
+  <Card title="Maliyet Etkin" icon="coins">
+    Maliyet etkin çözüm
+  </Card>
+</CardGroup>
+
+### Desteklenen Protokoller
+
+<Tabs>
+  <Tab title="UDP">
+    **UDP**: Standart, hızlı
+  </Tab>
+  <Tab title="TCP">
+    **TCP**: Güvenilir bağlantı
+  </Tab>
+  <Tab title="TLS">
+    **TLS**: Şifreli güvenli
+  </Tab>
+  <Tab title="TLS/SRTP">
+    **TLS/SRTP**: Tam şifreleme
+  </Tab>
+</Tabs>
+
+## SIP Trunk Oluşturma
+
+### Ön Hazırlık
+
+Telefon sağlayıcınızdan (VoIP provider) şu bilgileri alın:
+
+<Note>
+- SIP sunucu adresi (IP veya domain)
+- SIP port numarası
+- Kullanıcı adı
+- Şifre
+- Maksimum eşzamanlı çağrı sayısı
+</Note>
+
+### Adım 1: Yeni SIP Trunk Formu
+
+<Steps>
+  <Step title="SIP Trunk Ekle">
+    **Santral** sayfasında **SIP Trunk Ekle** butonuna tıklayın
+  </Step>
+  <Step title="Form açılır">
+    Oluşturma formu açılır
+  </Step>
+</Steps>
+
+### Adım 2: Temel Bilgiler
+
+#### Adı (Name) - **Zorunlu**
+
+<Info>
+SIP trunk'a açıklayıcı bir isim verin:
+- **Zorunlu**: Evet
+- **Maksimum**: 100 karakter
+- **Örnek**: "Turkcell SIP", "Vodafone Ana Hat"
+</Info>
+
+#### Kullanıcı Adı (Username) - **Zorunlu**
+
+Sağlayıcınızın verdiği kullanıcı adı:
+- **Zorunlu**: Evet
+- **Maksimum**: 100 karakter
+- **Örnek**: "user@voip-provider.com", "12345678"
+
+#### Şifre (Password) - **Zorunlu**
+
+SIP hesap şifresi:
+- **Zorunlu**: Evet
+- **Maksimum**: 100 karakter
+- **Güvenlik**: Şifreli olarak saklanır
+- **Göster/Gizle**: Göz ikonu ile şifreyi görüntüleyebilirsiniz
+
+### Adım 3: Gateway Yapılandırması
+
+Her SIP trunk en az bir gateway (ağ geçidi) gerektirir.
+
+<Frame>
+  <img src="/images/placeholder-sip-gateway.png" alt="SIP Gateway yapılandırması" />
+</Frame>
+
+#### Gateway Alanları
+
+<AccordionGroup>
+  <Accordion title="IP Adresi (Opsiyonel)">
+    - SIP sunucu IP adresi
+    - **Zorunlu**: Hayır
+    - **Format**: IPv4 (örn: 192.168.1.1)
+    - **Validasyon**: Girilirse geçerli IPv4 formatında olmalı (0-255 arası değerler)
+  </Accordion>
+
+  <Accordion title="Port (Zorunlu)">
+    - SIP port numarası
+    - **Zorunlu**: Evet
+    - **Aralık**: 1-65535
+    - **Standart**: 5060 (UDP/TCP), 5061 (TLS)
+    - **Varsayılan**: 5060
+  </Accordion>
+
+  <Accordion title="Outbound Protocol (Zorunlu)">
+    Açılır menüden seçin:
+    - udp (Standart)
+    - tcp (Güvenilir)
+    - tls (Güvenli)
+    - tls/srtp (Tam şifreli)
+
+    **Varsayılan**: "udp"
+  </Accordion>
+
+  <Accordion title="Netmask (Zorunlu)">
+    - Alt ağ maskesi
+    - **Zorunlu**: Evet
+    - **Aralık**: 0-32
+    - **Varsayılan**: 32
+  </Accordion>
+
+  <Accordion title="Options Ping Enabled (Opsiyonel)">
+    - Bağlantı canlılık kontrolü
+    - **Tip**: Checkbox
+    - **Varsayılan**: false (işaretsiz)
+  </Accordion>
+</AccordionGroup>
+
+#### Birden Fazla Gateway
+
+Yedekleme için birden fazla gateway ekleyebilirsiniz:
+
+<Steps>
+  <Step title="Gateway Ekle">
+    **+ Gateway Ekle** butonuna tıklayın
+  </Step>
+  <Step title="İkinci gateway bilgileri">
+    İkinci gateway bilgilerini girin
+  </Step>
+  <Step title="Otomatik yedekleme">
+    İlk gateway başarısız olursa ikincisi kullanılır
+  </Step>
+</Steps>
+
+<Warning>
+**Minimum**: En az 1 gateway gerekli
+</Warning>
+
+### Adım 4: SIP Trunk'ı Kaydet
+
+<Steps>
+  <Step title="Formu tamamlayın">
+    Tüm alanları doldurduktan sonra **Oluştur** butonuna tıklayın
+  </Step>
+  <Step title="İşlem devam ediyor">
+    **"Oluşturuluyor..."** mesajı görünür
+  </Step>
+  <Step title="Başarılı">
+    "SIP trunk başarıyla oluşturuldu" mesajı ile trunk listesine eklenir
+  </Step>
+</Steps>
+
+## SIP Trunk Listeleme
+
+### Trunk Kartı Bilgileri
+
+Her SIP trunk için görüntülenen bilgiler:
+
+<CardGroup cols={2}>
+  <Card title="Ad" icon="tag">
+    Trunk adı
+  </Card>
+  <Card title="Kullanıcı Adı" icon="user">
+    SIP kullanıcı adı
+  </Card>
+  <Card title="Gateway Sayısı" icon="server">
+    Kaç gateway tanımlı
+  </Card>
+  <Card title="Protokol" icon="shield">
+    Kullanılan protokol(ler)
+  </Card>
+</CardGroup>
+
+### İstatistikler
+
+Sayfa üst kısmında:
+- **Toplam Trunk**: Toplam SIP trunk sayısı
+- **Aktif**: Kullanılan trunk'lar
+- **Bağlantı Durumu**: Bağlantı oranı
+- **Toplam Kapasite**: Eşzamanlı çağrı kapasitesi
+- **Güvenlik**: Şifreli bağlantı sayısı
+
+## Telefon Numarası Ekleme
+
+### Telefon Numarası Nedir?
+
+Platformun dışarıya arama yapmak için kullandığı telefon numaralarıdır.
+
+### Adım 1: Yeni Numara Formu
+
+<Steps>
+  <Step title="Telefon Numaraları sekmesi">
+    **Santral** sayfasında **Telefon Numaraları** sekmesine gidin
+  </Step>
+  <Step title="Telefon Numarası Ekle">
+    **Telefon Numarası Ekle** butonuna tıklayın
+  </Step>
+  <Step title="Form açılır">
+    Numara ekleme formu görünür
+  </Step>
+</Steps>
+
+### Adım 2: Numara Bilgileri
+
+#### Telefon Numarası
+
+<Info>
+- **Format**: E.164 (örn: +905301234567)
+- **Ülke Kodu**: + ile başlamalı
+- **Örnek**: +905301234567 (Türkiye)
+</Info>
+
+#### SIP Trunk Seçimi
+
+<Steps>
+  <Step title="Açılır menüden seçin">
+    SIP trunk açılır menüsünü açın
+  </Step>
+  <Step title="Trunk seçin">
+    Daha önce oluşturduğunuz trunk'lardan birini seçin
+  </Step>
+  <Step title="İlişkilendirme">
+    Bu numara seçilen trunk üzerinden arama yapar
+  </Step>
+</Steps>
+
+#### Numara Tipi (Opsiyonel)
+
+<Tabs>
+  <Tab title="Yerel">
+    Yerel numara
+  </Tab>
+  <Tab title="Ücretsiz">
+    0800 gibi ücretsiz numaralar
+  </Tab>
+  <Tab title="Uluslararası">
+    Yurtdışı numaralar
+  </Tab>
+</Tabs>
+
+#### Özellikler (Capabilities)
+
+Numaranın desteklediği özellikler:
+- Sesli arama
+- SMS (gelecekte)
+- Faks (gelecekte)
+
+#### Aylık Maliyet (Opsiyonel)
+
+- Numaranın aylık maliyeti
+- Sadece takip amaçlı
+
+### Adım 3: Numarayı Kaydet
+
+<Steps>
+  <Step title="Oluştur">
+    **Oluştur** butonuna tıklayın
+  </Step>
+  <Step title="İşlem devam ediyor">
+    **"Oluşturuluyor..."** mesajı
+  </Step>
+  <Step title="Başarılı">
+    "Telefon numarası başarıyla eklendi"
+  </Step>
+</Steps>
+
+## Senkronizasyon
+
+### SIP Trunk ve Numara Senkronizasyonu
+
+Telefon sağlayıcınızdan otomatik numara çekebilirsiniz:
+
+<Steps>
+  <Step title="Senkronize Et">
+    **Santral** sayfasında **Senkronize Et** butonuna tıklayın
+  </Step>
+  <Step title="Bağlantı">
+    Sistem sağlayıcınıza bağlanır
+  </Step>
+  <Step title="Otomatik ekleme">
+    Yeni numaralar otomatik eklenir
+  </Step>
+  <Step title="Başarılı">
+    "Telefon numaraları ve SIP trunk'lar başarıyla senkronize edildi" mesajı
+  </Step>
+</Steps>
+
+## En İyi Uygulamalar
+
+### SIP Trunk Yapılandırması
+
+#### Güvenlik
+
+<Tip>
+- TLS veya TLS/SRTP protokolü kullanın
+- Güçlü şifreler seçin
+- IP kısıtlaması uygulayın (sağlayıcı tarafında)
+</Tip>
+
+#### Yedekleme
+
+<CardGroup cols={2}>
+  <Card title="Çoklu Gateway" icon="server">
+    En az 2 gateway tanımlayın
+  </Card>
+  <Card title="Farklı Sağlayıcılar" icon="building">
+    Farklı sağlayıcılardan trunk kullanın
+  </Card>
+  <Card title="Test Edin" icon="flask">
+    Düzenli olarak bağlantıyı test edin
+  </Card>
+  <Card title="İzleyin" icon="chart-line">
+    Bağlantı durumunu takip edin
+  </Card>
+</CardGroup>
+
+#### Performans
+
+<Info>
+- Yakın lokasyondaki sunucular seçin
+- Yeterli bant genişliği sağlayın
+- QoS (Quality of Service) ayarlayın
+</Info>
+
+### Telefon Numarası Yönetimi
+
+#### Organizasyon
+
+<CardGroup cols={2}>
+  <Card title="Kategorize Edin" icon="folder">
+    Numaraları kategorilere ayırın (satış, destek, vb.)
+  </Card>
+  <Card title="İsimlendirin" icon="tag">
+    Açıklayıcı isimler kullanın
+  </Card>
+  <Card title="Maliyet Takibi" icon="coins">
+    Aylık maliyetleri kaydedin
+  </Card>
+  <Card title="Kullanım İstatistikleri" icon="chart-bar">
+    Kullanım verilerini izleyin
+  </Card>
+</CardGroup>
+
+## Sorun Giderme
+
+<AccordionGroup>
+  <Accordion title='"SIP trunk oluşturulamadı" Hatası'>
+    **Olası Nedenler:**
+    - Geçersiz IP adresi
+    - Port numarası eksik
+    - Gateway bilgileri hatalı
+
+    **Çözüm:**
+    1. Sağlayıcınızdan bilgileri tekrar alın
+    2. IP formatını kontrol edin (örn: 192.168.1.1)
+    3. Port ve protokol doğru eşleştirilmiş mi?
+  </Accordion>
+
+  <Accordion title='"Telefon numarası eklenemedi" Hatası'>
+    **Olası Nedenler:**
+    - E.164 format hatası
+    - Aynı numara zaten mevcut
+    - SIP trunk seçilmedi
+
+    **Çözüm:**
+    - Numarayı +90 ile başlatın (Türkiye için)
+    - Numaranın daha önce eklenip eklenmediğini kontrol edin
+    - SIP trunk seçtiğinizden emin olun
+  </Accordion>
+
+  <Accordion title="Arama Yapılamıyor">
+    **Kontrol Listesi:**
+    1. SIP trunk aktif mi?
+    2. Gateway bilgileri doğru mu?
+    3. Telefon numarası doğru trunk'a atandı mı?
+    4. Agent'ın telefon numarası seçimi yapıldı mı?
+    5. Kredi bakiyesi yeterli mi?
+
+    **Test**:
+    - Basit bir test araması yapın
+    - SIP trunk loglarını kontrol edin
+    - Sağlayıcınız ile iletişime geçin
+  </Accordion>
+
+  <Accordion title="Bağlantı Sorunları">
+    **Semptomlar**:
+    - Aramalar düşüyor
+    - Ses kalitesi düşük
+    - Gecikmeler var
+
+    **Çözüm**:
+    1. İnternet bağlantınızı test edin
+    2. Bant genişliğinizi kontrol edin (min 100 kbps/çağrı)
+    3. Protokolü TLS'ye çevirin
+    4. Farklı gateway deneyin
+  </Accordion>
+</AccordionGroup>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="SIP trunk olmadan platform kullanılabilir mi?">
+    Hayır, dışa dönük aramalar için SIP trunk şarttır. Ancak gelen aramaları alabilirsiniz.
+  </Accordion>
+
+  <Accordion title="Birden fazla SIP trunk ekleyebilir miyim?">
+    Evet, birden fazla sağlayıcıdan trunk ekleyebilir ve farklı numara grupları oluşturabilirsiniz.
+  </Accordion>
+
+  <Accordion title="Hangi VoIP sağlayıcıları destekleniyor?">
+    Standart SIP protokolünü destekleyen tüm sağlayıcılar (Twilio, Vonage, Turkcell, Vodafone vb.)
+  </Accordion>
+
+  <Accordion title="E.164 format nedir?">
+    Uluslararası telefon numarası formatı: +[ülke kodu][alan kodu][numara]
+    Örnek: +905301234567
+  </Accordion>
+
+  <Accordion title="SIP trunk maliyeti ne kadardır?">
+    SIP trunk maliyeti sağlayıcınıza bağlıdır. Platform ek ücret almaz.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="AI Agent Oluşturma" icon="robot" href="/voice-ai-agents/create-agent">
+    AI Agent kurulum rehberi
+  </Card>
+  <Card title="Kampanya Oluşturma" icon="bullhorn" href="/campaigns/create-campaign">
+    Kampanya başlatma kılavuzu
+  </Card>
+</CardGroup>

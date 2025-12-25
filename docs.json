@@ -11,58 +11,95 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Kullanım Kılavuzu",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Başlangıç",
             "pages": [
               "index",
               "quickstart",
-              "development"
+              "getting-started/platform-introduction",
+              "getting-started/api-key-setup",
+              "getting-started/dashboard",
+              "getting-started/organization-settings"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Sesli Yapay Zeka Ajanlar",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "voice-ai-agents/create-agent",
+              "voice-ai-agents/knowledge-base-management"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Müşteri Yönetimi",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
+              "customer-management/add-customer",
+              "customer-management/customer-interactions"
             ]
           },
           {
-            "group": "AI tools",
+            "group": "Kampanyalar",
             "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "campaigns/create-campaign"
+            ]
+          },
+          {
+            "group": "Çağrı İzleme",
+            "pages": [
+              "call-monitoring/call-recordings"
+            ]
+          },
+          {
+            "group": "Telefon Numaraları",
+            "pages": [
+              "phone-numbers/sip-trunk-setup"
+            ]
+          },
+          {
+            "group": "Pipeline Yönetimi",
+            "pages": [
+              "pipeline-management/introduction",
+              "pipeline-management/ticket-creation",
+              "pipeline-management/pipeline-stages",
+              "pipeline-management/ticket-details"
+            ]
+          },
+          {
+            "group": "Analizler",
+            "pages": [
+              "analytics/coming-soon"
+            ]
+          },
+          {
+            "group": "Sorun Giderme",
+            "pages": [
+              "troubleshooting/coming-soon"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "Referans",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Teknik Referans",
             "pages": [
-              "api-reference/introduction"
+              "reference/form-fields",
+              "reference/required-fields"
             ]
-          },
+          }
+        ]
+      },
+      {
+        "tab": "AI Araçları",
+        "groups": [
           {
-            "group": "Endpoint examples",
+            "group": "Mintlify Entegrasyonu",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "ai-tools/cursor",
+              "ai-tools/claude-code",
+              "ai-tools/windsurf"
             ]
           }
         ]
@@ -71,14 +108,14 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Ana Sayfa",
+          "href": "https://aiagenttr.com",
+          "icon": "house"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Platform",
+          "href": "https://app.aiagenttr.com",
+          "icon": "rocket"
         }
       ]
     }
@@ -90,33 +127,31 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "Destek",
+        "href": "mailto:support@aiagenttr.com"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Platforma Git",
+      "href": "https://app.aiagenttr.com"
     }
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "cursor"
+    ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/aiagenttr",
+      "github": "https://github.com/aiagenttr",
+      "linkedin": "https://linkedin.com/company/aiagenttr"
     }
   }
 }

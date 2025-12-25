@@ -1,0 +1,312 @@
+---
+title: "AI Agent Oluşturma"
+description: "Yapay zeka destekli sesli asistanlarınızı oluşturun ve yapılandırın"
+---
+
+## Genel Bakış
+
+AI Agent'lar, müşterilerinizle konuşan yapay zeka destekli sesli asistanlardır. Her agent özelleştirilebilir davranışlar, sistem talimatları ve bilgi kaynaklarıyla yapılandırılabilir.
+
+## AI Agent Türleri
+
+Platform 3 ana agent tipi sunar:
+
+<CardGroup cols={3}>
+  <Card title="E-ticaret" icon="cart-shopping">
+    - Sipariş takibi ve yönetimi
+    - Ürün bilgilendirme
+    - Müşteri destek soruları
+    - İade ve değişim süreçleri
+  </Card>
+  <Card title="Randevu" icon="calendar">
+    - Randevu alma ve değiştirme
+    - Uygun tarih/saat önerisi
+    - Hatırlatma ve onaylama
+    - Randevu iptali
+  </Card>
+  <Card title="Destek" icon="headset">
+    - Teknik destek
+    - Sorun giderme
+    - Adım adım rehberlik
+    - Eskalasyon yönetimi
+  </Card>
+</CardGroup>
+
+## Yeni AI Agent Oluşturma
+
+<Steps>
+  <Step title="AI Agent Sayfasına Gidin">
+    Sol menüden **AI Agent'lar**'ı seçin ve **Yeni AI Agent Oluştur** butonuna tıklayın
+  </Step>
+
+  <Step title="Temel Bilgiler">
+    ### AI Agent Adı
+    Açıklayıcı bir isim verin (örnek: "Müşteri Hizmetleri AI Agent'ı", "Randevu Asistanı")
+
+    ### Açıklama
+    Agent'ın amacı ve rolünü kısa açıklayın (sadece yönetim amaçlı)
+
+    ### AI Agent Tipi
+    Agent tipini seçin:
+    - **E-ticaret**: Online satış ve sipariş yönetimi
+    - **Randevu**: Randevu planlama ve yönetimi
+    - **Destek**: Müşteri ve teknik destek
+
+    ### Pipeline Departmanı
+    - **Satış - Sales Pipeline**: Satış fırsatlarını yönetmek için
+    - **Destek - Service Pipeline**: Destek taleplerini yönetmek için
+  </Step>
+
+  <Step title="Davranış Yapılandırması">
+    ### Karşılama Mesajı
+    Agent'ın müşteriyi nasıl karşılayacağını belirleyin.
+
+    **Şablonlar:**
+    - **E-ticaret**: "Merhaba! Size nasıl yardımcı olabilirim?"
+    - **Randevu**: "Merhaba! Randevu almak için buradayım."
+    - **Destek**: "Merhaba! Teknik destek için buradayım."
+
+    ### İlk Mesaj Modu
+    - **Agent ilk konuşur**: Agent karşılama mesajı ile başlar (dışa dönük aramalar için ideal)
+    - **Agent kullanıcıyı bekler**: Müşteri konuşmaya başlar
+    - **Agent model ile üretilen mesajla ilk konuşur**: AI otomatik mesaj oluşturur
+  </Step>
+
+  <Step title="Sistem Talimatı">
+    Agent'ın nasıl davranacağını detaylı olarak açıklayın.
+  </Step>
+
+  <Step title="Yönlendirme ve Eskalasyon">
+    Agent başa çıkamadığı durumlarda çağrıyı insan temsilciye yönlendirme ayarlarını yapılandırın.
+  </Step>
+
+  <Step title="Agent'ı Oluşturun">
+    Tüm alanları doldurduktan sonra **AI Agent Oluştur** butonuna tıklayın
+  </Step>
+</Steps>
+
+<Frame>
+  <img src="/images/ai-agent-create-form.png" alt="AI Agent oluşturma formu" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: AI Agent oluşturma formunu gösteren ekran
+</Note>
+
+<Info>
+  **Not:** Her AI Agent sadece bir pipeline'da görev alabilir. Yaratıcılık seviyesi (Temperature) sistem tarafından otomatik olarak 0.7 değerinde ayarlanır ve değiştirilemez.
+</Info>
+
+## Sistem Talimatı Örnekleri
+
+<Tabs>
+  <Tab title="E-ticaret">
+    ```
+    Sen bir e-ticaret müşteri hizmetleri asistanısın.
+    Müşterilere ürünler hakkında bilgi ver, sipariş durumlarını
+    kontrol et ve sorunları çöz. Her zaman nazik ve yardımsever ol.
+    Eğer bir soruyu cevaplayamıyorsanız, müşteriyi insan temsilciye yönlendir.
+    ```
+  </Tab>
+
+  <Tab title="Randevu">
+    ```
+    Sen bir randevu asistanısın. Müşterilere uygun tarih ve saat öner,
+    randevu al ve değişiklik yap. Müşterinin takvimindeki uygunluğu
+    dikkatlice dinle ve en uygun seçeneği sun.
+    ```
+  </Tab>
+
+  <Tab title="Destek">
+    ```
+    Sen bir teknik destek asistanısın. Müşterilerin teknik sorunlarını çöz,
+    adım adım rehberlik et. Sabırlı ol ve her adımı açıkla. Sorun
+    çözülemezse, teknik ekibe yönlendir.
+    ```
+  </Tab>
+</Tabs>
+
+## Yönlendirme ve Eskalasyon Ayarları
+
+### Otomatik Yönlendirme
+
+Agent başa çıkamadığı durumlarda çağrıyı insan temsilciye yönlendirebilir.
+
+<AccordionGroup>
+  <Accordion title="Hedef Tipi Seçimi">
+    **Telefon Numarası**: Doğrudan bir telefon numarasına yönlendir
+
+    **SIP URI**: SIP adresine yönlendir (örn: sip:destek@sirket.com)
+  </Accordion>
+
+  <Accordion title="Yönlendirme Numarası / SIP Hedefi">
+    - **Telefon Numarası için**: E.164 formatında numara (örn: +905304159722)
+    - **SIP için**: SIP URI formatında (örn: sip:ozan@mysip.com)
+  </Accordion>
+
+  <Accordion title="Yönlendirme Mesajı">
+    Müşteriye yönlendirme öncesi söylenecek mesaj:
+
+    ```
+    İlettiğiniz konu ile ilgili sizi ilgili birimimize aktaracağım.
+    Lütfen hattan ayrılmayın.
+    ```
+
+    **Mesajı söylemek için kullanıcıyı beklet**: Bu seçeneği işaretleyin
+  </Accordion>
+
+  <Accordion title="Yönlendirme Koşulları">
+    Hangi durumlarda yönlendirme yapılacağını seçin:
+
+    - ✅ Müşteri çok sinirli olduğunda
+    - ✅ **İnsan İsteği**: Müşteri insan temsilci istediğinde
+    - ✅ Teknik sorun çözülemediğinde
+    - ✅ **Tekrarlanan Soru**: Aynı soru 3 kez sorulduğunda
+    - ✅ Hukuki/uyumluluk konularında
+    - ✅ Ödeme/para iadesi konularında
+  </Accordion>
+</AccordionGroup>
+
+### Gelişmiş Yönlendirme Ayarları
+
+<Info>
+  **Not:** Yönlendirme öncesi bekleme süresi (2 saniye) ve maksimum deneme sayısı (3 deneme) sistem tarafından otomatik ayarlanır.
+</Info>
+
+**Yönlendirme Başarısız Mesajı**:
+```
+Üzgünüm, şu anda sizi bir temsilciye aktaramıyorum.
+Lütfen daha sonra tekrar arayın.
+```
+
+**Yönlendirme Geciktiğinde Mesaj**:
+```
+Lütfen bekleyin, sizi bir temsilciye bağlıyorum.
+Bu birkaç saniye sürebilir.
+```
+
+**Gecikme Süresi**: 10000 ms (10 saniye)
+
+<Frame>
+  <img src="/images/ai-agent-forwarding-settings.png" alt="Yönlendirme ayarları" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Yönlendirme ve eskalasyon ayarları bölümü
+</Note>
+
+## Agent Oluşturma Sonrası
+
+### Bilgi Bankası Atama
+
+<Steps>
+  <Step title="Agent'ı Düzenleyin">
+    Agent listesinde **Düzenle** butonuna tıklayın
+  </Step>
+  <Step title="Bilgi Bankası Seçin">
+    **Bilgi Bankası** bölümünden ilgili dökümanları seçin
+  </Step>
+  <Step title="Kaydedin">
+    Agent artık bu bilgilerle müşterilere yanıt verebilir
+  </Step>
+</Steps>
+
+### Test Araması Yapma
+
+<Steps>
+  <Step title="Ara Butonuna Tıklayın">
+    Agent listesinde **Ara** butonuna tıklayın
+  </Step>
+  <Step title="Test Numarası Girin">
+    Test telefon numarasını girin
+  </Step>
+  <Step title="Davranışı Test Edin">
+    Agent'ın davranışını test edin ve gerekirse ayarları düzenleyin
+  </Step>
+</Steps>
+
+## İpuçları ve En İyi Uygulamalar
+
+### Sistem Talimatı Yazma
+
+<Tip>
+  - ✅ Açık ve spesifik olun
+  - ✅ Agent'ın ne yapması ve ne YAPMAMASI gerektiğini belirtin
+  - ✅ Marka sesinizi ve değerlerinizi yansıtın
+  - ✅ Sık sorulan soruları ve yanıtlarını ekleyin
+</Tip>
+
+### Yönlendirme Ayarları
+
+<Tip>
+  - ✅ Her zaman yönlendirme seçeneği ekleyin
+  - ✅ Yönlendirme mesajını test edin
+  - ✅ Hedef numaranın doğru olduğundan emin olun
+  - ✅ Uygun koşulları seçin (çok fazla opsiyonu işaretlemeyin)
+</Tip>
+
+### Agent Performansı
+
+- 📊 İlk günlerde performansı yakından izleyin
+- 📊 Görüşme kayıtlarını dinleyin
+- 📊 Transkriptleri gözden geçirin
+- 📊 Gerektiğinde sistem talimatlarını güncelleyin
+
+## Sorun Giderme
+
+<AccordionGroup>
+  <Accordion title='"AI Agent oluşturulamadı" Hatası'>
+    **Olası Nedenler:**
+    - Zorunlu alanlar boş bırakılmış
+    - API anahtarı geçersiz
+
+    **Çözüm:**
+    1. Tüm zorunlu alanları doldurun (AI Agent Adı, Tipi, Pipeline, İlk Mesaj Modu)
+    2. API anahtarınızı kontrol edin (Ayarlar > API Keys)
+  </Accordion>
+
+  <Accordion title='Agent "Pasif" Durumda'>
+    - Yeni oluşturulan agent'lar varsayılan olarak **Pasif** durumda olabilir
+    - Agent listesinde **Aktif/Pasif** toggle'ı ile durumu değiştirin
+  </Accordion>
+
+  <Accordion title="Ses Çıkmıyor veya Anlaşılmıyor">
+    - Sistem talimatlarındaki karmaşık ifadeleri basitleştirin
+    - Karşılama mesajını daha açık hale getirin
+    - API bağlantınızı kontrol edin
+  </Accordion>
+</AccordionGroup>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Bir agent'ı birden fazla kampanyada kullanabilir miyim?">
+    Evet, aynı agent birden fazla kampanyada ve manuel aramalarda kullanılabilir.
+  </Accordion>
+
+  <Accordion title="Agent oluşturulduktan sonra değiştirilebilir mi?">
+    Evet, agent'ın tüm ayarları **Düzenle** butonu ile güncellenebilir.
+  </Accordion>
+
+  <Accordion title="Agent'ı nasıl silerim?">
+    Agent listesinde üç nokta menüsünden **Sil** seçeneğini kullanın. Bu işlem geri alınamaz.
+  </Accordion>
+
+  <Accordion title="Kaç agent oluşturabilirim?">
+    Agent sayısında bir sınır yoktur. Her agent kampanyalarda veya manuel aramalarda kullanılabilir.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Bilgi Bankası Yönetimi" icon="database" href="/voice-ai-agents/knowledge-base-management">
+    Bilgi bankası oluşturma ve dosya yükleme
+  </Card>
+  <Card title="SIP Trunk Kurulumu" icon="phone" href="/phone-numbers/sip-trunk-setup">
+    Telefon numarası yapılandırması
+  </Card>
+  <Card title="API Anahtarı Kurulumu" icon="key" href="/getting-started/api-key-setup">
+    Platform API anahtarı yapılandırması
+  </Card>
+</CardGroup>

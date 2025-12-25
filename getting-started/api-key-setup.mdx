@@ -1,0 +1,235 @@
+---
+title: "Platform API Anahtarı Kurulumu"
+description: "VAPI API anahtarınızı yapılandırarak AI özelliklerini aktifleştirin"
+---
+
+## Genel Bakış
+
+Platform API Anahtarı, AI Çağrı Merkezi Platformu'nun VAPI (ses AI sağlayıcısı) ile iletişim kurması için gerekli güvenlik anahtarıdır. Bu anahtar olmadan platformun AI özellikleri çalışmayacaktır.
+
+## Platform API Anahtarı Nedir?
+
+Platform API Anahtarı, şirketinizin:
+
+- AI sesli asistanları başlatmasını
+- Çağrı kayıtları ve transkriptler almasını
+- Gerçek zamanlı çağrı analizleri yapmasını
+- Otomatik ticket oluşturmasını sağlar
+
+## API Anahtarı Alma
+
+<Steps>
+  <Step title="VAPI Hesabına Giriş">
+    VAPI hesabınıza giriş yapın
+  </Step>
+  <Step title="API Keys Bölümüne Gidin">
+    API Keys bölümüne gidin
+  </Step>
+  <Step title="Yeni Anahtar Oluşturun">
+    Yeni bir API anahtarı oluşturun
+  </Step>
+  <Step title="Anahtarı Saklayın">
+    Anahtarı güvenli bir yerde saklayın
+  </Step>
+</Steps>
+
+<Warning>
+  **Güvenlik Notu**: API anahtarınızı asla kimseyle paylaşmayın ve güvenli bir şekilde saklayın.
+</Warning>
+
+## İlk Kurulum Sırasında API Anahtarı Ekleme
+
+İlk kez giriş yaptığınızda **Kurulum Sihirbazı** sizi karşılayacak:
+
+### Adım 1: Organizasyon Kurulumu
+
+1. Şirket bilgilerinizi doldurun
+2. **Kurulumu Tamamla** butonuna tıklayın
+
+### Adım 2: Platform API Anahtarı
+
+<Steps>
+  <Step title="API Anahtarını Yapıştırın">
+    **API Anahtarı** alanına VAPI API anahtarınızı yapıştırın
+  </Step>
+  <Step title="Anahtarı Görüntüleme">
+    **Göster/Gizle** butonu ile anahtarı görüntüleyebilirsiniz
+  </Step>
+  <Step title="Bağlantıyı Test Edin">
+    **Bağlantıyı Test Et** butonuna tıklayarak anahtarı doğrulayın
+  </Step>
+  <Step title="Kaydedin">
+    Bağlantı başarılı olursa **Kaydet** butonuna tıklayın
+  </Step>
+</Steps>
+
+<Tip>
+  **Alternatif**: API anahtarınız hazır değilse **Daha sonra ayarla** seçeneğini kullanabilirsiniz. Daha sonra **Ayarlar > API Keys** bölümünden yapılandırabilirsiniz.
+</Tip>
+
+<Frame>
+  <img src="/images/api-key-setup-wizard.png" alt="API anahtarı kurulum sihirbazı" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Kurulum sihirbazının API anahtarı adımını gösteren ekran
+</Note>
+
+## Ayarlar Üzerinden API Anahtarı Ekleme
+
+### Adım 1: Ayarlar Sayfasına Gidin
+
+1. Sol menüden **Ayarlar**'ı seçin
+2. **Organizasyon** sekmesinin alt kısmındaki **API Anahtarı** bölümüne gidin
+
+### Adım 2: API Anahtarını Girin
+
+<Steps>
+  <Step title="Anahtarı Yapıştırın">
+    **API Anahtarı** form alanına VAPI anahtarınızı yapıştırın
+  </Step>
+  <Step title="Test Edin">
+    **Bağlantıyı Test Et** butonuna tıklayın
+  </Step>
+  <Step title="Kaydedin">
+    Test başarılı olursa **Kaydet** butonuna tıklayın
+  </Step>
+</Steps>
+
+### Adım 3: Doğrulama
+
+- Sistem otomatik olarak anahtarı doğrulayacak
+- Başarılı ise durum "Doğrulandı" olarak görünecek
+- Başarısız ise "Doğrulanamadı" veya "Geçersiz" uyarısı alacaksınız
+
+<Frame>
+  <img src="/images/api-key-settings.png" alt="API anahtarı ayarlar sayfası" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Ayarlar sayfasındaki API anahtarı yönetim bölümü
+</Note>
+
+## API Anahtarı Yönetimi
+
+### Mevcut API Anahtarını Görüntüleme
+
+**Ayarlar > Organizasyon** sekmesinde:
+
+- API anahtarınızı görebilirsiniz
+- Bağlantı durumunu (Bağlı/Bağlı Değil/Bilinmiyor) kontrol edebilirsiniz
+- Anahtar değerini **Göster** butonu ile görüntüleyebilirsiniz
+
+### API Anahtarını Doğrulama
+
+1. Anahtarın yanındaki **Doğrula** butonuna tıklayın
+2. Sistem VAPI ile bağlantı testi yapacak
+3. Sonuç mesajını kontrol edin:
+   - **"API anahtarı testi başarılı"**: Anahtar çalışıyor
+   - **"API anahtarı testi başarısız"** veya **"Geçersiz API anahtarı"**: Anahtarı kontrol edin
+
+### API Anahtarı Güncelleme
+
+1. Mevcut anahtarı silin (eğer bu özellik varsa)
+2. Yeni anahtarı oluşturun
+3. Doğrulama işlemini tekrarlayın
+
+## API Anahtarı Uyarıları
+
+### Uyarı Bannerı
+
+API anahtarınız geçersiz veya doğrulanmamışsa:
+
+- Sayfanın üst kısmında **uyarı bannerı** görünecek
+- "API anahtarınız geçersiz veya eksik" mesajı alacaksınız
+- **Ayarlar** linkine tıklayarak düzeltebilirsiniz
+
+### Bağlantı Durumu Kontrolü
+
+**Kontrol Paneli**'nde AI Entegrasyonu kartı:
+
+- **Bağlı** (Yeşil): API anahtarı çalışıyor
+- **Kısmen Bağlı** (Sarı): Bazı sorunlar var
+- **Bağlı Değil** (Kırmızı): API anahtarı geçersiz veya yok
+
+## Sorun Giderme
+
+<AccordionGroup>
+  <Accordion title='"API anahtarı testi başarısız" Hatası'>
+    **Olası Nedenler:**
+    - API anahtarı yanlış kopyalanmış (boşluk veya eksik karakter)
+    - VAPI hesabınızda anahtar silinmiş veya devre dışı
+    - Ağ bağlantısı sorunu
+
+    **Çözüm:**
+    1. API anahtarını tekrar kopyalayıp yapıştırın
+    2. VAPI hesabınızda anahtarın aktif olduğunu kontrol edin
+    3. İnternet bağlantınızı kontrol edin
+    4. Tarayıcı cache'ini temizleyin ve tekrar deneyin
+  </Accordion>
+
+  <Accordion title='"Geçersiz API anahtarı" Hatası'>
+    **Çözüm:**
+    - Yeni bir API anahtarı oluşturun
+    - Doğru VAPI hesabından anahtarı aldığınızdan emin olun
+    - API anahtarı formatının doğru olduğunu kontrol edin
+  </Accordion>
+
+  <Accordion title="API Özellikleri Çalışmıyor">
+    **Kontrol Listesi:**
+    1. ✅ API anahtarı eklendi mi?
+    2. ✅ Anahtar doğrulandı mı?
+    3. ✅ AI Entegrasyonu "Bağlı" durumunda mı?
+    4. ✅ Kredi bakiyeniz yeterli mi?
+  </Accordion>
+</AccordionGroup>
+
+## Güvenlik İpuçları
+
+### API Anahtarı Güvenliği
+
+<Tip>
+  - ✅ API anahtarınızı asla herkese açık yerlerde paylaşmayın
+  - ✅ Anahtarı güvenli bir yerde saklayın (parola yöneticisi)
+  - ✅ Düzenli olarak anahtar durumunu kontrol edin
+  - ✅ Şüpheli aktivite fark ederseniz anahtarı yenileyin
+</Tip>
+
+### Platform Güvenliği
+
+- API anahtarınız platformda **şifreli olarak saklanır**
+- Sadece yetkili kullanıcılar API Keys bölümüne erişebilir
+- Tüm API çağrıları güvenli HTTPS üzerinden yapılır
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="API anahtarı olmadan platform kullanılabilir mi?">
+    Hayır, AI Agent'lar ve çağrı özellikleri API anahtarı gerektirir. Ancak platformu gezebilir ve ayarları yapabilirsiniz.
+  </Accordion>
+
+  <Accordion title="Birden fazla API anahtarı ekleyebilir miyim?">
+    Hayır, platform organizasyon başına tek bir API anahtarı desteklemektedir. Mevcut anahtarı güncelleyerek değiştirebilirsiniz.
+  </Accordion>
+
+  <Accordion title="API anahtarını değiştirirsem neler olur?">
+    - Aktif çağrılar etkilenmez (tamamlanana kadar)
+    - Yeni çağrılar yeni anahtar ile başlatılır
+    - Geçmiş kayıtlar etkilenmez
+  </Accordion>
+
+  <Accordion title="API anahtarı maliyeti var mı?">
+    API anahtarının kendisi ücretsizdir, ancak VAPI kullanım ücretleri platformun kredi sistemi üzerinden yönetilir.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Platforma Giriş" icon="rocket" href="/getting-started/platform-introduction">
+    Platform özelliklerine genel bakış
+  </Card>
+  <Card title="AI Agent Oluşturma" icon="robot" href="/voice-ai-agents/create-agent">
+    İlk AI agent'ınızı oluşturun
+  </Card>
+</CardGroup>

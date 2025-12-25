@@ -1,0 +1,426 @@
+---
+title: 'Müşteri Etkileşimleri'
+description: 'Müşterilerinizle yapılan tüm etkileşimleri kronolojik olarak izleyin'
+---
+
+## Genel Bakış
+
+Müşteri Etkileşimleri sayfası, tüm müşterilerinizle yapılan her türlü etkileşimi (çağrılar, notlar, vb.) kronolojik sırada görüntülemenizi sağlar.
+
+## Etkileşimler Sayfasına Erişim
+
+<Steps>
+  <Step title="CRM menüsünü açın">
+    Sol menüden **CRM**'i genişletin
+  </Step>
+  <Step title="Müşteri Etkileşimleri">
+    **Müşteri Etkileşimleri**'ni seçin
+  </Step>
+</Steps>
+
+## Etkileşim Türleri
+
+Platform 3 ana etkileşim türünü takip eder:
+
+<CardGroup cols={3}>
+  <Card title="Gelen Arama" icon="phone-incoming">
+    Müşteriden platforma gelen çağrılar
+  </Card>
+  <Card title="Giden Arama" icon="phone-outgoing">
+    Platformdan müşteriye yapılan çağrılar
+  </Card>
+  <Card title="Not Eklendi" icon="note-sticky">
+    Kullanıcının müşteri için eklediği notlar
+  </Card>
+</CardGroup>
+
+## Etkileşim Listesi
+
+### Liste Görünümü
+
+Her etkileşim kartında görüntülenen bilgiler:
+
+#### Başlık Bilgileri
+
+<Info>
+- **Tür İkonu**: Gelen/Giden/Not
+- **Başlık**: Etkileşim türü
+- **Müşteri Adı**: İlgili müşteri
+- **Zaman**: Ne kadar süre önce (örn: "2 saat önce")
+</Info>
+
+#### Detay Bilgileri
+
+<Tabs>
+  <Tab title="Çağrılar">
+    **Durum**:
+    - ✅ Tamamlandı (Yeşil)
+    - ❌ Başarısız (Kırmızı)
+    - 🔵 Devam Ediyor (Mavi)
+    - 🟡 Çalıyor (Sarı)
+    - 🔵 Cevaplandı (Mavi)
+  </Tab>
+
+  <Tab title="Notlar">
+    - **Oluşturan**: Hangi kullanıcı tarafından
+    - **İçerik**: Not içeriği özeti
+  </Tab>
+</Tabs>
+
+### Etkileşim Renk Kodları
+
+**Durum Renkleri:**
+
+| Renk | Durum | Anlamı |
+|------|-------|--------|
+| 🟢 Yeşil | Başarılı/Tamamlandı | Çağrı başarıyla tamamlandı |
+| 🔵 Mavi | Devam Ediyor/Cevaplandı | Aktif veya cevaplanan çağrı |
+| 🟡 Sarı | Çalıyor/Beklemede | Bekleyen durum |
+| 🔴 Kırmızı | Başarısız | Tamamlanamayan çağrı |
+| ⚪ Gri | Silinmiş | Silinmiş kayıt |
+
+<Frame>
+  <img src="/images/placeholder-interactions.png" alt="Etkileşim listesi" />
+</Frame>
+
+## Etkileşim Detayları
+
+### Çağrı Etkileşimleri
+
+Çağrı etkileşimi kartında görüntülenen bilgiler:
+
+<AccordionGroup>
+  <Accordion title="Temel Bilgiler">
+    - Çağrı yönü (Gelen/Giden)
+    - Çağrı durumu
+    - Çağrı süresi
+    - Çağrı tarihi ve saati
+  </Accordion>
+
+  <Accordion title="Çağrı Kaydına Git">
+    Kart altında **"Çağrı Kaydına Git"** butonu:
+    - Tıklayarak tam görüşme detaylarına gidin
+    - Transkript, kayıt ve analiz bilgilerine erişin
+  </Accordion>
+</AccordionGroup>
+
+### Not Etkileşimleri
+
+Not etkileşimi kartında görüntülenen bilgiler:
+
+<Info>
+- Not başlığı: "Not Eklendi"
+- Not içeriği (ilk 100 karakter)
+- Notu ekleyen kullanıcı
+- Eklenme tarihi
+- **Açıklama**: "Müşteriye not eklendi"
+</Info>
+
+## Etkileşim Filtreleme
+
+### Müşteriye Göre Filtreleme
+
+Belirli bir müşterinin etkileşimlerini görmek için:
+
+<Steps>
+  <Step title="Müşteriler sayfasına gidin">
+    CRM > Müşteriler menüsüne gidin
+  </Step>
+  <Step title="Müşteri seçin">
+    Bir müşteri seçin
+  </Step>
+  <Step title="Etkileşimler sekmesi">
+    Müşteri detay sayfasında **"Etkileşimler"** sekmesine tıklayın
+  </Step>
+  <Step title="Filtreli görünüm">
+    Sadece o müşteriye ait etkileşimler görünür
+  </Step>
+</Steps>
+
+### Gelecek Özellikler
+
+<Note>
+**Tarihe Göre Filtreleme:**
+- Tarih aralığı seçici
+- Son 7 gün, 30 gün, vb.
+- Özel tarih aralığı
+
+**Türe Göre Filtreleme:**
+- Sadece çağrılar
+- Sadece notlar
+- Özel filtreler
+</Note>
+
+## Etkileşim Ekleme
+
+### Manuel Not Ekleme
+
+Müşteri için not eklemek:
+
+<Steps>
+  <Step title="Müşteriyi seçin">
+    **Müşteriler** sayfasından müşteriyi seçin
+  </Step>
+  <Step title="Not Ekle">
+    Müşteri detay sayfasında **"Not Ekle"** butonuna tıklayın
+  </Step>
+  <Step title="Not yazın">
+    Not içeriğini yazın
+  </Step>
+  <Step title="Kaydet">
+    **"Kaydet"** butonuna tıklayın
+  </Step>
+  <Step title="Başarılı">
+    Not, etkileşimler listesine eklenir. "Not başarıyla eklendi" mesajı görünür
+  </Step>
+</Steps>
+
+### Otomatik Etkileşimler
+
+Sistem otomatik olarak etkileşim kaydeder:
+
+<Tabs>
+  <Tab title="Çağrı Başladığında">
+    - Gelen veya giden arama kaydı oluşturulur
+    - Durum: "Çalıyor" veya "Devam Ediyor"
+  </Tab>
+
+  <Tab title="Çağrı Tamamlandığında">
+    - Durum güncellenir: "Tamamlandı" veya "Başarısız"
+    - Süre ve sonuç kaydedilir
+  </Tab>
+</Tabs>
+
+## Etkileşim Geçmişi
+
+### Müşteri Detay Sayfasında
+
+Müşteri detaylarında etkileşim zaman çizelgesi:
+
+<CardGroup cols={2}>
+  <Card title="Kronolojik Sıra" icon="timeline">
+    Tüm etkileşimler kronolojik sırada, en yeni üstte
+  </Card>
+  <Card title="Sınırsız Geçmiş" icon="infinity">
+    Tüm geçmiş etkileşimler saklanır
+  </Card>
+</CardGroup>
+
+### İstatistikler
+
+Her müşteri için özet:
+
+<Info>
+- **Toplam Çağrı**: Müşteri ile toplam çağrı sayısı
+- **Toplam Süre**: Tüm çağrıların toplam süresi
+- **Son İletişim**: En son etkileşim tarihi
+- **Son 30 Gün**: Son 30 gün etkileşim sayısı
+- **Başarılı Çağrı Oranı**: Başarılı çağrı yüzdesi
+- **Ortalama Çağrı Süresi**: Ortalama görüşme süresi
+</Info>
+
+## Kullanım Senaryoları
+
+### Müşteri Takibi
+
+<Steps>
+  <Step title="Etkileşimler sayfasına gidin">
+    Ana sayfadan etkileşimlere tıklayın
+  </Step>
+  <Step title="İlgili müşteriyi bulun">
+    Müşteri etkileşimlerini görün
+  </Step>
+  <Step title="Son görüşmeleri inceleyin">
+    Yakın zamandaki iletişimleri kontrol edin
+  </Step>
+  <Step title="Devam eden konuları tespit edin">
+    Çözülmemiş sorunları belirleyin
+  </Step>
+  <Step title="Yeni not ekleyin">
+    Gerekirse takip notu ekleyin
+  </Step>
+</Steps>
+
+### Problem Çözme
+
+<Steps>
+  <Step title="Müşteri şikayeti">
+    Müşteriden şikayet geldi
+  </Step>
+  <Step title="Müşteri ara">
+    Müşteri adı ile arama yapın
+  </Step>
+  <Step title="Geçmişi görüntüle">
+    Tüm etkileşim geçmişini görün
+  </Step>
+  <Step title="Çağrıları incele">
+    Geçmiş çağrıları gözden geçirin
+  </Step>
+  <Step title="Sorunu tespit et">
+    Sorunu tespit edin ve not ekleyin
+  </Step>
+</Steps>
+
+### Performans İzleme
+
+<Steps>
+  <Step title="Etkileşimleri listele">
+    Son 7 günlük etkileşimleri görüntüleyin
+  </Step>
+  <Step title="Oranları hesapla">
+    Başarılı/başarısız oranını inceleyin
+  </Step>
+  <Step title="En çok etkileşim">
+    En çok etkileşim kurulan müşterileri belirleyin
+  </Step>
+  <Step title="Trend analizi">
+    Etkileşim trendlerini analiz edin
+  </Step>
+</Steps>
+
+## Raporlama
+
+### Gelecek Özellikler
+
+<AccordionGroup>
+  <Accordion title="Günlük Etkileşim Raporu">
+    Günlük özet raporları
+  </Accordion>
+
+  <Accordion title="Müşteri Bazlı Rapor">
+    Müşteri başına detaylı analiz
+  </Accordion>
+
+  <Accordion title="Tür Bazlı Rapor">
+    Etkileşim türlerine göre raporlar
+  </Accordion>
+
+  <Accordion title="Excel Export">
+    Tüm etkileşimleri Excel'e aktarma
+  </Accordion>
+</AccordionGroup>
+
+## Veri Saklama ve Gizlilik
+
+### Saklama Süresi
+
+<Warning>
+- **Etkileşim Kayıtları**: Süresiz
+- **Çağrı Detayları**: Görüşmeler sayfası kurallarına tabi
+- **Notlar**: Süresiz
+</Warning>
+
+### Veri Silme
+
+- Silinmiş müşterilerin etkileşimleri "Silinmiş" olarak işaretlenir
+- Tam silme: Manuel talep gerekir
+
+### KVKK Uyumlu luk
+
+<Info>
+- Müşteri verileri şifreli saklanır
+- Erişim yetkili kullanıcılarla sınırlı
+- Müşteri talep ederse veriler silinir (30 gün içinde)
+</Info>
+
+## En İyi Uygulamalar
+
+### Not Ekleme
+
+<CardGroup cols={2}>
+  <Card title="Detaylı Notlar" icon="file-lines">
+    Müşterinin özel durumunu, takip gereken konuları, tarih ve saat bilgisini ekleyin
+  </Card>
+  <Card title="Kısa ve Öz" icon="compress">
+    Gereksiz detaydan kaçının, anahtar noktaları vurgulayın, standart format kullanın
+  </Card>
+</CardGroup>
+
+### Etkileşim Takibi
+
+<Tip>
+**Düzenli Kontrol:**
+- Günlük etkileşimleri gözden geçirin
+- Başarısız aramaları inceleyin
+- Gerekirse müşteri ile iletişime geçin
+
+**Proaktif Yaklaşım:**
+- Uzun süredir görüşülmeyen müşterileri arayın
+- Önemli müşterilere düzenli not ekleyin
+- Takip hatırlatıcıları oluşturun
+</Tip>
+
+## Sorun Giderme
+
+<AccordionGroup>
+  <Accordion title="Etkileşimler Görünmüyor">
+    **Olası Nedenler:**
+    - Henüz etkileşim yok
+    - Filtreler yanlış ayarlanmış
+    - Veri yükleme sorunu
+
+    **Çözüm:**
+    - Müşteri ile çağrı veya not eklendi mi kontrol edin
+    - Filtreleri temizleyin
+    - Sayfayı yenileyin
+  </Accordion>
+
+  <Accordion title='"Çağrı Kaydına Git" Çalışmıyor'>
+    **Olası Nedenler:**
+    - Çağrı henüz tamamlanmadı
+    - Çağrı kaydı silinmiş
+    - Yetki sorunu
+
+    **Çözüm:**
+    - Çağrının tamamlandığından emin olun
+    - Görüşmeler sayfasından manuel arayın
+    - Destek ekibi ile iletişime geçin
+  </Accordion>
+
+  <Accordion title="Notlar Kaydedilmiyor">
+    **Olası Nedenler:**
+    - İnternet bağlantısı kesildi
+    - Not içeriği boş
+    - Yetki sorunu
+
+    **Çözüm:**
+    - İnternet bağlantınızı kontrol edin
+    - En az birkaç kelime yazın
+    - Sayfayı yenileyin ve tekrar deneyin
+  </Accordion>
+</AccordionGroup>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Etkileşim geçmişi silinebilir mi?">
+    Hayır, etkileşim geçmişi kalıcıdır. Sadece KVKK talebi ile silinebilir.
+  </Accordion>
+
+  <Accordion title="Eski notları düzenleyebilir miyim?">
+    Şu anda notlar düzenlenemez, sadece yeni not eklenebilir.
+  </Accordion>
+
+  <Accordion title="Etkileşimleri Excel'e aktarabilir miyim?">
+    Bu özellik yakında eklenecek. Şu anda manuel kopyala yapabilirsiniz.
+  </Accordion>
+
+  <Accordion title="Çağrı etkileşimleri otomatik mi ekleniyor?">
+    Evet, her çağrı otomatik olarak etkileşim kaydı olarak eklenir.
+  </Accordion>
+
+  <Accordion title="Müşteri silindikten sonra etkileşimler ne olur?">
+    Etkileşimler "Silinmiş" olarak işaretlenir ancak kayıt silinmez.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Müşteri Ekleme" icon="user-plus" href="/customer-management/add-customer">
+    Müşteri ekleme ve yönetimi
+  </Card>
+  <Card title="Görüşme Kayıtları" icon="phone" href="/call-monitoring/call-recordings">
+    Çağrı kayıtları ve detayları
+  </Card>
+</CardGroup>

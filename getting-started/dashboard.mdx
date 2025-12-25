@@ -1,0 +1,307 @@
+---
+title: "Kontrol Paneli Kullanımı"
+description: "Platform metriklerini ve aktif çağrıları tek bakışta görüntüleyin"
+---
+
+## Genel Bakış
+
+Kontrol Paneli, AI Çağrı Merkezi Platformu'nun ana sayfasıdır. Buradan tüm önemli metrikleri, aktif çağrıları ve sistem durumunu tek bakışta görüntüleyebilirsiniz.
+
+## Kontrol Paneline Erişim
+
+1. Platforma giriş yapın
+2. Otomatik olarak **Kontrol Paneli** sayfasına yönlendirilirsiniz
+3. Sol menüden **Kontrol Paneli**'ne tıklayarak istediğiniz zaman dönebilirsiniz
+
+<Frame>
+  <img src="/images/dashboard-main.png" alt="Kontrol paneli ana görünümü" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Kontrol panelinin tüm bileşenlerini gösteren tam ekran görüntüsü
+</Note>
+
+## Ana Bileşenler
+
+### 1. Karşılama Bölümü
+
+**Hoş geldiniz** başlığı ile karşılanırsınız ve mevcut organizasyon adı görüntülenir.
+
+### 2. Durum Kartları
+
+#### AI Entegrasyonu
+
+Platform API anahtarınızın bağlantı durumunu gösterir:
+
+<CardGroup cols={3}>
+  <Card title="Bağlı" icon="check-circle">
+    API anahtarı çalışıyor, tüm özellikler aktif
+  </Card>
+  <Card title="Kısmen Bağlı" icon="exclamation-triangle">
+    Bazı sorunlar var, kontrol gerekli
+  </Card>
+  <Card title="Bağlı Değil" icon="x-circle">
+    API anahtarı geçersiz veya eksik
+  </Card>
+</CardGroup>
+
+<Tip>
+  **İpucu**: Kırmızı veya sarı durum görüyorsanız, [API Anahtarı Kurulumu](/getting-started/api-key-setup) makalesine bakın.
+</Tip>
+
+#### Kalan Krediler
+
+Organizasyonunuzun mevcut kredi bakiyesini gösterir:
+
+- **Kredi Miktarı**: Kullanılabilir kredi sayısı
+- **Kullanılan Miktar**: Bugüne kadar kullanılan kredi (opsiyonel)
+
+<Warning>
+  **Uyarı**: Kredi bakiyeniz düşükse uyarı rengi değişir (sarı/kırmızı).
+</Warning>
+
+### 3. Ana Metrik Kartları
+
+Kontrol panelinde 4 ana metrik kartı bulunur:
+
+<Frame>
+  <img src="/images/dashboard-metrics.png" alt="Ana metrik kartları" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Ana metrik kartlarını (Aktif Çağrılar, Bugün Yapılan Çağrılar, Başarı Oranı, Müşteriler) gösteren bölüm
+</Note>
+
+#### Aktif Çağrılar
+
+- **Sayı**: Şu anda devam eden çağrı sayısı
+- **Alt Yazı**: "Şu anda devam eden"
+
+**Kullanım**: Sistemin anlık yükünü görmek için kullanın. Güncel veri için sayfayı yenileyin.
+
+#### Bugün Yapılan Çağrılar
+
+- **Sayı**: Bugün tamamlanan toplam çağrı
+- **Toplam Süre**: Bugünkü tüm çağrıların toplam süresi
+- **Format**: "XXX çağrı, YY dakika toplam süre"
+
+**Kullanım**: Günlük aktivite hacmini takip edin.
+
+#### Başarı Oranı
+
+- **Yüzde**: Başarılı çağrıların yüzdesi
+- **Trend**: Geçen haftaya göre artış/azalış
+- **Format**: "XX% (+YY% geçen haftadan)" veya "XX% (-YY% geçen haftadan)"
+
+**Renk Kodları**:
+- Yeşil yukarı ok: İyileşme
+- Kırmızı aşağı ok: Düşüş
+
+**Kullanım**: Kampanya ve agent performansını değerlendirin.
+
+#### Müşteriler
+
+- **Sayı**: Toplam müşteri sayısı
+- **Yeni Müşteriler**: Bugün eklenen yeni müşteri sayısı
+- **Format**: "XXX müşteri, YY bugün eklenen"
+
+**Kullanım**: Müşteri tabanı büyümesini izleyin.
+
+### 4. Son Aktiviteler
+
+**Başlık**: "Son Aktiviteler"
+**Alt Başlık**: "En son çağrı kayıtları"
+
+Bu bölüm en son 5-10 çağrı kaydını görüntüler:
+
+#### Her Çağrı Kartında:
+
+- **Kimden/Kime**: Arayan ve aranan telefon numaraları
+- **Yön**: Gelen (inbound) veya Giden (outbound) ikonu
+- **Süre**: Çağrı süresi (dakika:saniye formatında)
+- **Zaman**: Çağrının ne zaman yapıldığı (örn: "2 saat önce")
+- **İlk Mesaj**: Konuşmanın ilk cümlesi (özet)
+- **Durum**:
+  - **Tamamlandı** (Yeşil)
+  - **Başarısız** (Kırmızı)
+  - **Devam Ediyor** (Mavi)
+
+<Frame>
+  <img src="/images/dashboard-recent-activities.png" alt="Son aktiviteler bölümü" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Son aktiviteler listesini ve çağrı kartlarını gösteren ekran
+</Note>
+
+#### Boş Durum
+
+Hiç çağrı yoksa:
+- "Aktif çağrı bulunmıyor"
+- "Çağrı kayıtları burada görünecek"
+
+#### Çağrı Detayına Gitme
+
+- Herhangi bir çağrı kartına tıklayarak detay sayfasına gidebilirsiniz
+- Tam transkript, kayıt ve analiz bilgilerine erişirsiniz
+
+### 5. Hızlı Erişim Butonları
+
+Kontrol panelinden doğrudan erişebileceğiniz özellikler:
+
+- **Tümünü Gör**: Tüm görüşmeleri listeleyen sayfaya git
+- **Ayarlar**: Organizasyon ve API ayarlarına git
+
+## Veri Güncelleme
+
+Kontrol paneli verileri sayfa yüklendiğinde gösterilir:
+
+- **Metrikler**: Sayfa ilk yüklendiğinde çekilir
+- **Son Aktiviteler**: En güncel 5-10 çağrı gösterilir
+- **Güncel Veri**: Sayfayı yenileyerek (F5) en güncel verileri görebilirsiniz
+
+<Info>
+  **Not**: Anlık otomatik güncelleme (real-time) özelliği şu anda aktif değildir. Güncel verileri görmek için sayfayı manuel olarak yenilemeniz gerekmektedir.
+</Info>
+
+## Kullanım Senaryoları
+
+<Tabs>
+  <Tab title="Sabah Kontrolü">
+    <Steps>
+      <Step title="Kontrol Paneline Giriş">
+        Kontrol paneline giriş yapın
+      </Step>
+      <Step title="AI Entegrasyonu Kontrolü">
+        **AI Entegrasyonu** durumunu kontrol edin (Bağlı olmalı)
+      </Step>
+      <Step title="Kredi Bakiyesi">
+        **Kalan Krediler** bakiyesini gözden geçirin
+      </Step>
+      <Step title="Günlük Metrikler">
+        **Bugün Yapılan Çağrılar** metriğini sıfırdan başladığını görün
+      </Step>
+      <Step title="Hedef Belirleme">
+        Günlük hedefleri belirleyin
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="Gün İçi İzleme">
+    <Steps>
+      <Step title="Aktif Çağrılar">
+        **Aktif Çağrılar** sayısını kontrol edin
+      </Step>
+      <Step title="Kampanya Kontrolü">
+        Eğer sıfırsa, kampanyalarınızın çalıştığından emin olun
+      </Step>
+      <Step title="Başarısız Çağrılar">
+        **Son Aktiviteler**'de başarısız çağrıları inceleyin
+      </Step>
+      <Step title="Sorun Tespiti">
+        Sorunlu çağrıları tespit edin
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="Akşam Değerlendirmesi">
+    <Steps>
+      <Step title="Günlük Toplam">
+        **Bugün Yapılan Çağrılar** toplam sayısını not edin
+      </Step>
+      <Step title="Başarı Karşılaştırması">
+        **Başarı Oranı**'nı dünle/geçen haftayla karşılaştırın
+      </Step>
+      <Step title="Yeni Müşteriler">
+        **Yeni Müşteriler** sayısını kontrol edin
+      </Step>
+      <Step title="Raporlama">
+        Raporlama için verileri kaydedin
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="Sorun Tespit">
+    **Kontrol Noktaları:**
+    - **AI Entegrasyonu** "Bağlı Değil" ise → API anahtarını kontrol edin
+    - **Aktif Çağrılar** beklenenden az ise → Kampanyaları kontrol edin
+    - **Başarı Oranı** düşükse → Agent talimatlarını gözden geçirin
+    - **Kalan Krediler** az ise → Kredi ekleyin
+  </Tab>
+</Tabs>
+
+## Mobil Görünüm
+
+Kontrol paneli mobil cihazlarda da kullanılabilir:
+
+- Metrik kartları dikey olarak sıralanır
+- Tüm özellikler erişilebilir
+- Gerçek zamanlı güncellemeler çalışır
+
+## Performans İpuçları
+
+### Hızlı Yükleme
+
+<Tip>
+  - Kontrol paneli optimize edilmiştir
+  - Tüm veriler hızlı yüklenir
+  - Gereksiz yenilemelerden kaçının
+</Tip>
+
+### Yavaş Yükleniyorsa
+
+1. İnternet bağlantınızı kontrol edin
+2. Tarayıcı cache'ini temizleyin
+3. Farklı tarayıcı deneyin
+4. Destek ekibi ile iletişime geçin
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Metrikler güncellenmiyor?">
+    - Sayfayı yenileyin (F5)
+    - Tarayıcı konsolunda hata olup olmadığını kontrol edin
+    - İnternet bağlantınızı doğrulayın
+  </Accordion>
+
+  <Accordion title='"Aktif Çağrılar" hep sıfır gösteriyor?'>
+    - Kampanya başlatıldığından emin olun
+    - AI Agent'ların aktif olduğunu kontrol edin
+    - Kredi bakiyenizin yeterli olduğunu doğrulayın
+  </Accordion>
+
+  <Accordion title='"Son Aktiviteler" boş görünüyor?'>
+    - Henüz hiç çağrı yapılmamış olabilir
+    - İlk kampanyanızı başlatın veya test araması yapın
+  </Accordion>
+
+  <Accordion title="Başarı oranı nasıl hesaplanır?">
+    ```
+    Başarı Oranı = (Tamamlanan Çağrılar / Toplam Çağrılar) × 100
+    ```
+
+    - **Tamamlanan**: Müşteri ile başarılı konuşma yapılan çağrılar
+    - **Toplam**: Tüm arama denemeleri (cevapsız, meşgul, başarısız dahil)
+  </Accordion>
+
+  <Accordion title="Kontrol panelini varsayılan sayfa yapmak?">
+    Kontrol paneli zaten varsayılan sayfadır. Giriş yaptığınızda otomatik olarak açılır.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Platforma Giriş" icon="rocket" href="/getting-started/platform-introduction">
+    Platform özelliklerine genel bakış
+  </Card>
+  <Card title="API Anahtarı Kurulumu" icon="key" href="/getting-started/api-key-setup">
+    API anahtarı yapılandırması
+  </Card>
+  <Card title="Görüşmeleri İzleme" icon="phone" href="/call-monitoring/call-recordings">
+    Çağrı kayıtları ve analizler
+  </Card>
+  <Card title="Organizasyon Ayarları" icon="gear" href="/getting-started/organization-settings">
+    Organizasyon ve kullanıcı yönetimi
+  </Card>
+</CardGroup>

@@ -1,0 +1,383 @@
+---
+title: "Bilgi Bankası Yönetimi"
+description: "AI Agent'larınız için döküman ve dosya koleksiyonları oluşturun"
+---
+
+## Genel Bakış
+
+Bilgi Bankası, AI Agent'larınızın müşterilere doğru ve tutarlı bilgi vermesi için kullandığı döküman ve dosya koleksiyonlarıdır.
+
+## Bilgi Bankası Sayfasına Erişim
+
+1. Sol menüden **Bilgi Bankası**'nı seçin
+2. İki ana sekme görünür:
+   - **Bilgi Bankaları**: Tüm bilgi bankalarınız
+   - **Dosyalar**: Yüklediğiniz tüm dosyalar
+
+## Yeni Bilgi Bankası Oluşturma
+
+<Steps>
+  <Step title="Oluştur Sayfasına Gidin">
+    **Bilgi Bankası** sayfasında **Yeni Bilgi Bankası Oluştur** butonuna tıklayın
+  </Step>
+
+  <Step title="Temel Bilgiler">
+    ### İsim
+    - Bilgi bankasına açıklayıcı bir isim verin
+    - **Minimum**: 2 karakter
+    - **Örnek**: "İade Politikası", "Ürün Kataloğu", "Sık Sorulan Sorular"
+
+    ### Açıklama
+    - Bilgi bankasının ne içerdiğini kısaca açıklayın
+    - **Maksimum**: 2000 karakter
+    - **Örnek**: "Müşteri iade ve değişim süreçleri hakkında detaylı bilgiler"
+  </Step>
+
+  <Step title="Dosya Yükleme">
+    ### Desteklenen Dosya Formatları
+    - **PDF** (.pdf)
+    - **Word** (.docx, .doc)
+    - **Metin** (.txt)
+    - **Markdown** (.md)
+    - **Excel** (.xlsx, .xls) - Tablolar için
+
+    ### Dosya Yükleme Yöntemleri
+
+    **Yöntem 1: Sürükle Bırak**
+    1. Dosyaları **"Dosyaları buraya sürükleyip bırakın"** alanına sürükleyin
+    2. Birden fazla dosya seçebilirsiniz
+    3. Seçilen dosya sayısı gösterilir: "X dosya seçildi"
+
+    **Yöntem 2: Göz At**
+    1. **"göz atın"** linkine tıklayın
+    2. Bilgisayarınızdan dosya seçin
+    3. **Aç** butonuna tıklayın
+  </Step>
+
+  <Step title="Bilgi Bankasını Kaydet">
+    Tüm alanları doldurduktan sonra **Oluştur** butonuna tıklayın
+  </Step>
+</Steps>
+
+<Frame>
+  <img src="/images/knowledge-base-create.png" alt="Bilgi bankası oluşturma formu" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Bilgi bankası oluşturma formu ve dosya yükleme alanı
+</Note>
+
+<Warning>
+  **Hata**: "Lütfen en az bir dosya yükleyin" - Bilgi bankası oluşturmak için en az bir dosya yüklemeniz gerekmektedir.
+</Warning>
+
+## Bilgi Bankası Listeleme
+
+### Bilgi Bankaları Sekmesi
+
+Liste görünümünde her bilgi bankası için:
+
+#### Kart Bilgileri
+- **İsim**: Bilgi bankası adı
+- **Açıklama**: Kısa açıklama
+- **Dosya Sayısı**: "X dosya" formatında
+- **Durum**:
+  - **Aktif** (Yeşil): Kullanıma hazır
+  - **Pasif** (Gri): Henüz atanmamış
+- **Oluşturulma Tarihi**: Ne zaman oluşturuldu
+
+#### Eylemler
+- **Düzenle**: Bilgi bankasını düzenle
+- **Sil**: Bilgi bankasını sil
+
+<Frame>
+  <img src="/images/knowledge-base-list.png" alt="Bilgi bankası listesi" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Bilgi bankası listesi ve kart görünümleri
+</Note>
+
+### İstatistikler
+
+Sayfa üst kısmında:
+- **Toplam Bilgi Bankası**: Toplam bilgi bankası sayısı
+- **Aktif Bilgi Bankası**: En az bir agent'a atanmış olanlar
+- **Kullanıma hazır**: Dosyaları yüklenmiş ve aktif olanlar
+
+### Boş Durum
+
+Henüz bilgi bankası oluşturmadıysanız:
+- "Henüz Bilgi Bankası Yok"
+- "Başlamak için ilk bilgi bankanızı oluşturun."
+- **"İlk Bilgi Bankanızı Oluşturun"** butonu
+
+## Bilgi Bankası Düzenleme
+
+<Steps>
+  <Step title="Düzenleme Sayfasına Gidin">
+    Bilgi bankası kartında **Düzenle** butonuna tıklayın
+  </Step>
+
+  <Step title="Bilgileri Güncelleyin">
+    **Güncellenebilir Alanlar:**
+    - İsim
+    - Açıklama
+    - Dosyalar (ekle/sil)
+
+    ### Yeni Dosya Ekleme
+    1. **"Dosyaları buraya sürükleyip bırakın"** alanını kullanın
+    2. Veya **"göz atın"** linkine tıklayın
+    3. Yeni dosyalar mevcut dosyalara eklenir
+
+    ### Mevcut Dosyaları Görüntüleme
+    **"Mevcut Dosyalar"** bölümünde:
+    - Yüklü tüm dosyalar listelenir
+    - Her dosyanın adı ve boyutu gösterilir
+    - **Yenile** butonu ile listeyi güncelleyin
+  </Step>
+
+  <Step title="Değişiklikleri Kaydet">
+    **Güncelle** butonuna tıklayın
+  </Step>
+</Steps>
+
+## Dosya Yönetimi
+
+### Dosyalar Sekmesi
+
+Tüm yüklediğiniz dosyaları görüntüleyin:
+
+#### Dosya Listesi Bilgileri
+- **Dosya Adı**: Yüklenen dosyanın adı
+- **Dosya Tipi**: PDF, DOCX, TXT, vb.
+- **Dosya Boyutu**: KB/MB cinsinden
+- **Yüklenme Tarihi**: Ne zaman yüklendi
+- **Bağlı Bilgi Bankası**: Hangi bilgi bankasında kullanılıyor
+
+#### Dosya Eylemleri
+
+<Tabs>
+  <Tab title="İndir">
+    <Steps>
+      <Step title="İndir Butonu">
+        Dosya satırında **İndir** butonuna tıklayın
+      </Step>
+      <Step title="İndirme">
+        "İndiriliyor..." mesajı görünür ve dosya bilgisayarınıza indirilir
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="Sil">
+    <Steps>
+      <Step title="Sil Butonu">
+        Dosya satırında **Sil** butonuna tıklayın
+      </Step>
+      <Step title="Onay">
+        Onay dialogu açılır: "'{name}' dosyasını silmek istediğinizden emin misiniz? Bu işlem geri alınamaz."
+      </Step>
+      <Step title="İşlemi Onayla">
+        **Sil** butonuna tıklayın
+      </Step>
+    </Steps>
+
+    <Warning>
+      **Hata**: "Dosya aktif, silinemez. Önce bilgi bankasından kaldırın."
+      - Bu dosya aktif bir bilgi bankasında kullanılıyor
+      - Önce bilgi bankasını düzenleyin ve dosyayı kaldırın
+    </Warning>
+  </Tab>
+</Tabs>
+
+<Frame>
+  <img src="/images/knowledge-base-files.png" alt="Dosya yönetimi" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Dosyalar sekmesinde dosya listesi ve yönetim araçları
+</Note>
+
+## Bilgi Bankasını Agent'a Atama
+
+### Agent Oluşturma/Düzenleme Sırasında
+
+<Steps>
+  <Step title="Agent Sayfasına Gidin">
+    AI Agent oluşturma veya düzenleme sayfasına gidin
+  </Step>
+  <Step title="Bilgi Bankası Bölümü">
+    **Bilgi Bankası** bölümünü bulun (genellikle gelişmiş ayarlarda)
+  </Step>
+  <Step title="Bilgi Bankası Seçin">
+    Açılır menüden bir veya birden fazla bilgi bankası seçin
+  </Step>
+  <Step title="Kaydedin">
+    **Oluştur** veya **Güncelle** butonuna tıklayın
+  </Step>
+</Steps>
+
+### Agent'ın Bilgi Bankalarını Görüntüleme
+
+Agent detay sayfasında:
+- Atanmış bilgi bankaları listelenir
+- Her bilgi bankasının dosya sayısı gösterilir
+
+## Bilgi Bankası Silme
+
+<Warning>
+  **Dikkat**: Silme işlemi geri alınamaz!
+</Warning>
+
+<Steps>
+  <Step title="Sil Butonu">
+    Bilgi bankası kartında **Sil** butonuna tıklayın
+  </Step>
+  <Step title="Onay">
+    Onay dialogu açılır: "'{name}' bilgi bankasını silmek istediğinizden emin misiniz? Bu işlem geri alınamaz."
+  </Step>
+  <Step title="İşlemi Onayla">
+    **Sil** butonuna tıklayın
+  </Step>
+</Steps>
+
+### Silme Hatası
+
+<Warning>
+  **Hata**: "Bilgi bankası aktif, silinemez. Önce agent'lardan kaldırın."
+</Warning>
+
+**Çözüm**:
+1. Bilgi bankasını kullanan agent'ları bulun
+2. Her agent'ı düzenleyin
+3. Bilgi bankası atamasını kaldırın
+4. Ardından bilgi bankasını silin
+
+## Bilgi Bankası En İyi Uygulamalar
+
+### Dosya Organizasyonu
+
+<Tip>
+  #### Tek Konu Prensibi
+  - Her bilgi bankası tek bir konu/kategoriyi kapsasın
+  - **İyi**: "İade Politikası" bilgi bankası
+  - **Kötü**: "Genel Bilgiler" (çok geniş)
+
+  #### Dosya Adlandırma
+  - Açıklayıcı dosya adları kullanın
+  - **İyi**: "urun-garanti-kosullari.pdf"
+  - **Kötü**: "dokuman1.pdf"
+
+  #### Dosya Boyutu
+  - Dosyaları makul boyutta tutun (max 10-20 MB)
+  - Çok büyük dosyaları parçalara bölün
+  - PDF'leri optimize edin
+</Tip>
+
+### İçerik Kalitesi
+
+<Tip>
+  #### Güncel Tutma
+  - ✅ Bilgileri düzenli güncelleyin
+  - ✅ Eski/geçersiz dosyaları silin
+  - ✅ Versiyon numarası kullanın
+
+  #### Netlik
+  - ✅ Açık ve anlaşılır dil kullanın
+  - ✅ Kısaltmalardan kaçının
+  - ✅ Örnekler verin
+
+  #### Yapılandırma
+  - ✅ Başlıklar kullanın
+  - ✅ Madde işaretleri ile listeleyin
+  - ✅ Tablolar ile organize edin
+</Tip>
+
+### Agent Atamaları
+
+- Sadece agent'ın ihtiyaç duyduğu bilgileri atayın
+- Gereksiz bilgi karışıklığa yol açar
+- Agent'ların doğru bilgi bankalarını kullandığını test edin
+- Düzenli olarak konuşma transkriptlerini gözden geçirin
+
+## Sorun Giderme
+
+<AccordionGroup>
+  <Accordion title='"Dosya yüklenemedi" Hatası'>
+    **Olası Nedenler:**
+    - Dosya formatı desteklenmiyor
+    - Dosya çok büyük (max 50 MB)
+    - İnternet bağlantısı kesildi
+
+    **Çözüm:**
+    - Desteklenen format kullanın (PDF, DOCX, TXT)
+    - Dosya boyutunu küçültün
+    - İnternet bağlantınızı kontrol edin
+  </Accordion>
+
+  <Accordion title='"Bilgi bankası silinemiyor" Hatası'>
+    **Neden**: Bilgi bankası aktif agent'larda kullanılıyor
+
+    **Çözüm:**
+    1. AI Agent'lar sayfasına gidin
+    2. Bu bilgi bankasını kullanan agent'ları bulun (arama yapın)
+    3. Her agent'ı düzenleyin ve bilgi bankası atamasını kaldırın
+    4. Ardından bilgi bankasını silin
+  </Accordion>
+
+  <Accordion title="Agent Yanlış Bilgi Veriyor">
+    **Kontrol Listesi:**
+    1. ✅ Bilgi bankası güncel mi?
+    2. ✅ Doğru bilgi bankası agent'a atandı mı?
+    3. ✅ Bilgi içeriği açık ve net mi?
+    4. ✅ Çelişkili bilgiler var mı?
+
+    **Çözüm:**
+    - Bilgi bankasını gözden geçirin ve güncelleyin
+    - Agent'ın sistem talimatını optimize edin
+  </Accordion>
+
+  <Accordion title="Dosya İndiremiyor">
+    **Olası Nedenler:**
+    - Dosya silinmiş
+    - Tarayıcı indirmeleri engelliyor
+    - Yetki sorunu
+
+    **Çözüm:**
+    - Dosyanın hala listede olduğunu kontrol edin
+    - Tarayıcı ayarlarını kontrol edin
+    - Farklı tarayıcı deneyin
+  </Accordion>
+</AccordionGroup>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Bir bilgi bankasını birden fazla agent'a atayabilir miyim?">
+    Evet, aynı bilgi bankası birden fazla agent tarafından kullanılabilir.
+  </Accordion>
+
+  <Accordion title="Dosya limiti var mı?">
+    Her bilgi bankasına istediğiniz kadar dosya ekleyebilirsiniz, ancak performans için 10-20 dosya önerilir.
+  </Accordion>
+
+  <Accordion title="Excel dosyalarını yükleyebilir miyim?">
+    Evet, Excel dosyaları (.xlsx, .xls) desteklenir. Tablolar otomatik olarak metne dönüştürülür.
+  </Accordion>
+
+  <Accordion title="Bilgi bankası ne kadar sürede aktif olur?">
+    Dosyalar yüklendikten sonra birkaç dakika içinde agent'lar tarafından kullanılabilir hale gelir.
+  </Accordion>
+
+  <Accordion title="Eski dosya versiyonları nasıl yönetilir?">
+    Eski dosyayı silin ve yeni versiyonu aynı isimle yükleyin. Veya versiyon numarası ekleyin (örn: "politika-v2.pdf").
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="AI Agent Oluşturma" icon="robot" href="/voice-ai-agents/create-agent">
+    Yeni AI Agent oluşturma ve yapılandırma
+  </Card>
+</CardGroup>

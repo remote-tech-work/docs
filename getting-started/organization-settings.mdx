@@ -1,0 +1,432 @@
+---
+title: "Organizasyon ve Kullanıcı Ayarları"
+description: "Organizasyon bilgilerinizi, kullanıcı profilinizi ve kategori yönetiminizi yapılandırın"
+---
+
+## Genel Bakış
+
+Ayarlar sayfası, organizasyon bilgilerinizi, kullanıcı profilinizi, API anahtarlarınızı ve kategori yönetiminizi yapabileceğiniz merkezi bir konumdur.
+
+## Ayarlar Sayfasına Erişim
+
+<Steps>
+  <Step title="Ayarlar Menüsüne Gidin">
+    Sol menüden **Ayarlar**'ı seçin
+  </Step>
+  <Step title="Sekme Seçin">
+    Üst kısımda 3 ana sekme görünür:
+    - Organizasyon
+    - Kategoriler
+    - Hesap
+  </Step>
+</Steps>
+
+<Frame>
+  <img src="/images/settings-overview.png" alt="Ayarlar sayfası genel görünüm" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Ayarlar sayfasının tüm sekmelerini gösteren ekran
+</Note>
+
+## 1. Organizasyon Ayarları
+
+### Organizasyon Bilgilerini Görüntüleme
+
+**Organizasyon** sekmesinde:
+- Organizasyon adı
+- Oluşturulma tarihi
+- Organizasyon kimliği (ID)
+- Şirket bilgileri
+
+### Organizasyon Adını Güncelleme
+
+<Steps>
+  <Step title="Organizasyon Sekmesine Gidin">
+    **Organizasyon** sekmesine gidin
+  </Step>
+  <Step title="Adı Düzenleyin">
+    **Organizasyon Adı** alanını bulun ve yeni adı girin
+  </Step>
+  <Step title="Kaydedin">
+    **Güncelle** veya **Kaydet** butonuna tıklayın
+  </Step>
+  <Step title="Onay">
+    "Organizasyon başarıyla güncellendi" mesajını göreceksiniz
+  </Step>
+</Steps>
+
+<Warning>
+  **Not**: Organizasyon adı değişikliği tüm kullanıcılar için geçerli olur.
+</Warning>
+
+### Organizasyon Bilgileri
+
+İlk kurulumda girdiğiniz bilgiler burada görüntülenir:
+- Şirket adı
+- Vergi numarası
+- Vergi dairesi
+- Adres
+- Yetkili kişi
+
+**Güncelleme**: Bu bilgileri güncellemek için ilgili alanları düzenleyin ve kaydedin.
+
+## 2. Hesap Ayarları
+
+### Kullanıcı Profili
+
+**Hesap** sekmesinde kendi profil bilgilerinizi yönetebilirsiniz.
+
+#### Görüntülenen Bilgiler:
+
+- **İsim**: Adınız
+- **Soyisim**: Soyadınız
+- **E-posta**: Clerk hesabınıza kayıtlı e-posta
+
+<Frame>
+  <img src="/images/settings-account.png" alt="Hesap ayarları" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Hesap sekmesinde kullanıcı profil bilgileri
+</Note>
+
+#### Profil Güncelleme
+
+<Steps>
+  <Step title="Hesap Sekmesine Gidin">
+    **Hesap** sekmesine gidin
+  </Step>
+  <Step title="Bilgileri Düzenleyin">
+    **İsim** veya **Soyisim** alanlarını düzenleyin
+  </Step>
+  <Step title="Kaydedin">
+    **Profili Güncelle** butonuna tıklayın
+  </Step>
+</Steps>
+
+<Info>
+  **Not**: E-posta adresi Clerk üzerinden yönetilir ve doğrudan değiştirilemez.
+</Info>
+
+### Hesap Silme
+
+<Warning>
+  **Dikkat**: Bu işlem geri alınamaz!
+</Warning>
+
+<Steps>
+  <Step title="Hesap Sekmesine Gidin">
+    **Hesap** sekmesinin en altına gidin
+  </Step>
+  <Step title="Hesabı Sil Bölümü">
+    **Hesabı Sil** bölümünü bulun
+  </Step>
+  <Step title="Onay">
+    **Hesabı Sil** butonuna tıklayın ve onay dialogunda işlemi onaylayın
+  </Step>
+</Steps>
+
+**Sonuçlar**:
+- Hesabınız kalıcı olarak silinir
+- Organizasyon verilerine erişiminiz kesilir
+- Geri getirilemez
+
+**Alternatif**: Hesabı silmek yerine organizasyondan ayrılabilirsiniz (organizasyon yöneticisi ile iletişime geçin).
+
+### API Anahtarı Yönetimi (Organizasyon Sekmesinde)
+
+**Organizasyon** sekmesinin alt kısmında API anahtarı yönetimi bulunur.
+
+#### API Anahtarını Görüntüleme
+
+**Organizasyon** sekmesinde:
+- API anahtarı bağlantı durumu gösterilir:
+  - **Bağlı** (Yeşil - CheckCircle ikonu): Çalışıyor
+  - **Bağlı Değil** (Kırmızı - XCircle ikonu): Sorunlu
+  - **Bilinmiyor** (Sarı - AlertCircle ikonu): Test edilmedi
+- Anahtar değerini **Göster** butonu ile görüntüleyebilirsiniz
+
+<Frame>
+  <img src="/images/settings-api-key.png" alt="API anahtarı yönetimi" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Organizasyon sekmesindeki API anahtarı bölümü
+</Note>
+
+#### API Anahtarı Ekleme/Güncelleme
+
+<Steps>
+  <Step title="Organizasyon Sekmesine Gidin">
+    **Organizasyon** sekmesine gidin
+  </Step>
+  <Step title="API Anahtarı Bölümü">
+    **API Anahtarı** bölümünü bulun
+  </Step>
+  <Step title="Anahtarı Yapıştırın">
+    VAPI API anahtarınızı metin kutusuna yapıştırın
+  </Step>
+  <Step title="Test Edin">
+    **Bağlantıyı Test Et** butonuna tıklayın
+  </Step>
+  <Step title="Kaydedin">
+    Test başarılı olursa **Kaydet** butonuna tıklayın
+  </Step>
+</Steps>
+
+<Tip>
+  **Güvenlik**: API anahtarını başkaları ile paylaşmayın.
+</Tip>
+
+**Sorun Durumunda**: [API Anahtarı Kurulumu](/getting-started/api-key-setup) sorun giderme bölümüne bakın.
+
+## 3. Kategoriler ve Alt Kategoriler
+
+### Kategori Yönetimi Nedir?
+
+Kategoriler, ticket'ları ve çağrı sonuçlarını organize etmek için kullanılır.
+
+### Kategori Listeleme
+
+**Kategoriler** sekmesinde:
+- Tüm kategoriler ve alt kategorileri görürsünüz
+- Her kategori genişletilebilir
+- Alt kategoriler kategori altında listelenir
+
+<Frame>
+  <img src="/images/settings-categories.png" alt="Kategori yönetimi" />
+</Frame>
+
+<Note>
+  Ekran görüntüsü eklenecek: Kategoriler sekmesinde kategori listesi ve yönetim arayüzü
+</Note>
+
+#### Arama
+
+- Üst kısımdaki **"Kategorilerde ara..."** arama çubuğunu kullanın
+- Kategori veya alt kategori adıyla arama yapın
+
+#### Sayfalama
+
+- Sayfa başına 10 kategori gösterilir
+- **Önceki** ve **Sonraki** butonları ile gezinin
+- "Gösterilen 1-10 / 25 sonuç" formatında bilgi
+
+### Yeni Kategori Oluşturma
+
+<Steps>
+  <Step title="Kategori Oluştur Butonu">
+    **Kategoriler** sekmesinde **Kategori Oluştur** butonuna tıklayın
+  </Step>
+  <Step title="Kategori Adı Girin">
+    Modal dialog açılır, **Kategori Adı** girin
+  </Step>
+  <Step title="Oluştur">
+    **Oluştur** butonuna tıklayın
+  </Step>
+  <Step title="Onay">
+    "Kategori başarıyla oluşturuldu" mesajı göreceksiniz
+  </Step>
+</Steps>
+
+**Örnekler**:
+- Teknik Destek
+- Satış
+- Faturalandırma
+- Genel Sorular
+
+### Yeni Alt Kategori Oluşturma
+
+<Tabs>
+  <Tab title="Yöntem 1: Kategori Kartından">
+    <Steps>
+      <Step title="Alt Kategori Ekle">
+        Kategori kartında **Alt Kategori Ekle** butonuna tıklayın
+      </Step>
+      <Step title="Adı Girin">
+        **Alt Kategori Adı** girin
+      </Step>
+      <Step title="Oluştur">
+        **Oluştur** butonuna tıklayın
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="Yöntem 2: Ana Butondan">
+    <Steps>
+      <Step title="Alt Kategori Oluştur">
+        Üst kısımda **Alt Kategori Oluştur** butonuna tıklayın
+      </Step>
+      <Step title="Kategori Seçin">
+        **Kategori Seç** açılır menüsünden ana kategori seçin
+      </Step>
+      <Step title="Adı Girin">
+        **Alt Kategori Adı** girin
+      </Step>
+      <Step title="Oluştur">
+        **Oluştur** butonuna tıklayın
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+**Örnekler**:
+- Teknik Destek → Bağlantı Sorunları
+- Teknik Destek → Yazılım Hataları
+- Satış → Ürün Bilgisi
+- Satış → Fiyat Teklifi
+
+### Kategori Düzenleme
+
+<Steps>
+  <Step title="Düzenle Butonu">
+    Kategori kartında **Düzenle** butonuna tıklayın
+  </Step>
+  <Step title="Adı Değiştirin">
+    Kategori adını değiştirin
+  </Step>
+  <Step title="Güncelle">
+    **Güncelle** butonuna tıklayın
+  </Step>
+</Steps>
+
+### Kategori Silme
+
+<Warning>
+  **Dikkat**: Kategori silindiğinde tüm alt kategorileri de silinir!
+</Warning>
+
+<Steps>
+  <Step title="Sil Butonu">
+    Kategori kartında **Sil** butonuna tıklayın
+  </Step>
+  <Step title="Onay Dialogu">
+    Onay dialogu açılır: "Bu kategoriyi silmek istediğinizden emin misiniz? Bu işlem tüm alt kategorilerini de silecektir."
+  </Step>
+  <Step title="İşlemi Onaylayın">
+    **Sil** butonuna tıklayın
+  </Step>
+</Steps>
+
+## Organizasyon Değiştirme
+
+Birden fazla organizasyona üyeyseniz:
+
+### Header'dan Organizasyon Seçme
+
+<Steps>
+  <Step title="Organizasyon Adına Tıklayın">
+    Sağ üst köşede organizasyon adına tıklayın
+  </Step>
+  <Step title="Organizasyon Seçin">
+    Açılır menüden başka bir organizasyon seçin
+  </Step>
+  <Step title="Geçiş">
+    Sayfa yenilenir ve yeni organizasyona geçer
+  </Step>
+</Steps>
+
+<Info>
+  **Not**: Her organizasyonun ayrı verileri, ayarları ve API anahtarları vardır.
+</Info>
+
+## Kullanıcı Profili Menüsü
+
+Sağ üst köşedeki kullanıcı avatarına tıklayarak:
+
+### Menü Seçenekleri:
+
+- **Profil**: Kullanıcı profil sayfasına git
+- **Ayarlar**: Ayarlar sayfasına git
+- **Çıkış Yap**: Platformdan çıkış yap
+
+## En İyi Uygulamalar
+
+### Organizasyon Yönetimi
+
+<Tip>
+  - ✅ Organizasyon adını açıklayıcı yapın
+  - ✅ Şirket bilgilerini güncel tutun
+  - ✅ Düzenli olarak kullanıcı listesini gözden geçirin
+</Tip>
+
+### API Anahtarları
+
+<Tip>
+  - ✅ En az bir yedek API anahtarı bulundurun
+  - ✅ Anahtarları düzenli olarak doğrulayın
+  - ✅ Kullanılmayan anahtarları silin
+  - ✅ Anahtarları güvenli yerde saklayın
+</Tip>
+
+### Kategori Yönetimi
+
+<Tip>
+  - ✅ Anlamlı kategori isimleri kullanın
+  - ✅ Çok fazla kategori oluşturmayın (max 10-15)
+  - ✅ Alt kategorilerle detaylandırın
+  - ✅ Kullanılmayan kategorileri silin
+</Tip>
+
+## Sorun Giderme
+
+<AccordionGroup>
+  <Accordion title="Organizasyon güncellenemedi">
+    - İnternet bağlantınızı kontrol edin
+    - Geçerli bir organizasyon adı girdiğinizden emin olun
+    - Sayfa yenileyin ve tekrar deneyin
+  </Accordion>
+
+  <Accordion title="API anahtarı doğrulanamadı">
+    - Anahtarı doğru kopyaladığınızdan emin olun
+    - VAPI hesabınızda anahtarın aktif olduğunu kontrol edin
+    - Yeni bir anahtar oluşturun ve deneyin
+  </Accordion>
+
+  <Accordion title="Kategori silinemedi">
+    - Kategoriye bağlı aktif ticket'lar olabilir
+    - Önce ticket'ları başka kategoriye taşıyın
+    - Ardından kategoriyi silin
+  </Accordion>
+
+  <Accordion title="Hesap silinemedi">
+    - Sadece kendi hesabınızı silebilirsiniz
+    - Organizasyon sahibi hesapları özel izin gerektirebilir
+    - Destek ekibi ile iletişime geçin
+  </Accordion>
+</AccordionGroup>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Organizasyon adı değiştirilirse ne olur?">
+    Sadece görünen isim değişir. Tüm veriler, ayarlar ve kullanıcılar aynı kalır.
+  </Accordion>
+
+  <Accordion title="Birden fazla API anahtarı ekleyebilir miyim?">
+    Evet, yedekleme için birden fazla anahtar eklenebilir. Platform ilk geçerli anahtarı kullanır.
+  </Accordion>
+
+  <Accordion title="Kategorilerin limiti var mı?">
+    Teknik limit yok, ancak yönetilebilirlik için 15-20 kategori önerilir.
+  </Accordion>
+
+  <Accordion title="Silinen kategori geri getirilebilir mi?">
+    Hayır, silme işlemi geri alınamaz. Dikkatli olun.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="API Anahtarı Kurulumu" icon="key" href="/getting-started/api-key-setup">
+    API anahtarı yapılandırması ve sorun giderme
+  </Card>
+  <Card title="Platforma Giriş" icon="rocket" href="/getting-started/platform-introduction">
+    Platform özelliklerine genel bakış
+  </Card>
+  <Card title="Müşteri Etkileşimleri" icon="comments" href="/customer-management/customer-interactions">
+    Müşteri etkileşim yönetimi
+  </Card>
+</CardGroup>

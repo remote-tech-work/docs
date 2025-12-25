@@ -1,0 +1,423 @@
+---
+title: 'Görüşme Kayıtları ve Çağrı İzleme'
+description: 'Tüm çağrı kayıtlarını, transkriptleri ve analizleri merkezi bir yerden yönetin'
+---
+
+## Genel Bakış
+
+Görüşmeler sayfası, tüm çağrı kayıtlarınızı, transkriptleri, ses kayıtlarını ve çağrı analizlerini görüntüleyebileceğiniz merkezi konumdur.
+
+## Görüşmeler Sayfasına Erişim
+
+<Steps>
+  <Step title="Sol menüyü açın">
+    Sol menüden **Görüşmeler**'i seçin
+  </Step>
+  <Step title="Kayıtları görüntüleyin">
+    Tüm çağrı kayıtları listelenir
+  </Step>
+</Steps>
+
+## Görüşme Listesi
+
+### Liste Görünümü
+
+Her görüşme kartında şu bilgiler görüntülenir:
+
+<CardGroup cols={2}>
+  <Card title="Kimden/Kime" icon="phone">
+    Telefon numaraları
+  </Card>
+  <Card title="Yön" icon="arrows-left-right">
+    Gelen (inbound) veya Giden (outbound) ikonu
+  </Card>
+  <Card title="Süre" icon="clock">
+    Çağrı süresi (dakika:saniye)
+  </Card>
+  <Card title="Durum" icon="circle-check">
+    Tamamlandı, Başarısız, Devam Ediyor
+  </Card>
+</CardGroup>
+
+### Filtreleme ve Arama
+
+#### Durum Filtresi
+
+<Tabs>
+  <Tab title="Tüm Durumlar">
+    Tümünü göster
+  </Tab>
+  <Tab title="Tamamlandı">
+    Sadece başarılı çağrılar
+  </Tab>
+  <Tab title="Başarısız">
+    Başarısız çağrılar
+  </Tab>
+  <Tab title="Devam Ediyor">
+    Aktif çağrılar
+  </Tab>
+</Tabs>
+
+#### Arama
+
+<Info>
+**"Görüşmelerde ara..."** arama çubuğunu kullanın:
+- Telefon numarası ile arama yapın
+- Müşteri adı ile arama yapın
+</Info>
+
+## Görüşme Detayları
+
+### Detay Sayfasına Gitme
+
+<Steps>
+  <Step title="Görüşme seçin">
+    Görüşme listesinden bir çağrıya tıklayın
+  </Step>
+  <Step title="Detay sayfası açılır">
+    4 ana sekme görünür: Transkript, Müşteri, Analiz, Kayıt
+  </Step>
+</Steps>
+
+## Transkript Sekmesi
+
+### Konuşma Transkripti
+
+Çağrının tam metin dökümünü görüntüleyin.
+
+#### Mesaj Formatı
+
+Her mesaj için:
+- **Gönderen**: Agent veya Müşteri
+- **Zaman Damgası**: Ne zaman söylendi
+- **Mesaj İçeriği**: Söylenen tam metin
+- **Rol Rengi**:
+  - AI Agent mesajları: Mavi
+  - Müşteri mesajları: Gri
+
+<Frame>
+  <img src="/images/placeholder-transcript.png" alt="Transkript görünümü" />
+</Frame>
+
+#### Özellikler
+
+<CardGroup cols={2}>
+  <Card title="Kopyala" icon="copy">
+    **Kopyala** butonuna tıklayın. Tüm transkript panoya kopyalanır. Raporlama veya kayıt için kullanın.
+  </Card>
+  <Card title="İndir" icon="download">
+    **İndir** butonuna tıklayın. Transkript metin dosyası (.txt) olarak indirilir.
+  </Card>
+</CardGroup>
+
+## Müşteri Sekmesi
+
+### Çağrı Bilgileri
+
+**Temel Bilgiler:**
+- **Telefon Numarası**: Müşterinin numarası
+- **Tür**: Gelen veya Giden
+- **Süre**: Toplam çağrı süresi
+- **Durum**: Tamamlandı/Başarısız/Devam Ediyor
+
+### Müşteri Bilgileri
+
+Eğer müşteri CRM'de kayıtlıysa:
+
+<Info>
+- **Ad Soyad**: Müşteri adı
+- **E-posta**: Müşteri e-postası
+- **Şirket**: Çalıştığı şirket
+- **Konum**: Şehir/ülke
+
+**N/A**: Bilgi yoksa "N/A" gösterilir
+</Info>
+
+### Çağrı İstatistikleri
+
+Müşteri ile ilgili istatistikler:
+- **Toplam Çağrı**: Bu müşteri ile toplam çağrı sayısı
+- **Toplam Süre**: Tüm çağrıların toplam süresi
+- **Son İletişim**: En son ne zaman konuşuldu
+
+### Değerlendirme
+
+Çağrı sonucu:
+- **Başarılı**: Hedef tamamlandı
+- **Başarısız**: Hedef tamamlanmadı
+- **Kısmi**: Kısmen başarılı
+
+## Analiz Sekmesi
+
+### Çağrı Analizi
+
+AI tarafından otomatik oluşturulan analiz:
+
+<AccordionGroup>
+  <Accordion title="Özet">
+    - Konuşmanın kısa özeti
+    - Ana konular
+    - Sonuç
+  </Accordion>
+
+  <Accordion title="Anahtar Kelimeler">
+    - Konuşmada geçen önemli kelimeler
+    - Etiketler (tags)
+  </Accordion>
+
+  <Accordion title="Duygu Analizi">
+    - Müşteri duygusu: Pozitif/Nötr/Negatif
+    - Duygu değişim grafiği
+  </Accordion>
+
+  <Accordion title="Kalite Skoru">
+    - Çağrı kalitesi (0-100)
+    - Agent performansı
+    - Müşteri memnuniyeti
+  </Accordion>
+</AccordionGroup>
+
+<Frame>
+  <img src="/images/placeholder-analysis.png" alt="Çağrı analizi görünümü" />
+</Frame>
+
+## Kayıt Sekmesi
+
+### Ses Kayıtları
+
+Üç tür kayıt mevcuttur:
+
+<Tabs>
+  <Tab title="Çağrı Kaydı">
+    **Tam çağrı kaydı**
+    - Agent ve müşterinin birleşik kaydı
+    - Playback kontrolleri: Oynat/Duraklat/Hız
+    - İndirme seçeneği
+  </Tab>
+
+  <Tab title="Temsilci Kaydı">
+    **Temsilci ses kaydı**
+    - Sadece AI Agent'ın sesi
+    - Eğitim ve analiz için
+  </Tab>
+
+  <Tab title="Müşteri Kaydı">
+    **Müşteri ses kaydı**
+    - Sadece müşterinin sesi
+    - Kalite kontrol için
+  </Tab>
+</Tabs>
+
+### Ses Oynatıcı
+
+Her kayıt için:
+- **Oynat/Duraklat** butonu
+- **Ses Seviyesi** kontrolü
+- **İlerleme Çubuğu**: İleri/geri sarma
+- **Hız Ayarı**: 0.5x, 1x, 1.5x, 2x
+- **İndir** butonu
+
+<Frame>
+  <img src="/images/placeholder-audio-player.png" alt="Ses oynatıcı" />
+</Frame>
+
+## Kullanım Senaryoları
+
+### Kalite Kontrol
+
+<Steps>
+  <Step title="Görüşmeler sayfasına gidin">
+    Ana sayfadan Görüşmeler'e tıklayın
+  </Step>
+  <Step title="Rastgele görüşmeler seçin">
+    Farklı zamanlardaki görüşmeleri inceleyin
+  </Step>
+  <Step title="Transkriptleri okuyun">
+    Konuşma metinlerini gözden geçirin
+  </Step>
+  <Step title="Ses kayıtlarını dinleyin">
+    Ton ve iletişim kalitesini değerlendirin
+  </Step>
+  <Step title="Analiz skorlarını kontrol edin">
+    AI analiz sonuçlarını inceleyin
+  </Step>
+  <Step title="Agent performansını değerlendirin">
+    İyileştirme noktalarını belirleyin
+  </Step>
+</Steps>
+
+### Müşteri Sorunlarını Tespit Etme
+
+<Steps>
+  <Step title="Başarısız filtresi">
+    **Başarısız** filtresi ile başarısız çağrıları listeleyin
+  </Step>
+  <Step title="Transkriptleri inceleyin">
+    Başarısızlık nedenlerini okuyun
+  </Step>
+  <Step title="Ortak sorunları tespit edin">
+    Tekrarlayan paternleri bulun
+  </Step>
+  <Step title="Agent talimatlarını güncelleyin">
+    Tespit edilen sorunlara göre iyileştirme yapın
+  </Step>
+</Steps>
+
+### Eğitim Materyali Hazırlama
+
+<Steps>
+  <Step title="Başarılı çağrıları filtreleyin">
+    Sadece başarılı sonuçlanmış çağrıları görüntüleyin
+  </Step>
+  <Step title="En iyi performansı seçin">
+    En yüksek skorlu çağrıları bulun
+  </Step>
+  <Step title="Transkriptleri indirin">
+    Metin dosyaları olarak kaydedin
+  </Step>
+  <Step title="Ses kayıtlarını indirin">
+    Örnek ses dosyalarını saklayın
+  </Step>
+  <Step title="Eğitim sunumunda kullanın">
+    Materyalleri eğitim içinde paylaşın
+  </Step>
+</Steps>
+
+## Veri Saklama
+
+### Kayıt Tutma Süresi
+
+<Warning>
+- **Transkriptler**: Süresiz
+- **Ses Kayıtları**: 90 gün (varsayılan)
+- **Analiz Verileri**: Süresiz
+
+**Not**: Saklama süresi organizasyon ayarlarından değiştirilebilir.
+</Warning>
+
+### Veri Silme
+
+Eski kayıtları silmek için:
+- Şu anda manuel silme desteklenmiyor
+- Otomatik silme: 90 günden eski kayıtlar
+- Kalıcı saklama: Özel talep
+
+## Raporlama
+
+### Export İşlemleri
+
+Görüşme verilerini dışa aktarabilirsiniz:
+
+<Tabs>
+  <Tab title="Excel Export">
+    - Görüşme listesi
+    - Temel metrikler
+    - Durum bilgileri
+    - Süre ve tarih
+  </Tab>
+
+  <Tab title="CSV Export">
+    - Ham veri
+    - Filtreleme için uygun
+    - Analiz araçlarında kullanım
+  </Tab>
+</Tabs>
+
+## Gizlilik ve Güvenlik
+
+### Veri Koruma
+
+<Info>
+- Tüm kayıtlar şifreli saklanır
+- Sadece yetkili kullanıcılar erişir
+- Audit log tutulur
+</Info>
+
+### Yasal Uyumluluk
+
+- KVKK uyumlu
+- Müşteri onayı gerekli (arama başında bilgilendirme)
+- Kayıt silme talebi: 30 gün içinde
+
+## Sorun Giderme
+
+<AccordionGroup>
+  <Accordion title='"Görüşme bulunamadı" Hatası'>
+    **Olası Nedenler:**
+    - Henüz çağrı yapılmadı
+    - Filtreler çok dar
+    - Veri yükleme sorunu
+
+    **Çözüm:**
+    - Filtreleri "Tüm Durumlar" yapın
+    - Sayfa yenileyin
+    - Kampanya başlatın veya test araması yapın
+  </Accordion>
+
+  <Accordion title="Transkript Gösterilmiyor">
+    **Olası Nedenler:**
+    - Çağrı henüz tamamlanmadı
+    - Transkript işleniyor
+    - Teknik hata
+
+    **Çözüm:**
+    - Birkaç dakika bekleyin
+    - Sayfayı yenileyin
+    - Destek ekibi ile iletişime geçin
+  </Accordion>
+
+  <Accordion title="Ses Kaydı Çalmıyor">
+    **Olası Nedenler:**
+    - Tarayıcı ses dosyasını desteklemiyor
+    - İnternet bağlantısı yavaş
+    - Dosya bozuk
+
+    **Çözüm:**
+    - Farklı tarayıcı deneyin (Chrome önerilir)
+    - İnterneti kontrol edin
+    - Kaydı indirip başka oynatıcıda açın
+  </Accordion>
+
+  <Accordion title="Analiz Verisi Yok">
+    **Neden**: Çağrı henüz analiz edilmedi
+
+    **Çözüm**:
+    - 5-10 dakika bekleyin
+    - Analiz otomatik olarak oluşturulacak
+  </Accordion>
+</AccordionGroup>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Tüm görüşmeler kaydediliyor mu?">
+    Evet, tüm çağrılar otomatik olarak kaydedilir ve saklanır.
+  </Accordion>
+
+  <Accordion title="Kayıtlar ne kadar süre saklanır?">
+    Transkriptler süresiz, ses kayıtları varsayılan 90 gün.
+  </Accordion>
+
+  <Accordion title="Eski kayıtları silebilir miyim?">
+    Şu anda manuel silme desteklenmiyor. Talep için destek ekibi ile iletişime geçin.
+  </Accordion>
+
+  <Accordion title="Görüşme detaylarını dışa aktarabilir miyim?">
+    Evet, transkriptleri kopyalayıp indirebilirsiniz. Toplu export özelliği yakında eklenecek.
+  </Accordion>
+
+  <Accordion title="Gerçek zamanlı çağrı izleyebilir miyim?">
+    Şu anda sadece tamamlanmış çağrılar izlenebilir. Canlı izleme özelliği geliştirilmekte.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Kontrol Paneli" icon="gauge" href="/getting-started/platform-introduction">
+    Platform kullanımı hakkında bilgi edinin
+  </Card>
+  <Card title="Müşteri Etkileşimleri" icon="users" href="/customer-management/customer-interactions">
+    Müşteri iletişim geçmişi
+  </Card>
+</CardGroup>

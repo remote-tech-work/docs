@@ -1,0 +1,367 @@
+---
+title: 'Kampanya Oluşturma'
+description: 'Otomatik ve zamanlanmış kampanyalarla müşterilerinize toplu çağrı yapın'
+---
+
+## Genel Bakış
+
+Kampanyalar, birden fazla müşteriye otomatik ve zamanlanmış şekilde çağrı yapmanızı sağlar. Her kampanya bir çağrı listesi, AI Agent ve telefon numarası ile yapılandırılır.
+
+## Kampanya Oluşturma Adımları
+
+### Ön Gereksinimler
+
+Kampanya oluşturmadan önce hazır olması gerekenler:
+
+<CardGroup cols={2}>
+  <Card title="AI Agent" icon="robot">
+    En az bir AI Agent oluşturulmuş olmalı
+  </Card>
+  <Card title="Telefon Numarası" icon="phone">
+    En az bir telefon numarası eklenmiş olmalı
+  </Card>
+  <Card title="Çağrı Listesi" icon="list">
+    Bir çağrı listesi hazırlanmış olmalı
+  </Card>
+  <Card title="Kredi Bakiyesi" icon="credit-card">
+    Yeterli kredi bakiyesi olmalı
+  </Card>
+</CardGroup>
+
+### Adım 1: Kampanya Sayfasına Gidin
+
+<Steps>
+  <Step title="Kampanya Yönetimi'ni açın">
+    Sol menüden **Kampanya Yönetimi**'ni genişletin
+  </Step>
+  <Step title="Kampanyalar'ı seçin">
+    **Kampanyalar**'ı seçin
+  </Step>
+  <Step title="Yeni kampanya oluştur">
+    Sağ üstteki **Yeni Kampanya Oluştur** butonuna tıklayın
+  </Step>
+</Steps>
+
+### Adım 2: Kampanya Bilgileri
+
+#### Kampanya Adı
+
+Kampanyanıza açıklayıcı bir isim verin:
+- Örnek: "Ocak 2025 Ürün Tanıtımı", "Müşteri Memnuniyeti Anketi"
+
+#### Amaç
+
+Kampanyanın amacını kısaca açıklayın:
+- Bu bilgi raporlama ve analiz için kullanılır
+- Örnek: "Yeni ürün lansmanı duyurusu", "Ödeme hatırlatması"
+
+### Adım 3: Hedef Kitle
+
+#### Çağrı Listesi Seçimi
+
+<Steps>
+  <Step title="Çağrı listesi seçin">
+    **Çağrı Listesi Seç** açılır menüsünü açın ve daha önce oluşturduğunuz listelerden birini seçin
+  </Step>
+</Steps>
+
+<Note>
+**Çağrı Listesi Yoksa:** Önce çağrı listesi oluşturma makalesini okuyun.
+
+Liste, aranacak müşterilerin telefon numaralarını içerir. Her liste statik (manuel) veya akıllı (filtre bazlı) olabilir.
+</Note>
+
+### Adım 4: AI Agent Seçimi
+
+#### AI Agent Seç
+
+Açılır menüden kullanılacak **AI Agent**'ı seçin. Sadece aktif agent'lar listede görünür.
+
+#### Karşılama Şablonu (Opsiyonel)
+
+Agent'ın varsayılan karşılama mesajını geçersiz kılabilirsiniz. Kampanyaya özel karşılama mesajı yazın.
+
+**Kullanılabilir Değişkenler:**
+- `{customerName}`: Müşteri adı
+- `{companyName}`: Şirket adı
+
+**Örnek:**
+```
+Merhaba {customerName}! Ben ABC Şirketi'nden yapay zeka
+asistanı. Yeni ürünlerimiz hakkında bilgi vermek için arıyorum.
+```
+
+### Adım 5: Telefon Numarası Seçimi
+
+<Info>
+**Telefon Numarası Seç** açılır menüsünden seçim yapın. Daha önce **Santral** bölümünde eklediğiniz numaralardan birini kullanın.
+
+Sadece aktif ve yapılandırılmış telefon numaraları listede görünür.
+</Info>
+
+### Adım 6: Zamanlama ve Ayarlar
+
+#### Başlangıç Zamanı
+
+<AccordionGroup>
+  <Accordion title="Hemen Başlat">
+    Kampanyanın hemen başlaması için bu alanı boş bırakın
+  </Accordion>
+  <Accordion title="Zamanla">
+    Gelecek bir tarih/saat seçerek kampanyayı zamanlayabilirsiniz. Kampanya bu tarih/saatte otomatik başlayacak.
+  </Accordion>
+</AccordionGroup>
+
+#### Eş Zamanlı Çağrılar
+
+Aynı anda kaç çağrı yapılacağını belirleyin:
+- **Minimum:** 1
+- **Öneri:** Küçük kampanyalar için 5-10, büyük kampanyalar için 20-50
+
+**Örnek:**
+- Eş Zamanlı Çağrı: **10**
+- Anlamı: Aynı anda 10 müşteri aranacak
+
+#### Çağrılar Arası Gecikme
+
+Her çağrı arasında kaç saniye beklenecek:
+- Minimum: 0 saniye (anlık)
+- Maksimum: 300 saniye (5 dakika)
+- **Öneri:** 5-10 saniye (normal kampanyalar için)
+
+**Örnek:**
+- Gecikme: **10 saniye**
+- Anlamı: Bir çağrı bittikten 10 saniye sonra sonraki başlar
+
+#### Çalışma Saatleri (Opsiyonel)
+
+<Tabs>
+  <Tab title="Çalışma Günleri">
+    Pazartesi-Cuma gibi günleri seçin. Seçilmeyen günlerde kampanya çalışmaz.
+  </Tab>
+  <Tab title="Çalışma Saatleri">
+    **Başlangıç:** Örn: 09:00
+    **Bitiş:** Örn: 18:00
+    Bu saatler dışında çağrı yapılmaz.
+  </Tab>
+  <Tab title="Tatil Günleri">
+    "Tatillerde ara" seçeneğini işaretleyin. Resmi tatillerde kampanya duraklar.
+  </Tab>
+</Tabs>
+
+### Adım 7: Gelişmiş Ayarlar (Opsiyonel)
+
+#### Agent Geçersiz Kılma
+
+Kampanya için özel agent davranışı tanımlayabilirsiniz:
+
+**Sistem Talimatı Geçersiz Kılma:**
+- Kampanyaya özel talimatlar yazın
+- Agent'ın varsayılan talimatları yerine bunları kullanır
+
+**Örnek Kullanım:**
+```json
+{
+  "firstMessage": "Merhaba! Yeni kampanyamız hakkında bilgi vermek için arıyorum.",
+  "systemPrompt": "Sen bir satış asistanısın. Müşterilere kısa ve öz şekilde kampanya bilgisi ver."
+}
+```
+
+### Adım 8: Kampanyayı Oluşturun
+
+<Steps>
+  <Step title="Formu tamamlayın">
+    Tüm alanları doldurduktan sonra **Kampanya Oluştur** butonuna tıklayın
+  </Step>
+  <Step title="Onay mesajı">
+    "Kampanya başarıyla oluşturuldu" mesajını göreceksiniz
+  </Step>
+  <Step title="Yönlendirme">
+    Kampanya listesine yönlendirileceksiniz
+  </Step>
+</Steps>
+
+## Kampanya Başlatma
+
+### Manuel Başlatma
+
+<Steps>
+  <Step title="Başlat butonuna tıklayın">
+    Kampanya kartında **Başlat** butonuna tıklayın
+  </Step>
+  <Step title="Durum değişimi">
+    Kampanya durumu "Aktif" olur
+  </Step>
+  <Step title="Çağrılar başlar">
+    Çağrılar başlar
+  </Step>
+</Steps>
+
+### Otomatik Başlatma
+
+- Başlangıç zamanı ayarladıysanız
+- Kampanya belirtilen tarih/saatte otomatik başlar
+
+## Kampanya Yönetimi
+
+### Kampanya Durumları
+
+| Durum | Açıklama | Eylemler |
+|-------|----------|----------|
+| **Taslak** | Henüz başlatılmadı | Başlat, Düzenle, Sil |
+| **Aktif** | Şu anda çalışıyor | Duraklat, Görüntüle |
+| **Duraklatıldı** | Geçici olarak durduruldu | Başlat/Devam Et, Durdur |
+| **Tamamlandı** | Tüm çağrılar tamamlandı | Görüntüle, Analiz |
+| **Durduruldu** | Kalıcı olarak durduruldu | Görüntüle |
+
+### Kampanya İzleme
+
+#### Kampanya Kartı Bilgileri
+
+Her kampanya kartında:
+- **İlerleme Çubuğu**: Tamamlanan çağrı yüzdesi
+- **Hedef**: Toplam çağrı sayısı
+- **Kalan**: Bekleyen çağrı sayısı
+- **AI Agent**: Kullanılan agent
+- **Müşteriler**: Hedef müşteri sayısı
+
+#### Canlı İzleme
+
+<Steps>
+  <Step title="Kampanya detayına gidin">
+    Kampanya kartında **Görüntüle** butonuna tıklayın
+  </Step>
+  <Step title="Detay sayfası">
+    Kampanya detay sayfasında gerçek zamanlı istatistikler, çağrı görev listesi ve başarı/başarısızlık oranlarını görün
+  </Step>
+</Steps>
+
+## Kampanya Sonuçları
+
+### Kampanya Tamamlandığında
+
+<Steps>
+  <Step title="Kampanya Analitiği">
+    **Kampanya Analitiği** sayfasına gidin
+  </Step>
+  <Step title="Performans raporları">
+    Detaylı performans raporlarını görün
+  </Step>
+  <Step title="Çıktı dosyası">
+    Kampanya çıktı dosyasını indirin (Excel)
+  </Step>
+</Steps>
+
+### Çıktı Dosyası İndirme
+
+Kampanya detay sayfasında **Excel'e Aktar** butonuna tıklayın. Dosya şunları içerir:
+- Aranan müşteriler
+- Çağrı durumları
+- Çağrı süreleri
+- Konuşma özetleri
+- Sonuç kodları
+
+## En İyi Uygulamalar
+
+### Kampanya Planlama
+
+<CardGroup cols={2}>
+  <Card title="Test Başlatın" icon="flask">
+    Küçük bir test grubu ile başlayın (50-100 müşteri)
+  </Card>
+  <Card title="Analiz Edin" icon="chart-line">
+    Sonuçları analiz edin
+  </Card>
+  <Card title="Optimize Edin" icon="wrench">
+    Gerekirse agent talimatlarını optimize edin
+  </Card>
+  <Card title="Ölçeklendirin" icon="arrow-up">
+    Ardından büyük kampanyayı başlatın
+  </Card>
+</CardGroup>
+
+### Zamanlama
+
+<Tip>
+- Müşterilerinizin müsait olduğu saatleri seçin
+- Öğle arası veya akşam geç saatlerden kaçının
+- Hafta sonu aramalarını değerlendirin (B2C için)
+</Tip>
+
+### Eş Zamanlı Çağrılar
+
+<Warning>
+- Az sayıda başlayın (5-10)
+- Performansı izleyin
+- Sistem stabil ise artırın
+- Agent kalitesi düşerse azaltın
+</Warning>
+
+## Sorun Giderme
+
+<AccordionGroup>
+  <Accordion title='"Kampanya başlatılamadı" Hatası'>
+    **Olası Nedenler:**
+    - Çağrı listesi boş
+    - Kredi bakiyesi yetersiz
+    - AI Agent pasif durumda
+    - Telefon numarası geçersiz
+
+    **Çözüm:**
+    1. Çağrı listesinin dolu olduğunu kontrol edin
+    2. Kredi bakiyenizi Kontrol Paneli'nde kontrol edin
+    3. Agent'ın aktif olduğundan emin olun
+    4. Telefon numarasının çalıştığını test edin
+  </Accordion>
+
+  <Accordion title="Kampanya Çok Yavaş İlerliyor">
+    **Olası Nedenler:**
+    - Eş zamanlı çağrı sayısı düşük
+    - Çağrılar arası gecikme çok yüksek
+    - Sistem kapasitesi dolmuş
+
+    **Çözüm:**
+    - Eş zamanlı çağrı sayısını artırın
+    - Gecikme süresini azaltın
+    - Destek ekibi ile iletişime geçin
+  </Accordion>
+
+  <Accordion title="Çağrılar Başarısız Oluyor">
+    **Kontrol Listesi:**
+    - Agent transkriptlerini inceleyin
+    - Agent talimatlarını gözden geçirin
+    - Telefon numarası geçerliliğini kontrol edin
+    - DNC listesine düşmüş olabilir
+  </Accordion>
+</AccordionGroup>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Bir kampanyayı durdurduktan sonra tekrar başlatabilir miyim?">
+    Duraklatılan kampanyayı evet, ancak tamamen durdurulan kampanyayı hayır.
+  </Accordion>
+
+  <Accordion title="Kampanya çalışırken düzenleyebilir miyim?">
+    Hayır, sadece taslak durumundaki kampanyalar düzenlenebilir.
+  </Accordion>
+
+  <Accordion title="Aynı müşteriyi birden fazla kampanyaya ekleyebilir miyim?">
+    Evet, ancak DNC kuralları ve çağrı sıklığı yönetmeliklerine dikkat edin.
+  </Accordion>
+
+  <Accordion title="Kampanya maliyeti nasıl hesaplanır?">
+    Her çağrı için kredi tüketilir. Toplam maliyet = Çağrı sayısı × Ortalama çağrı süresi × Kredi oranı.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="AI Agent Oluşturma" icon="robot" href="/voice-ai-agents/create-agent">
+    AI Agent nasıl oluşturulur öğrenin
+  </Card>
+  <Card title="Telefon Numarası Ekleme" icon="phone" href="/phone-numbers/sip-trunk-setup">
+    Telefon numarası kurulumu
+  </Card>
+</CardGroup>

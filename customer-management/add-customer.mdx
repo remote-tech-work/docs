@@ -1,0 +1,408 @@
+---
+title: 'Müşteri Ekleme ve Yönetimi'
+description: 'CRM sisteminde müşteri kayıtlarını oluşturun ve yönetin'
+---
+
+## Genel Bakış
+
+CRM (Müşteri İlişkileri Yönetimi) modülü, tüm müşteri bilgilerinizi merkezi bir yerde saklamanızı ve yönetmenizi sağlar.
+
+## Müşteri Sayfasına Erişim
+
+<Steps>
+  <Step title="CRM menüsünü açın">
+    Sol menüden **CRM**'i genişletin
+  </Step>
+  <Step title="Müşteriler'e tıklayın">
+    **Müşteriler** seçeneğine tıklayın
+  </Step>
+</Steps>
+
+## Tek Müşteri Ekleme
+
+### Adım 1: Yeni Müşteri Formu
+
+<Steps>
+  <Step title="Yeni Müşteri butonuna tıklayın">
+    **Müşteriler** sayfasında sağ üstteki **Yeni Müşteri** butonuna tıklayın
+  </Step>
+  <Step title="Form doldurun">
+    Müşteri bilgilerini doldurun
+  </Step>
+</Steps>
+
+### Adım 2: Temel Bilgiler
+
+<Info>
+**Zorunlu Alanlar:**
+- **Ad Soyad**: Müşterinin tam adı
+- **Telefon Numarası**: E.164 formatında (örn: +905301234567)
+
+**Opsiyonel Alanlar:**
+- **E-posta**: Müşterinin e-posta adresi
+- **Şirket**: Müşterinin çalıştığı şirket
+</Info>
+
+<Frame>
+  <img src="/images/placeholder-customer-form.png" alt="Müşteri ekleme formu" />
+</Frame>
+
+### Adım 3: Segment Seçimi
+
+Müşteri segmenti seçin:
+
+<CardGroup cols={2}>
+  <Card title="VIP" icon="crown">
+    Öncelikli müşteriler
+  </Card>
+  <Card title="Normal" icon="user">
+    Standart müşteriler
+  </Card>
+  <Card title="Risk" icon="triangle-exclamation">
+    Takip gerektiren müşteriler
+  </Card>
+  <Card title="Potansiyel" icon="star">
+    Potansiyel müşteri adayları
+  </Card>
+</CardGroup>
+
+### Adım 4: Kaydet
+
+**Oluştur** butonuna tıklayarak müşteriyi kaydedin.
+
+## Toplu Müşteri Ekleme
+
+### Excel veya CSV ile Toplu İçe Aktarma
+
+#### Adım 1: Toplu İçe Aktarma Başlat
+
+<Steps>
+  <Step title="Import butonuna tıklayın">
+    **Müşteriler** sayfasında **Toplu İçe Aktar** veya **Import** butonuna tıklayın
+  </Step>
+  <Step title="Dosya yükleme dialogu">
+    Dosya yükleme dialogu açılacak
+  </Step>
+</Steps>
+
+#### Adım 2: Dosya Formatı
+
+Dosyanız şu sütunları içermelidir:
+
+| Sütun | Açıklama | Zorunlu |
+|-------|----------|---------|
+| `isim` veya `name` | Müşteri adı | Evet |
+| `telefon` veya `phone` | Telefon numarası (E.164 format) | Evet |
+| `email` | E-posta adresi | Hayır |
+| `sirket` veya `company` | Şirket adı | Hayır |
+| `segment` | VIP, Normal, Risk, veya Potansiyel | Hayır |
+
+**Örnek CSV:**
+```csv
+isim,telefon,email,sirket,segment
+Ahmet Yılmaz,+905301234567,ahmet@example.com,ABC Ltd.,Normal
+Ayşe Demir,+905401234568,ayse@example.com,XYZ A.Ş.,VIP
+```
+
+<Tip>
+CSV dosyasını UTF-8 encoding ile kaydedin. Excel'de kaydetmek için "CSV UTF-8" formatını seçin.
+</Tip>
+
+#### Adım 3: Dosyayı Yükleyin
+
+<Steps>
+  <Step title="Dosya seçin">
+    **Göz at** butonuna tıklayın veya dosyayı sürükleyip bırakın
+  </Step>
+  <Step title="Format kontrolü">
+    Excel (.xlsx) veya CSV (.csv) dosyası seçin
+  </Step>
+  <Step title="Yükle">
+    **Yükle** butonuna tıklayın
+  </Step>
+</Steps>
+
+#### Adım 4: İşlemi İzleyin
+
+Toplu işlemler **Batch Jobs** (Toplu İş) olarak işlenir:
+
+<Info>
+- Header'da bildirim ikonu üzerinden ilerlemeyi takip edebilirsiniz
+- İşlem durumları:
+  - **Kuyrukta**: İşlem sıraya alındı
+  - **İşleniyor**: Müşteriler ekleniyor
+  - **Tamamlandı**: Tüm müşteriler eklendi
+  - **Başarısız**: Hata oluştu
+</Info>
+
+<Frame>
+  <img src="/images/placeholder-batch-jobs.png" alt="Toplu işlem izleme" />
+</Frame>
+
+## Müşteri Listeleme ve Arama
+
+### Filtreleme Seçenekleri
+
+#### Segment Filtresi
+
+<Tabs>
+  <Tab title="Tüm Segmentler">
+    Tüm müşterileri göster
+  </Tab>
+  <Tab title="VIP">
+    Sadece VIP müşteriler
+  </Tab>
+  <Tab title="Normal">
+    Standart müşteriler
+  </Tab>
+  <Tab title="Risk">
+    Risk segmentindeki müşteriler
+  </Tab>
+  <Tab title="Potansiyel">
+    Potansiyel müşteriler
+  </Tab>
+</Tabs>
+
+#### Son İletişim Tarihi Filtresi
+
+<Note>
+**Son 7 gün içinde iletişim kurulanlar**
+Checkbox'ı işaretleyerek son 7 günde arandığı müşterileri görüntüleyin
+</Note>
+
+#### Arama
+
+- Üst kısımdaki arama çubuğunu kullanın
+- İsim veya telefon numarası ile arama yapın
+
+### Sıralama
+
+<CardGroup cols={2}>
+  <Card title="Güncellenme Tarihi" icon="calendar">
+    En son güncellenen müşteriler
+  </Card>
+  <Card title="Etkileşim Sayısı" icon="chart-line">
+    En çok etkileşim yapılan müşteriler
+  </Card>
+</CardGroup>
+
+## Müşteri Detayları Görüntüleme
+
+### Müşteri Kartına Tıklama
+
+<Steps>
+  <Step title="Müşteri seçin">
+    Müşteri listesinden bir müşteriye tıklayın
+  </Step>
+  <Step title="Detay sayfası">
+    Detay sayfası açılır
+  </Step>
+</Steps>
+
+### Müşteri Bilgileri
+
+Detay sayfasında görüntülenen bilgiler:
+
+<AccordionGroup>
+  <Accordion title="Temel Bilgiler">
+    - **Ad Soyad**
+    - **Telefon Numarası**
+    - **E-posta**
+    - **Şirket**
+    - **Segment**
+  </Accordion>
+
+  <Accordion title="İstatistikler">
+    - **Toplam Çağrı Sayısı**
+    - **Toplam Çağrı Süresi**
+    - **Son İletişim Tarihi**
+  </Accordion>
+
+  <Accordion title="Etkileşim Geçmişi">
+    - Tüm çağrı kayıtları
+    - Eklenen notlar
+    - Etkileşim tarihleri
+    - Çağrı sonuçları
+  </Accordion>
+</AccordionGroup>
+
+## Müşteri Notları Ekleme
+
+### Not Ekleme
+
+<Steps>
+  <Step title="Not Ekle butonuna tıklayın">
+    Müşteri detay sayfasında **Not Ekle** butonuna tıklayın
+  </Step>
+  <Step title="Not yazın">
+    Not içeriğini yazın
+  </Step>
+  <Step title="Kaydet">
+    **Kaydet** butonuna tıklayın
+  </Step>
+</Steps>
+
+### Notları Görüntüleme
+
+**Müşteri Etkileşimleri** sekmesinde tüm notlar görüntülenir:
+- Her notun tarihi ve ekleyen kullanıcı bilgisi gösterilir
+
+## Müşteri Güncelleme
+
+### Müşteri Bilgilerini Düzenleme
+
+<Steps>
+  <Step title="Düzenle butonuna tıklayın">
+    Müşteri detay sayfasında **Düzenle** butonuna tıklayın
+  </Step>
+  <Step title="Bilgileri güncelleyin">
+    İstediğiniz değişiklikleri yapın
+  </Step>
+  <Step title="Güncelle">
+    **Güncelle** butonuna tıklayın
+  </Step>
+</Steps>
+
+**Güncellenebilir Alanlar:**
+- Ad Soyad
+- E-posta
+- Şirket
+- Segment
+
+<Warning>
+**Not:** Telefon numarası genellikle değiştirilemez (sistem kimlik anahtarı olarak kullanır)
+</Warning>
+
+## Müşteri Silme
+
+### Tek Müşteri Silme
+
+<Steps>
+  <Step title="Menüyü açın">
+    Müşteri detay sayfasında üç nokta menüsünü açın
+  </Step>
+  <Step title="Sil seçeneği">
+    **Sil** seçeneğini seçin
+  </Step>
+  <Step title="Onayla">
+    Onay dialogunda **Sil** butonuna tıklayın
+  </Step>
+</Steps>
+
+<Warning>
+**Uyarı:** Silinen müşteri ve ilişkili etkileşim geçmişi geri getirilemez.
+</Warning>
+
+## En İyi Uygulamalar
+
+### Veri Kalitesi
+
+<CardGroup cols={2}>
+  <Card title="E.164 Format" icon="phone">
+    Telefon numaralarını E.164 formatında girin (+90 ile başlayan)
+  </Card>
+  <Card title="E-posta Doğrulama" icon="envelope">
+    E-posta adreslerini doğrulayın
+  </Card>
+  <Card title="Doğru Segment" icon="tags">
+    Segment bilgisini doğru seçin
+  </Card>
+  <Card title="Düzenli Notlar" icon="note-sticky">
+    Müşteri notlarını düzenli güncelleyin
+  </Card>
+</CardGroup>
+
+### Toplu İçe Aktarma
+
+<Tip>
+- Dosyayı yüklemeden önce formatı kontrol edin
+- Büyük dosyaları parçalara bölün (her seferinde max 1000 kayıt)
+- Yükleme sonrası birkaç müşteriyi manuel kontrol edin
+- Hatalı kayıtlar için hata mesajlarını inceleyin
+</Tip>
+
+### Müşteri Segmentasyonu
+
+<AccordionGroup>
+  <Accordion title="VIP">
+    Yüksek değerli, öncelikli müşteriler
+  </Accordion>
+
+  <Accordion title="Normal">
+    Standart müşteri tabanı
+  </Accordion>
+
+  <Accordion title="Risk">
+    Olumsuz geri bildirim veya ödeme sorunları olan müşteriler
+  </Accordion>
+
+  <Accordion title="Potansiyel">
+    Henüz müşteri olmayan, takip edilmesi gereken kişiler
+  </Accordion>
+</AccordionGroup>
+
+## Sorun Giderme
+
+<AccordionGroup>
+  <Accordion title='"Müşteri eklenemedi" Hatası'>
+    **Olası Nedenler:**
+    - Telefon numarası formatı hatalı
+    - Aynı telefon numarası zaten sistemde mevcut
+    - Zorunlu alanlar boş
+
+    **Çözüm:**
+    - Telefon numarasını E.164 formatında girin
+    - Müşterinin sistemde olup olmadığını kontrol edin
+    - Tüm zorunlu alanları doldurun
+  </Accordion>
+
+  <Accordion title="Toplu İçe Aktarma Başarısız">
+    **Olası Nedenler:**
+    - Dosya formatı yanlış
+    - Sütun başlıkları eksik veya yanlış
+    - Dosya boyutu çok büyük
+
+    **Çözüm:**
+    - Örnek CSV formatını kullanın
+    - Sütun başlıklarını kontrol edin
+    - Dosyayı küçük parçalara bölün
+  </Accordion>
+
+  <Accordion title="Müşteri Bulunamıyor">
+    **Çözüm:**
+    - Arama çubuğunda tam isim veya telefon numarası kullanın
+    - Segment filtrelerini "Tüm Segmentler" olarak ayarlayın
+    - Müşterinin silinmediğinden emin olun
+  </Accordion>
+</AccordionGroup>
+
+## Sık Sorulan Sorular
+
+<AccordionGroup>
+  <Accordion title="Aynı telefon numarasıyla birden fazla müşteri eklenebilir mi?">
+    Hayır, telefon numarası benzersiz olmalıdır. Her telefon numarası sadece bir müşteriye ait olabilir.
+  </Accordion>
+
+  <Accordion title="Müşteri bilgileri değişirse otomatik güncellenir mi?">
+    Hayır, müşteri bilgilerini manuel olarak güncellemeniz gerekir.
+  </Accordion>
+
+  <Accordion title="Silinen müşteri geri getirilebilir mi?">
+    Hayır, silme işlemi geri alınamaz. Önemli müşterileri silmeden önce dikkatli olun.
+  </Accordion>
+
+  <Accordion title="Toplu içe aktarmada kaç müşteri ekleyebilirim?">
+    Teknik olarak sınır yoktur, ancak performans için her dosyada 1000-5000 müşteri önerilir.
+  </Accordion>
+</AccordionGroup>
+
+## İlgili Makaleler
+
+<CardGroup cols={2}>
+  <Card title="Müşteri Etkileşimleri" icon="comments" href="/customer-management/customer-interactions">
+    Müşteri iletişim geçmişi
+  </Card>
+  <Card title="Pipeline Ticket Yönetimi" icon="list-check" href="/pipeline-management/ticket-creation">
+    Ticket oluşturma ve yönetimi
+  </Card>
+</CardGroup>
