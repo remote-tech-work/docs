@@ -156,8 +156,8 @@
     }
   },
   "logo": {
-    "light": "/logo/AIAgentTR-Logo-V.png",
-    "dark": "/logo/AIAgentTR-Logo-V.png"
+    "light": "/logo/AIAgentTR-Logo-H.png",
+    "dark": "/logo/AIAgentTR-Logo-H.png"
   },
   "navbar": {
     "links": [
