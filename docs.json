@@ -146,7 +146,7 @@
         },
         {
           "anchor": "Platform",
-          "href": "https://app.aiagenttr.com",
+          "href": "https://platform.aiagenttr.com",
           "icon": "rocket"
         }
       ]
@@ -160,13 +160,13 @@
     "links": [
       {
         "label": "Destek",
-        "href": "mailto:support@aiagenttr.com"
+        "href": "mailto:info@aiagenttr.com"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Platforma Git",
-      "href": "https://app.aiagenttr.com"
+      "href": "https://platform.aiagenttr.com"
     }
   },
   "contextual": {

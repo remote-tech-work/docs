@@ -48,8 +48,8 @@ Changes pushed to the main branch are automatically deployed to production via t
   - Turkish navigation labels
   - Three main tabs: "Kullanım Kılavuzu", "Referans", "AI Araçları"
   - Contextual menu options include copy, view, ChatGPT, Claude, Perplexity, and Cursor integrations
-  - Global anchors: Ana Sayfa (https://aiagenttr.com), Platform (https://app.aiagenttr.com)
-  - Support email placeholder: support@aiagenttr.com
+  - Global anchors: Ana Sayfa (https://aiagenttr.com), Platform (https://platform.aiagenttr.com)
+  - Support email placeholder: info@aiagenttr.com
   - Social media placeholders: Twitter/X, GitHub, LinkedIn
 
 ### Content Organization
