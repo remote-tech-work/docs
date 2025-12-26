@@ -18,34 +18,73 @@ Kredi sistemi, platformda çağrı yapabilmeniz için gerekli olan ön ödemeli 
 - Transkript işleme
 - Kayıt depolama
 
-## Kredi Fiyatlandırması
+## Kredi Nasıl Alınır?
 
-### Kredi Paketleri
+### Plan Bazlı Krediler
 
-| Paket | Kredi | Fiyat | Birim Fiyat | İndirim |
-|-------|-------|-------|-------------|---------|
-| Küçük | 100 | 50 TL | 0.50 TL | - |
-| Orta | 500 | 200 TL | 0.40 TL | %20 |
-| Büyük | 1,000 | 350 TL | 0.35 TL | %30 |
-| Mega | 5,000 | 1,500 TL | 0.30 TL | %40 |
-| Özel | 10,000+ | İletişim | İndirimli | Özel |
+Her abonelik planı aylık kredi paketi ile gelir:
+
+| Plan | Aylık Fiyat | Aylık Kredi |
+|------|-------------|-------------|
+| Discovery | 5,900₺ | 200 kredi |
+| Team | 15,500₺ | 600 kredi |
+| Scale | 49,500₺ | 2,500 kredi |
+| Enterprise | 179,000₺ | 10,000 kredi |
+
+<Info>
+  **Detay:** Plan özellikleri için [Abonelik Planları](/billing-credits/subscription-plans) makalesine bakın.
+</Info>
+
+### Ek Kredi Satın Alma
+
+Plan krediniz biterse, ek kredi satın alabilirsiniz:
+
+**Minimum:** 50 kredi
+
+<Steps>
+  <Step title="Krediler Sayfası">
+    Dashboard > Krediler sayfasına gidin
+  </Step>
+
+  <Step title="Kredi Satın Al">
+    **Kredi Satın Al** butonuna tıklayın
+  </Step>
+
+  <Step title="Miktar Belirleyin">
+    Kredi miktarı belirleyin (minimum 50)
+  </Step>
+
+  <Step title="Ödeme Yapın">
+    Stripe ile ödeme işlemini tamamlayın
+  </Step>
+
+  <Step title="Anında Eklenir">
+    Krediler anında hesabınıza eklenir
+  </Step>
+</Steps>
 
 <Tip>
-  Büyük paketlerde %40'a varan indirimlerden yararlanabilirsiniz!
+  **Geçerlilik:** Satın alınan ek krediler 1 yıl geçerlidir.
 </Tip>
 
-### Kullanım Maliyetleri
+### Kredi Kullanım Maliyeti
 
-**Çağrı Başına:**
-- Bağlanmayan çağrı: 1 kredi (minimum)
-- Başarılı çağrı: ~2-5 kredi/dakika
-- Yönlendirme: +1 kredi/dakika
+<Info>
+  **Genel Kural:** 1 kredi ≈ 1 dakika çağrı
+</Info>
+
+**Not:** Gerçek kullanım, agent modeline ve özelliklerine göre değişebilir:
+- GPT-3.5 Turbo: Daha düşük maliyet
+- GPT-4 Turbo: Daha yüksek maliyet
+- Structured output: Hafif ekstra maliyet
+- Voice text replacement: Ek maliyet yok
 
 **Örnek Hesaplama:**
 ```
-2 dakikalık çağrı: ~6 kredi
-100 çağrı (ortalama 2 dk): ~600 kredi
-Maliyet: 600 × 0.35 = 210 TL (büyük paket)
+2 dakikalık çağrı: ~2 kredi
+100 çağrı (ortalama 3 dk): ~300 kredi
+Discovery planı: 200 kredi/ay (yetersiz)
+Team planı: 600 kredi/ay (yeterli)
 ```
 
 ## Kredi Satın Alma
@@ -289,9 +328,15 @@ Hedef Çağrı Sayısı: 1,000
 Ortalama Süre: 2 dakika
 Başarı Oranı: %70
 
-Başarılı çağrı: 700 × 2 dk × 3 kredi/dk = 4,200 kredi
+Başarılı çağrı: 700 × 2 dk × 2 kredi/dk = 2,800 kredi
 Başarısız çağrı: 300 × 1 kredi = 300 kredi
-Toplam: 4,500 kredi ≈ 1,575 TL (büyük paket)
+Toplam: ~3,100 kredi
+
+Plan Önerisi:
+- Team Planı (600 kredi/ay): Yetersiz
+- Scale Planı (2,500 kredi/ay): Yetersiz
+- Enterprise Planı (10,000 kredi/ay): Yeterli (3 ayda tüketilir)
+- Veya: Scale + 600 ek kredi satın alın
 ```
 
 ## Kredi Transfer
@@ -349,8 +394,8 @@ Toplam: 4,500 kredi ≈ 1,575 TL (büyük paket)
     Stripe'ın güvenli ödeme altyapısı kullanılır. Kart bilgileriniz saklanmaz.
   </Accordion>
 
-  <Accordion title="Toplu kredi alımda indirim var mı?">
-    Evet, büyük paketlerde %40'a varan indirimler mevcuttur.
+  <Accordion title="Ek kredi satın alabilir miyim?">
+    Evet, plan krediniz bittiğinde minimum 50 kredi satın alabilirsiniz. Satın alınan krediler 1 yıl geçerlidir.
   </Accordion>
 
   <Accordion title="Fatura kesilir mi?">
